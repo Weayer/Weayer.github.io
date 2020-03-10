@@ -82,25 +82,6 @@
     
     
     <entry>
-      <title>Inverse</title>
-      <link href="/2020/02/28/Inverse/"/>
-      <url>/2020/02/28/Inverse/</url>
-      
-        <content type="html"><![CDATA[<p> &#x9006;&#x5143;&#x5B9A;&#x4E49;&#xFF1A;&#x6A21;m&#x610F;&#x4E49;&#x4E0B;&#xFF0C;&#x6570;a&#x5982;&#x679C;&#x6709;&#x9006;&#x5143;x&#xFF0C;&#x90A3;&#x4E48;&#x9664;&#x4EE5;a&#x76F8;&#x5F53;&#x4E8E;&#x4E58;&#x4EE5;x</p><p>&#x5373;   ($b\times a$)%m = $\left(b\times m\right)% m$%m  &#x79F0;x&#x4E3A;a&#x7684;&#x9006; .&#x8FD8;&#x6709;&#x4E00;&#x4E2A;&#x8981;&#x6C42;  a&#x548C;m &#x4E92;&#x8D28;&#x4E14;&#x975E;&#x8D1F;</p><a id="more"></a><p>&#x7ED9;&#x5B9A;&#x6A21;&#x6570;m&#xFF0C;&#x6C42;a&#x7684;&#x9006;&#x76F8;&#x5F53;&#x4E8E; $ax\equiv1{(mod,m)}$   </p><p>&#x5373; ax - my = 1 &#x5B9E;&#x9645;&#x4E0A;&#x7EBF;&#x6027;&#x4E0D;&#x5B9A;&#x65B9;&#x7A0B;&#x65E0;&#x7A77;&#x591A;&#x89E3;&#xFF0C;&#x8FD9;&#x91CC;&#x53EA;&#x6C42;&#x6B63;&#x7684;&#x6700;&#x5C0F;&#x9006;&#x5143;</p><p>a, m&#x8981;&#x6C42;&#x975E;&#x8D1F;&#xFF0C;&#x4E14; Gcd(a, m) = 1 &#x5373;a, m&#x4E92;&#x8D28;</p><p>&#x9006;&#x5143;&#x6C42;&#x89E3;&#xFF1A;</p><p>1&#xFF09;&#x6269;&#x5C55;&#x6B27;&#x51E0;&#x91CC;&#x5F97;</p><p>2&#xFF09;&#x8D39;&#x9A6C;&#x5C0F;&#x5B9A;&#x7406;</p><p>3&#xFF09;&#x7EBF;&#x6027;&#x6C42;&#x89E3;</p><h3 id="&#x6269;&#x5C55;&#x6B27;&#x51E0;&#x91CC;&#x5F97;&#x5B9A;&#x7406;&#xFF1A;"><a href="#&#x6269;&#x5C55;&#x6B27;&#x51E0;&#x91CC;&#x5F97;&#x5B9A;&#x7406;&#xFF1A;" class="headerlink" title="&#x6269;&#x5C55;&#x6B27;&#x51E0;&#x91CC;&#x5F97;&#x5B9A;&#x7406;&#xFF1A;"></a>&#x6269;&#x5C55;&#x6B27;&#x51E0;&#x91CC;&#x5F97;&#x5B9A;&#x7406;&#xFF1A;</h3><p>&#x5DF2;&#x77E5;a,b&#x6C42;&#x89E3;&#x4E00;&#x7EC4;x,y &#x6EE1;&#x8DB3; ax + by = Gcd(a, b). &#x5E76;&#x4E14;&#x5DF2;&#x77E5;&#x8BE5;&#x65B9;&#x7A0B;&#x4E00;&#x5B9A;&#x6709;&#x89E3;</p><p>&#x800C;&#x9006;&#x5143;&#x6C42; ax - my = 1 &#x5373;&#x8981; Gcd(a,m) = 1 &#x4E14; a,m&#x975E;&#x8D1F;</p><figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line"><span class="function">ll <span class="title">Extend_Eculid</span><span class="params">(ll a, ll b, ll &amp;x, ll &amp;y)</span></span></span><br><span class="line"><span class="function"></span>{</span><br><span class="line"><span class="keyword">if</span>(!b)</span><br><span class="line">{</span><br><span class="line">*x = <span class="number">1</span>; *y = <span class="number">0</span>;</span><br><span class="line"><span class="keyword">return</span> a;</span><br><span class="line">}</span><br><span class="line"><span class="keyword">else</span></span><br><span class="line">{</span><br><span class="line">ll temp = Extend_Eculid(b, a%b, y, x);</span><br><span class="line">y = y - a/b*x;</span><br><span class="line"><span class="keyword">return</span> temp;</span><br><span class="line">}</span><br><span class="line">}</span><br></pre></td></tr></table></figure><p>&#x5F97;&#x5230;&#x8FD4;&#x56DE;&#x503C;d &#x8981;&#x5224;&#x65AD;&#x4E00;&#x4E0B;</p><figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">main</span><span class="params">()</span></span></span><br><span class="line"><span class="function"></span>{</span><br><span class="line">ll a, m, x, y, d ;</span><br><span class="line"><span class="built_in">cin</span>&gt;&gt;a&gt;&gt;m;</span><br><span class="line">d = Extend_Eculid(a, m, &amp;x, &amp;y);<span class="comment">//&#x6269;&#x6B27;&#x5B9A;&#x7406;,&#x8FD4;&#x56DE;Gcd(a, m) </span></span><br><span class="line"><span class="built_in">cout</span>&lt;&lt; (d == <span class="number">1</span>? (x%m+m)%m : <span class="number">-1</span>)&lt;&lt; <span class="built_in">endl</span>;<span class="comment">//&#x53EF;&#x80FD;x%m&#x4E3A;&#x8D1F;,&#x6240;&#x4EE5;&#x518D;&#x52A0;&#x4E0A;m</span></span><br><span class="line"><span class="keyword">return</span> <span class="number">0</span>;</span><br><span class="line">}</span><br></pre></td></tr></table></figure><h3 id="&#x8D39;&#x9A6C;&#x5C0F;&#x5B9A;&#x7406;&#xFF1A;"><a href="#&#x8D39;&#x9A6C;&#x5C0F;&#x5B9A;&#x7406;&#xFF1A;" class="headerlink" title="&#x8D39;&#x9A6C;&#x5C0F;&#x5B9A;&#x7406;&#xFF1A;"></a>&#x8D39;&#x9A6C;&#x5C0F;&#x5B9A;&#x7406;&#xFF1A;</h3><p>&#x82E5;p&#x4E3A;&#x7D20;&#x6570;&#xFF0C;a&#x4E3A;&#x6B63;&#x6574;&#x6570;&#xFF0C;&#x4E14;a&#x3001;p&#x4E92;&#x8D28;.&#x5219;&#x6709;    $a^{p-1} = 1(mod,,p)$</p><p>&#x90A3;&#x4E48;  $a\times a^{p-2} = 1(mod,,p)$</p><p>&#x8FD9;&#x6837;a&#x7684;&#x9006;&#x5143;&#x7684;&#x89E3;&#x5373;  $ x = a^{p-2}$ ,&#x4F7F;&#x7528;&#x5FEB;&#x901F;&#x5E42;&#x6C42;&#x89E3; $a^{p-2}$ &#x5373;&#x53EF;</p><figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line"><span class="function">ll <span class="title">mod_pow</span><span class="params">(ll x, ll n, ll p)</span><span class="comment">//&#x4EE3;&#x5165; a, m-2, m</span></span></span><br><span class="line"><span class="function"></span>{</span><br><span class="line">ll res = <span class="number">1</span>;</span><br><span class="line"><span class="keyword">while</span>(n)</span><br><span class="line">{</span><br><span class="line"><span class="keyword">if</span>(n&amp;<span class="number">1</span>)</span><br><span class="line">res = res*x%p;</span><br><span class="line">x = x*x%p;</span><br><span class="line">n&gt;&gt;=<span class="number">1</span>;</span><br><span class="line">}</span><br><span class="line"><span class="keyword">return</span> res;</span><br><span class="line">}</span><br></pre></td></tr></table></figure>]]></content>
-      
-      
-      
-        <tags>
-            
-            <tag> 逆元 </tag>
-            
-        </tags>
-      
-    </entry>
-    
-    
-    
-    <entry>
       <title>n的阶乘(High-precision)</title>
       <link href="/2020/02/28/High-precision1/"/>
       <url>/2020/02/28/High-precision1/</url>
@@ -112,6 +93,25 @@
         <tags>
             
             <tag> 高精度 </tag>
+            
+        </tags>
+      
+    </entry>
+    
+    
+    
+    <entry>
+      <title>Inverse</title>
+      <link href="/2020/02/28/Inverse/"/>
+      <url>/2020/02/28/Inverse/</url>
+      
+        <content type="html"><![CDATA[<p> &#x9006;&#x5143;&#x5B9A;&#x4E49;&#xFF1A;&#x6A21;m&#x610F;&#x4E49;&#x4E0B;&#xFF0C;&#x6570;a&#x5982;&#x679C;&#x6709;&#x9006;&#x5143;x&#xFF0C;&#x90A3;&#x4E48;&#x9664;&#x4EE5;a&#x76F8;&#x5F53;&#x4E8E;&#x4E58;&#x4EE5;x</p><p>&#x5373;   ($b\times a$)%m = $\left(b\times m\right)% m$%m  &#x79F0;x&#x4E3A;a&#x7684;&#x9006; .&#x8FD8;&#x6709;&#x4E00;&#x4E2A;&#x8981;&#x6C42;  a&#x548C;m &#x4E92;&#x8D28;&#x4E14;&#x975E;&#x8D1F;</p><a id="more"></a><p>&#x7ED9;&#x5B9A;&#x6A21;&#x6570;m&#xFF0C;&#x6C42;a&#x7684;&#x9006;&#x76F8;&#x5F53;&#x4E8E; $ax\equiv1{(mod,m)}$   </p><p>&#x5373; ax - my = 1 &#x5B9E;&#x9645;&#x4E0A;&#x7EBF;&#x6027;&#x4E0D;&#x5B9A;&#x65B9;&#x7A0B;&#x65E0;&#x7A77;&#x591A;&#x89E3;&#xFF0C;&#x8FD9;&#x91CC;&#x53EA;&#x6C42;&#x6B63;&#x7684;&#x6700;&#x5C0F;&#x9006;&#x5143;</p><p>a, m&#x8981;&#x6C42;&#x975E;&#x8D1F;&#xFF0C;&#x4E14; Gcd(a, m) = 1 &#x5373;a, m&#x4E92;&#x8D28;</p><p>&#x9006;&#x5143;&#x6C42;&#x89E3;&#xFF1A;</p><p>1&#xFF09;&#x6269;&#x5C55;&#x6B27;&#x51E0;&#x91CC;&#x5F97;</p><p>2&#xFF09;&#x8D39;&#x9A6C;&#x5C0F;&#x5B9A;&#x7406;</p><p>3&#xFF09;&#x7EBF;&#x6027;&#x6C42;&#x89E3;</p><h3 id="&#x6269;&#x5C55;&#x6B27;&#x51E0;&#x91CC;&#x5F97;&#x5B9A;&#x7406;&#xFF1A;"><a href="#&#x6269;&#x5C55;&#x6B27;&#x51E0;&#x91CC;&#x5F97;&#x5B9A;&#x7406;&#xFF1A;" class="headerlink" title="&#x6269;&#x5C55;&#x6B27;&#x51E0;&#x91CC;&#x5F97;&#x5B9A;&#x7406;&#xFF1A;"></a>&#x6269;&#x5C55;&#x6B27;&#x51E0;&#x91CC;&#x5F97;&#x5B9A;&#x7406;&#xFF1A;</h3><p>&#x5DF2;&#x77E5;a,b&#x6C42;&#x89E3;&#x4E00;&#x7EC4;x,y &#x6EE1;&#x8DB3; ax + by = Gcd(a, b). &#x5E76;&#x4E14;&#x5DF2;&#x77E5;&#x8BE5;&#x65B9;&#x7A0B;&#x4E00;&#x5B9A;&#x6709;&#x89E3;</p><p>&#x800C;&#x9006;&#x5143;&#x6C42; ax - my = 1 &#x5373;&#x8981; Gcd(a,m) = 1 &#x4E14; a,m&#x975E;&#x8D1F;</p><figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line"><span class="function">ll <span class="title">Extend_Eculid</span><span class="params">(ll a, ll b, ll &amp;x, ll &amp;y)</span></span></span><br><span class="line"><span class="function"></span>{</span><br><span class="line"><span class="keyword">if</span>(!b)</span><br><span class="line">{</span><br><span class="line">*x = <span class="number">1</span>; *y = <span class="number">0</span>;</span><br><span class="line"><span class="keyword">return</span> a;</span><br><span class="line">}</span><br><span class="line"><span class="keyword">else</span></span><br><span class="line">{</span><br><span class="line">ll temp = Extend_Eculid(b, a%b, y, x);</span><br><span class="line">y = y - a/b*x;</span><br><span class="line"><span class="keyword">return</span> temp;</span><br><span class="line">}</span><br><span class="line">}</span><br></pre></td></tr></table></figure><p>&#x5F97;&#x5230;&#x8FD4;&#x56DE;&#x503C;d &#x8981;&#x5224;&#x65AD;&#x4E00;&#x4E0B;</p><figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">main</span><span class="params">()</span></span></span><br><span class="line"><span class="function"></span>{</span><br><span class="line">ll a, m, x, y, d ;</span><br><span class="line"><span class="built_in">cin</span>&gt;&gt;a&gt;&gt;m;</span><br><span class="line">d = Extend_Eculid(a, m, &amp;x, &amp;y);<span class="comment">//&#x6269;&#x6B27;&#x5B9A;&#x7406;,&#x8FD4;&#x56DE;Gcd(a, m) </span></span><br><span class="line"><span class="built_in">cout</span>&lt;&lt; (d == <span class="number">1</span>? (x%m+m)%m : <span class="number">-1</span>)&lt;&lt; <span class="built_in">endl</span>;<span class="comment">//&#x53EF;&#x80FD;x%m&#x4E3A;&#x8D1F;,&#x6240;&#x4EE5;&#x518D;&#x52A0;&#x4E0A;m</span></span><br><span class="line"><span class="keyword">return</span> <span class="number">0</span>;</span><br><span class="line">}</span><br></pre></td></tr></table></figure><h3 id="&#x8D39;&#x9A6C;&#x5C0F;&#x5B9A;&#x7406;&#xFF1A;"><a href="#&#x8D39;&#x9A6C;&#x5C0F;&#x5B9A;&#x7406;&#xFF1A;" class="headerlink" title="&#x8D39;&#x9A6C;&#x5C0F;&#x5B9A;&#x7406;&#xFF1A;"></a>&#x8D39;&#x9A6C;&#x5C0F;&#x5B9A;&#x7406;&#xFF1A;</h3><p>&#x82E5;p&#x4E3A;&#x7D20;&#x6570;&#xFF0C;a&#x4E3A;&#x6B63;&#x6574;&#x6570;&#xFF0C;&#x4E14;a&#x3001;p&#x4E92;&#x8D28;.&#x5219;&#x6709;    $a^{p-1} = 1(mod,,p)$</p><p>&#x90A3;&#x4E48;  $a\times a^{p-2} = 1(mod,,p)$</p><p>&#x8FD9;&#x6837;a&#x7684;&#x9006;&#x5143;&#x7684;&#x89E3;&#x5373;  $ x = a^{p-2}$ ,&#x4F7F;&#x7528;&#x5FEB;&#x901F;&#x5E42;&#x6C42;&#x89E3; $a^{p-2}$ &#x5373;&#x53EF;</p><figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line"><span class="function">ll <span class="title">mod_pow</span><span class="params">(ll x, ll n, ll p)</span><span class="comment">//&#x4EE3;&#x5165; a, m-2, m</span></span></span><br><span class="line"><span class="function"></span>{</span><br><span class="line">ll res = <span class="number">1</span>;</span><br><span class="line"><span class="keyword">while</span>(n)</span><br><span class="line">{</span><br><span class="line"><span class="keyword">if</span>(n&amp;<span class="number">1</span>)</span><br><span class="line">res = res*x%p;</span><br><span class="line">x = x*x%p;</span><br><span class="line">n&gt;&gt;=<span class="number">1</span>;</span><br><span class="line">}</span><br><span class="line"><span class="keyword">return</span> res;</span><br><span class="line">}</span><br></pre></td></tr></table></figure>]]></content>
+      
+      
+      
+        <tags>
+            
+            <tag> 逆元 </tag>
             
         </tags>
       
@@ -196,6 +196,19 @@
     
     
     <entry>
+      <title>hey-piggy</title>
+      <link href="/2019/10/26/hey-piggy/"/>
+      <url>/2019/10/26/hey-piggy/</url>
+      
+        <content type="html"><![CDATA[<p>Nothing is impossble for a willing heart!</p><a id="more"></a><img src="/2019/10/26/hey-piggy/1.jpg" width="60%">]]></content>
+      
+      
+      
+    </entry>
+    
+    
+    
+    <entry>
       <title>Lnode</title>
       <link href="/2019/10/26/Lnode/"/>
       <url>/2019/10/26/Lnode/</url>
@@ -209,19 +222,6 @@
             <tag> 链式存储 </tag>
             
         </tags>
-      
-    </entry>
-    
-    
-    
-    <entry>
-      <title>hey-piggy</title>
-      <link href="/2019/10/26/hey-piggy/"/>
-      <url>/2019/10/26/hey-piggy/</url>
-      
-        <content type="html"><![CDATA[<p>Nothing is impossble for a willing heart!</p><a id="more"></a><img src="/2019/10/26/hey-piggy/1.jpg" width="60%">]]></content>
-      
-      
       
     </entry>
     

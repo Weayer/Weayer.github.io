@@ -15,23 +15,21 @@
 
 
 
-<meta name="description" content="n&amp;#x7684;&amp;#x9636;&amp;#x4E58;&amp;#x6C42;f(n)&amp;#x9012;&amp;#x5F52;&amp;#x5B9E;&amp;#x73B0;&amp;#x53EA;&amp;#x80FD;&amp;#x7B97;&amp;#x5230;n = 20, &amp;#x518D;&amp;#x60F3;&amp;#x8BA1;&amp;#x7B97;&amp;#x663E;&amp;#x7136;&amp;#x7528;&amp;#x9AD8;&amp;#x7CBE;&amp;#x5EA6;&amp;#x4E58;&amp;#x">
-<meta name="keywords" content="高精度">
+<meta name="description" content="&amp;#x96EA;&amp;#x7684;&amp;#x6E90;&amp;#x5934;4&amp;#x6708;1&amp;#x65E5;&amp;#x524D;&amp;#x65E5;&amp;#x611A;&amp;#x8822;&amp;#x5730;&amp;#x4F7F;&amp;#x7528;SQLyog&amp;#x5220;&amp;#x9664;&amp;#x4E86;&amp;#x7CFB;&amp;#x7EDF;&amp;#x81EA;&amp;#x5E26;&amp;#x7684;mysql&amp;#x6570;&amp;#x636E;&amp;#x">
+<meta name="keywords" content="mysql,雪的教训">
 <meta property="og:type" content="article">
-<meta property="og:title" content="n的阶乘(High-precision)">
-<meta property="og:url" content="https://Weayer.github.io/2020/02/28/High-precision1/index.html">
+<meta property="og:title" content="4月1日我成功地被mysql给愚弄了">
+<meta property="og:url" content="https://Weayer.github.io/2020/04/01/4月1日我成功地被mysql给愚弄了/index.html">
 <meta property="og:site_name" content="weayer&#39;s blog">
-<meta property="og:description" content="n&amp;#x7684;&amp;#x9636;&amp;#x4E58;&amp;#x6C42;f(n)&amp;#x9012;&amp;#x5F52;&amp;#x5B9E;&amp;#x73B0;&amp;#x53EA;&amp;#x80FD;&amp;#x7B97;&amp;#x5230;n = 20, &amp;#x518D;&amp;#x60F3;&amp;#x8BA1;&amp;#x7B97;&amp;#x663E;&amp;#x7136;&amp;#x7528;&amp;#x9AD8;&amp;#x7CBE;&amp;#x5EA6;&amp;#x4E58;&amp;#x">
+<meta property="og:description" content="&amp;#x96EA;&amp;#x7684;&amp;#x6E90;&amp;#x5934;4&amp;#x6708;1&amp;#x65E5;&amp;#x524D;&amp;#x65E5;&amp;#x611A;&amp;#x8822;&amp;#x5730;&amp;#x4F7F;&amp;#x7528;SQLyog&amp;#x5220;&amp;#x9664;&amp;#x4E86;&amp;#x7CFB;&amp;#x7EDF;&amp;#x81EA;&amp;#x5E26;&amp;#x7684;mysql&amp;#x6570;&amp;#x636E;&amp;#x">
 <meta property="og:locale" content="en">
-<meta property="og:image" content="https://weayer.github.io/2020/02/28/High-precision1/1.JPG">
-<meta property="og:image" content="https://weayer.github.io/2020/02/28/High-precision1/2.JPG">
-<meta property="og:image" content="https://weayer.github.io/2020/02/28/High-precision1/3.png">
-<meta property="og:image" content="https://weayer.github.io/2020/02/28/High-precision1/4.png">
-<meta property="og:updated_time" content="2020-02-28T11:23:23.117Z">
+<meta property="og:image" content="https://weayer.github.io/2020/04/01/4月1日我成功地被mysql给愚弄了/1.jpg">
+<meta property="og:image" content="https://weayer.github.io/2020/04/01/4月1日我成功地被mysql给愚弄了/2.jpg">
+<meta property="og:updated_time" content="2020-04-01T13:40:17.930Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="n的阶乘(High-precision)">
-<meta name="twitter:description" content="n&amp;#x7684;&amp;#x9636;&amp;#x4E58;&amp;#x6C42;f(n)&amp;#x9012;&amp;#x5F52;&amp;#x5B9E;&amp;#x73B0;&amp;#x53EA;&amp;#x80FD;&amp;#x7B97;&amp;#x5230;n = 20, &amp;#x518D;&amp;#x60F3;&amp;#x8BA1;&amp;#x7B97;&amp;#x663E;&amp;#x7136;&amp;#x7528;&amp;#x9AD8;&amp;#x7CBE;&amp;#x5EA6;&amp;#x4E58;&amp;#x">
-<meta name="twitter:image" content="https://weayer.github.io/2020/02/28/High-precision1/1.JPG">
+<meta name="twitter:title" content="4月1日我成功地被mysql给愚弄了">
+<meta name="twitter:description" content="&amp;#x96EA;&amp;#x7684;&amp;#x6E90;&amp;#x5934;4&amp;#x6708;1&amp;#x65E5;&amp;#x524D;&amp;#x65E5;&amp;#x611A;&amp;#x8822;&amp;#x5730;&amp;#x4F7F;&amp;#x7528;SQLyog&amp;#x5220;&amp;#x9664;&amp;#x4E86;&amp;#x7CFB;&amp;#x7EDF;&amp;#x81EA;&amp;#x5E26;&amp;#x7684;mysql&amp;#x6570;&amp;#x636E;&amp;#x">
+<meta name="twitter:image" content="https://weayer.github.io/2020/04/01/4月1日我成功地被mysql给愚弄了/1.jpg">
 
 <link rel="apple-touch-icon" href="/apple-touch-icon.png">
 
@@ -63,7 +61,7 @@
 <link href="//cdn.bootcss.com/font-awesome/4.6.3/css/font-awesome.min.css" rel="stylesheet">
 
 
-<title>n的阶乘(High-precision) | weayer&#39;s blog</title>
+<title>4月1日我成功地被mysql给愚弄了 | weayer&#39;s blog</title>
 
 <script src="//cdn.bootcss.com/jquery/2.2.4/jquery.min.js"></script>
 <script src="//cdn.bootcss.com/clipboard.js/1.5.10/clipboard.min.js"></script>
@@ -277,11 +275,11 @@
     </div>
     <link class="menu-list" tags="Tags" friends="Friends" about="About Me"/>
 </nav>
-      <div class="body-wrap"><article id="post-High-precision1" class="article article-type-post" itemscope itemprop="blogPost">
+      <div class="body-wrap"><article id="post-4月1日我成功地被mysql给愚弄了" class="article article-type-post" itemscope itemprop="blogPost">
   
     <div class="article-meta">
-      <a href="/2020/02/28/High-precision1/" class="article-date">
-      <time datetime="2020-02-27T16:00:00.000Z" itemprop="datePublished">2020-02-28</time>
+      <a href="/2020/04/01/4月1日我成功地被mysql给愚弄了/" class="article-date">
+      <time datetime="2020-03-31T16:00:00.000Z" itemprop="datePublished">2020-04-01</time>
 </a>
 
 
@@ -296,7 +294,7 @@
         
   
     <h1 class="article-title" itemprop="name">
-      n的阶乘(High-precision)
+      4月1日我成功地被mysql给愚弄了
     </h1>
   
 
@@ -307,7 +305,7 @@
 
         
     <div class="article-tag tagcloud">
-        <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/高精度/">高精度</a></li></ul>
+        <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/mysql/">mysql</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/雪的教训/">雪的教训</a></li></ul>
     </div>
 
         <div class="clearfix"></div>
@@ -317,29 +315,37 @@
     <div class="article-entry" itemprop="articleBody">
       
           
-        <p>n&#x7684;&#x9636;&#x4E58;&#x6C42;f(n)&#x9012;&#x5F52;&#x5B9E;&#x73B0;&#x53EA;&#x80FD;&#x7B97;&#x5230;n = 20, &#x518D;&#x60F3;&#x8BA1;&#x7B97;&#x663E;&#x7136;&#x7528;&#x9AD8;&#x7CBE;&#x5EA6;&#x4E58;&#x6CD5;(&#x5B57;&#x7B26;&#x4E32;&#x5B58;&#x50A8;)&#x53EF;&#x4EE5;&#x5B9E;&#x73B0;&#x3002;</p>
-<a id="more"></a>
-<p>&#x2014;&#x2014;&#x2014;&#x2014;&#x2014;&#x2014;&#x2014;&#x2014;&#x2014;&#x2014;&#x2014;&#x2014;<strong><em>n=23&#x8FD0;&#x884C;&#x7ED3;&#x679C;(&#x5DE6;&#x56FE;&#x9012;&#x5F52;&#x3001;&#x53F3;&#x56FE;&#x9AD8;&#x7CBE;&#x5EA6;)</em></strong>&#x2014;&#x2014;&#x2014;&#x2014;&#x2014;&#x2014;&#x2014;&#x2014;&#x2014;&#x2014;&#x2014;&#x2014;&#x2014;&#x2014;&#x2014;</p>
-<p><img width="45%" src="/2020/02/28/High-precision1/1.JPG"><img width="50%" src="/2020/02/28/High-precision1/2.JPG"></p>
-<ul>
-<li><p><strong>&#x7B97;&#x6CD5;&#x601D;&#x60F3;</strong> </p>
+        <h3 id="&#x96EA;&#x7684;&#x6E90;&#x5934;"><a href="#&#x96EA;&#x7684;&#x6E90;&#x5934;" class="headerlink" title="&#x96EA;&#x7684;&#x6E90;&#x5934;"></a>&#x96EA;&#x7684;&#x6E90;&#x5934;</h3><p>4&#x6708;1&#x65E5;&#x524D;&#x65E5;&#x611A;&#x8822;&#x5730;&#x4F7F;&#x7528;SQLyog&#x5220;&#x9664;&#x4E86;&#x7CFB;&#x7EDF;&#x81EA;&#x5E26;&#x7684;mysql&#x6570;&#x636E;&#x5E93;&#x3002;</p>
+<h3 id="&#x96EA;&#x7684;&#x6559;&#x8BAD;"><a href="#&#x96EA;&#x7684;&#x6559;&#x8BAD;" class="headerlink" title="&#x96EA;&#x7684;&#x6559;&#x8BAD;"></a>&#x96EA;&#x7684;&#x6559;&#x8BAD;</h3><a id="more"></a>
+<p>&#x4E8E;&#x662F;&#x5C31;&#x6709;&#x4E86;&#xFF0C;&#x201D;windows&#x65E0;&#x6CD5;&#x542F;&#x52A8;mysql&#x670D;&#x52A1;&#xFF08;&#x4F4D;&#x4E8E;&#x672C;&#x5730;&#x8BA1;&#x7B97;&#x673A;&#x4E0A;&#x3002;&#x9519;&#x8BEF;1067&#xFF1A;&#x8FDB;&#x7A0B;&#x610F;&#x5916;&#x7EC8;&#x6B62;&#xFF09;&#x201D;&#xFF1B;<br>&#x63A5;&#x7740;&#x4E0A;&#x7F51;&#x641C;&#x7D22;&#x540E;&#x53D1;&#x73B0;&#x611A;&#x8822;&#x7684;&#x4EBA;&#x4E0D;&#x6B62;&#x6211;&#x4E00;&#x4E2A;&#xFF0C;&#x4E8E;&#x662F;&#x5728;&#x5404;&#x4F4D;&#x7F51;&#x53CB;&#x7684;&#x6210;&#x529F;&#x201D;&#x5F15;&#x5BFC;&#x201D;&#x4E0B;&#x5148;&#x540E;&#x53D1;&#x751F;&#x4E86; <strong>1067&#x9519;&#x8BEF;&#x3001;1045&#x9519;&#x8BEF;&#x3001;10061&#x9519;&#x8BEF;</strong>&#xFF1B;<br>&#x5F53;&#x65F6;&#x53EF;&#x628A;&#x6211;&#x611A;&#x5F04;&#x7684;&#x591F;&#x591F;&#x7684;&#xFF0C;&#x771F;&#x662F;&#x6BD4;&#x5B85;&#x5BB6;&#x4E24;&#x4E2A;&#x6708;&#x8FD8;&#x8981;&#x591F;&#x591F;&#x7684;&#xFF1B;<br>&#x540E;&#x6765;&#x75DB;&#x5B9A;&#x601D;&#x75DB;&#xFF0C;&#x5199;&#x4E0B;&#x89E3;&#x51B3;&#x65B9;&#x6848;&#xFF0C;&#x4F9B;&#x8BF8;&#x4F4D;&#x201D;&#x5F15;&#x5BFC;&#x201D;&#x3002;<br>&#x2014;&#x2014;&#x2014;&#x2014;&#x2014;&#x2014;&#x2014;&#x2014;&#x2014;&#x2014;&#x2014;&#x2014;&#x2014;&#x2014;&#x2014;&#x2014;&#x2014;&#x2014;&#x2014;&#x2014;&#x2014;&#x2014;&#x2014;&#x2014;&#x2014;&#x2014;&#x2014;&#x2014;&#x2014;&#x2014;&#x2014;&#x2014;&#x2014;&#x2014;&#x2014;&#x2014;&#x2014;&#x2014;<br>&#x867D;&#x7136;&#x7F51;&#x53CB;&#x7684;&#x65B9;&#x6CD5;&#x9C7C;&#x9F99;&#x6DF7;&#x6742;&#xFF0C;&#x8FD8;&#x662F;&#x8981;&#x611F;&#x8C22;&#x4F18;&#x79C0;&#x535A;&#x5BA2;&#xFF1A;<br>&#xFF08;&#x4E00;&#xFF09;<a href="https://blog.csdn.net/qq_37915248/article/details/83005946?depth_1-utm_source=distribute.pc_relevant.none-task&amp;utm_source=distribute.pc_relevant.none-task" target="_blank" rel="noopener">https://blog.csdn.net/qq_37915248/article/details/83005946?depth_1-utm_source=distribute.pc_relevant.none-task&amp;utm_source=distribute.pc_relevant.none-task</a><br>&#xFF08;&#x4E8C;&#xFF09;<a href="https://blog.csdn.net/lzf_hlh/article/details/80885139" target="_blank" rel="noopener">https://blog.csdn.net/lzf_hlh/article/details/80885139</a></p>
+<ol>
+<li><p>&#x9996;&#x5148;&#x5220;&#x9664;&#x7684;mysql&#x8981;&#x7ED9;&#x4EBA;&#x5BB6;&#x8FD8;&#x56DE;&#x6765;&#xFF1A;</p>
 <blockquote>
-<p>f(n) = 1* 2* 3<em>&#x2026;</em>n<br>&#x5176;&#x4E2D; f(i)*f(i+1) &#x4F7F;&#x7528;&#x9AD8;&#x7CBE;&#x5EA6;&#x4E58;&#x6CD5;,&#x90A3;&#x4E48;&#x8C03;&#x7528;n-1&#x6B21;&#x5373;&#x53EF;</p>
+<p>&#x590D;&#x5236;&#x5B89;&#x88C5;&#x8DEF;&#x5F84;&#x4E2D;&#x7684; C:\ProgramData\MySQL\MySQL Server 5.5\data\mysql<br>&#x5230; C:\ProgramData\MySQL\MySQL Server 5.5\data</p>
 </blockquote>
 </li>
-</ul>
-<p>&#x8FD9;&#x91CC;&#x4F7F;&#x7528;<strong>&#x9AD8;&#x7CBE;&#x5EA6;&#x52A0;&#x6CD5;</strong>&#x5B9E;&#x73B0;&#x9AD8;&#x7CBE;&#x5EA6;&#x4E58;&#x6CD5;,&#x6240;&#x4EE5;&#x5148;&#x4ECB;&#x7ECD;&#x9AD8;&#x7CBE;&#x5EA6;&#x52A0;&#x6CD5;<br>&#x9AD8;&#x7CBE;&#x5EA6;&#x52A0;&#x6CD5;&#x5176;&#x5B9E;&#x5C31;&#x662F;&#x8BA1;&#x7B97;&#x4E24;&#x4E2A;&#x6570;&#x76F8;&#x52A0;&#x7684;&#x8FC7;&#x7A0B;&#xFF0C;&#x4F7F;&#x7528;&#x591A;&#x4E2A;&#x5B58;&#x50A8;&#x5355;&#x5143;&#xFF0C;&#x5C06;&#x6570;&#x5B57;&#x5B57;&#x7B26;&#x5B58;&#x50A8;&#x5230;&#x4E32;&#x4E2D;&#xFF0C;&#x5C31;&#x53EF;&#x4EE5;&#x5B9E;&#x73B0;&#x6570;&#x503C;&#x8303;&#x56F4;&#x8F83;&#x5927;&#x7684;&#x52A0;&#x6CD5;&#x8FD0;&#x7B97;,&#x5982;&#x56FE;&#x3002;</p>
-<p>$ 666666+55555=(6+5)+(60+50)+(600+500)+(6000+5000)+(600000+50000)+(600000) $</p>
-<img width="450px" src="/2020/02/28/High-precision1/3.png">
+<li><p>&#x4E0D;&#x7BA1;&#x662F;1067&#x8FD8;&#x662F;1045&#x8FD8;&#x662F;10061&#x9519;&#x8BEF;&#xFF0C;&#x90FD;&#x53EF;&#x5F52;&#x4E8E;&#x4E24;&#x70B9;</p>
+<blockquote>
+<p>&#xFF08;&#x4E00;&#xFF09;&#x7AEF;&#x53E3;&#x95EE;&#x9898;<br>&#x670D;&#x52A1;&#x5173;&#x95ED;&#x4E86;&#x7684;&#x8981;&#x6253;&#x5F00;&#xFF0C;&#x6216;&#x8005;&#x7AEF;&#x53E3;&#x88AB;&#x591A;&#x4E2A;&#x670D;&#x52A1;&#x5360;&#x7528;&#x4E86;&#x7684;&#x53EA;&#x4FDD;&#x7559;&#x4E00;&#x4E2A;</p>
+<img src="/2020/04/01/4&#x6708;1&#x65E5;&#x6211;&#x6210;&#x529F;&#x5730;&#x88AB;mysql&#x7ED9;&#x611A;&#x5F04;&#x4E86;/1.jpg">
+&#xFF08;&#x4E8C;&#xFF09;&#x7528;&#x6237;&#x540D;&#x548C;&#x5BC6;&#x7801;&#x9519;&#x8BEF;
+&#x4E00;&#xFF09;&#x7F51;&#x53CB;&#x8BF4;&#x5148;&#x5173;&#x95ED;MySQL&#x670D;&#x52A1;&#xFF0C;&#x7136;&#x800C;&#x6211;&#x5E76;&#x6CA1;&#x6709;&#x5173;&#x95ED;&#x3002;
+&#x4E8C;&#xFF09;&#x6253;&#x5F00;&#x5B89;&#x88C5;&#x8DEF;&#x5F84;&#x4E2D;&#x7684; C:\Program Files (x86)\MySQL\MySQL Server 5.5\my.ini 
+&#x5728; [mysqlld] &#x4E0B;&#x6DFB;&#x52A0; skip-grant-tables
+<img src="/2020/04/01/4&#x6708;1&#x65E5;&#x6211;&#x6210;&#x529F;&#x5730;&#x88AB;mysql&#x7ED9;&#x611A;&#x5F04;&#x4E86;/2.jpg">
+&#x4E09;&#xFF09;cmd&#x8F93;&#x5165; mysql -u root -p &#x7136;&#x540E;&#x56DE;&#x8F66;&#x518D;&#x56DE;&#x8F66;&#xFF08;&#x5BC6;&#x7801;&#x4E3A;&#x7A7A;&#xFF09;
+     &#x6CE8;&#xFF1A;**skip-grant-tables** &#x4F5C;&#x7528;&#x662F; MYSQL&#x670D;&#x52A1;&#x5668;&#x4E0D;&#x52A0;&#x8F7D;&#x6743;&#x9650;&#x5224;&#x65AD;&#xFF0C;&#x4EFB;&#x4F55;&#x7528;&#x6237;&#x90FD;&#x80FD;&#x8BBF;&#x95EE;&#x6570;&#x636E;&#x5E93;&#xFF0C;&#x6240;&#x4EE5;&#x5BC6;&#x7801;&#x4E3A;&#x7A7A;&#x3002;
+&#x56DB;&#xFF09;&#x63A5;&#x7740;&#x8FDB;&#x5165;&#x4E86;MySQL
+</blockquote>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">mysql&gt;use mysql&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0; //&#x4F7F;&#x7528;&#x8FD9;&#x4E2A;&#x6570;&#x636E;&#x5E93;</span><br><span class="line">mysql&gt;update user set password=password(&quot;&#x65B0;&#x5BC6;&#x7801;&quot;) where user=&quot;root&quot;;&#xA0;&#xA0; //&#x4FEE;&#x6539;&#x6570;&#x636E;&#x5E93;&#x7684;&#x5BC6;&#x7801;</span><br><span class="line">mysql&gt;flush privileges;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0; //&#x5237;&#x65B0;&#x6570;&#x636E;&#x5E93;</span><br></pre></td></tr></table></figure>
 
-<figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="built_in">string</span> <span class="title">Add</span><span class="params">(<span class="built_in">string</span> a, <span class="built_in">string</span> b)</span>  <span class="comment">//&#x8BA1;&#x7B97;a+b</span></span></span><br><span class="line"><span class="function"></span>{</span><br><span class="line">	<span class="built_in">string</span> sum;</span><br><span class="line">	<span class="keyword">if</span>(a.size() &lt; b.size())		<span class="comment">//a&#x8BBE;&#x4E3A;&#x4F4D;&#x6570;&#x8F83;&#x5927;&#x7684;&#x6570;,&#x4FBF;&#x4E8E;&#x540E;&#x9762;&#x8BA1;&#x7B97; </span></span><br><span class="line">	{</span><br><span class="line">		<span class="built_in">string</span> temp;</span><br><span class="line">		temp = a;</span><br><span class="line">		a = b;</span><br><span class="line">		b = temp;</span><br><span class="line">	}</span><br><span class="line">	<span class="keyword">int</span> len = a.size();</span><br><span class="line">	a = <span class="string">&apos;0&apos;</span>+a;		<span class="comment">//&#x4E24;&#x6570;&#x76F8;&#x52A0;&#x7684;&#x7ED3;&#x679C;&#x4F4D;&#x6570;&#x6700;&#x5927;&#x4E5F;&#x5C31; a.size()+1 </span></span><br><span class="line">	<span class="keyword">for</span>(<span class="keyword">int</span> i=len-b.size(); i&gt;=<span class="number">0</span>; --i)</span><br><span class="line">		b = <span class="string">&apos;0&apos;</span>+b;</span><br><span class="line">	<span class="keyword">for</span>(<span class="keyword">int</span> i=<span class="number">0</span>; i&lt;=len; ++i)</span><br><span class="line">		sum += <span class="string">&apos;0&apos;</span>;	<span class="comment">//&#x5C06;b, sum&#x524D;&#x9762;&#x6DFB;0&#x4F7F;&#x4F4D;&#x6570;&#x90FD;&#x4E3A; a.size()+1</span></span><br><span class="line">	<span class="keyword">int</span> t,c=<span class="number">0</span>;		<span class="comment">//c&#x8BB0;&#x5F55;&#x52A0;&#x6CD5;&#x8FDB;&#x4F4D;&#x503C; </span></span><br><span class="line">	<span class="keyword">for</span>(<span class="keyword">int</span> i=len; i&gt;=<span class="number">0</span>; --i) <span class="comment">//&#x4F4D;&#x6570;&#x76F8;&#x540C;&#x5C31;&#x4FBF;&#x4E8E;&#x4F9D;&#x6B21;&#x76F8;&#x52A0;&#x4E86;,&#x6CE8;&#x610F;&#x8FDB;&#x4F4D; </span></span><br><span class="line">	{</span><br><span class="line">		t = ((a[i]-<span class="string">&apos;0&apos;</span>)+(b[i]-<span class="string">&apos;0&apos;</span>)+c);	<span class="comment">//t&#x8BB0;&#x5F55;&#x6BCF;&#x4F4D;&#x76F8;&#x52A0;&#x7684;&#x548C; </span></span><br><span class="line">		c = t/<span class="number">10</span>;		</span><br><span class="line">		sum[i] += t%<span class="number">10</span>;</span><br><span class="line">	}</span><br><span class="line">	<span class="keyword">if</span>(sum[<span class="number">0</span>]==<span class="string">&apos;0&apos;</span>)	 <span class="comment">//&#x82E5; a.size()+1 &#x4F4D;&#x6CA1;&#x6709;&#x8FDB;&#x4F4D;,&#x6709;&#x6548;&#x4F4D;&#x5C31;&#x53EA;&#x6709;a.size() </span></span><br><span class="line">		sum = sum.substr(<span class="number">1</span>, sum.size());</span><br><span class="line">	<span class="keyword">return</span> sum;</span><br><span class="line">}</span><br></pre></td></tr></table></figure>
+</li>
+</ol>
+<blockquote>
+<p>&#x4E94;&#xFF09;&#x539F;&#x6765;&#x6DFB;&#x52A0;&#x5230; my.ini &#x7684; skip-grant-tables &#x53EF;&#x4EE5;&#x5220;&#x9664;&#x4E86;&#xFF0C;<br>&#x91CD;&#x542F;&#x7535;&#x8111;&#xFF0C;&#x6B63;&#x5E38;&#x8FDB;&#x5165;cmd&#xFF0C;&#x8F93;&#x5165; mysql -u root -p &#x56DE;&#x8F66;&#x8F93;&#x5165;&#x65B0;&#x5BC6;&#x7801;&#x6210;&#x529F;&#x3002;<br>    &#x6CE8;&#xFF1A;&#x7F51;&#x53CB;&#x7684;&#x505A;&#x6CD5;&#x5927;&#x591A;&#x4E3A;&#x91CD;&#x542F;MySQL&#x670D;&#x52A1;&#xFF0C;&#x56E0;&#x4E3A;&#x5F00;&#x59CB;&#x7684;&#x65F6;&#x5019;&#x5173;&#x95ED;&#x4E86;&#x3002;&#x7136;&#x800C;&#x7ECF;&#x5C1D;&#x8BD5;&#x5931;&#x8D25;&#xFF0C;&#x770B;&#x6765;&#x8FD8;&#x662F;&#x91CD;&#x542F;&#x7535;&#x8111;&#x80FD;&#x89E3;&#x51B3;&#x8BF8;&#x591A;&#x7384;&#x800C;&#x53C8;&#x7384;&#x7684;&#x95EE;&#x9898;&#x3002;</p>
+</blockquote>
+<h3 id="&#x96EA;&#x7684;&#x5347;&#x534E;"><a href="#&#x96EA;&#x7684;&#x5347;&#x534E;" class="headerlink" title="&#x96EA;&#x7684;&#x5347;&#x534E;"></a>&#x96EA;&#x7684;&#x5347;&#x534E;</h3><p>&#x5199;&#x5728;&#x6700;&#x540E; &#x9047;&#x5230;&#x68D8;&#x624B;&#x6076;&#x5FC3;&#x9EBB;&#x6728;&#x5F00;&#x59CB;&#x6000;&#x7591;&#x4EBA;&#x751F;&#x7684;&#x95EE;&#x9898;&#x65F6;&#xFF0C;&#x4E0D;&#x59A8;&#x5148;&#x653E;&#x4E00;&#x653E;&#xFF0C;&#x505A;&#x70B9;&#x513F;&#x559C;&#x6B22;&#x7684;&#x4E8B;&#xFF0C;&#x751F;&#x6D3B;&#x8FD8;&#x6709;&#x5F88;&#x591A;&#x7F8E;&#x597D;&#x53EF;&#x4EE5;&#x53BB;&#x6316;&#x6398;&#xFF0C;&#x97EC;&#x5149;&#x517B;&#x6666;&#xFF0C;&#x4ECE;&#x5584;&#x5982;&#x6D41;&#x3002;</p>
 
-<p>&#x4E58;&#x6CD5;&#x5176;&#x5B9E;&#x5C31;&#x662F;&#x591A;&#x6B21;&#x76F8;&#x52A0;,&#x6240;&#x4EE5;&#x9AD8;&#x7CBE;&#x5EA6;&#x4E58;&#x6CD5;&#x53EF;&#x4EE5;&#x7531;&#x591A;&#x6B21;&#x9AD8;&#x7CBE;&#x5EA6;&#x52A0;&#x6CD5;&#x5B9E;&#x73B0; a*b &#x5373; b&#x4E2A;a&#x76F8;&#x52A0;&#xFF0C; &#x5982;&#x56FE;</p>
-<p>$ 333333\times22222 = 333333\times\left(20000+2000+200+20+2\right) $<img width="450px" src="/2020/02/28/High-precision1/4.png"></p>
-<figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="built_in">string</span> <span class="title">Mult</span><span class="params">(<span class="built_in">string</span> a, <span class="built_in">string</span> b)</span> <span class="comment">//&#x8BA1;&#x7B97;a*b</span></span></span><br><span class="line"><span class="function"></span>{</span><br><span class="line">	<span class="keyword">if</span>(a.size()&lt;b.size())</span><br><span class="line">	{				<span class="comment">//a&#x8BBE;&#x4E3A;&#x4F4D;&#x6570;&#x8F83;&#x5927;&#x7684;&#x6570;</span></span><br><span class="line">		<span class="built_in">string</span> temp;</span><br><span class="line">		temp = a;</span><br><span class="line">		a = b;</span><br><span class="line">		b = temp;</span><br><span class="line">	}</span><br><span class="line">	<span class="keyword">int</span> len=b.size();</span><br><span class="line">	<span class="built_in">string</span> sum=<span class="string">&quot;0&quot;</span>;		 </span><br><span class="line">	<span class="keyword">for</span>(<span class="keyword">int</span> i=len<span class="number">-1</span>; i&gt;=<span class="number">0</span>; --i)</span><br><span class="line">	{				<span class="comment">//&#x4EE4;b&#x6BCF;&#x4E00;&#x4F4D;&#x4F9D;&#x6B21;&#x4E0E;a&#x76F8;&#x4E58;,&#x7136;&#x540E;&#x76F8;&#x52A0;</span></span><br><span class="line">		<span class="keyword">if</span>(i&lt;len<span class="number">-1</span>)</span><br><span class="line">			a += <span class="string">&apos;0&apos;</span>;	<span class="comment">//b[i]&#x6240;&#x5728;&#x7684;&#x662F;&#x7B2C;&#x51E0;&#x4F4D;,&#x4E0E;a&#x76F8;&#x4E58;&#x4E4B;&#x524D;&#x5C31;&#x7ED9;a&#x589E;&#x52A0;&#x591A;&#x5C11;&#x4E2A;0 </span></span><br><span class="line">		<span class="built_in">string</span> ans = a;</span><br><span class="line">		<span class="keyword">if</span>(b[i] != <span class="string">&apos;0&apos;</span>)	<span class="comment">//b[i]&#x4E3A;&apos;0&apos;&#x5C31;&#x4E0D;&#x4E0E;a&#x76F8;&#x4E58; </span></span><br><span class="line">		{</span><br><span class="line">			<span class="keyword">for</span>(<span class="keyword">int</span> j=<span class="number">1</span>; j&lt;b[i]-<span class="string">&apos;0&apos;</span>; ++j)	<span class="comment">//&#x4E58;&#x6CD5;&#x8F6C;&#x5316;&#x4E3A;&#x52A0;&#x6CD5; </span></span><br><span class="line">				ans = Add(ans, a);	<span class="comment">//&#x4E58;&#x591A;&#x5C11;&#x6B21;a&#x5C31;&#x662F;&#x52A0;&#x4E86;&#x591A;&#x5C11;&#x6B21;a </span></span><br><span class="line">			sum = Add(sum, ans);</span><br><span class="line">		}</span><br><span class="line">	}</span><br><span class="line">	<span class="keyword">return</span> sum;</span><br><span class="line">}</span><br></pre></td></tr></table></figure>
-
-<p>&#x63A5;&#x7740;&#x8BA1;&#x7B97;n&#x7684;&#x9636;&#x4E58;&#x5C31;&#x5F88;&#x5BB9;&#x6613;&#x4E86;</p>
-<figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="built_in">string</span> <span class="title">Sum</span><span class="params">(<span class="keyword">int</span> n)</span>	<span class="comment">//&#x8BA1;&#x7B97;n&#x7684;&#x9636;&#x4E58;,&#x7ED3;&#x679C;&#x7528;&#x5B57;&#x7B26;&#x4E32;&#x5B58; </span></span></span><br><span class="line"><span class="function"></span>{</span><br><span class="line">	<span class="built_in">string</span> sum = <span class="string">&quot;1&quot;</span>;</span><br><span class="line">	<span class="keyword">int</span> i = <span class="number">1</span>;</span><br><span class="line">	<span class="keyword">while</span>(n &gt; i)		<span class="comment">//f(n) = 1*2*3*...*n</span></span><br><span class="line">	{</span><br><span class="line">		sum = Mult(sum, to_string(++i));</span><br><span class="line">	}</span><br><span class="line">	<span class="keyword">return</span> sum;</span><br><span class="line">}</span><br></pre></td></tr></table></figure>
       
     </div>
     
@@ -347,13 +353,13 @@
   
     
     <div class="copyright">
-        <p><span>Title:</span><a href="/2020/02/28/High-precision1/">n的阶乘(High-precision)</a></p>
+        <p><span>Title:</span><a href="/2020/04/01/4月1日我成功地被mysql给愚弄了/">4月1日我成功地被mysql给愚弄了</a></p>
         <p><span>Author:</span><a href="/" title="Back to Homepage">Weayer</a></p>
-        <p><span>Created:</span>2020-02-28, 00:00:00</p>
-        <p><span>Updated:</span>2020-02-28, 19:23:23</p>
+        <p><span>Created:</span>2020-04-01, 00:00:00</p>
+        <p><span>Updated:</span>2020-04-01, 21:40:17</p>
         <p>
-            <span>Full URL:</span><a class="post-url" href="/2020/02/28/High-precision1/" title="n的阶乘(High-precision)">https://Weayer.github.io/2020/02/28/High-precision1/</a>
-            <span class="copy-path" data-clipboard-text="From https://Weayer.github.io/2020/02/28/High-precision1/　　By Weayer" title="Copy Article&#39;s Link &amp; Author"><i class="fa fa-clipboard"></i></span>
+            <span>Full URL:</span><a class="post-url" href="/2020/04/01/4月1日我成功地被mysql给愚弄了/" title="4月1日我成功地被mysql给愚弄了">https://Weayer.github.io/2020/04/01/4月1日我成功地被mysql给愚弄了/</a>
+            <span class="copy-path" data-clipboard-text="From https://Weayer.github.io/2020/04/01/4月1日我成功地被mysql给愚弄了/　　By Weayer" title="Copy Article&#39;s Link &amp; Author"><i class="fa fa-clipboard"></i></span>
             <script> var clipboard = new Clipboard('.copy-path'); </script>
         </p>
         <p>
@@ -365,16 +371,10 @@
 
     <nav id="article-nav">
         
-            <div id="article-nav-newer" class="article-nav-title">
-                <a href="/2020/03/05/heap/">
-                    heap
-                </a>
-            </div>
-        
         
             <div id="article-nav-older" class="article-nav-title">
-                <a href="/2020/02/28/Inverse/">
-                    Inverse
+                <a href="/2020/03/28/蓝桥-晚会节目单/">
+                    蓝桥-晚会节目单（ST表）
                 </a>
             </div>
         
@@ -386,7 +386,7 @@
     <div id="toc" class="toc-article">
         <strong class="toc-title">Contents</strong>
         
-            
+            <ol class="toc"><li class="toc-item toc-level-3"><a class="toc-link" href="#雪的源头"><span class="toc-number">1.</span> <span class="toc-text">雪的源头</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#雪的教训"><span class="toc-number">2.</span> <span class="toc-text">雪的教训</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#雪的升华"><span class="toc-number">3.</span> <span class="toc-text">雪的升华</span></a></li></ol>
         
     </div>
     <style>
@@ -422,7 +422,7 @@
         </div>
         <script>
             window._bd_share_config={
-                "common":{"bdSnsKey":{},"bdText":"n的阶乘(High-precision)　| weayer's blog　","bdMini":"2","bdMiniList":false,"bdPic":"","bdStyle":"0","bdSize":"24"},"share":{}};with(document)0[(getElementsByTagName('head')[0]||body).appendChild(createElement('script')).src='http://bdimg.share.baidu.com/static/api/js/share.js?v=89860593.js?cdnversion='+~(-new Date()/36e5)];
+                "common":{"bdSnsKey":{},"bdText":"4月1日我成功地被mysql给愚弄了　| weayer's blog　","bdMini":"2","bdMiniList":false,"bdPic":"","bdStyle":"0","bdSize":"24"},"share":{}};with(document)0[(getElementsByTagName('head')[0]||body).appendChild(createElement('script')).src='http://bdimg.share.baidu.com/static/api/js/share.js?v=89860593.js?cdnversion='+~(-new Date()/36e5)];
         </script>
     
 
@@ -442,15 +442,13 @@
 
     <div class="scroll" id="post-nav-button">
         
-            <a href="/2020/03/05/heap/" title="Pre: heap">
-                <i class="fa fa-angle-left"></i>
-            </a>
+            <a href="/" title="Back to Homepage"><i class="fa fa-home"></i></a>
         
 
         <a title="Mini Archives"><i class="fa fa-bars"></i><i class="fa fa-times"></i></a>
 
         
-            <a href="/2020/02/28/Inverse/" title="Next: Inverse">
+            <a href="/2020/03/28/蓝桥-晚会节目单/" title="Next: 蓝桥-晚会节目单（ST表）">
                 <i class="fa fa-angle-right"></i>
             </a>
         

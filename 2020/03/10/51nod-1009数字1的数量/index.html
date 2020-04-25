@@ -19,7 +19,7 @@
 <meta name="keywords" content="数论">
 <meta property="og:type" content="article">
 <meta property="og:title" content="·[51nod-1009]数字1的数量">
-<meta property="og:url" content="https://Weayer.github.io/2020/03/10/51nod-1009数字1的数量/index.html">
+<meta property="og:url" content="https://www.weayer.top/2020/03/10/51nod-1009数字1的数量/index.html">
 <meta property="og:site_name" content="weayer&#39;s blog">
 <meta property="og:description" content="&amp;#x9898;&amp;#x76EE;&amp;#x6765;&amp;#x6E90;&amp;#xFF1A;http://www.51nod.com/Challenge/Problem.html#problemId=1009">
 <meta property="og:locale" content="en">
@@ -322,7 +322,7 @@
 
 </li>
 </ul>
-<h3 id="&#x9898;&#x89E3;2-&#x6570;&#x4F4D;dp"><a href="#&#x9898;&#x89E3;2-&#x6570;&#x4F4D;dp" class="headerlink" title="&#x9898;&#x89E3;2-&#x6570;&#x4F4D;dp"></a>&#x9898;&#x89E3;2-&#x6570;&#x4F4D;dp</h3><p>&#x53C2;&#x8003;&#x6211;&#x7684;dp-digit: <a href="https://www.weayer.top/2020/03/10/dp-digit/" target="_blank" rel="noopener">https://www.weayer.top/2020/03/10/dp-digit/</a><br><strong>&#x7B97;&#x6CD5;&#x601D;&#x60F3;</strong><br>1.&#x5BF9;&#x4E8E;10^i&#x5185;&#x8BB0;&#x5F55;1&#x51FA;&#x73B0;&#x6B21;&#x6570;<br>2.&#x540C;&#x6837;&#x5982;n=43102&#xFF0C;&#x904D;&#x5386;&#x6BCF;&#x4E00;&#x4F4D;&#x6570;&#xFF0C;&#x4F46;&#x904D;&#x5386;&#x987A;&#x5E8F;&#x4ECE;n&#x5230;1&#xFF0C;&#x8FD8;&#x6709;&#x4E0D;&#x540C;&#x7684;&#x662F;&#x8FD9;&#x91CC;&#x5C06;&#x5176;&#x62C6;&#x4E3A;m[] = {40000,3000,100,0,2}<br>&#x5BF9;&#x4E8E;&#x7B2C;i&#x4F4D;&#xFF0C;&#x8BB0;&#x5F55;m[i-1]&#x5185;1&#x51FA;&#x73B0;&#x7684;&#x6B21;&#x6570;res&#xFF0C;&#x800C;10^i&#x5185;1&#x7684;&#x6B21;&#x6570;&#x5DF2;&#x7ECF;&#x5F97;&#x5230;&#x4E86;(&#x5982;&#x5343;&#x4F4D;&#x6570;3&#xFF0C;ans = 3*dp[3])<br>&#x5F53;&#x7136;&#x5355;&#x72EC;&#x8BA1;&#x7B97;ans&#x7136;&#x540E;&#x7D2F;&#x52A0;&#x80AF;&#x5B9A;&#x662F;&#x4E0D;&#x884C;&#x7684;&#xFF0C;&#x7B2C;i&#x4F4D;&#x6570;&#x7684;&#x8D21;&#x732E;&#x503C;&#x8FD8;&#x4E0E;&#x4F4E;&#x4F4D;&#x7684;&#x6570;&#x6709;&#x5173;(&#x5982;&#x5343;&#x4F4D;&#x6570;3&#xFF0C;&#x4EC5;&#x8BB0;&#x5F55;&#x4E86;3000&#x5185;1&#x7684;&#x6B21;&#x6570;&#xFF0C;&#x540E;&#x9762;102&#x540C;&#x6837;&#x4F1A;&#x7528;&#x5230;3)&#x6240;&#x4EE5;&#x7C7B;&#x4F3C;&#x9898;&#x89E3;1</p>
+<h3 id="&#x9898;&#x89E3;2-&#x6570;&#x4F4D;dp"><a href="#&#x9898;&#x89E3;2-&#x6570;&#x4F4D;dp" class="headerlink" title="&#x9898;&#x89E3;2-&#x6570;&#x4F4D;dp"></a>&#x9898;&#x89E3;2-&#x6570;&#x4F4D;dp</h3><p>&#x53C2;&#x8003;&#x6211;&#x7684;dp-digit: <a href="https://www.weayer.top/2020/03/10/dp-digit/">https://www.weayer.top/2020/03/10/dp-digit/</a><br><strong>&#x7B97;&#x6CD5;&#x601D;&#x60F3;</strong><br>1.&#x5BF9;&#x4E8E;10^i&#x5185;&#x8BB0;&#x5F55;1&#x51FA;&#x73B0;&#x6B21;&#x6570;<br>2.&#x540C;&#x6837;&#x5982;n=43102&#xFF0C;&#x904D;&#x5386;&#x6BCF;&#x4E00;&#x4F4D;&#x6570;&#xFF0C;&#x4F46;&#x904D;&#x5386;&#x987A;&#x5E8F;&#x4ECE;n&#x5230;1&#xFF0C;&#x8FD8;&#x6709;&#x4E0D;&#x540C;&#x7684;&#x662F;&#x8FD9;&#x91CC;&#x5C06;&#x5176;&#x62C6;&#x4E3A;m[] = {40000,3000,100,0,2}<br>&#x5BF9;&#x4E8E;&#x7B2C;i&#x4F4D;&#xFF0C;&#x8BB0;&#x5F55;m[i-1]&#x5185;1&#x51FA;&#x73B0;&#x7684;&#x6B21;&#x6570;res&#xFF0C;&#x800C;10^i&#x5185;1&#x7684;&#x6B21;&#x6570;&#x5DF2;&#x7ECF;&#x5F97;&#x5230;&#x4E86;(&#x5982;&#x5343;&#x4F4D;&#x6570;3&#xFF0C;ans = 3*dp[3])<br>&#x5F53;&#x7136;&#x5355;&#x72EC;&#x8BA1;&#x7B97;ans&#x7136;&#x540E;&#x7D2F;&#x52A0;&#x80AF;&#x5B9A;&#x662F;&#x4E0D;&#x884C;&#x7684;&#xFF0C;&#x7B2C;i&#x4F4D;&#x6570;&#x7684;&#x8D21;&#x732E;&#x503C;&#x8FD8;&#x4E0E;&#x4F4E;&#x4F4D;&#x7684;&#x6570;&#x6709;&#x5173;(&#x5982;&#x5343;&#x4F4D;&#x6570;3&#xFF0C;&#x4EC5;&#x8BB0;&#x5F55;&#x4E86;3000&#x5185;1&#x7684;&#x6B21;&#x6570;&#xFF0C;&#x540E;&#x9762;102&#x540C;&#x6837;&#x4F1A;&#x7528;&#x5230;3)&#x6240;&#x4EE5;&#x7C7B;&#x4F3C;&#x9898;&#x89E3;1</p>
 <figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">typedef</span> <span class="keyword">long</span> <span class="keyword">long</span> ll;</span><br><span class="line">ll a[<span class="number">25</span>], dp[<span class="number">25</span>], digit[<span class="number">25</span>];</span><br><span class="line"><span class="function"><span class="keyword">void</span> <span class="title">init</span><span class="params">()</span>      <span class="comment">//&#x7EDF;&#x8BA1;10^(i-1)&#x5185;&#x5404;&#x6570;&#x51FA;&#x73B0;&#x6B21;&#x6570;,dp[i]&#x5B58;&#x50A8; </span></span></span><br><span class="line"><span class="function"></span>{               <span class="comment">//dp[i] = 10*dp[i-1] + 10^(i-1)</span></span><br><span class="line">    digit[<span class="number">0</span>] = <span class="number">1</span>;</span><br><span class="line">    <span class="keyword">for</span>(<span class="keyword">int</span> i = <span class="number">1</span>; i &lt;= <span class="number">20</span>; ++i)</span><br><span class="line">    {</span><br><span class="line">        dp[i] = dp[i<span class="number">-1</span>]*<span class="number">10</span> + digit[i<span class="number">-1</span>];</span><br><span class="line">        digit[i] = digit[i<span class="number">-1</span>] * <span class="number">10</span>;</span><br><span class="line">    }</span><br><span class="line">}</span><br></pre></td></tr></table></figure>
 
 <figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br></pre></td><td class="code"><pre><span class="line"><span class="function">ll <span class="title">solve</span><span class="params">(ll m)</span></span></span><br><span class="line"><span class="function"></span>{</span><br><span class="line">    ll ans = m, len = <span class="number">0</span>, sum = <span class="number">0</span>;</span><br><span class="line">    <span class="keyword">while</span>(m)</span><br><span class="line">    {</span><br><span class="line">        a[++len] = m % <span class="number">10</span>;</span><br><span class="line">        m /= <span class="number">10</span>;</span><br><span class="line">    }</span><br><span class="line">    <span class="keyword">for</span>(<span class="keyword">int</span> k = len; k &gt;=<span class="number">1</span>; --k)</span><br><span class="line">    {</span><br><span class="line">        sum += a[k] * dp[k<span class="number">-1</span>];</span><br><span class="line">        ans -= a[k] * digit[k<span class="number">-1</span>];</span><br><span class="line">        <span class="keyword">if</span>(a[k] == <span class="number">0</span>)</span><br><span class="line">            <span class="keyword">continue</span>;</span><br><span class="line">        <span class="keyword">if</span>(a[k] == <span class="number">1</span>)</span><br><span class="line">            sum += (ans + <span class="number">1</span>);</span><br><span class="line">        <span class="keyword">else</span></span><br><span class="line">            sum += digit[k<span class="number">-1</span>];</span><br><span class="line">    }</span><br><span class="line">    <span class="keyword">return</span> sum;</span><br><span class="line">}</span><br></pre></td></tr></table></figure>
@@ -338,8 +338,8 @@
         <p><span>Created:</span>2020-03-10, 00:00:00</p>
         <p><span>Updated:</span>2020-03-10, 22:34:48</p>
         <p>
-            <span>Full URL:</span><a class="post-url" href="/2020/03/10/51nod-1009数字1的数量/" title="·[51nod-1009]数字1的数量">https://Weayer.github.io/2020/03/10/51nod-1009数字1的数量/</a>
-            <span class="copy-path" data-clipboard-text="From https://Weayer.github.io/2020/03/10/51nod-1009数字1的数量/　　By Weayer" title="Copy Article&#39;s Link &amp; Author"><i class="fa fa-clipboard"></i></span>
+            <span>Full URL:</span><a class="post-url" href="/2020/03/10/51nod-1009数字1的数量/" title="·[51nod-1009]数字1的数量">https://www.weayer.top/2020/03/10/51nod-1009数字1的数量/</a>
+            <span class="copy-path" data-clipboard-text="From https://www.weayer.top/2020/03/10/51nod-1009数字1的数量/　　By Weayer" title="Copy Article&#39;s Link &amp; Author"><i class="fa fa-clipboard"></i></span>
             <script> var clipboard = new Clipboard('.copy-path'); </script>
         </p>
         <p>
@@ -352,15 +352,15 @@
     <nav id="article-nav">
         
             <div id="article-nav-newer" class="article-nav-title">
-                <a href="/2020/03/10/dp-digit/">
-                    Dp-digit
+                <a href="/2020/03/11/ax-by-c问题/">
+                    Ax+By=C问题
                 </a>
             </div>
         
         
             <div id="article-nav-older" class="article-nav-title">
-                <a href="/2020/03/07/NOIP-2015-POJ-2456/">
-                    ·[NOIP-2015]·[POJ-2456]
+                <a href="/2020/03/10/dp-digit/">
+                    Dp-digit
                 </a>
             </div>
         
@@ -428,7 +428,7 @@
 
     <div class="scroll" id="post-nav-button">
         
-            <a href="/2020/03/10/dp-digit/" title="Pre: Dp-digit">
+            <a href="/2020/03/11/ax-by-c问题/" title="Pre: Ax+By=C问题">
                 <i class="fa fa-angle-left"></i>
             </a>
         
@@ -436,13 +436,13 @@
         <a title="Mini Archives"><i class="fa fa-bars"></i><i class="fa fa-times"></i></a>
 
         
-            <a href="/2020/03/07/NOIP-2015-POJ-2456/" title="Next: ·[NOIP-2015]·[POJ-2456]">
+            <a href="/2020/03/10/dp-digit/" title="Next: Dp-digit">
                 <i class="fa fa-angle-right"></i>
             </a>
         
     </div>
 
-    <ul class="post-list"><li class="post-list-item"><a class="post-list-link" href="/2020/04/24/模运算的运用/">模运算的运用</a></li><li class="post-list-item"><a class="post-list-link" href="/2020/04/01/4月1日我成功地被mysql给愚弄了/">4月1日我成功地被mysql给愚弄了</a></li><li class="post-list-item"><a class="post-list-link" href="/2020/03/28/蓝桥-晚会节目单/">蓝桥-晚会节目单（ST表）</a></li><li class="post-list-item"><a class="post-list-link" href="/2020/03/28/Dp-ST/">Dp-ST表（求解RMP）</a></li><li class="post-list-item"><a class="post-list-link" href="/2020/03/11/ax-by-c问题/">Ax+By=C问题</a></li><li class="post-list-item"><a class="post-list-link" href="/2020/03/11/Extend-Eculid/">Extend_Eculid</a></li><li class="post-list-item"><a class="post-list-link" href="/2020/03/10/dp-digit/">Dp-digit</a></li><li class="post-list-item"><a class="post-list-link" href="/2020/03/10/51nod-1009数字1的数量/">·[51nod-1009]数字1的数量</a></li><li class="post-list-item"><a class="post-list-link" href="/2020/03/07/NOIP-2015-POJ-2456/">·[NOIP-2015]·[POJ-2456]</a></li><li class="post-list-item"><a class="post-list-link" href="/2020/03/05/heap/">heap</a></li><li class="post-list-item"><a class="post-list-link" href="/2020/02/28/Inverse/">Inverse</a></li><li class="post-list-item"><a class="post-list-link" href="/2020/02/28/High-precision1/">n的阶乘(High-precision)</a></li><li class="post-list-item"><a class="post-list-link" href="/2020/02/07/Sliding-window/">Sliding Window</a></li><li class="post-list-item"><a class="post-list-link" href="/2019/12/02/Merge-Sort/">Merge Sort</a></li><li class="post-list-item"><a class="post-list-link" href="/2019/12/01/Stack/">Stack</a></li><li class="post-list-item"><a class="post-list-link" href="/2019/11/30/Queue-0/">Queue</a></li><li class="post-list-item"><a class="post-list-link" href="/2019/10/26/Lnode/">Lnode</a></li><li class="post-list-item"><a class="post-list-link" href="/2019/10/26/hey-piggy/">hey-piggy</a></li></ul>
+    <ul class="post-list"><li class="post-list-item"><a class="post-list-link" href="/2020/04/24/模运算的运用/">模运算的运用</a></li><li class="post-list-item"><a class="post-list-link" href="/2020/04/01/4月1日我成功地被mysql给愚弄了/">4月1日我成功地被mysql给愚弄了</a></li><li class="post-list-item"><a class="post-list-link" href="/2020/03/28/蓝桥-晚会节目单/">蓝桥-晚会节目单（ST表）</a></li><li class="post-list-item"><a class="post-list-link" href="/2020/03/28/Dp-ST/">Dp-ST表（求解RMP）</a></li><li class="post-list-item"><a class="post-list-link" href="/2020/03/11/Extend-Eculid/">Extend_Eculid</a></li><li class="post-list-item"><a class="post-list-link" href="/2020/03/11/ax-by-c问题/">Ax+By=C问题</a></li><li class="post-list-item"><a class="post-list-link" href="/2020/03/10/51nod-1009数字1的数量/">·[51nod-1009]数字1的数量</a></li><li class="post-list-item"><a class="post-list-link" href="/2020/03/10/dp-digit/">Dp-digit</a></li><li class="post-list-item"><a class="post-list-link" href="/2020/03/07/NOIP-2015-POJ-2456/">·[NOIP-2015]·[POJ-2456]</a></li><li class="post-list-item"><a class="post-list-link" href="/2020/03/05/heap/">heap</a></li><li class="post-list-item"><a class="post-list-link" href="/2020/02/28/High-precision1/">n的阶乘(High-precision)</a></li><li class="post-list-item"><a class="post-list-link" href="/2020/02/28/Inverse/">Inverse</a></li><li class="post-list-item"><a class="post-list-link" href="/2020/02/07/Sliding-window/">Sliding Window</a></li><li class="post-list-item"><a class="post-list-link" href="/2019/12/02/Merge-Sort/">Merge Sort</a></li><li class="post-list-item"><a class="post-list-link" href="/2019/12/01/Stack/">Stack</a></li><li class="post-list-item"><a class="post-list-link" href="/2019/11/30/Queue-0/">Queue</a></li><li class="post-list-item"><a class="post-list-link" href="/2019/10/26/Lnode/">Lnode</a></li><li class="post-list-item"><a class="post-list-link" href="/2019/10/26/hey-piggy/">hey-piggy</a></li></ul>
 
 
 

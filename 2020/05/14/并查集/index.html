@@ -15,31 +15,18 @@
 
 
 
-<meta name="description" content="&amp;#x96EA;&amp;#x7684;&amp;#x6E90;&amp;#x5934;&amp;#x5F00;&amp;#x59CB;&amp;#x5EFA;&amp;#x535A;&amp;#x5BA2;&amp;#x65F6;&amp;#x5C31;&amp;#x662F;&amp;#x5C06;hexo&amp;#x6258;&amp;#x7BA1;&amp;#x5230;github&amp;#x4E0A;&amp;#x7684;&amp;#xFF0C;&amp;#x4F46;&amp;#x8BBF;&amp;#x95EE;&amp;#x901F;&amp;#x5EA">
-<meta name="keywords" content="雪的教训,hexo">
+<meta name="description" content="&amp;#x5E76;&amp;#x67E5;&amp;#x96C6;(Disjoint-Set)&amp;#x662F;&amp;#x4E00;&amp;#x79CD;&amp;#x53EF;&amp;#x4EE5;&amp;#x52A8;&amp;#x6001;&amp;#x7EF4;&amp;#x62A4;&amp;#x82E5;&amp;#x5E72;&amp;#x4E2A;&amp;#x4E0D;&amp;#x91CD;&amp;#x53E0;&amp;#x7684;&amp;#x96C6;&amp;#x5408;,&amp;#x5E76;&amp;#x652F;&amp;">
+<meta name="keywords" content="树,蓝桥">
 <meta property="og:type" content="article">
-<meta property="og:title" content="Github+coding（理想很丰满）">
-<meta property="og:url" content="https://www.weayer.top/2020/04/25/Github-Coding（理想很丰满）/index.html">
+<meta property="og:title" content="并查集及优化（路径压缩+按秩合并）">
+<meta property="og:url" content="https://www.weayer.top/2020/05/14/并查集/index.html">
 <meta property="og:site_name" content="weayer&#39;s blog">
-<meta property="og:description" content="&amp;#x96EA;&amp;#x7684;&amp;#x6E90;&amp;#x5934;&amp;#x5F00;&amp;#x59CB;&amp;#x5EFA;&amp;#x535A;&amp;#x5BA2;&amp;#x65F6;&amp;#x5C31;&amp;#x662F;&amp;#x5C06;hexo&amp;#x6258;&amp;#x7BA1;&amp;#x5230;github&amp;#x4E0A;&amp;#x7684;&amp;#xFF0C;&amp;#x4F46;&amp;#x8BBF;&amp;#x95EE;&amp;#x901F;&amp;#x5EA">
+<meta property="og:description" content="&amp;#x5E76;&amp;#x67E5;&amp;#x96C6;(Disjoint-Set)&amp;#x662F;&amp;#x4E00;&amp;#x79CD;&amp;#x53EF;&amp;#x4EE5;&amp;#x52A8;&amp;#x6001;&amp;#x7EF4;&amp;#x62A4;&amp;#x82E5;&amp;#x5E72;&amp;#x4E2A;&amp;#x4E0D;&amp;#x91CD;&amp;#x53E0;&amp;#x7684;&amp;#x96C6;&amp;#x5408;,&amp;#x5E76;&amp;#x652F;&amp;">
 <meta property="og:locale" content="en">
-<meta property="og:image" content="https://upload-images.jianshu.io/upload_images/5312266-08a68489f500417a.jpg?imageMogr2/auto-orient/strip|imageView2/2/w/1054/format/webp">
-<meta property="og:image" content="https://www.weayer.top/2020/04/25/Github-Coding（理想很丰满）/0425_1.jpg">
-<meta property="og:image" content="https://www.weayer.top/2020/04/25/Github-Coding（理想很丰满）/0425_2.jpg">
-<meta property="og:image" content="https://www.weayer.top/2020/04/25/Github-Coding（理想很丰满）/0425_3-1.jpg">
-<meta property="og:image" content="https://www.weayer.top/2020/04/25/Github-Coding（理想很丰满）/0425_3-2.jpg">
-<meta property="og:image" content="https://www.weayer.top/2020/04/25/Github-Coding（理想很丰满）/0425_9.jpg">
-<meta property="og:image" content="https://www.weayer.top/2020/04/25/Github-Coding（理想很丰满）/0425_4.jpg">
-<meta property="og:image" content="https://www.weayer.top/2020/04/25/Github-Coding（理想很丰满）/0425_5.jpg">
-<meta property="og:image" content="https://www.weayer.top/2020/04/25/Github-Coding（理想很丰满）/0425_6.jpg">
-<meta property="og:image" content="https://www.weayer.top/2020/04/25/Github-Coding（理想很丰满）/0425_8.jpg">
-<meta property="og:image" content="https://www.weayer.top/2020/04/25/Github-Coding（理想很丰满）/0425_7.jpg">
-<meta property="og:image" content="https://www.weayer.top/2020/04/25/Github-Coding（理想很丰满）/0425_10.jpg">
-<meta property="og:updated_time" content="2020-04-26T02:09:39.232Z">
+<meta property="og:updated_time" content="2020-05-14T09:38:50.768Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="Github+coding（理想很丰满）">
-<meta name="twitter:description" content="&amp;#x96EA;&amp;#x7684;&amp;#x6E90;&amp;#x5934;&amp;#x5F00;&amp;#x59CB;&amp;#x5EFA;&amp;#x535A;&amp;#x5BA2;&amp;#x65F6;&amp;#x5C31;&amp;#x662F;&amp;#x5C06;hexo&amp;#x6258;&amp;#x7BA1;&amp;#x5230;github&amp;#x4E0A;&amp;#x7684;&amp;#xFF0C;&amp;#x4F46;&amp;#x8BBF;&amp;#x95EE;&amp;#x901F;&amp;#x5EA">
-<meta name="twitter:image" content="https://upload-images.jianshu.io/upload_images/5312266-08a68489f500417a.jpg?imageMogr2/auto-orient/strip|imageView2/2/w/1054/format/webp">
+<meta name="twitter:title" content="并查集及优化（路径压缩+按秩合并）">
+<meta name="twitter:description" content="&amp;#x5E76;&amp;#x67E5;&amp;#x96C6;(Disjoint-Set)&amp;#x662F;&amp;#x4E00;&amp;#x79CD;&amp;#x53EF;&amp;#x4EE5;&amp;#x52A8;&amp;#x6001;&amp;#x7EF4;&amp;#x62A4;&amp;#x82E5;&amp;#x5E72;&amp;#x4E2A;&amp;#x4E0D;&amp;#x91CD;&amp;#x53E0;&amp;#x7684;&amp;#x96C6;&amp;#x5408;,&amp;#x5E76;&amp;#x652F;&amp;">
 
 <link rel="apple-touch-icon" href="/apple-touch-icon.png">
 
@@ -71,7 +58,7 @@
 <link href="//cdn.bootcss.com/font-awesome/4.6.3/css/font-awesome.min.css" rel="stylesheet">
 
 
-<title>Github+coding（理想很丰满） | weayer&#39;s blog</title>
+<title>并查集及优化（路径压缩+按秩合并） | weayer&#39;s blog</title>
 
 <script src="//cdn.bootcss.com/jquery/2.2.4/jquery.min.js"></script>
 <script src="//cdn.bootcss.com/clipboard.js/1.5.10/clipboard.min.js"></script>
@@ -285,11 +272,11 @@
     </div>
     <link class="menu-list" tags="Tags" friends="Friends" about="About Me"/>
 </nav>
-      <div class="body-wrap"><article id="post-Github-Coding（理想很丰满）" class="article article-type-post" itemscope itemprop="blogPost">
+      <div class="body-wrap"><article id="post-并查集" class="article article-type-post" itemscope itemprop="blogPost">
   
     <div class="article-meta">
-      <a href="/2020/04/25/Github-Coding（理想很丰满）/" class="article-date">
-      <time datetime="2020-04-24T16:00:00.000Z" itemprop="datePublished">2020-04-25</time>
+      <a href="/2020/05/14/并查集/" class="article-date">
+      <time datetime="2020-05-13T16:00:00.000Z" itemprop="datePublished">2020-05-14</time>
 </a>
 
 
@@ -304,7 +291,7 @@
         
   
     <h1 class="article-title" itemprop="name">
-      Github+coding（理想很丰满）
+      并查集及优化（路径压缩+按秩合并）
     </h1>
   
 
@@ -312,10 +299,14 @@
       
       <div class="article-info article-info-post">
         
+    <div class="article-category tagcloud">
+    <a class="article-category-link" href="/categories/数据结构/">数据结构</a>
+    </div>
+
 
         
     <div class="article-tag tagcloud">
-        <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/hexo/">hexo</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/雪的教训/">雪的教训</a></li></ul>
+        <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/树/">树</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/蓝桥/">蓝桥</a></li></ul>
     </div>
 
         <div class="clearfix"></div>
@@ -325,44 +316,26 @@
     <div class="article-entry" itemprop="articleBody">
       
           
-        <h3 id="&#x96EA;&#x7684;&#x6E90;&#x5934;"><a href="#&#x96EA;&#x7684;&#x6E90;&#x5934;" class="headerlink" title="&#x96EA;&#x7684;&#x6E90;&#x5934;"></a>&#x96EA;&#x7684;&#x6E90;&#x5934;</h3><p>&#x5F00;&#x59CB;&#x5EFA;&#x535A;&#x5BA2;&#x65F6;&#x5C31;&#x662F;&#x5C06;hexo&#x6258;&#x7BA1;&#x5230;github&#x4E0A;&#x7684;&#xFF0C;&#x4F46;&#x8BBF;&#x95EE;&#x901F;&#x5EA6;&#x5B9E;&#x5728;&#x611F;&#x4EBA;&#xFF0C;&#x4E8E;&#x662F;&#x65E9;&#x5DF2;&#x5782;&#x6D8E;Coding&#x5DF2;&#x4E45;~</p>
+        <p>&#x5E76;&#x67E5;&#x96C6;(Disjoint-Set)&#x662F;&#x4E00;&#x79CD;&#x53EF;&#x4EE5;&#x52A8;&#x6001;&#x7EF4;&#x62A4;&#x82E5;&#x5E72;&#x4E2A;&#x4E0D;&#x91CD;&#x53E0;&#x7684;&#x96C6;&#x5408;,&#x5E76;&#x652F;&#x6301;&#x5408;&#x5E76;&#x4E0E;&#x67E5;&#x8BE2;&#x4E24;&#x79CD;&#x64CD;&#x4F5C;&#x7684;&#x4E00;&#x79CD;&#x6570;&#x636E;&#x7ED3;&#x6784;&#x3002;</p>
 <a id="more"></a>
-<h3 id="&#x96EA;&#x7684;&#x6559;&#x8BAD;"><a href="#&#x96EA;&#x7684;&#x6559;&#x8BAD;" class="headerlink" title="&#x96EA;&#x7684;&#x6559;&#x8BAD;"></a>&#x96EA;&#x7684;&#x6559;&#x8BAD;</h3><p>&#x51E0;&#x4E4E;&#x770B;&#x904D;&#x4E86;&#x7F51;&#x53CB;&#x4EEC;&#x7684;&#x6559;&#x7A0B;&#x540E;&#x603B;&#x7ED3;&#x5C06;hexo&#x642D;&#x5EFA;&#x5230;Coding&#x7684;&#x6B65;&#x9AA4;&#xFF0C;&#x5176;&#x5B9E;&#x4E5F;&#x5C31;&#x90A3;&#x4E48;&#x51E0;&#x6B65;&#xFF0C;<br>&#x53EF;&#x53C2;&#x8003;&#x4F18;&#x79C0;&#x535A;&#x5BA2;&#xFF1A;<a href="https://www.jianshu.com/p/db7f68960f91" target="_blank" rel="noopener">https://www.jianshu.com/p/db7f68960f91</a><br>&#x5DF2;&#x7ECF;&#x5728;github&#x6DFB;&#x52A0;&#x8FC7;RSA&#x516C;&#x94A5;&#x7684;&#x53EF;&#x4EE5;&#x8DF3;&#x5230;&#x7B2C;2&#x6B65;</p>
-<ol>
-<li>&#x751F;&#x6210;RSA&#x516C;&#x94A5;<br><code>ssh-keygen -t rsa -C &quot;&#x90AE;&#x7BB1;&quot;</code></li>
-<li>&#x65B0;&#x5EFA;Coding&#x9879;&#x76EE;&#xFF0C;&#x7C7B;&#x4F3C;github&#xFF0C;&#x9879;&#x76EE;&#x540D;&#x4E3A;<br><code>&#x7528;&#x6237;&#x540D;.coding.me</code><br>&#x63A5;&#x7740;&#x7F51;&#x53CB;&#x4EEC;&#x90FD;&#x8BF4;&#x67E5;&#x770B;Page&#x670D;&#x52A1;&#x5373;&#x53EF;&#xFF0C;&#x53EF;&#x65B0;&#x7248;&#x7684;Page&#x670D;&#x52A1;&#x5728;&#x54EA;&#xFF08;&#xFF1F;&#xFF1F;&#xFF1F;&#xFF09;&#xFF0C;&#x75DB;&#x5B9A;&#x601D;&#x75DB;&#x540E;&#x6211;&#x5FFD;&#x7565;&#x4E86;&#x8FD9;&#x4E2A;&#x95EE;&#x9898;</li>
-<li>&#x6DFB;&#x52A0;SSH&#x516C;&#x94A5;<br>&#x5B98;&#x65B9;&#x4ECB;&#x7ECD;&#xFF1A;<a href="https://help.coding.net/docs/project/features/ssh.html#pageTitle" target="_blank" rel="noopener">&#x914D;&#x7F6E;SSH&#x516C;&#x94A5;</a><br>Coding&#x4E0A;&#x7684;&#x516C;&#x94A5;&#x5206;&#x4E3A;&#x8D26;&#x6237;SSH&#x548C;&#x9879;&#x76EE;SSH&#xFF0C;&#x663E;&#x7136;&#x9879;&#x76EE;SSH&#x914D;&#x7F6E;&#x540E;&#x4EC5;&#x62E5;&#x6709;&#x8BE5;&#x9879;&#x76EE;&#x7684;&#x8BBF;&#x95EE;&#x6743;&#x9650;<br>&#x7F51;&#x53CB;&#x4EEC;&#x7684;&#x6559;&#x7A0B;&#x770B;&#x5F97;&#x6211;&#x5206;&#x4E0D;&#x6E05;&#x5230;&#x5E95;&#x6DFB;&#x52A0;&#x54EA;&#x4E2A;&#x597D;&#xFF08;&#xFF1F;&#xFF1F;&#xFF1F;&#xFF09;&#xFF0C;&#x6700;&#x7EC8;&#x6211;&#x6DFB;&#x52A0;&#x7684;&#x662F;&#x9879;&#x76EE;SSH<br>&#x4E8E;&#x662F;&#x5C06;&#x8BE5;&#x8DEF;&#x5F84;&#x7684; id_rsa.pub &#x6587;&#x4EF6;&#x590D;&#x5236;&#x5230;&#x9879;&#x76EE;SSH&#x5373;&#x53EF;</li>
-<li>&#x4FEE;&#x6539;_config.yml&#x6587;&#x4EF6;<br>&#x7C98;&#x4E00;&#x5F20;&#x7F51;&#x53CB;&#x7684;&#x56FE;<img src="https://upload-images.jianshu.io/upload_images/5312266-08a68489f500417a.jpg?imageMogr2/auto-orient/strip|imageView2/2/w/1054/format/webp">
-&#x6240;&#x4EE5;&#x6211;&#x5BF9;&#x5E94;&#x7684;&#x5C31;&#x662F;
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">deploy:</span><br><span class="line">    type: git</span><br><span class="line">    repo:</span><br><span class="line">        github: git@github.com:weayer/weayer.github.io.git,master</span><br><span class="line">        coding: git@git.coding.net:weayer/weayer.coding.me.git,master</span><br></pre></td></tr></table></figure>
-
-</li>
-</ol>
-<p>&#x81F3;&#x6B64;&#x7406;&#x60F3;&#x60C5;&#x51B5;&#x662F;&#x987A;&#x5229;&#x5B8C;&#x6210;&#x4E86;&#xFF01;&#x9A8C;&#x8BC1;&#x4E00;&#x4E0B;<br><code>ssh -T git@github.com</code><br><code>ssh -T git@git.coding.net</code><br>&#x7136;&#x540E;&#x96BE;&#x53D7;&#x7684;&#x4E8B;&#x60C5;&#x5C31;&#x51FA;&#x73B0;&#x4E86;&#x2026;<br><img src="/2020/04/25/Github-Coding&#xFF08;&#x7406;&#x60F3;&#x5F88;&#x4E30;&#x6EE1;&#xFF09;/0425_1.jpg"><br><code>git@git.coding.net:Permission denied(publickey)</code><br>&#x95EE;&#x9898;&#xFF1A;<span style="color:blue">&#x59CB;&#x7EC8;&#x6CA1;&#x6709;&#x901A;&#x8FC7;SSH&#x5BC6;&#x94A5;&#x5C06;hexo&#x6258;&#x7BA1;&#x5230;Coding&#x4E0A;</span>&#xFF0C;&#x66F4;&#x522B;&#x63D0;&#x540E;&#x7EED;&#x7684;&#x6DFB;&#x52A0;&#x81EA;&#x5B9A;&#x4E49;&#x57DF;&#x540D;&#x4E86;&#x3002;</p>
-<ul>
-<li>&#x95EE;&#x9898;&#x7684;&#x89E3;&#x51B3;&#xFF08;&#x5176;&#x5B9E;&#x5E76;&#x6CA1;&#x6709;&#x5B8C;&#x5168;&#x89E3;&#x51B3;&#xFF09;&#x8981;&#x611F;&#x8C22;&#x4EE5;&#x4E0B;&#x4F18;&#x8D28;&#x535A;&#x5BA2;&#xFF1A;<br><a href="https://december2580.github.io/git-git-coding-net-Permission-denied-publickey-%E7%9A%84%E8%A7%A3%E5%86%B3%E5%8A%9E%E6%B3%95.html" target="_blank" rel="noopener">https://december2580.github.io/git-git-coding-net-Permission-denied-publickey-%E7%9A%84%E8%A7%A3%E5%86%B3%E5%8A%9E%E6%B3%95.html</a><br>&#x5BF9;&#x8BE5;&#x7F51;&#x53CB;&#x7684;&#x89E3;&#x51B3;&#x65B9;&#x6CD5;&#x7A0D;&#x4F5C;&#x4FEE;&#x6539;&#x5982;&#x4E0B;&#xFF08;&#x4E0D;&#x4FEE;&#x6539;&#x4F1A;&#x62A5;&#x9519;&#x554A;&#xFF09;<figure class="highlight markdown"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">1.&#x6267;&#x884C;   eval <span class="code">`ssh-agent`</span></span><br><span class="line">2.&#x6267;&#x884C;   ssh-add ~/.ssh/id_rsa</span><br><span class="line">3.&#x6267;&#x884C;   ssh-add &#x2013;l</span><br><span class="line">4.&#x91CD;&#x65B0;&#x5C1D;&#x8BD5;&#x8FDE;&#x63A5;  ssh -T git@e.coding.net</span><br></pre></td></tr></table></figure>
+<h3 id="&#x5E76;&#x67E5;&#x96C6;&#x7279;&#x6027;"><a href="#&#x5E76;&#x67E5;&#x96C6;&#x7279;&#x6027;" class="headerlink" title="&#x5E76;&#x67E5;&#x96C6;&#x7279;&#x6027;"></a>&#x5E76;&#x67E5;&#x96C6;&#x7279;&#x6027;</h3><ul>
+<li>&#x5E76;&#x67E5;&#x96C6;&#x662F;&#x4E00;&#x4E2A;&#x68EE;&#x6797;&#xFF0C;pre[]&#x5B58;&#x653E;&#x7236;&#x7ED3;&#x70B9;</li>
+<li>Find()&#x64CD;&#x4F5C;&#x2014;&#x2014;&#x53EF;&#x4EE5;&#x67E5;&#x8BE2;&#x4EFB;&#x4E00;&#x7ED3;&#x70B9;&#x7684;&#x6839;&#x7ED3;&#x70B9;&#x5E76;&#x8FD4;&#x56DE;&#x3001;&#x5224;&#x65AD;&#x4E24;&#x4E2A;&#x8282;&#x70B9;&#x662F;&#x5426;&#x5C5E;&#x4E8E;&#x540C;&#x4E00;&#x4E2A;&#x96C6;&#x5408;&#xFF08;&#x662F;&#x5426;&#x5C5E;&#x4E8E;&#x540C;&#x4E00;&#x4E2A;&#x6839;&#x8282;&#x70B9;&#x4E0B;&#xFF09;</li>
+<li>Merge()&#x64CD;&#x4F5C;&#x2014;&#x2014;&#x5B9E;&#x73B0;&#x4E24;&#x4E2A;&#x4E0D;&#x540C;&#x96C6;&#x5408;&#x7684;&#x5408;&#x5E76; <figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">int</span> pre[<span class="number">100005</span>];    <span class="comment">//&#x7236;&#x4EB2;</span></span><br><span class="line"><span class="function"><span class="keyword">void</span> <span class="title">Init</span><span class="params">(<span class="keyword">int</span> m)</span>    <span class="comment">//&#x521D;&#x59CB;&#x5316;&#xFF0C;&#x6BCF;&#x4E2A;&#x8282;&#x70B9;&#x7684;&#x6839;&#x5C31;&#x662F;&#x81EA;&#x8EAB;</span></span></span><br><span class="line"><span class="function"></span>{</span><br><span class="line">	<span class="keyword">for</span>(<span class="keyword">int</span> i = <span class="number">1</span>; i &lt;= m; ++i)</span><br><span class="line">	{</span><br><span class="line">		pre[i] = i;</span><br><span class="line">	}</span><br><span class="line">}</span><br><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">Find</span><span class="params">(<span class="keyword">int</span> x)</span>     <span class="comment">//&#x67E5;&#x8BE2;&#x6811;&#x6839;</span></span></span><br><span class="line"><span class="function"></span>{</span><br><span class="line">	<span class="keyword">while</span>(pre[x]!=x)</span><br><span class="line">	{</span><br><span class="line">		x = pre[x];</span><br><span class="line">	}</span><br><span class="line">	<span class="keyword">return</span> x;</span><br><span class="line">}</span><br><span class="line"><span class="function"><span class="keyword">void</span> <span class="title">Merge</span><span class="params">(<span class="keyword">int</span> x, <span class="keyword">int</span> y)</span>    <span class="comment">//&#x5408;&#x5E76;x&#x548C;y&#x6240;&#x5C5E;&#x7684;&#x96C6;&#x5408;</span></span></span><br><span class="line"><span class="function"></span>{</span><br><span class="line">	pre[Find(x)] = pre[Find(y)];</span><br><span class="line">}</span><br></pre></td></tr></table></figure>
 
 </li>
 </ul>
-<p>&#x7ED3;&#x679C;&#x622A;&#x56FE;, &#x6CE8;&#x610F;&#x8FD9;&#x91CC;&#x662F;<code>ssh -T git@e.coding.net</code><br><img src="/2020/04/25/Github-Coding&#xFF08;&#x7406;&#x60F3;&#x5F88;&#x4E30;&#x6EE1;&#xFF09;/0425_2.jpg"><br>&#x6210;&#x529F;&#x4E86;&#xFF08;&#xFF1F;&#xFF1F;&#xFF1F;&#xFF09;&#x4E4B;&#x524D;&#x6240;&#x6709;&#x7F51;&#x53CB;&#x90FD;&#x662F;&#x4F7F;&#x7528; <code>ssh -T git@git.coding.net</code> &#x9A8C;&#x8BC1;&#x6210;&#x529F;&#xFF0C;&#x90A3;&#x6211;&#x518D;&#x9A8C;&#x8BC1;&#x4E00;&#x4E0B;&#x5462;<br><img src="/2020/04/25/Github-Coding&#xFF08;&#x7406;&#x60F3;&#x5F88;&#x4E30;&#x6EE1;&#xFF09;/0425_3-1.jpg"><br>&#x8FD9;&#x5C31;&#x5F88;&#x96BE;&#x53D7;&#x4E86;&#xFF0C;&#x503C;&#x5F97;&#x4E00;&#x63D0;&#x7684;&#x662F;&#x6B64;&#x524D;&#x6211;&#x90FD;&#x662F;&#x5C06;&#x516C;&#x94A5;&#x6DFB;&#x52A0;&#x5230;&#x8D26;&#x53F7;SSH&#x4E0A;&#xFF0C;&#x63A5;&#x7740;&#x53C8;&#x5C1D;&#x8BD5;&#x5C06;&#x5176;&#x5220;&#x9664;&#xFF0C;&#x6DFB;&#x52A0;&#x5230;&#x9879;&#x76EE;SSH&#x4E0A;&#xFF0C;&#x4E5F;&#x5C31;&#x662F;&#x751F;&#x6210;&#x90E8;&#x7F72;&#x516C;&#x94A5;&#xFF1B;<br>&#x518D; <code>ssh -T git@e.coding.net</code><br><img src="/2020/04/25/Github-Coding&#xFF08;&#x7406;&#x60F3;&#x5F88;&#x4E30;&#x6EE1;&#xFF09;/0425_3-2.jpg"><br>&#x63D0;&#x793A;&#x53EF;&#x4EE5;&#x8BBF;&#x95EE;&#x5982;&#x4E0B;&#x4ED3;&#x5E93;&#x4E86;&#xFF01;&#x7D22;&#x6027;&#x5927;&#x80C6;&#x5C1D;&#x8BD5;&#xFF01;&#x628A;_config.yml&#x6587;&#x4EF6;&#x4E5F;&#x7ED9;&#x6539;&#x4E86;&#xFF01;<br><img src="/2020/04/25/Github-Coding&#xFF08;&#x7406;&#x60F3;&#x5F88;&#x4E30;&#x6EE1;&#xFF09;/0425_9.jpg"><br>&#x7136;&#x540E; <code>hexo clean &amp;&amp; hexo g &amp;&amp; hexo d</code> &#x770B;&#x770B;&#x7ED3;&#x679C;<br><img src="/2020/04/25/Github-Coding&#xFF08;&#x7406;&#x60F3;&#x5F88;&#x4E30;&#x6EE1;&#xFF09;/0425_4.jpg"><br>&#x4F3C;&#x4E4E;&#x6709;&#x6240;&#x6210;&#x6548;&#xFF0C;github&#x548C;coding&#x90FD;&#x66F4;&#x65B0;&#x4E86;&#xFF0C;&#x6211;&#x518D;&#x9A8C;&#x8BC1;&#x4E00;&#x756A;<br><img src="/2020/04/25/Github-Coding&#xFF08;&#x7406;&#x60F3;&#x5F88;&#x4E30;&#x6EE1;&#xFF09;/0425_5.jpg"><br>&#x884C;&#x5427;&#xFF0C;&#x770B;&#x6765;&#x6CE8;&#x5B9A;&#x4E0E;<code>ssh -T git@git.coding.net</code>&#x65E0;&#x7F18;&#x4E86;&#xFF1B;<br>&#x75DB;&#x5B9A;&#x601D;&#x75DB;&#x540E;&#x6211;&#x56DE;&#x5230;&#x4E86;Coding&#x7684;&#x4ED3;&#x5E93;<code>weayer.coding.me</code>&#x4E0A;&#x770B;&#x770B;<br><img src="/2020/04/25/Github-Coding&#xFF08;&#x7406;&#x60F3;&#x5F88;&#x4E30;&#x6EE1;&#xFF09;/0425_6.jpg"><br>&#x6709;&#x70B9;&#x6570;&#x636E;&#x7C7B;&#x578B;&#x5F3A;&#x5236;&#x8F6C;&#x6362;&#x7684;&#x610F;&#x601D;&#x54C8;&#x54C8;&#xFF0C;&#x4E0D;&#x7BA1;&#x600E;&#x4E48;&#x8BF4;&#x662F;&#x6258;&#x7BA1;&#x4E0A;&#x4E86;&#xFF0C;&#x63A5;&#x7740;&#x5C31;&#x53EF;&#x4EE5;&#x6109;&#x5FEB;&#x7684;&#x6DFB;&#x52A0;&#x81EA;&#x5B9A;&#x4E49;&#x57DF;&#x540D;&#x4E86;&#xFF1B;</p>
-<ol>
-<li><p>&#x963F;&#x91CC;&#x4E91;&#x4E70;&#x7684;&#x57DF;&#x540D;&#xFF0C;&#x5C31;&#x5728;&#x963F;&#x91CC;&#x4E91;&#x7684;&#x57DF;&#x540D;&#x89E3;&#x6790;&#x6DFB;&#x52A0;&#x8BB0;&#x5F55;</p>
-<img src="/2020/04/25/Github-Coding&#xFF08;&#x7406;&#x60F3;&#x5F88;&#x4E30;&#x6EE1;&#xFF09;/0425_8.jpg">
-</li>
-<li><p>&#x65B0;&#x7248;&#x7684;Coding-&#x9759;&#x6001;&#x7F51;&#x7AD9;&#xFF08;&#x4E4B;&#x524D;&#x8FD8;&#x8981;&#x8BA4;&#x8BC1;&#x4E00;&#x4E0B;&#xFF09;-&#x8BBE;&#x7F6E;&#x91CC;&#x6709;&#x81EA;&#x5B9A;&#x4E49;&#x57DF;&#x540D;&#x8BBE;&#x7F6E;&#xFF08;&#x8BBF;&#x95EE;&#x5730;&#x5740;&#x5DF2;&#x7ECF;&#x6709;<a href="http://www.weayer.top&#x8BF4;&#x660E;&#x5DF2;&#x7ECF;&#x6DFB;&#x52A0;&#x597D;&#x4E86;&#xFF09;&#xFF1B;" target="_blank" rel="noopener">www.weayer.top&#x8BF4;&#x660E;&#x5DF2;&#x7ECF;&#x6DFB;&#x52A0;&#x597D;&#x4E86;&#xFF09;&#xFF1B;</a></p>
-<img src="/2020/04/25/Github-Coding&#xFF08;&#x7406;&#x60F3;&#x5F88;&#x4E30;&#x6EE1;&#xFF09;/0425_7.jpg">
-### &#x96EA;&#x7684;&#x5347;&#x534E;
-&#x90A3;&#x4E48;&#x81F3;&#x6B64;Github+Coding&#x7684;&#x7406;&#x60F3;&#x5927;&#x81F4;&#x5B9E;&#x73B0;&#x4E86;&#xFF0C;&#x4E0D;&#x8FC7;&#x663E;&#x7136;&#x5B58;&#x5728;&#x8FD9;&#x4E00;&#x4E9B;&#x672A;&#x77E5;&#x7684;&#x9690;&#x60A3;&#xFF0C;&#x6BD4;&#x5982;&#x8FD8;&#x6709;&#x5982;&#x4E0B;&#x9519;&#x8BEF;&#x5C1A;&#x672A;&#x89E3;&#x51B3;
-</li>
-<li><p><code>ssh -T git@git.coding.net</code>&#x4F9D;&#x65E7;&#x662F;<code>git@git.coding.net:Permission denied(publickey)</code></p>
-</li>
-<li><p>_config.yml&#x4E2D;&#x7684;&#x4EE3;&#x7801;&#x5E93;&#x6211;&#x7ED9;&#x6539;&#x4E86;&#xFF0C;&#x4E0D;&#x662F;<code>weayer.coding.me</code>,&#x6240;&#x6709;&#x8BBF;&#x95EE;<code>weayer.coding.me</code>&#x5931;&#x8D25;</p>
-<img src="/2020/04/25/Github-Coding&#xFF08;&#x7406;&#x60F3;&#x5F88;&#x4E30;&#x6EE1;&#xFF09;/0425_10.jpg">
-&#x8FD9;&#x4E48;&#x770B;&#x8FD8;&#x6709;&#x5F88;&#x591A;&#x5751;&#xFF0C;&#x7384;&#x4E4B;&#x53C8;&#x7384;&#x7684;&#x95EE;&#x9898;&#x6162;&#x6162;&#x89E3;&#x51B3;&#x5427;...
+<h3 id="&#x5E76;&#x67E5;&#x96C6;&#x4F18;&#x5316;"><a href="#&#x5E76;&#x67E5;&#x96C6;&#x4F18;&#x5316;" class="headerlink" title="&#x5E76;&#x67E5;&#x96C6;&#x4F18;&#x5316;"></a>&#x5E76;&#x67E5;&#x96C6;&#x4F18;&#x5316;</h3><ul>
+<li>&#x8DEF;&#x5F84;&#x538B;&#x7F29;<br>Find()&#x67E5;&#x8BE2;&#x6811;&#x6839;&#x4E2D;&#x8BA9;&#x8DEF;&#x5F84;&#x4E2D;&#x7684;&#x6BCF;&#x4E2A;&#x8282;&#x70B9;&#x76F4;&#x63A5;&#x6307;&#x5411;&#x6839;&#x7ED3;&#x70B9;<br><code>pre[x]=pre[pre[x]];</code></li>
+<li>&#x6309;&#x79E9;&#x5408;&#x5E76;<br>runk[]&#x8BB0;&#x5F55;&#x67D0;&#x8282;&#x70B9;&#x7684;&#x9AD8;&#x5EA6;<br>Merge()&#x5408;&#x5E76;&#x65F6;&#x8BA9;&#x9AD8;&#x5EA6;&#x5C0F;&#x7684;&#x6811;&#x5408;&#x5E76;&#x5230;&#x9AD8;&#x5EA6;&#x5927;&#x7684;&#x6811;<figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">int</span> pre[N];		<span class="comment">//&#x7236;&#x4EB2; </span></span><br><span class="line"><span class="keyword">int</span> runk[N];	<span class="comment">//&#x9AD8;&#x5EA6; </span></span><br><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">Find</span><span class="params">(<span class="keyword">int</span> x)</span>	<span class="comment">//&#x67E5;&#x8BE2;&#x6811;&#x6839; </span></span></span><br><span class="line"><span class="function"></span>{</span><br><span class="line">	<span class="keyword">while</span>(pre[x]!=x)</span><br><span class="line">	{</span><br><span class="line">		pre[x]=pre[pre[x]];  <span class="comment">//&#x8DEF;&#x5F84;&#x538B;&#x7F29; </span></span><br><span class="line">		x = pre[x];</span><br><span class="line">	}</span><br><span class="line">	<span class="keyword">return</span> x;</span><br><span class="line">}</span><br><span class="line"><span class="function"><span class="keyword">void</span> <span class="title">Merge</span><span class="params">(<span class="keyword">int</span> x, <span class="keyword">int</span> y)</span>	<span class="comment">//&#x5408;&#x5E76;x&#x548C;y&#x6240;&#x5C5E;&#x7684;&#x96C6;&#x5408; </span></span></span><br><span class="line"><span class="function"></span>{</span><br><span class="line">	<span class="keyword">int</span> xe = Find(x);</span><br><span class="line">	<span class="keyword">int</span> ye = Find(y);</span><br><span class="line">	<span class="keyword">if</span>(xe!=ye)</span><br><span class="line">	{</span><br><span class="line">		<span class="keyword">if</span>(runk[xe]&gt;=runk[ye])</span><br><span class="line">		{</span><br><span class="line">			pre[ye] = xe;</span><br><span class="line">			runk[xe] = max(runk[xe], runk[ye]+<span class="number">1</span>);</span><br><span class="line">		}</span><br><span class="line">		<span class="keyword">else</span> </span><br><span class="line">		{</span><br><span class="line">			pre[xe] = ye;</span><br><span class="line">			runk[ye] = max(runk[ye], runk[xe]+<span class="number">1</span>);</span><br><span class="line">		}</span><br><span class="line">		</span><br><span class="line">	}</span><br><span class="line">}</span><br></pre></td></tr></table></figure>
 
 </li>
-</ol>
-<p>&#x5199;&#x5728;&#x6700;&#x540E; &#x81EA;&#x5EFA;&#x535A;&#x5BA2;&#x4E4B;&#x8DEF;&#x9053;&#x963B;&#x4E14;&#x957F;&#xFF0C;&#x4E0D;&#x65AD;&#x6298;&#x817E;&#xFF0C;&#x5927;&#x80C6;&#x5C1D;&#x8BD5;&#xFF0C;&#x867D;&#x4E0D;&#x80FD;&#x5C3D;&#x5584;&#x5C3D;&#x7F8E;&#xFF0C;&#x603B;&#x80FD;&#x5F97;&#x5230;&#x9760;&#x8FD1;&#x6210;&#x529F;&#x7684;&#x7ED3;&#x679C;&#xFF0C;&#x5982;&#x679C;&#x8BF4;&#x8273;&#x9633;&#x9AD8;&#x7167;&#x7684;&#x7406;&#x60F3;&#x96BE;&#x4EE5;&#x5B9E;&#x73B0;&#xFF0C;&#x6674;&#x7A7A;&#x4E07;&#x91CC;&#x4E5F;&#x4E0D;&#x9519;&#x561B;&#x3002;</p>
+</ul>
+<h3 id="&#x4F8B;&#x9898;&#xB7;&#x84DD;&#x6865;"><a href="#&#x4F8B;&#x9898;&#xB7;&#x84DD;&#x6865;" class="headerlink" title="&#x4F8B;&#x9898;&#xB7;&#x84DD;&#x6865;"></a>&#x4F8B;&#x9898;&#xB7;&#x84DD;&#x6865;</h3><blockquote>
+<p>&#x9898;&#x76EE;&#x6765;&#x6E90;&#xFF1A;<a href="http://lx.lanqiao.cn/problem.page?gpid=T458" target="_blank" rel="noopener">&#x5408;&#x6839;&#x690D;&#x7269;</a><br><strong>&#x7B97;&#x6CD5;&#x601D;&#x60F3;</strong><br>&#x76F4;&#x63A5;&#x8FD4;&#x56DE;&#x4E0D;&#x540C;&#x7684;&#x96C6;&#x5408;&#x6570;<br>&#x8FDE;&#x6839;&#x73B0;&#x8C61;&#x5373;&#x901A;&#x8FC7;Merge()&#x4EE4;&#x4E24;&#x4E2A;&#x7ED3;&#x70B9;&#x5C5E;&#x4E8E;&#x540C;&#x4E00;&#x96C6;&#x5408;<br>&#x4E8E;&#x662F;&#x521D;&#x59CB;&#x5316;<code>pre[i] = i</code>&#x7136;&#x540E;&#x8BE5;&#x5408;&#x5E76;&#x7684;&#x5408;&#x5E76;<br>&#x6700;&#x540E;&#x901A;&#x8FC7;<code>Find(i)==i</code>&#x6765;&#x786E;&#x5B9A;&#x4E0D;&#x540C;&#x7684;&#x96C6;&#x5408;&#x6570;<br>&#x2014;&#x2014;&#x2014;&#x2014;&#x2014;&#x2014;&#x2014;&#x2014;&#x2014;&#x2014;&#x2014;&#x2014;&#x2014;&#x2014;&#x4EE3;&#x7801;&#x5982;&#x4E0B;&#x2014;&#x2014;&#x2014;&#x2014;&#x2014;&#x2014;&#x2014;&#x2014;&#x2014;&#x2014;&#x2014;&#x2014;&#x2014;&#x2014;</p>
+</blockquote>
+<figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;iostream&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;string&gt; </span></span></span><br><span class="line"><span class="keyword">using</span> <span class="keyword">namespace</span> <span class="built_in">std</span>;</span><br><span class="line"><span class="keyword">int</span> pre[<span class="number">1000005</span>];</span><br><span class="line"><span class="function"><span class="keyword">void</span> <span class="title">Init</span><span class="params">(<span class="keyword">int</span> m)</span></span></span><br><span class="line"><span class="function"></span>{</span><br><span class="line">	<span class="keyword">for</span>(<span class="keyword">int</span> i = <span class="number">1</span>; i &lt;= m; ++i)</span><br><span class="line">	{</span><br><span class="line">		pre[i] = i;</span><br><span class="line">	}</span><br><span class="line">}</span><br><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">Find</span><span class="params">(<span class="keyword">int</span> x)</span></span></span><br><span class="line"><span class="function"></span>{</span><br><span class="line">	<span class="keyword">while</span>(pre[x]!=x)</span><br><span class="line">	{</span><br><span class="line">		x = pre[x];</span><br><span class="line">	}</span><br><span class="line">	<span class="keyword">return</span> x;</span><br><span class="line">}</span><br><span class="line"><span class="function"><span class="keyword">void</span> <span class="title">Merge</span><span class="params">(<span class="keyword">int</span> x, <span class="keyword">int</span> y)</span></span></span><br><span class="line"><span class="function"></span>{</span><br><span class="line">	pre[Find(x)] = pre[Find(y)];</span><br><span class="line">}</span><br><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">main</span><span class="params">()</span></span></span><br><span class="line"><span class="function"></span>{</span><br><span class="line">	<span class="keyword">int</span> m, n, k;</span><br><span class="line">	<span class="built_in">scanf</span>(<span class="string">&quot;%d%d%d&quot;</span>, &amp;m, &amp;n, &amp;k);</span><br><span class="line">	Init(m*n);</span><br><span class="line">	<span class="keyword">int</span> x, y, ans = <span class="number">0</span>;</span><br><span class="line">	<span class="keyword">for</span>(<span class="keyword">int</span> i = <span class="number">0</span>; i &lt; k; ++i)</span><br><span class="line">	{</span><br><span class="line">		<span class="built_in">scanf</span>(<span class="string">&quot;%d%d&quot;</span>, &amp;x, &amp;y);</span><br><span class="line">		Merge(x, y);</span><br><span class="line">	}</span><br><span class="line">	<span class="keyword">for</span>(<span class="keyword">int</span> i = <span class="number">1</span>; i &lt;= m*n; ++i)</span><br><span class="line">	{</span><br><span class="line">		<span class="keyword">if</span>(Find(i) == i)</span><br><span class="line">			++ans;</span><br><span class="line">	}</span><br><span class="line">	<span class="built_in">printf</span>(<span class="string">&quot;%d\n&quot;</span>, ans);</span><br><span class="line">	</span><br><span class="line">	<span class="keyword">return</span> <span class="number">0</span>;</span><br><span class="line">}</span><br></pre></td></tr></table></figure>
+
 
       
     </div>
@@ -371,13 +344,13 @@
   
     
     <div class="copyright">
-        <p><span>Title:</span><a href="/2020/04/25/Github-Coding（理想很丰满）/">Github+coding（理想很丰满）</a></p>
+        <p><span>Title:</span><a href="/2020/05/14/并查集/">并查集及优化（路径压缩+按秩合并）</a></p>
         <p><span>Author:</span><a href="/" title="Back to Homepage">Weayer</a></p>
-        <p><span>Created:</span>2020-04-25, 00:00:00</p>
-        <p><span>Updated:</span>2020-04-26, 10:09:39</p>
+        <p><span>Created:</span>2020-05-14, 00:00:00</p>
+        <p><span>Updated:</span>2020-05-14, 17:38:50</p>
         <p>
-            <span>Full URL:</span><a class="post-url" href="/2020/04/25/Github-Coding（理想很丰满）/" title="Github+coding（理想很丰满）">https://www.weayer.top/2020/04/25/Github-Coding（理想很丰满）/</a>
-            <span class="copy-path" data-clipboard-text="From https://www.weayer.top/2020/04/25/Github-Coding（理想很丰满）/　　By Weayer" title="Copy Article&#39;s Link &amp; Author"><i class="fa fa-clipboard"></i></span>
+            <span>Full URL:</span><a class="post-url" href="/2020/05/14/并查集/" title="并查集及优化（路径压缩+按秩合并）">https://www.weayer.top/2020/05/14/并查集/</a>
+            <span class="copy-path" data-clipboard-text="From https://www.weayer.top/2020/05/14/并查集/　　By Weayer" title="Copy Article&#39;s Link &amp; Author"><i class="fa fa-clipboard"></i></span>
             <script> var clipboard = new Clipboard('.copy-path'); </script>
         </p>
         <p>
@@ -389,16 +362,10 @@
 
     <nav id="article-nav">
         
-            <div id="article-nav-newer" class="article-nav-title">
-                <a href="/2020/04/28/蓝桥-包子凑数/">
-                    蓝桥-包子凑数
-                </a>
-            </div>
-        
         
             <div id="article-nav-older" class="article-nav-title">
-                <a href="/2020/04/24/模运算的运用/">
-                    模运算的运用
+                <a href="/2020/05/08/LIS（队列优化+二分）/">
+                    LIS优化
                 </a>
             </div>
         
@@ -410,7 +377,7 @@
     <div id="toc" class="toc-article">
         <strong class="toc-title">Contents</strong>
         
-            <ol class="toc"><li class="toc-item toc-level-3"><a class="toc-link" href="#雪的源头"><span class="toc-number">1.</span> <span class="toc-text">雪的源头</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#雪的教训"><span class="toc-number">2.</span> <span class="toc-text">雪的教训</span></a></li></ol>
+            <ol class="toc"><li class="toc-item toc-level-3"><a class="toc-link" href="#并查集特性"><span class="toc-number">1.</span> <span class="toc-text">并查集特性</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#并查集优化"><span class="toc-number">2.</span> <span class="toc-text">并查集优化</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#例题·蓝桥"><span class="toc-number">3.</span> <span class="toc-text">例题·蓝桥</span></a></li></ol>
         
     </div>
     <style>
@@ -446,7 +413,7 @@
         </div>
         <script>
             window._bd_share_config={
-                "common":{"bdSnsKey":{},"bdText":"Github+coding（理想很丰满）　| weayer's blog　","bdMini":"2","bdMiniList":false,"bdPic":"","bdStyle":"0","bdSize":"24"},"share":{}};with(document)0[(getElementsByTagName('head')[0]||body).appendChild(createElement('script')).src='http://bdimg.share.baidu.com/static/api/js/share.js?v=89860593.js?cdnversion='+~(-new Date()/36e5)];
+                "common":{"bdSnsKey":{},"bdText":"并查集及优化（路径压缩+按秩合并）　| weayer's blog　","bdMini":"2","bdMiniList":false,"bdPic":"","bdStyle":"0","bdSize":"24"},"share":{}};with(document)0[(getElementsByTagName('head')[0]||body).appendChild(createElement('script')).src='http://bdimg.share.baidu.com/static/api/js/share.js?v=89860593.js?cdnversion='+~(-new Date()/36e5)];
         </script>
     
 
@@ -466,15 +433,13 @@
 
     <div class="scroll" id="post-nav-button">
         
-            <a href="/2020/04/28/蓝桥-包子凑数/" title="Pre: 蓝桥-包子凑数">
-                <i class="fa fa-angle-left"></i>
-            </a>
+            <a href="/" title="Back to Homepage"><i class="fa fa-home"></i></a>
         
 
         <a title="Mini Archives"><i class="fa fa-bars"></i><i class="fa fa-times"></i></a>
 
         
-            <a href="/2020/04/24/模运算的运用/" title="Next: 模运算的运用">
+            <a href="/2020/05/08/LIS（队列优化+二分）/" title="Next: LIS优化">
                 <i class="fa fa-angle-right"></i>
             </a>
         

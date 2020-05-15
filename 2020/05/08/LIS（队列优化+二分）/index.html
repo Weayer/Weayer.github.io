@@ -15,18 +15,18 @@
 
 
 
-<meta name="description" content="The Meaning of Life">
-<meta name="keywords" content="Never,never,never,never!">
+<meta name="description" content="LIS(Longest Increasing Subsequence)&amp;#x5373;&amp;#x6700;&amp;#x957F;&amp;#x4E0A;&amp;#x5347;&amp;#x5B50;&amp;#x5E8F;&amp;#x5217;,&amp;#x5982;&amp;#x5BF9;&amp;#x4E8E; 3&amp;#xFF0C;1&amp;#xFF0C;5&amp;#xFF0C;6&amp;#xFF0C;2&amp;#x5176;LIS&amp;#x4E3A; 3&amp;#xFF08;1&amp;#xFF0C;">
+<meta name="keywords" content="dp,队列">
 <meta property="og:type" content="article">
 <meta property="og:title" content="LIS优化">
 <meta property="og:url" content="https://www.weayer.top/2020/05/08/LIS（队列优化+二分）/index.html">
 <meta property="og:site_name" content="weayer&#39;s blog">
-<meta property="og:description" content="The Meaning of Life">
+<meta property="og:description" content="LIS(Longest Increasing Subsequence)&amp;#x5373;&amp;#x6700;&amp;#x957F;&amp;#x4E0A;&amp;#x5347;&amp;#x5B50;&amp;#x5E8F;&amp;#x5217;,&amp;#x5982;&amp;#x5BF9;&amp;#x4E8E; 3&amp;#xFF0C;1&amp;#xFF0C;5&amp;#xFF0C;6&amp;#xFF0C;2&amp;#x5176;LIS&amp;#x4E3A; 3&amp;#xFF08;1&amp;#xFF0C;">
 <meta property="og:locale" content="en">
-<meta property="og:updated_time" content="2020-05-08T12:29:28.060Z">
+<meta property="og:updated_time" content="2020-05-15T03:15:54.056Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="LIS优化">
-<meta name="twitter:description" content="The Meaning of Life">
+<meta name="twitter:description" content="LIS(Longest Increasing Subsequence)&amp;#x5373;&amp;#x6700;&amp;#x957F;&amp;#x4E0A;&amp;#x5347;&amp;#x5B50;&amp;#x5E8F;&amp;#x5217;,&amp;#x5982;&amp;#x5BF9;&amp;#x4E8E; 3&amp;#xFF0C;1&amp;#xFF0C;5&amp;#xFF0C;6&amp;#xFF0C;2&amp;#x5176;LIS&amp;#x4E3A; 3&amp;#xFF08;1&amp;#xFF0C;">
 
 <link rel="apple-touch-icon" href="/apple-touch-icon.png">
 
@@ -299,8 +299,16 @@
       
       <div class="article-info article-info-post">
         
+    <div class="article-category tagcloud">
+    <a class="article-category-link" href="/categories/数据结构与算法/">数据结构与算法</a>
+    </div>
+
 
         
+    <div class="article-tag tagcloud">
+        <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/dp/">dp</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/队列/">队列</a></li></ul>
+    </div>
+
         <div class="clearfix"></div>
       </div>
       
@@ -308,7 +316,39 @@
     <div class="article-entry" itemprop="articleBody">
       
           
-        
+        <p>LIS(Longest Increasing Subsequence)&#x5373;&#x6700;&#x957F;&#x4E0A;&#x5347;&#x5B50;&#x5E8F;&#x5217;,<br>&#x5982;&#x5BF9;&#x4E8E; 3&#xFF0C;1&#xFF0C;5&#xFF0C;6&#xFF0C;2<br>&#x5176;LIS&#x4E3A; 3&#xFF08;1&#xFF0C;5&#xFF0C;6&#xFF09;</p>
+<a id="more"></a>
+<p>&#x4F18;&#x79C0;&#x535A;&#x5BA2;&#x94FE;&#x63A5;&#xFF1A;<a href="https://blog.csdn.net/zhaohaibo_/article/details/83420145" target="_blank" rel="noopener">https://blog.csdn.net/zhaohaibo_/article/details/83420145</a></p>
+<h3 id="LIS"><a href="#LIS" class="headerlink" title="LIS"></a>LIS</h3><p>dp&#x89E3;&#x51B3;LIS&#x65F6;&#x95F4;&#x590D;&#x6742;&#x5EA6;O$(n^2)$<br><strong>&#x7B97;&#x6CD5;&#x601D;&#x60F3;</strong></p>
+<ol>
+<li>dp[i] &#x8BB0;&#x5F55;a[i]&#x4E3A;&#x672B;&#x5C3E;&#x7684;&#x4E0A;&#x5347;&#x5B50;&#x5E8F;&#x5217;, &#x4EE4;0&lt;=j &lt; i</li>
+<li>&#x4E00;&#x91CD;&#x5FAA;&#x73AF;i&#x904D;&#x5386;a[],&#x4E00;&#x91CD;&#x5FAA;&#x73AF;&#x904D;&#x5386; a[0]~a[i]<br>dp[i] = $\begin{cases}1,a[i]&lt;=a[j]\ max(dp[i],dp[j]+1),a[i]&gt;a[j]\end{cases}$ </li>
+</ol>
+<p>&#x2014;&#x2014;&#x2014;&#x2014;&#x2014;&#x2014;&#x2014;&#x2014;&#x2014;&#x2014;&#x2014;&#x2014;&#x2014;&#x2014;&#x2014;&#x2014;&#x2014;&#x2014;&#x2014;&#x2014;&#x4EE3;&#x7801;&#x5982;&#x4E0B;&#x2014;&#x2014;&#x2014;&#x2014;&#x2014;&#x2014;&#x2014;&#x2014;&#x2014;&#x2014;&#x2014;&#x2014;&#x2014;&#x2014;&#x2014;&#x2014;&#x2014;&#x2014;&#x2014;&#x2014;&#x2014;&#x2014;</p>
+<figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">void</span> <span class="title">solve</span><span class="params">(<span class="keyword">double</span> arr[],<span class="keyword">int</span> n)</span></span></span><br><span class="line"><span class="function"></span>{</span><br><span class="line">	<span class="keyword">int</span> dp[n];</span><br><span class="line">	<span class="keyword">int</span> front[n];</span><br><span class="line">	fill(dp, dp+n, <span class="number">0</span>);</span><br><span class="line">	<span class="keyword">int</span>  k, res = <span class="number">0</span>;</span><br><span class="line">	<span class="keyword">for</span>(<span class="keyword">int</span> i = <span class="number">0</span>; i &lt; n; ++i)</span><br><span class="line">	{</span><br><span class="line">		dp[i] = <span class="number">1</span>;</span><br><span class="line">		<span class="keyword">for</span>(<span class="keyword">int</span> j = <span class="number">0</span>; j &lt; i; ++j)</span><br><span class="line">		{</span><br><span class="line">			<span class="keyword">if</span>(arr[j] &lt; arr[i])</span><br><span class="line">			{</span><br><span class="line">				dp[i] = max(dp[i], dp[j]+<span class="number">1</span>);</span><br><span class="line">			}</span><br><span class="line">		}</span><br><span class="line">		res = max(res, dp[i]);</span><br><span class="line">	}</span><br><span class="line">	<span class="built_in">printf</span>(<span class="string">&quot;%d\n&quot;</span>, res);</span><br><span class="line">}</span><br></pre></td></tr></table></figure>
+
+<h3 id="LIS&#x4F18;&#x5316;"><a href="#LIS&#x4F18;&#x5316;" class="headerlink" title="LIS&#x4F18;&#x5316;"></a>LIS&#x4F18;&#x5316;</h3><p>&#x961F;&#x5217;+&#x4E8C;&#x5206;&#x89E3;&#x51B3;LIS&#x65F6;&#x95F4;&#x590D;&#x6742;&#x5EA6;O$(log\ n)$<br><strong>&#x7B97;&#x6CD5;&#x601D;&#x60F3;</strong></p>
+<ol>
+<li>&#x961F;&#x5217;queue&#x52A8;&#x6001;&#x5B58;&#x50A8;&#x4E0A;&#x5347;&#x5E8F;&#x5217;&#xFF0C;&#x4FDD;&#x8BC1;queue&#x59CB;&#x7EC8;&#x5347;&#x5E8F;</li>
+<li>&#x4E00;&#x91CD;&#x5FAA;&#x73AF;&#x8FD8;&#x662F;i&#x904D;&#x5386;a[i]&#xFF0C;&#x4E0D;&#x540C;&#x7684;&#x662F;<br>&#x82E5;a[i] &#x5927;&#x4E8E;&#x961F;&#x5217;&#x4E2D;&#x6700;&#x540E;&#x4E00;&#x4E2A;&#x5143;&#x7D20;&#xFF0C;&#x5C06;a[i]&#x52A0;&#x5165;&#x961F;&#x5C3E;&#xFF1B;<br>&#x53CD;&#x4E4B;&#xFF0C;&#x4E8C;&#x5206;&#x67E5;&#x627E;&#x961F;&#x5217;queue&#x4E2D;&#x5927;&#x4E8E;a[i]&#x7684;&#x5143;&#x7D20;&#xFF0C;&#x4EE4;a[i]&#x5C06;&#x5176;&#x66FF;&#x6362;&#x3002;</li>
+<li>&#x6700;&#x540E;&#x5F97;&#x5230;&#x961F;&#x5217;&#x7684;&#x957F;&#x5EA6;&#x5373;LIS</li>
+</ol>
+<p>&#x5982;&#x5BF9;&#x4E8E; 3&#xFF0C;1&#xFF0C;5&#xFF0C;6&#xFF0C;2 &#x904D;&#x5386;a[i]&#x5F97;&#x5230;&#x7684;&#x961F;&#x5217;queue&#x4F9D;&#x6B21;&#x4E3A;&#xFF1A;</p>
+<ul>
+<li>3</li>
+<li>1</li>
+<li>1&#xFF0C;5</li>
+<li>1&#xFF0C;5&#xFF0C;6</li>
+<li>1&#xFF0C;2&#xFF0C;6</li>
+</ul>
+<p>***&#x6CE8;&#xFF1A;&#x53EF;&#x4EE5;&#x770B;&#x5230;queue&#x5E76;&#x4E0D;&#x662F;&#x52A8;&#x6001;&#x5B58;&#x653E;&#x4EE5;a[0]<del>a[i]&#x7684;LIS&#x5E8F;&#x5217;&#xFF1B;<br>    &#x800C;&#x662F;&#x52A8;&#x6001;&#x8BA9;&#x5347;&#x5E8F;&#x7684;&#x5143;&#x7D20;&#x5C3D;&#x53EF;&#x80FD;&#x5C0F;&#xFF0C;&#x4EE5;&#x4FBF;&#x540E;&#x7EED;&#x7684;&#x66F4;&#x65B0;&#xFF08;&#x89E3;&#x91CA;&#x4E0D;&#x4E0B;&#x53BB;&#x4E86;&#xFF0C;&#x4E0D;&#x7981;&#x611F;&#x6168;&#x961F;&#x5217;&#x4F18;&#x5316;&#x7B97;&#x6CD5;&#x7684;&#x7CBE;&#x5999;&#x554A;</del>&#xFF09;<br>&#x2014;&#x2014;&#x2014;&#x2014;&#x2014;&#x2014;&#x2014;&#x2014;&#x2014;&#x2014;&#x2014;&#x2014;&#x2014;&#x2014;&#x2014;&#x2014;&#x2014;&#x2014;&#x2014;&#x2014;&#x4EE3;&#x7801;&#x5982;&#x4E0B;&#x2014;&#x2014;&#x2014;&#x2014;&#x2014;&#x2014;&#x2014;&#x2014;&#x2014;&#x2014;&#x2014;&#x2014;&#x2014;&#x2014;&#x2014;&#x2014;&#x2014;&#x2014;&#x2014;&#x2014;&#x2014;&#x2014;</p>
+<figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">void</span> <span class="title">solve</span><span class="params">(<span class="keyword">int</span> arr[],<span class="keyword">int</span> n)</span></span></span><br><span class="line"><span class="function"></span>{</span><br><span class="line">	<span class="keyword">int</span> <span class="built_in">queue</span>[<span class="number">40005</span>];</span><br><span class="line">	<span class="keyword">int</span>  len = <span class="number">0</span>, k, res = <span class="number">0</span>;</span><br><span class="line">	<span class="built_in">queue</span>[++len] = arr[<span class="number">0</span>];</span><br><span class="line">	<span class="keyword">for</span>(<span class="keyword">int</span> i = <span class="number">1</span>; i &lt; n; ++i)</span><br><span class="line">	{</span><br><span class="line">		<span class="keyword">if</span>(<span class="built_in">queue</span>[len] &lt; arr[i])</span><br><span class="line">			<span class="built_in">queue</span>[++len] = arr[i];</span><br><span class="line">		<span class="keyword">else</span> <span class="comment">//&#x4E8C;&#x5206;&#x67E5;&#x627E;&#x961F;&#x5217;queue&#x4E2D;&#x5927;&#x4E8E;a[i]&#x7684;&#x5143;&#x7D20;</span></span><br><span class="line">		{</span><br><span class="line">			<span class="keyword">int</span> l = <span class="number">1</span>, r = len, mid, ans;</span><br><span class="line">			<span class="keyword">while</span>(l &lt;= r)</span><br><span class="line">			{</span><br><span class="line">				mid = (l + r) &gt;&gt; <span class="number">1</span>;</span><br><span class="line">				<span class="keyword">if</span>(<span class="built_in">queue</span>[mid] &gt; arr[i])</span><br><span class="line">				{</span><br><span class="line">					ans = mid;</span><br><span class="line">					r = mid - <span class="number">1</span>;</span><br><span class="line">				}</span><br><span class="line">				<span class="keyword">else</span></span><br><span class="line">					l = mid + <span class="number">1</span>;</span><br><span class="line">			}</span><br><span class="line">			<span class="built_in">queue</span>[ans] = arr[i];</span><br><span class="line">		}</span><br><span class="line">	}</span><br><span class="line"></span><br><span class="line">	<span class="built_in">printf</span>(<span class="string">&quot;%d\n&quot;</span>, len);</span><br><span class="line">	</span><br><span class="line">}</span><br></pre></td></tr></table></figure>
+
+<h3 id="LIS&#x9898;&#x76EE;"><a href="#LIS&#x9898;&#x76EE;" class="headerlink" title="LIS&#x9898;&#x76EE;"></a>LIS&#x9898;&#x76EE;</h3><blockquote>
+<p>&#x9898;&#x76EE;&#x6765;&#x6E90;: <a href="https://vjudge.net/problem/HDU-1950" target="_blank" rel="noopener">https://vjudge.net/problem/HDU-1950</a></p>
+</blockquote>
+<p>&#x9898;&#x76EE;&#x662F;&#x591A;&#x7EC4;&#x6837;&#x4F8B;&#xFF0C;&#x5982;&#x679C;&#x4E0D;&#x4F18;&#x5316;O$(log\ n)$&#x7684;&#x65F6;&#x95F4;&#x590D;&#x6742;&#x5EA6;&#x59A5;&#x59A5;&#x8D85;&#x65F6;&#xFF1B;<br>&#x6240;&#x4EE5;&#x961F;&#x5217;+&#x4E8C;&#x5206;&#x771F;&#x9999;&#x554A;</p>
+
       
     </div>
     
@@ -319,7 +359,7 @@
         <p><span>Title:</span><a href="/2020/05/08/LIS（队列优化+二分）/">LIS优化</a></p>
         <p><span>Author:</span><a href="/" title="Back to Homepage">Weayer</a></p>
         <p><span>Created:</span>2020-05-08, 20:29:28</p>
-        <p><span>Updated:</span>2020-05-08, 20:29:28</p>
+        <p><span>Updated:</span>2020-05-15, 11:15:54</p>
         <p>
             <span>Full URL:</span><a class="post-url" href="/2020/05/08/LIS（队列优化+二分）/" title="LIS优化">https://www.weayer.top/2020/05/08/LIS（队列优化+二分）/</a>
             <span class="copy-path" data-clipboard-text="From https://www.weayer.top/2020/05/08/LIS（队列优化+二分）/　　By Weayer" title="Copy Article&#39;s Link &amp; Author"><i class="fa fa-clipboard"></i></span>
@@ -355,7 +395,7 @@
     <div id="toc" class="toc-article">
         <strong class="toc-title">Contents</strong>
         
-            
+            <ol class="toc"><li class="toc-item toc-level-3"><a class="toc-link" href="#LIS"><span class="toc-number">1.</span> <span class="toc-text">LIS</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#LIS优化"><span class="toc-number">2.</span> <span class="toc-text">LIS优化</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#LIS题目"><span class="toc-number">3.</span> <span class="toc-text">LIS题目</span></a></li></ol>
         
     </div>
     <style>
@@ -425,7 +465,7 @@
         
     </div>
 
-    <ul class="post-list"><li class="post-list-item"><a class="post-list-link" href="/2020/05/14/并查集/">并查集及优化（路径压缩+按秩合并）</a></li><li class="post-list-item"><a class="post-list-link" href="/2020/05/08/LIS（队列优化+二分）/">LIS优化</a></li><li class="post-list-item"><a class="post-list-link" href="/2020/05/08/真分数的最大埃及分数/">真分数的最大埃及分数</a></li><li class="post-list-item"><a class="post-list-link" href="/2020/04/28/蓝桥-包子凑数/">蓝桥-包子凑数</a></li><li class="post-list-item"><a class="post-list-link" href="/2020/04/25/Github-Coding（理想很丰满）/">Github+coding（理想很丰满）</a></li><li class="post-list-item"><a class="post-list-link" href="/2020/04/24/模运算的运用/">模运算的运用</a></li><li class="post-list-item"><a class="post-list-link" href="/2020/04/01/4月1日我成功地被mysql给愚弄了/">4月1日我成功地被mysql给愚弄了</a></li><li class="post-list-item"><a class="post-list-link" href="/2020/03/28/蓝桥-晚会节目单/">蓝桥-晚会节目单（ST表）</a></li><li class="post-list-item"><a class="post-list-link" href="/2020/03/28/Dp-ST/">Dp-ST表（求解RMP）</a></li><li class="post-list-item"><a class="post-list-link" href="/2020/03/11/ax-by-c问题/">Ax+By=C问题</a></li><li class="post-list-item"><a class="post-list-link" href="/2020/03/11/Extend-Eculid/">Extend_Eculid</a></li><li class="post-list-item"><a class="post-list-link" href="/2020/03/10/51nod-1009数字1的数量/">·[51nod-1009]数字1的数量</a></li><li class="post-list-item"><a class="post-list-link" href="/2020/03/10/dp-digit/">Dp-digit</a></li><li class="post-list-item"><a class="post-list-link" href="/2020/03/07/NOIP-2015-POJ-2456/">·[NOIP-2015]·[POJ-2456]</a></li><li class="post-list-item"><a class="post-list-link" href="/2020/03/05/heap/">heap</a></li><li class="post-list-item"><a class="post-list-link" href="/2020/02/28/Inverse/">Inverse</a></li><li class="post-list-item"><a class="post-list-link" href="/2020/02/28/High-precision1/">n的阶乘(High-precision)</a></li><li class="post-list-item"><a class="post-list-link" href="/2020/02/07/Sliding-window/">Sliding Window</a></li><li class="post-list-item"><a class="post-list-link" href="/2019/12/02/Merge-Sort/">Merge Sort</a></li><li class="post-list-item"><a class="post-list-link" href="/2019/12/01/Stack/">Stack</a></li><li class="post-list-item"><a class="post-list-link" href="/2019/11/30/Queue-0/">Queue</a></li><li class="post-list-item"><a class="post-list-link" href="/2019/10/26/Lnode/">Lnode</a></li><li class="post-list-item"><a class="post-list-link" href="/2019/10/26/hey-piggy/">hey-piggy</a></li></ul>
+    <ul class="post-list"><li class="post-list-item"><a class="post-list-link" href="/2020/05/14/并查集/">并查集及优化（路径压缩+按秩合并）</a></li><li class="post-list-item"><a class="post-list-link" href="/2020/05/08/LIS（队列优化+二分）/">LIS优化</a></li><li class="post-list-item"><a class="post-list-link" href="/2020/05/08/真分数的最大埃及分数/">真分数的最大埃及分数</a></li><li class="post-list-item"><a class="post-list-link" href="/2020/04/28/蓝桥-包子凑数/">·【蓝桥】·包子凑数</a></li><li class="post-list-item"><a class="post-list-link" href="/2020/04/25/Github-Coding（理想很丰满）/">Github+coding（理想很丰满）</a></li><li class="post-list-item"><a class="post-list-link" href="/2020/04/24/模运算的运用/">模运算的运用</a></li><li class="post-list-item"><a class="post-list-link" href="/2020/04/01/4月1日我成功地被mysql给愚弄了/">4月1日我成功地被mysql给愚弄了</a></li><li class="post-list-item"><a class="post-list-link" href="/2020/03/28/蓝桥-晚会节目单/">·【蓝桥】晚会节目单（ST表）</a></li><li class="post-list-item"><a class="post-list-link" href="/2020/03/28/Dp-ST/">Dp-ST表（求解RMP）</a></li><li class="post-list-item"><a class="post-list-link" href="/2020/03/11/Extend-Eculid/">Extend_Eculid</a></li><li class="post-list-item"><a class="post-list-link" href="/2020/03/11/ax-by-c问题/">Ax+By=C问题</a></li><li class="post-list-item"><a class="post-list-link" href="/2020/03/10/51nod-1009数字1的数量/">·【51nod-1009】数字1的数量</a></li><li class="post-list-item"><a class="post-list-link" href="/2020/03/10/dp-digit/">Dp-digit</a></li><li class="post-list-item"><a class="post-list-link" href="/2020/03/07/NOIP-2015-POJ-2456/">·【NOIP-2015】·【POJ-2456】</a></li><li class="post-list-item"><a class="post-list-link" href="/2020/03/05/heap/">heap</a></li><li class="post-list-item"><a class="post-list-link" href="/2020/02/28/High-precision1/">n的阶乘(High-precision)</a></li><li class="post-list-item"><a class="post-list-link" href="/2020/02/28/Inverse/">Inverse</a></li><li class="post-list-item"><a class="post-list-link" href="/2020/02/07/Sliding-window/">Sliding Window</a></li><li class="post-list-item"><a class="post-list-link" href="/2019/12/02/Merge-Sort/">Merge Sort</a></li><li class="post-list-item"><a class="post-list-link" href="/2019/12/01/Stack/">Stack</a></li><li class="post-list-item"><a class="post-list-link" href="/2019/11/30/Queue-0/">Queue</a></li><li class="post-list-item"><a class="post-list-link" href="/2019/10/26/hey-piggy/">hey-piggy</a></li><li class="post-list-item"><a class="post-list-link" href="/2019/10/26/Lnode/">Lnode</a></li></ul>
 
 
 

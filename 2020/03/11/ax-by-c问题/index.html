@@ -23,7 +23,7 @@
 <meta property="og:site_name" content="weayer&#39;s blog">
 <meta property="og:description" content="&amp;#x603B;&amp;#x7ED3;&amp;#x603B;&amp;#x7ED3; Ax+By=C">
 <meta property="og:locale" content="en">
-<meta property="og:updated_time" content="2020-04-28T10:28:35.646Z">
+<meta property="og:updated_time" content="2020-05-14T11:52:00.457Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="Ax+By=C问题">
 <meta name="twitter:description" content="&amp;#x603B;&amp;#x7ED3;&amp;#x603B;&amp;#x7ED3; Ax+By=C">
@@ -299,6 +299,10 @@
       
       <div class="article-info article-info-post">
         
+    <div class="article-category tagcloud">
+    <a class="article-category-link" href="/categories/数学知识/">数学知识</a>
+    </div>
+
 
         
     <div class="article-tag tagcloud">
@@ -322,7 +326,7 @@
 </li>
 </ul>
 <p>&#x8F93;&#x51FA;&#x4E00;&#x7EC4;&#x7279;&#x89E3;</p>
-<figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">main</span><span class="params">()</span></span></span><br><span class="line"><span class="function"></span>{</span><br><span class="line">    ll a, n, b, d, x, y; </span><br><span class="line">    <span class="built_in">cin</span>&gt;&gt;a&gt;&gt;n&gt;&gt;b;        <span class="comment">//ax=b(mod n)</span></span><br><span class="line">    d= Extend_Eculid(a, n, &amp;x, &amp;y);    <span class="comment">//&#x8FD4;&#x56DE;&#x503C;d = Gcd(a, n),&#x5E76;&#x5F97;&#x5230;&#x4E00;&#x7EC4;&#x7279;&#x89E3;x&apos;,y&apos; </span></span><br><span class="line">    <span class="built_in">printf</span>(<span class="string">&quot;Gcd(a,n) = %lld\n&quot;</span>, d);</span><br><span class="line">    <span class="built_in">printf</span>(<span class="string">&quot;x0=%lld, y0=%d\n&quot;</span>, x, y);</span><br><span class="line">    <span class="keyword">if</span>(b%d)            <span class="comment">//&#x5F53;d|b&#xFF0C;&#x65B9;&#x7A0B;&#x624D;&#x6709;&#x89E3;  </span></span><br><span class="line">        <span class="built_in">printf</span>(<span class="string">&quot;-1\n&quot;</span>);</span><br><span class="line">    <span class="keyword">else</span></span><br><span class="line">    {</span><br><span class="line">        <span class="keyword">int</span> x0 = x*(b/d)%n; </span><br><span class="line">        <span class="keyword">int</span> y0 = (b-a*x0)/n;</span><br><span class="line">        <span class="built_in">printf</span>(<span class="string">&quot;&#x7279;&#x89E3;&#xFF1A;%d %d\n&quot;</span>, x0, y0);</span><br><span class="line">            </span><br><span class="line">    }</span><br><span class="line">}</span><br><span class="line">&#x5F53;&#x7136;&#x53EF;&#x4EE5;&#x5F97;&#x5230;&#x4E00;&#x7EC4;x0&#x4E86;&#x53EF;&#x4EE5;&#x7B97;&#x4E00;&#x4E0B;&#x5176;&#x4ED6;&#x901A;&#x89E3;</span><br><span class="line">```c++</span><br><span class="line"><span class="keyword">int</span> x1 = x0 + i*(n/d);</span><br></pre></td></tr></table></figure>
+<figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">main</span><span class="params">()</span></span></span><br><span class="line"><span class="function"></span>{</span><br><span class="line">    ll a, n, b, d, x, y; </span><br><span class="line">    <span class="built_in">cin</span>&gt;&gt;a&gt;&gt;n&gt;&gt;b;        <span class="comment">//ax=b(mod n)</span></span><br><span class="line">    d= Extend_Eculid(a, n, &amp;x, &amp;y);    <span class="comment">//&#x8FD4;&#x56DE;&#x503C;d = Gcd(a, n),&#x5E76;&#x5F97;&#x5230;&#x4E00;&#x7EC4;&#x7279;&#x89E3;x&apos;,y&apos; </span></span><br><span class="line">    <span class="built_in">printf</span>(<span class="string">&quot;Gcd(a,n) = %lld\n&quot;</span>, d);</span><br><span class="line">    <span class="built_in">printf</span>(<span class="string">&quot;x0=%lld, y0=%d\n&quot;</span>, x, y);</span><br><span class="line">    <span class="keyword">if</span>(b%d)            <span class="comment">//&#x5F53;d|b&#xFF0C;&#x65B9;&#x7A0B;&#x624D;&#x6709;&#x89E3;  </span></span><br><span class="line">        <span class="built_in">printf</span>(<span class="string">&quot;-1\n&quot;</span>);</span><br><span class="line">    <span class="keyword">else</span></span><br><span class="line">    {</span><br><span class="line">        <span class="keyword">int</span> x0 = x*(b/d)%n; </span><br><span class="line">        <span class="keyword">int</span> y0 = (b-a*x0)/n;</span><br><span class="line">        <span class="built_in">printf</span>(<span class="string">&quot;&#x7279;&#x89E3;&#xFF1A;%d %d\n&quot;</span>, x0, y0);</span><br><span class="line">            </span><br><span class="line">    }</span><br><span class="line">}</span><br><span class="line">&#x5F53;&#x7136;&#x53EF;&#x4EE5;&#x5F97;&#x5230;&#x4E00;&#x7EC4;x0&#x4E86;&#x53EF;&#x4EE5;&#x7B97;&#x4E00;&#x4E0B;&#x5176;&#x4ED6;&#x901A;&#x89E3;</span><br><span class="line">&#x200B;```c++</span><br><span class="line"><span class="keyword">int</span> x1 = x0 + i*(n/d);</span><br></pre></td></tr></table></figure>
 
 <p>&#x5BF9;&#x4E8E;&#x7279;&#x522B;&#x7684; GCD(A,B)=1 &#x6709;&#x552F;&#x4E00;&#x89E3;&#xFF0C;&#x5176;&#x89E3;&#x5373;&#x4E3A;a&#x7684;&#x9006;<br>&#x6709;&#x5173;&#x9006;&#x5143;&#x53EF;&#x53C2;&#x8003;&#x6211;&#x7684;&#xFF1A; <a href="https://www.weayer.top/2020/02/28/Inverse/">https://www.weayer.top/2020/02/28/Inverse/</a></p>
 
@@ -336,7 +340,7 @@
         <p><span>Title:</span><a href="/2020/03/11/ax-by-c问题/">Ax+By=C问题</a></p>
         <p><span>Author:</span><a href="/" title="Back to Homepage">Weayer</a></p>
         <p><span>Created:</span>2020-03-11, 00:00:00</p>
-        <p><span>Updated:</span>2020-04-28, 18:28:35</p>
+        <p><span>Updated:</span>2020-05-14, 19:52:00</p>
         <p>
             <span>Full URL:</span><a class="post-url" href="/2020/03/11/ax-by-c问题/" title="Ax+By=C问题">https://www.weayer.top/2020/03/11/ax-by-c问题/</a>
             <span class="copy-path" data-clipboard-text="From https://www.weayer.top/2020/03/11/ax-by-c问题/　　By Weayer" title="Copy Article&#39;s Link &amp; Author"><i class="fa fa-clipboard"></i></span>
@@ -352,15 +356,15 @@
     <nav id="article-nav">
         
             <div id="article-nav-newer" class="article-nav-title">
-                <a href="/2020/03/28/Dp-ST/">
-                    Dp-ST表（求解RMP）
+                <a href="/2020/03/11/Extend-Eculid/">
+                    Extend_Eculid
                 </a>
             </div>
         
         
             <div id="article-nav-older" class="article-nav-title">
-                <a href="/2020/03/11/Extend-Eculid/">
-                    Extend_Eculid
+                <a href="/2020/03/10/51nod-1009数字1的数量/">
+                    ·【51nod-1009】数字1的数量
                 </a>
             </div>
         
@@ -428,7 +432,7 @@
 
     <div class="scroll" id="post-nav-button">
         
-            <a href="/2020/03/28/Dp-ST/" title="Pre: Dp-ST表（求解RMP）">
+            <a href="/2020/03/11/Extend-Eculid/" title="Pre: Extend_Eculid">
                 <i class="fa fa-angle-left"></i>
             </a>
         
@@ -436,13 +440,13 @@
         <a title="Mini Archives"><i class="fa fa-bars"></i><i class="fa fa-times"></i></a>
 
         
-            <a href="/2020/03/11/Extend-Eculid/" title="Next: Extend_Eculid">
+            <a href="/2020/03/10/51nod-1009数字1的数量/" title="Next: ·【51nod-1009】数字1的数量">
                 <i class="fa fa-angle-right"></i>
             </a>
         
     </div>
 
-    <ul class="post-list"><li class="post-list-item"><a class="post-list-link" href="/2020/05/14/并查集/">并查集及优化（路径压缩+按秩合并）</a></li><li class="post-list-item"><a class="post-list-link" href="/2020/05/08/LIS（队列优化+二分）/">LIS优化</a></li><li class="post-list-item"><a class="post-list-link" href="/2020/05/08/真分数的最大埃及分数/">真分数的最大埃及分数</a></li><li class="post-list-item"><a class="post-list-link" href="/2020/04/28/蓝桥-包子凑数/">蓝桥-包子凑数</a></li><li class="post-list-item"><a class="post-list-link" href="/2020/04/25/Github-Coding（理想很丰满）/">Github+coding（理想很丰满）</a></li><li class="post-list-item"><a class="post-list-link" href="/2020/04/24/模运算的运用/">模运算的运用</a></li><li class="post-list-item"><a class="post-list-link" href="/2020/04/01/4月1日我成功地被mysql给愚弄了/">4月1日我成功地被mysql给愚弄了</a></li><li class="post-list-item"><a class="post-list-link" href="/2020/03/28/蓝桥-晚会节目单/">蓝桥-晚会节目单（ST表）</a></li><li class="post-list-item"><a class="post-list-link" href="/2020/03/28/Dp-ST/">Dp-ST表（求解RMP）</a></li><li class="post-list-item"><a class="post-list-link" href="/2020/03/11/ax-by-c问题/">Ax+By=C问题</a></li><li class="post-list-item"><a class="post-list-link" href="/2020/03/11/Extend-Eculid/">Extend_Eculid</a></li><li class="post-list-item"><a class="post-list-link" href="/2020/03/10/51nod-1009数字1的数量/">·[51nod-1009]数字1的数量</a></li><li class="post-list-item"><a class="post-list-link" href="/2020/03/10/dp-digit/">Dp-digit</a></li><li class="post-list-item"><a class="post-list-link" href="/2020/03/07/NOIP-2015-POJ-2456/">·[NOIP-2015]·[POJ-2456]</a></li><li class="post-list-item"><a class="post-list-link" href="/2020/03/05/heap/">heap</a></li><li class="post-list-item"><a class="post-list-link" href="/2020/02/28/Inverse/">Inverse</a></li><li class="post-list-item"><a class="post-list-link" href="/2020/02/28/High-precision1/">n的阶乘(High-precision)</a></li><li class="post-list-item"><a class="post-list-link" href="/2020/02/07/Sliding-window/">Sliding Window</a></li><li class="post-list-item"><a class="post-list-link" href="/2019/12/02/Merge-Sort/">Merge Sort</a></li><li class="post-list-item"><a class="post-list-link" href="/2019/12/01/Stack/">Stack</a></li><li class="post-list-item"><a class="post-list-link" href="/2019/11/30/Queue-0/">Queue</a></li><li class="post-list-item"><a class="post-list-link" href="/2019/10/26/Lnode/">Lnode</a></li><li class="post-list-item"><a class="post-list-link" href="/2019/10/26/hey-piggy/">hey-piggy</a></li></ul>
+    <ul class="post-list"><li class="post-list-item"><a class="post-list-link" href="/2020/05/14/并查集/">并查集及优化（路径压缩+按秩合并）</a></li><li class="post-list-item"><a class="post-list-link" href="/2020/05/08/LIS（队列优化+二分）/">LIS优化</a></li><li class="post-list-item"><a class="post-list-link" href="/2020/05/08/真分数的最大埃及分数/">真分数的最大埃及分数</a></li><li class="post-list-item"><a class="post-list-link" href="/2020/04/28/蓝桥-包子凑数/">·【蓝桥】·包子凑数</a></li><li class="post-list-item"><a class="post-list-link" href="/2020/04/25/Github-Coding（理想很丰满）/">Github+coding（理想很丰满）</a></li><li class="post-list-item"><a class="post-list-link" href="/2020/04/24/模运算的运用/">模运算的运用</a></li><li class="post-list-item"><a class="post-list-link" href="/2020/04/01/4月1日我成功地被mysql给愚弄了/">4月1日我成功地被mysql给愚弄了</a></li><li class="post-list-item"><a class="post-list-link" href="/2020/03/28/蓝桥-晚会节目单/">·【蓝桥】晚会节目单（ST表）</a></li><li class="post-list-item"><a class="post-list-link" href="/2020/03/28/Dp-ST/">Dp-ST表（求解RMP）</a></li><li class="post-list-item"><a class="post-list-link" href="/2020/03/11/Extend-Eculid/">Extend_Eculid</a></li><li class="post-list-item"><a class="post-list-link" href="/2020/03/11/ax-by-c问题/">Ax+By=C问题</a></li><li class="post-list-item"><a class="post-list-link" href="/2020/03/10/51nod-1009数字1的数量/">·【51nod-1009】数字1的数量</a></li><li class="post-list-item"><a class="post-list-link" href="/2020/03/10/dp-digit/">Dp-digit</a></li><li class="post-list-item"><a class="post-list-link" href="/2020/03/07/NOIP-2015-POJ-2456/">·【NOIP-2015】·【POJ-2456】</a></li><li class="post-list-item"><a class="post-list-link" href="/2020/03/05/heap/">heap</a></li><li class="post-list-item"><a class="post-list-link" href="/2020/02/28/High-precision1/">n的阶乘(High-precision)</a></li><li class="post-list-item"><a class="post-list-link" href="/2020/02/28/Inverse/">Inverse</a></li><li class="post-list-item"><a class="post-list-link" href="/2020/02/07/Sliding-window/">Sliding Window</a></li><li class="post-list-item"><a class="post-list-link" href="/2019/12/02/Merge-Sort/">Merge Sort</a></li><li class="post-list-item"><a class="post-list-link" href="/2019/12/01/Stack/">Stack</a></li><li class="post-list-item"><a class="post-list-link" href="/2019/11/30/Queue-0/">Queue</a></li><li class="post-list-item"><a class="post-list-link" href="/2019/10/26/hey-piggy/">hey-piggy</a></li><li class="post-list-item"><a class="post-list-link" href="/2019/10/26/Lnode/">Lnode</a></li></ul>
 
 
 

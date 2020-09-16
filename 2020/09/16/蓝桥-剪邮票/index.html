@@ -1,0 +1,571 @@
+<!DOCTYPE html>
+<html lang="en">
+<head><meta name="generator" content="Hexo 3.9.0">
+
+    <!--[if lt IE 9]>
+        <style>body {display: none; background: none !important} </style>
+        <meta http-equiv="Refresh" Content="0; url=//outdatedbrowser.com/" />
+    <![endif]-->
+
+<meta charset="utf-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge, chrome=1">
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
+<meta name="format-detection" content="telephone=no">
+<meta name="author" content="Weayer">
+
+
+
+<meta name="description" content="&amp;#x4E00;&amp;#x9053;Dfs+Dfs&amp;#x7684;&amp;#x597D;&amp;#x9898;&amp;#x76EE;~">
+<meta name="keywords" content="搜索,蓝桥">
+<meta property="og:type" content="article">
+<meta property="og:title" content="·【蓝桥】·剪邮票">
+<meta property="og:url" content="https://www.weayer.top/2020/09/16/蓝桥-剪邮票/index.html">
+<meta property="og:site_name" content="weayer&#39;s blog">
+<meta property="og:description" content="&amp;#x4E00;&amp;#x9053;Dfs+Dfs&amp;#x7684;&amp;#x597D;&amp;#x9898;&amp;#x76EE;~">
+<meta property="og:locale" content="en">
+<meta property="og:updated_time" content="2020-09-16T15:07:44.198Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="·【蓝桥】·剪邮票">
+<meta name="twitter:description" content="&amp;#x4E00;&amp;#x9053;Dfs+Dfs&amp;#x7684;&amp;#x597D;&amp;#x9898;&amp;#x76EE;~">
+
+<link rel="apple-touch-icon" href="/apple-touch-icon.png">
+
+
+    <link rel="alternate" href="/atom.xml" title="weayer&#39;s blog" type="application/atom+xml">
+
+
+
+    <link rel="shortcut icon" href="/favicon.png">
+
+
+
+    <link href="//cdn.bootcss.com/animate.css/3.5.1/animate.min.css" rel="stylesheet">
+
+
+
+    <link href="//cdn.bootcss.com/fancybox/2.1.5/jquery.fancybox.min.css" rel="stylesheet">
+
+
+
+    <script src="//cdn.bootcss.com/pace/1.0.2/pace.min.js"></script>
+    <link href="//cdn.bootcss.com/pace/1.0.2/themes/blue/pace-theme-minimal.css" rel="stylesheet">
+
+
+<link rel="stylesheet" href="/css/style.css">
+
+
+
+<link href="//cdn.bootcss.com/font-awesome/4.6.3/css/font-awesome.min.css" rel="stylesheet">
+
+
+<title>·【蓝桥】·剪邮票 | weayer&#39;s blog</title>
+
+<script src="//cdn.bootcss.com/jquery/2.2.4/jquery.min.js"></script>
+<script src="//cdn.bootcss.com/clipboard.js/1.5.10/clipboard.min.js"></script>
+
+<script>
+    var yiliaConfig = {
+        fancybox: true,
+        animate: true,
+        isHome: false,
+        isPost: true,
+        isArchive: false,
+        isTag: false,
+        isCategory: false,
+        fancybox_js: "//cdn.bootcss.com/fancybox/2.1.5/jquery.fancybox.min.js",
+        scrollreveal: "//cdn.bootcss.com/scrollReveal.js/3.1.4/scrollreveal.min.js",
+        search: false
+    }
+</script>
+
+
+    <script> yiliaConfig.jquery_ui = [false]; </script>
+
+
+
+    <script> yiliaConfig.rootUrl = "\/";</script>
+
+
+
+
+
+    <script>
+        var _hmt = _hmt || [];
+        (function() {
+            var hm = document.createElement("script");
+            hm.src = "//hm.baidu.com/hm.js?8c70833ee0194776a494dd5209d32b72";
+            var s = document.getElementsByTagName("script")[0]; 
+            s.parentNode.insertBefore(hm, s);
+        })();
+    </script>
+
+
+</head></html>
+<body>
+  <div id="container">
+    <div class="left-col">
+    <div class="overlay"></div>
+<div class="intrude-less">
+    <header id="header" class="inner">
+        <a href="/" class="profilepic">
+            <img src="/img/head.jpg" class="animated zoomIn">
+        </a>
+        <hgroup>
+          <h1 class="header-author"><a href="/">Weayer</a></h1>
+        </hgroup>
+
+        
+        <p class="header-subtitle">把生命浪费在美好的事物上</p>
+        
+
+        
+
+
+        
+            <div id="switch-btn" class="switch-btn">
+                <div class="icon">
+                    <div class="icon-ctn">
+                        <div class="icon-wrap icon-house" data-idx="0">
+                            <div class="birdhouse"></div>
+                            <div class="birdhouse_holes"></div>
+                        </div>
+                        <div class="icon-wrap icon-ribbon hide" data-idx="1">
+                            <div class="ribbon"></div>
+                        </div>
+                        
+                        <div class="icon-wrap icon-link hide" data-idx="2">
+                            <div class="loopback_l"></div>
+                            <div class="loopback_r"></div>
+                        </div>
+                        
+                        
+                        <div class="icon-wrap icon-me hide" data-idx="3">
+                            <div class="user"></div>
+                            <div class="shoulder"></div>
+                        </div>
+                        
+                    </div>
+                    
+                </div>
+                <div class="tips-box hide">
+                    <div class="tips-arrow"></div>
+                    <ul class="tips-inner">
+                        <li>Menu</li>
+                        <li>Tags</li>
+                        
+                        <li>Friends</li>
+                        
+                        
+                        <li>About Me</li>
+                        
+                    </ul>
+                </div>
+            </div>
+        
+
+        <div id="switch-area" class="switch-area">
+            <div class="switch-wrap">
+                <section class="switch-part switch-part1">
+                    <nav class="header-menu">
+                        <ul>
+                        
+                            <li><a href="/">主页</a></li>
+                        
+                            <li><a href="/archives/">所有文章</a></li>
+                        
+                            <li><a href="/tags/">标签云</a></li>
+                        
+                            <li><a href="/about/">关于我</a></li>
+                        
+                        </ul>
+                    </nav>
+                    <nav class="header-nav">
+                        <ul class="social">
+                            
+                                <a class="fa Email" href="mailto:123@123.com" title="Email"></a>
+                            
+                                <a class="fa GitHub" href="#" title="GitHub"></a>
+                            
+                                <a class="fa RSS" href="/atom.xml" title="RSS"></a>
+                            
+                        </ul>
+                    </nav>
+                </section>
+                
+                
+                <section class="switch-part switch-part2">
+                    <div class="widget tagcloud" id="js-tagcloud">
+                        <ul class="tag-list"><li class="tag-list-item"><a class="tag-list-link" href="/tags/hexo/">hexo</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/mysql/">mysql</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/二分/">二分</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/动态规划/">动态规划</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/哈希/">哈希</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/图/">图</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/堆/">堆</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/字符串/">字符串</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/差分/">差分</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/排序/">排序</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/搜索/">搜索</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/数论/">数论</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/枚举/">枚举</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/查找/">查找</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/栈/">栈</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/树/">树</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/模拟/">模拟</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/模运算/">模运算</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/蓝桥/">蓝桥</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/贪心/">贪心</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/逆元/">逆元</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/递归/">递归</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/递归回溯/">递归回溯</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/链表/">链表</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/队列/">队列</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/雪的教训/">雪的教训</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/高精度/">高精度</a></li></ul>
+                    </div>
+                </section>
+                
+                
+                
+                <section class="switch-part switch-part3">
+                    <div id="js-friends">
+                    
+                      <a class="main-nav-link switch-friends-link" href="https://hexo.io">Hexo</a>
+                    
+                      <a class="main-nav-link switch-friends-link" href="https://pages.github.com/">GitHub</a>
+                    
+                      <a class="main-nav-link switch-friends-link" href="http://moxfive.xyz/">MOxFIVE</a>
+                    
+                    </div>
+                </section>
+                
+
+                
+                
+                <section class="switch-part switch-part4">
+                
+                    <div id="js-aboutme">专注于前端</div>
+                </section>
+                
+            </div>
+        </div>
+    </header>                
+</div>
+    </div>
+    <div class="mid-col">
+      <nav id="mobile-nav">
+      <div class="overlay">
+          <div class="slider-trigger"></div>
+          <h1 class="header-author js-mobile-header hide"><a href="/" title="回到主页">Weayer</a></h1>
+      </div>
+    <div class="intrude-less">
+        <header id="header" class="inner">
+            <a href="/" class="profilepic">
+                <img src="/img/head.jpg" class="animated zoomIn">
+            </a>
+            <hgroup>
+              <h1 class="header-author"><a href="/" title="回到主页">Weayer</a></h1>
+            </hgroup>
+            
+            <p class="header-subtitle">把生命浪费在美好的事物上</p>
+            
+            <nav class="header-menu">
+                <ul>
+                
+                    <li><a href="/">主页</a></li>
+                
+                    <li><a href="/archives/">所有文章</a></li>
+                
+                    <li><a href="/tags/">标签云</a></li>
+                
+                    <li><a href="/about/">关于我</a></li>
+                
+                <div class="clearfix"></div>
+                </ul>
+            </nav>
+            <nav class="header-nav">
+                        <ul class="social">
+                            
+                                <a class="fa Email" target="_blank" href="mailto:123@123.com" title="Email"></a>
+                            
+                                <a class="fa GitHub" target="_blank" href="#" title="GitHub"></a>
+                            
+                                <a class="fa RSS" target="_blank" href="/atom.xml" title="RSS"></a>
+                            
+                        </ul>
+            </nav>
+        </header>                
+    </div>
+    <link class="menu-list" tags="Tags" friends="Friends" about="About Me"/>
+</nav>
+      <div class="body-wrap"><article id="post-蓝桥-剪邮票" class="article article-type-post" itemscope itemprop="blogPost">
+  
+    <div class="article-meta">
+      <a href="/2020/09/16/蓝桥-剪邮票/" class="article-date">
+      <time datetime="2020-09-16T14:28:20.000Z" itemprop="datePublished">2020-09-16</time>
+</a>
+
+
+    </div>
+  
+  <div class="article-inner">
+    
+      <input type="hidden" class="isFancy" />
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 class="article-title" itemprop="name">
+      ·【蓝桥】·剪邮票
+    </h1>
+  
+
+      </header>
+      
+      <div class="article-info article-info-post">
+        
+    <div class="article-category tagcloud">
+    <a class="article-category-link" href="/categories/题目/">题目</a>
+    </div>
+
+
+        
+    <div class="article-tag tagcloud">
+        <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/搜索/">搜索</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/蓝桥/">蓝桥</a></li></ul>
+    </div>
+
+        <div class="clearfix"></div>
+      </div>
+      
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+          
+        <p>&#x4E00;&#x9053;Dfs+Dfs&#x7684;&#x597D;&#x9898;&#x76EE;~</p>
+<a id="more"></a>
+<p>[TOC]</p>
+<blockquote>
+<p>&#x9898;&#x76EE;&#x94FE;&#x63A5;&#xFF1A;<a href="http://oj.ecustacm.cn/problem.php?id=1286" target="_blank">&#xB7;&#x3010;&#x84DD;&#x6865;&#x3011;&#xB7;&#x526A;&#x90AE;&#x7968;</a><br>&#x6D89;&#x53CA;&#x5230;&#x6709;&#x56FE;&#x7247;&#x5C31;&#x4E0D;&#x8D34;&#x9898;&#x76EE;&#x4E86;</p>
+</blockquote>
+<p><strong>&#x9898;&#x76EE;&#x5206;&#x6790;</strong><br>3*4&#x7684;&#x77E9;&#x9635;&#xFF0C;&#x968F;&#x610F;&#x9009;&#x53D6;5&#x4E2A;&#x65B9;&#x683C;&#xFF0C;&#x8981;&#x6C42;&#x65B9;&#x683C;&#x662F;&#x76F8;&#x8FDE;&#x7740;&#x7684;</p>
+<h3 id="&#x7B97;&#x6CD5;&#x5206;&#x6790;"><a href="#&#x7B97;&#x6CD5;&#x5206;&#x6790;" class="headerlink" title="&#x7B97;&#x6CD5;&#x5206;&#x6790;"></a>&#x7B97;&#x6CD5;&#x5206;&#x6790;</h3><ol>
+<li><p>&#x5F88;&#x96BE;&#x5728;&#x4E8C;&#x7EF4;&#x6570;&#x7EC4;&#x4E2D;&#x679A;&#x4E3E;&#xFF0C;&#x56E0;&#x6B64;&#x53EF;&#x4EE5;&#x679A;&#x4E3E;&#x4E00;&#x7EF4;&#x6570;&#x7EC4;a[12]&#xFF0C;&#x518D;&#x5C06;&#x5176;&#x8F6C;&#x4E3A;&#x4E8C;&#x7EF4;&#x7684;<br>&#x6240;&#x4EE5;&#x7B2C;&#x4E00;&#x5C42;Dfs&#xFF0C;&#x5168;&#x6392;&#x5217;&#x6570;&#x7EC4;<code>a[]={0,0,0,0,0,0,0,1,1,1,1,1}</code></p>
+</li>
+<li><p>&#x6570;&#x7EC4;a[] &#x4E2D;1&#x8868;&#x793A;&#x9009;&#x53D6;&#x7684;&#x65B9;&#x683C;&#xFF0C;&#x90A3;&#x4E48;&#x63A5;&#x4E0B;&#x6765;&#x53EA;&#x9700;&#x5C06;&#x5168;&#x6392;&#x5217;&#x7684;a[]&#x5347;&#x4E3A;&#x4E8C;&#x7EF4;&#xFF0C;&#x5224;&#x65AD;&#x662F;&#x5426;&#x76F8;&#x8FDE;&#x5373;&#x53EF;</p>
+<figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">//&#x4E00;&#x7EF4;&#x5347;&#x4E8C;&#x7EF4;</span></span><br><span class="line"><span class="keyword">for</span>(<span class="keyword">int</span> i = <span class="number">0</span>; i &lt; <span class="number">3</span>; ++i){</span><br><span class="line">	<span class="keyword">for</span>(<span class="keyword">int</span> j = <span class="number">0</span>; j &lt; <span class="number">4</span>; ++j){</span><br><span class="line">		<span class="keyword">if</span>(a[i*<span class="number">4</span>+j] == <span class="number">1</span>)</span><br><span class="line">			g[i][j] = <span class="number">1</span>;</span><br><span class="line">		<span class="keyword">else</span></span><br><span class="line">			g[i][j] = <span class="number">0</span>;</span><br><span class="line">	}</span><br><span class="line">}</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>&#x5224;&#x65AD;&#x77E9;&#x9635;&#x4E2D;&#x76F8;&#x8FDE;&#x65B9;&#x683C;&#x7684;&#x7EC4;&#x6570;&#xFF0C;&#x53C8;&#x662F;&#x4E00;&#x5C42;&#x7ECF;&#x5178;&#x7684;Dfs&#xFF0C;&#x8FD9;&#x91CC;&#x8981;&#x6C42;&#x76F8;&#x8FDE;&#x7684;&#x65B9;&#x683C;&#x4EC5;1&#x7EC4;</p>
+<figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">//&#x7B2C;&#x4E8C;&#x5C42;Dfs&#x5224;&#x65AD;&#x662F;&#x5426;&#x76F8;&#x8FDE;</span></span><br><span class="line"><span class="function"><span class="keyword">void</span> <span class="title">dfs</span><span class="params">(<span class="keyword">int</span> g[<span class="number">3</span>][<span class="number">4</span>], <span class="keyword">int</span> i, <span class="keyword">int</span> j)</span></span>{</span><br><span class="line">	g[i][j] = <span class="number">0</span>;</span><br><span class="line">	<span class="keyword">for</span>(<span class="keyword">int</span> k = <span class="number">0</span>; k &lt; <span class="number">4</span>; ++k){</span><br><span class="line">		<span class="keyword">int</span> tx = i + dx[k];</span><br><span class="line">		<span class="keyword">int</span> ty = j + dy[k];</span><br><span class="line">		<span class="keyword">if</span>(tx&gt;=<span class="number">0</span> &amp;&amp; ty&gt;=<span class="number">0</span> &amp;&amp; tx&lt;<span class="number">3</span> &amp;&amp; ty&lt;<span class="number">4</span> &amp;&amp; g[tx][ty]==<span class="number">1</span>)</span><br><span class="line">			dfs(g, tx, ty);</span><br><span class="line">	}</span><br><span class="line">}</span><br><span class="line"><span class="keyword">int</span> cnt = <span class="number">0</span>;</span><br><span class="line"><span class="keyword">for</span>(<span class="keyword">int</span> i = <span class="number">0</span>; i &lt; <span class="number">3</span>; ++i){</span><br><span class="line">	<span class="keyword">for</span>(<span class="keyword">int</span> j = <span class="number">0</span>; j &lt; <span class="number">4</span>; ++j){</span><br><span class="line">		<span class="keyword">if</span>(g[i][j] == <span class="number">1</span>){</span><br><span class="line">			dfs(g, i, j);</span><br><span class="line">			cnt++;</span><br><span class="line">		}</span><br><span class="line">	}</span><br><span class="line">}</span><br><span class="line"><span class="keyword">return</span> cnt == <span class="number">1</span>;</span><br></pre></td></tr></table></figure>
+
+</li>
+</ol>
+<p>***&#x6CE8;&#x610F;&#xFF1A;&#x6570;&#x7EC4;a[]&#x7684;&#x5168;&#x6392;&#x5217;&#x8981;&#x6C42;&#x53BB;&#x91CD;&#xFF0C;&#x6211;&#x7684;&#x53E6;&#x4E00;&#x7BC7;&#x535A;&#x5BA2;&#x4E13;&#x95E8;&#x6709;&#x5168;&#x6392;&#x5217;&#x53BB;&#x91CD;<a href blank="_target"></a><br>&#x603B;&#x7ED3;&#x4E00;&#x4E0B;&#x6709;&#x4E09;&#x79CD;&#x53BB;&#x91CD;&#x5199;&#x6CD5;&#xFF1A;<br>1&#x3001;C++&#x7684;next_permutation<br>2&#x3001;&#x57FA;&#x4E8E;&#x65B0;&#x6570;&#x7EC4;&#x7684;&#x5168;&#x6392;&#x5217;<br>3&#x3001;&#x539F;&#x6570;&#x7EC4;&#x4E0A;&#x8FDB;&#x884C;&#x7684;&#x5168;&#x6392;&#x5217; </p>
+<h3 id="1&#x3001;C-&#x7684;next-permutation"><a href="#1&#x3001;C-&#x7684;next-permutation" class="headerlink" title="1&#x3001;C++&#x7684;next_permutation"></a>1&#x3001;C++&#x7684;next_permutation</h3><p>&#x2014;&#x2014;&#x2014;&#x2014;&#x2014;&#x2014;&#x2014;&#x2014;&#x2014;&#x2014;&#x2014;&#x2014;&#x2014;&#x2014;&#x5B8C;&#x6574;&#x4EE3;&#x7801;1&#x2014;&#x2014;&#x2014;&#x2014;&#x2014;&#x2014;&#x2014;&#x2014;&#x2014;&#x2014;&#x2014;&#x2014;&#x2014;&#x2014;&#x2014;&#x2014;</p>
+<figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;iostream&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;algorithm&gt;</span></span></span><br><span class="line"></span><br><span class="line"><span class="keyword">using</span> <span class="keyword">namespace</span> <span class="built_in">std</span>;</span><br><span class="line"></span><br><span class="line"><span class="keyword">int</span> a[] = {<span class="number">0</span>,<span class="number">0</span>,<span class="number">0</span>,<span class="number">0</span>,<span class="number">0</span>,<span class="number">0</span>,<span class="number">0</span>,<span class="number">1</span>,<span class="number">1</span>,<span class="number">1</span>,<span class="number">1</span>,<span class="number">1</span>};</span><br><span class="line"><span class="keyword">int</span> dx[] = {<span class="number">0</span>, <span class="number">1</span>, <span class="number">0</span>, <span class="number">-1</span>};</span><br><span class="line"><span class="keyword">int</span> dy[] = {<span class="number">1</span>, <span class="number">0</span>, <span class="number">-1</span>, <span class="number">0</span>}; </span><br><span class="line"><span class="keyword">int</span> ans = <span class="number">0</span>;</span><br><span class="line"><span class="function"><span class="keyword">void</span> <span class="title">dfs</span><span class="params">(<span class="keyword">int</span> g[<span class="number">3</span>][<span class="number">4</span>], <span class="keyword">int</span> i, <span class="keyword">int</span> j)</span></span>{</span><br><span class="line">	g[i][j] = <span class="number">0</span>;</span><br><span class="line">	<span class="keyword">for</span>(<span class="keyword">int</span> k = <span class="number">0</span>; k &lt; <span class="number">4</span>; ++k){</span><br><span class="line">		<span class="keyword">int</span> tx = i + dx[k];</span><br><span class="line">		<span class="keyword">int</span> ty = j + dy[k];</span><br><span class="line">		<span class="keyword">if</span>(tx&gt;=<span class="number">0</span> &amp;&amp; ty&gt;=<span class="number">0</span> &amp;&amp; tx&lt;<span class="number">3</span> &amp;&amp; ty&lt;<span class="number">4</span> &amp;&amp; g[tx][ty]==<span class="number">1</span>)</span><br><span class="line">			dfs(g, tx, ty);</span><br><span class="line">	}</span><br><span class="line">}</span><br><span class="line"><span class="function"><span class="keyword">bool</span> <span class="title">check</span><span class="params">()</span></span>{</span><br><span class="line">	<span class="keyword">int</span> g[<span class="number">3</span>][<span class="number">4</span>];</span><br><span class="line">	<span class="keyword">for</span>(<span class="keyword">int</span> i = <span class="number">0</span>; i &lt; <span class="number">3</span>; ++i){</span><br><span class="line">		<span class="keyword">for</span>(<span class="keyword">int</span> j = <span class="number">0</span>; j &lt; <span class="number">4</span>; ++j){</span><br><span class="line">			<span class="keyword">if</span>(a[i*<span class="number">4</span>+j] == <span class="number">1</span>)</span><br><span class="line">				g[i][j] = <span class="number">1</span>;</span><br><span class="line">			<span class="keyword">else</span></span><br><span class="line">				g[i][j] = <span class="number">0</span>;</span><br><span class="line">		}</span><br><span class="line">	}</span><br><span class="line">	<span class="keyword">int</span> cnt = <span class="number">0</span>;</span><br><span class="line">	<span class="keyword">for</span>(<span class="keyword">int</span> i = <span class="number">0</span>; i &lt; <span class="number">3</span>; ++i){</span><br><span class="line">		<span class="keyword">for</span>(<span class="keyword">int</span> j = <span class="number">0</span>; j &lt; <span class="number">4</span>; ++j){</span><br><span class="line">			<span class="keyword">if</span>(g[i][j] == <span class="number">1</span>){</span><br><span class="line">				dfs(g, i, j);</span><br><span class="line">				cnt++;</span><br><span class="line">			}</span><br><span class="line">		}</span><br><span class="line">	}</span><br><span class="line">	<span class="keyword">return</span> cnt == <span class="number">1</span>;</span><br><span class="line">}</span><br><span class="line"><span class="function"><span class="keyword">void</span> <span class="title">solve</span><span class="params">(<span class="keyword">int</span> k)</span></span>{</span><br><span class="line">	<span class="keyword">do</span>{</span><br><span class="line">		<span class="keyword">if</span>(check())</span><br><span class="line">			ans++;</span><br><span class="line">	}<span class="keyword">while</span>(next_permutation(a, a+<span class="number">12</span>));</span><br><span class="line">}</span><br><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">main</span><span class="params">()</span></span>{</span><br><span class="line">	solve(<span class="number">0</span>);</span><br><span class="line">	<span class="built_in">cout</span> &lt;&lt; ans &lt;&lt; <span class="built_in">endl</span>;</span><br><span class="line">	<span class="keyword">return</span> <span class="number">0</span>;</span><br><span class="line">}</span><br></pre></td></tr></table></figure>
+
+<h3 id="2&#x3001;&#x57FA;&#x4E8E;&#x65B0;&#x6570;&#x7EC4;&#x7684;&#x5168;&#x6392;&#x5217;"><a href="#2&#x3001;&#x57FA;&#x4E8E;&#x65B0;&#x6570;&#x7EC4;&#x7684;&#x5168;&#x6392;&#x5217;" class="headerlink" title="2&#x3001;&#x57FA;&#x4E8E;&#x65B0;&#x6570;&#x7EC4;&#x7684;&#x5168;&#x6392;&#x5217;"></a>2&#x3001;&#x57FA;&#x4E8E;&#x65B0;&#x6570;&#x7EC4;&#x7684;&#x5168;&#x6392;&#x5217;</h3><p>&#x2014;&#x2014;&#x2014;&#x2014;&#x2014;&#x2014;&#x2014;&#x2014;&#x2014;&#x2014;&#x2014;&#x2014;&#x2014;&#x2014;&#x5B8C;&#x6574;&#x4EE3;&#x7801;2&#x2014;&#x2014;&#x2014;&#x2014;&#x2014;&#x2014;&#x2014;&#x2014;&#x2014;&#x2014;&#x2014;&#x2014;&#x2014;&#x2014;&#x2014;&#x2014;</p>
+<figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">//&#x4EC5;solve()&#x4E0E;&#x4E0A;&#x9762;&#x4EE3;&#x7801;&#x4E0D;&#x540C;</span></span><br><span class="line"><span class="keyword">int</span> v[<span class="number">12</span>], b[<span class="number">12</span>];</span><br><span class="line"><span class="function"><span class="keyword">void</span> <span class="title">solve</span><span class="params">(<span class="keyword">int</span> k)</span></span>{</span><br><span class="line">	<span class="keyword">if</span>(k == <span class="number">12</span>){</span><br><span class="line">		<span class="keyword">if</span>(check()){</span><br><span class="line">			ans++;</span><br><span class="line">		}</span><br><span class="line">		<span class="keyword">return</span>;</span><br><span class="line">	}</span><br><span class="line">	<span class="keyword">for</span>(<span class="keyword">int</span> i = <span class="number">0</span>; i &lt; <span class="number">12</span>; ++i){</span><br><span class="line">		<span class="keyword">if</span>(i&gt;<span class="number">0</span> &amp;&amp; a[i<span class="number">-1</span>]==a[i] &amp;&amp; !v[i<span class="number">-1</span>])</span><br><span class="line">			<span class="keyword">continue</span>;</span><br><span class="line">		<span class="keyword">if</span>(!v[i]){</span><br><span class="line">			v[i] = <span class="number">1</span>;</span><br><span class="line">			b[k] = a[i];</span><br><span class="line">			solve(k+<span class="number">1</span>);</span><br><span class="line">			v[i] = <span class="number">0</span>;</span><br><span class="line">		}</span><br><span class="line">	}</span><br><span class="line">}</span><br></pre></td></tr></table></figure>
+
+<h3 id="3&#x3001;&#x539F;&#x6570;&#x7EC4;&#x4E0A;&#x8FDB;&#x884C;&#x7684;&#x5168;&#x6392;&#x5217;"><a href="#3&#x3001;&#x539F;&#x6570;&#x7EC4;&#x4E0A;&#x8FDB;&#x884C;&#x7684;&#x5168;&#x6392;&#x5217;" class="headerlink" title="3&#x3001;&#x539F;&#x6570;&#x7EC4;&#x4E0A;&#x8FDB;&#x884C;&#x7684;&#x5168;&#x6392;&#x5217;"></a>3&#x3001;&#x539F;&#x6570;&#x7EC4;&#x4E0A;&#x8FDB;&#x884C;&#x7684;&#x5168;&#x6392;&#x5217;</h3><p>&#x2014;&#x2014;&#x2014;&#x2014;&#x2014;&#x2014;&#x2014;&#x2014;&#x2014;&#x2014;&#x2014;&#x2014;&#x2014;&#x2014;&#x5B8C;&#x6574;&#x4EE3;&#x7801;3&#x2014;&#x2014;&#x2014;&#x2014;&#x2014;&#x2014;&#x2014;&#x2014;&#x2014;&#x2014;&#x2014;&#x2014;&#x2014;&#x2014;&#x2014;&#x2014;</p>
+<figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br><span class="line">68</span><br><span class="line">69</span><br><span class="line">70</span><br><span class="line">71</span><br><span class="line">72</span><br><span class="line">73</span><br><span class="line">74</span><br><span class="line">75</span><br><span class="line">76</span><br><span class="line">77</span><br><span class="line">78</span><br><span class="line">79</span><br><span class="line">80</span><br><span class="line">81</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">//&#x6D89;&#x53CA;&#x5230;set&#x53BB;&#x91CD;&#x4EE3;&#x7801;&#x91CF;&#x5C31;&#x66F4;&#x5927;&#x4E86;</span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;iostream&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;set&gt;</span></span></span><br><span class="line"></span><br><span class="line"><span class="keyword">using</span> <span class="keyword">namespace</span> <span class="built_in">std</span>;</span><br><span class="line"></span><br><span class="line"><span class="keyword">int</span> a[] = {<span class="number">0</span>,<span class="number">0</span>,<span class="number">0</span>,<span class="number">0</span>,<span class="number">0</span>,<span class="number">0</span>,<span class="number">0</span>,<span class="number">1</span>,<span class="number">1</span>,<span class="number">1</span>,<span class="number">1</span>,<span class="number">1</span>};</span><br><span class="line"><span class="keyword">int</span> dx[] = {<span class="number">0</span>, <span class="number">1</span>, <span class="number">0</span>, <span class="number">-1</span>};</span><br><span class="line"><span class="keyword">int</span> dy[] = {<span class="number">1</span>, <span class="number">0</span>, <span class="number">-1</span>, <span class="number">0</span>}; </span><br><span class="line"><span class="keyword">int</span> ans = <span class="number">0</span>, tmp = <span class="number">0</span>;</span><br><span class="line"><span class="built_in">set</span>&lt;<span class="built_in">string</span>&gt; s;</span><br><span class="line"><span class="function"><span class="keyword">void</span> <span class="title">to_string</span><span class="params">(<span class="built_in">string</span> &amp;str)</span></span>{</span><br><span class="line">	<span class="keyword">for</span>(<span class="keyword">int</span> i = <span class="number">0</span>; i &lt; <span class="number">12</span>; ++i){</span><br><span class="line">		str.insert(str.end(), a[i]+<span class="string">&apos;0&apos;</span>);</span><br><span class="line">	}</span><br><span class="line">}</span><br><span class="line"><span class="function"><span class="keyword">bool</span> <span class="title">isExist</span><span class="params">()</span></span>{</span><br><span class="line">	<span class="built_in">string</span> str;</span><br><span class="line">	to_string(str);</span><br><span class="line">	<span class="keyword">if</span>(s.find(str) == s.end()){</span><br><span class="line">		s.insert(str);</span><br><span class="line">		<span class="keyword">return</span> <span class="literal">false</span>;</span><br><span class="line">	}</span><br><span class="line">	<span class="keyword">return</span> <span class="literal">true</span>;</span><br><span class="line">}</span><br><span class="line"><span class="function"><span class="keyword">void</span> <span class="title">dfs</span><span class="params">(<span class="keyword">int</span> g[<span class="number">3</span>][<span class="number">4</span>], <span class="keyword">int</span> i, <span class="keyword">int</span> j)</span></span>{</span><br><span class="line">	g[i][j] = <span class="number">0</span>;</span><br><span class="line">	<span class="keyword">for</span>(<span class="keyword">int</span> k = <span class="number">0</span>; k &lt; <span class="number">4</span>; ++k){</span><br><span class="line">		<span class="keyword">int</span> tx = i + dx[k];</span><br><span class="line">		<span class="keyword">int</span> ty = j + dy[k];</span><br><span class="line">		<span class="keyword">if</span>(tx&gt;=<span class="number">0</span> &amp;&amp; ty&gt;=<span class="number">0</span> &amp;&amp; tx&lt;<span class="number">3</span> &amp;&amp; ty&lt;<span class="number">4</span> &amp;&amp; g[tx][ty]==<span class="number">1</span>)</span><br><span class="line">			dfs(g, tx, ty);</span><br><span class="line">	}</span><br><span class="line">}</span><br><span class="line"><span class="function"><span class="keyword">bool</span> <span class="title">check</span><span class="params">()</span></span>{</span><br><span class="line">	<span class="keyword">int</span> g[<span class="number">3</span>][<span class="number">4</span>];</span><br><span class="line">	<span class="keyword">for</span>(<span class="keyword">int</span> i = <span class="number">0</span>; i &lt; <span class="number">3</span>; ++i){</span><br><span class="line">		<span class="keyword">for</span>(<span class="keyword">int</span> j = <span class="number">0</span>; j &lt; <span class="number">4</span>; ++j){</span><br><span class="line">			<span class="keyword">if</span>(a[i*<span class="number">4</span>+j] == <span class="number">1</span>)</span><br><span class="line">				g[i][j] = <span class="number">1</span>;</span><br><span class="line">			<span class="keyword">else</span></span><br><span class="line">				g[i][j] = <span class="number">0</span>;</span><br><span class="line">		}</span><br><span class="line">	}</span><br><span class="line">	<span class="keyword">int</span> cnt = <span class="number">0</span>;</span><br><span class="line">	<span class="keyword">for</span>(<span class="keyword">int</span> i = <span class="number">0</span>; i &lt; <span class="number">3</span>; ++i){</span><br><span class="line">		<span class="keyword">for</span>(<span class="keyword">int</span> j = <span class="number">0</span>; j &lt; <span class="number">4</span>; ++j){</span><br><span class="line">			<span class="keyword">if</span>(g[i][j] == <span class="number">1</span>){</span><br><span class="line">				dfs(g, i, j);</span><br><span class="line">				cnt++;</span><br><span class="line">			}</span><br><span class="line">		}</span><br><span class="line">	}</span><br><span class="line">	<span class="keyword">return</span> cnt == <span class="number">1</span>;</span><br><span class="line">}</span><br><span class="line"><span class="function"><span class="keyword">void</span> <span class="title">solve</span><span class="params">(<span class="keyword">int</span> k)</span></span>{</span><br><span class="line">	<span class="keyword">if</span>(k == <span class="number">12</span>){</span><br><span class="line">		<span class="keyword">if</span>(!isExist() &amp;&amp; check()){</span><br><span class="line">			ans++;</span><br><span class="line">		}</span><br><span class="line">		<span class="keyword">return</span>;</span><br><span class="line">	}</span><br><span class="line">	<span class="keyword">for</span>(<span class="keyword">int</span> i = k; i &lt; <span class="number">12</span>; ++i){</span><br><span class="line">		{</span><br><span class="line">			<span class="keyword">int</span> t = a[i];</span><br><span class="line">			a[i] = a[k];</span><br><span class="line">			a[k] = t;</span><br><span class="line">		}</span><br><span class="line">		solve(k+<span class="number">1</span>);</span><br><span class="line">		{</span><br><span class="line">			<span class="keyword">int</span> t = a[i];</span><br><span class="line">			a[i] = a[k];</span><br><span class="line">			a[k] = t;</span><br><span class="line">		}</span><br><span class="line">	}</span><br><span class="line">}</span><br><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">main</span><span class="params">()</span></span>{</span><br><span class="line">	solve(<span class="number">0</span>);</span><br><span class="line">	<span class="built_in">cout</span> &lt;&lt; ans &lt;&lt; <span class="built_in">endl</span>;</span><br><span class="line">	<span class="keyword">return</span> <span class="number">0</span>;</span><br><span class="line">}</span><br></pre></td></tr></table></figure>
+      
+    </div>
+    
+  </div>
+  
+    
+    <div class="copyright">
+        <p><span>Title:</span><a href="/2020/09/16/蓝桥-剪邮票/">·【蓝桥】·剪邮票</a></p>
+        <p><span>Author:</span><a href="/" title="Back to Homepage">Weayer</a></p>
+        <p><span>Created:</span>2020-09-16, 22:28:20</p>
+        <p><span>Updated:</span>2020-09-16, 23:07:44</p>
+        <p>
+            <span>Full URL:</span><a class="post-url" href="/2020/09/16/蓝桥-剪邮票/" title="·【蓝桥】·剪邮票">https://www.weayer.top/2020/09/16/蓝桥-剪邮票/</a>
+            <span class="copy-path" data-clipboard-text="From https://www.weayer.top/2020/09/16/蓝桥-剪邮票/　　By Weayer" title="Copy Article&#39;s Link &amp; Author"><i class="fa fa-clipboard"></i></span>
+            <script> var clipboard = new Clipboard('.copy-path'); </script>
+        </p>
+        <p>
+            <span>License:</span><i class="fa fa-creative-commons"></i> <a rel="license" href="http://creativecommons.org/licenses/by-nc-sa/4.0/" title="CC BY-NC-SA 4.0 International" target = "_blank">"CC BY-NC-SA 4.0"</a> Keep Link &amp; Author if Distribute.
+        </p>
+    </div>
+
+
+
+    <nav id="article-nav">
+        
+        
+            <div id="article-nav-older" class="article-nav-title">
+                <a href="/2020/09/16/蓝桥-交换瓶子/">
+                    ·【蓝桥】·交换瓶子
+                </a>
+            </div>
+        
+    </nav>
+
+  
+</article>
+
+    <div id="toc" class="toc-article">
+        <strong class="toc-title">Contents</strong>
+        
+            <ol class="toc"><li class="toc-item toc-level-3"><a class="toc-link" href="#算法分析"><span class="toc-number">1.</span> <span class="toc-text">算法分析</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#1、C-的next-permutation"><span class="toc-number">2.</span> <span class="toc-text">1、C++的next_permutation</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#2、基于新数组的全排列"><span class="toc-number">3.</span> <span class="toc-text">2、基于新数组的全排列</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#3、原数组上进行的全排列"><span class="toc-number">4.</span> <span class="toc-text">3、原数组上进行的全排列</span></a></li></ol>
+        
+    </div>
+    <style>
+        .left-col .switch-btn,
+        .left-col .switch-area {
+            display: none;
+        }
+        .toc-level-3 i,
+        .toc-level-3 ol {
+            display: none !important;
+        }
+    </style>
+
+    <input type="button" id="tocButton" value="Hide"  title="Show or Hide Table of Contents">
+
+    <script>
+        yiliaConfig.toc = ["Hide", "Show", !!"false"];
+    </script>
+
+
+
+    
+<div class="share">
+    
+        <div class="bdsharebuttonbox">
+            <a href="#" class="fa fa-twitter bds_twi" data-cmd="twi" title="分享到推特"></a>
+            <a href="#" class="fa fa-weibo bds_tsina" data-cmd="tsina" title="分享到新浪微博"></a>
+            <a href="#" class="fa fa-qq bds_sqq" data-cmd="sqq" title="分享给 QQ 好友"></a>
+            <a href="#" class="fa fa-files-o bds_copy" data-cmd="copy" title="复制网址"></a>
+            <a href="#" class="fa fa fa-envelope-o bds_mail" data-cmd="mail" title="通过邮件分享"></a>
+            <a href="#" class="fa fa-weixin bds_weixin" data-cmd="weixin" title="生成文章二维码"></a>
+            <a href="#" class="fa fa-share-alt bds_more" data-cmd="more"></i></a>
+        </div>
+        <script>
+            window._bd_share_config={
+                "common":{"bdSnsKey":{},"bdText":"·【蓝桥】·剪邮票　| weayer's blog　","bdMini":"2","bdMiniList":false,"bdPic":"","bdStyle":"0","bdSize":"24"},"share":{}};with(document)0[(getElementsByTagName('head')[0]||body).appendChild(createElement('script')).src='http://bdimg.share.baidu.com/static/api/js/share.js?v=89860593.js?cdnversion='+~(-new Date()/36e5)];
+        </script>
+    
+
+    
+</div>
+
+
+
+
+
+
+
+    
+
+
+
+
+    <div class="scroll" id="post-nav-button">
+        
+            <a href="/" title="Back to Homepage"><i class="fa fa-home"></i></a>
+        
+
+        <a title="Mini Archives"><i class="fa fa-bars"></i><i class="fa fa-times"></i></a>
+
+        
+            <a href="/2020/09/16/蓝桥-交换瓶子/" title="Next: ·【蓝桥】·交换瓶子">
+                <i class="fa fa-angle-right"></i>
+            </a>
+        
+    </div>
+
+    <ul class="post-list"><li class="post-list-item"><a class="post-list-link" href="/2020/09/16/蓝桥-剪邮票/">·【蓝桥】·剪邮票</a></li><li class="post-list-item"><a class="post-list-link" href="/2020/09/16/蓝桥-交换瓶子/">·【蓝桥】·交换瓶子</a></li><li class="post-list-item"><a class="post-list-link" href="/2020/09/12/全排列/">全排列（去重和不去重）</a></li><li class="post-list-item"><a class="post-list-link" href="/2020/09/01/商汤AI园区的n个路口（简单）/">商汤AI园区的n个路口（简单）</a></li><li class="post-list-item"><a class="post-list-link" href="/2020/09/01/商汤的AI伴游小精灵/">·【计蒜客】·商汤的AI伴游小精灵</a></li><li class="post-list-item"><a class="post-list-link" href="/2020/08/19/蓝桥-四平方和/">·【蓝桥】·四平方和</a></li><li class="post-list-item"><a class="post-list-link" href="/2020/08/17/蓝桥-青蛙跳杯子/">·【蓝桥】·青蛙跳杯子</a></li><li class="post-list-item"><a class="post-list-link" href="/2020/08/16/蓝桥-九宫幻方/">·【蓝桥】·九宫幻方</a></li><li class="post-list-item"><a class="post-list-link" href="/2020/08/16/蓝桥-拉马车/">·【蓝桥】·拉马车</a></li><li class="post-list-item"><a class="post-list-link" href="/2020/08/11/蓝桥-Excel地址/">蓝桥-Excel地址</a></li><li class="post-list-item"><a class="post-list-link" href="/2020/08/11/蓝桥-正则问题/">蓝桥-正则问题</a></li><li class="post-list-item"><a class="post-list-link" href="/2020/07/12/牛客-Rabbit的工作/">牛客-Rabbit的工作</a></li><li class="post-list-item"><a class="post-list-link" href="/2020/07/05/蓝桥-分考场/">蓝桥-分考场</a></li><li class="post-list-item"><a class="post-list-link" href="/2020/06/30/蓝桥-带分数/">·【蓝桥】·带分数</a></li><li class="post-list-item"><a class="post-list-link" href="/2020/06/28/线段树/">线段树专题</a></li><li class="post-list-item"><a class="post-list-link" href="/2020/06/28/逆序数/">逆序数</a></li><li class="post-list-item"><a class="post-list-link" href="/2020/06/27/树状数组/">树状数组专题</a></li><li class="post-list-item"><a class="post-list-link" href="/2020/06/27/数学公式及符号/">Markdown数学公式及符号汇总</a></li><li class="post-list-item"><a class="post-list-link" href="/2020/06/19/蓝桥-买不到的数目/">·【蓝桥】·买不到的数目</a></li><li class="post-list-item"><a class="post-list-link" href="/2020/06/17/图的遍历/">图的遍历（邻接矩阵、邻接表）</a></li><li class="post-list-item"><a class="post-list-link" href="/2020/06/17/蓝桥-小朋友排队/">·【蓝桥】·小朋友排队（归并、树状数组）</a></li><li class="post-list-item"><a class="post-list-link" href="/2020/06/11/最短路径/">最短路径专题（Dijkstra、Floyd、Bellman-Ford即优化）</a></li><li class="post-list-item"><a class="post-list-link" href="/2020/06/04/n皇后问题/">n皇后问题</a></li><li class="post-list-item"><a class="post-list-link" href="/2020/05/31/牛客-减成一/">牛客-减成一</a></li><li class="post-list-item"><a class="post-list-link" href="/2020/05/16/数组实现简单链表/">数组实现链表</a></li><li class="post-list-item"><a class="post-list-link" href="/2020/05/16/牛客-邻值查找/">牛客-邻值查找</a></li><li class="post-list-item"><a class="post-list-link" href="/2020/05/14/并查集/">并查集及优化（路径压缩+按秩合并）</a></li><li class="post-list-item"><a class="post-list-link" href="/2020/05/08/LIS（队列优化+二分）/">LIS优化</a></li><li class="post-list-item"><a class="post-list-link" href="/2020/05/08/真分数的最大埃及分数/">真分数的最大埃及分数</a></li><li class="post-list-item"><a class="post-list-link" href="/2020/04/28/蓝桥-包子凑数/">·【蓝桥】·包子凑数</a></li><li class="post-list-item"><a class="post-list-link" href="/2020/04/25/Github-Coding（理想很丰满）/">Github+coding（理想很丰满）</a></li><li class="post-list-item"><a class="post-list-link" href="/2020/04/24/模运算的运用/">模运算的运用</a></li><li class="post-list-item"><a class="post-list-link" href="/2020/04/01/4月1日我成功地被mysql给愚弄了/">4月1日我成功地被mysql给愚弄了</a></li><li class="post-list-item"><a class="post-list-link" href="/2020/03/28/Dp-ST/">Dp-ST表（求解RMP）</a></li><li class="post-list-item"><a class="post-list-link" href="/2020/03/28/蓝桥-晚会节目单/">·【蓝桥】晚会节目单（ST表）</a></li><li class="post-list-item"><a class="post-list-link" href="/2020/03/11/Extend-Eculid/">Extend_Eculid</a></li><li class="post-list-item"><a class="post-list-link" href="/2020/03/11/ax-by-c问题/">Ax+By=C问题</a></li><li class="post-list-item"><a class="post-list-link" href="/2020/03/10/51nod-1009数字1的数量/">·【51nod-1009】数字1的数量</a></li><li class="post-list-item"><a class="post-list-link" href="/2020/03/10/dp-digit/">Dp-digit</a></li><li class="post-list-item"><a class="post-list-link" href="/2020/03/07/NOIP-2015-POJ-2456/">·【NOIP-2015】·【POJ-2456】</a></li><li class="post-list-item"><a class="post-list-link" href="/2020/03/05/heap/">heap</a></li><li class="post-list-item"><a class="post-list-link" href="/2020/02/28/High-precision1/">n的阶乘(High-precision)</a></li><li class="post-list-item"><a class="post-list-link" href="/2020/02/28/Inverse/">Inverse</a></li><li class="post-list-item"><a class="post-list-link" href="/2020/02/07/Sliding-window/">Sliding Window</a></li><li class="post-list-item"><a class="post-list-link" href="/2019/12/02/Merge-Sort/">Merge Sort</a></li><li class="post-list-item"><a class="post-list-link" href="/2019/12/01/Stack/">Stack</a></li><li class="post-list-item"><a class="post-list-link" href="/2019/11/30/Queue-0/">Queue</a></li><li class="post-list-item"><a class="post-list-link" href="/2019/10/26/Lnode/">Lnode</a></li><li class="post-list-item"><a class="post-list-link" href="/2019/10/26/hey-piggy/">hey-piggy</a></li></ul>
+
+
+
+
+    <script>
+        
+    </script>
+</div>
+      <footer id="footer">
+    <div class="outer">
+        <div id="footer-info">
+            <div class="footer-left">
+                <i class="fa fa-copyright"></i> 
+                2016-2020 Weayer
+            </div>
+            <div class="footer-right">
+                <a href="http://hexo.io/" target="_blank" title="A fast, simple &amp; powerful blog framework">Hexo</a>  Theme <a href="https://github.com/MOxFIVE/hexo-theme-yelee" target="_blank" title="Another simple and elegant theme for Hexo  v3.5">Yelee</a> by MOxFIVE <i class="fa fa-heart animated infinite pulse"></i>
+            </div>
+        </div>
+        
+            <div class="visit">
+                
+                    <span id="busuanzi_container_site_pv" style='display:none'>
+                        <span id="site-visit" title="Site Visitors"><i class="fa fa-user" aria-hidden="true"></i><span id="busuanzi_value_site_uv"></span>
+                        </span>
+                    </span>
+                
+                
+                    <span>| </span>
+                
+                
+                    <span id="busuanzi_container_page_pv" style='display:none'>
+                        <span id="page-visit"  title="Page Hits"><i class="fa fa-eye animated infinite pulse" aria-hidden="true"></i><span id="busuanzi_value_page_pv"></span>
+                        </span>
+                    </span>
+                
+            </div>
+        
+    </div>
+</footer>
+    </div>
+    
+<script data-main="/js/main.js" src="//cdn.bootcss.com/require.js/2.2.0/require.min.js"></script>
+
+    <script>
+        $(document).ready(function() {
+            var iPad = window.navigator.userAgent.indexOf('iPad');
+            if (iPad > -1 || $(".left-col").css("display") === "none") {
+                var bgColorList = ["#9db3f4", "#414141", "#e5a859", "#f5dfc6", "#c084a0", "#847e72", "#cd8390", "#996731"];
+                var bgColor = Math.ceil(Math.random() * (bgColorList.length - 1));
+                $("body").css({"background-color": bgColorList[bgColor], "background-size": "cover"});
+            }
+            else {
+                var backgroundnum = 5;
+                var backgroundimg = "url(/background/bg-x.jpg)".replace(/x/gi, Math.ceil(Math.random() * backgroundnum));
+                $("body").css({"background": backgroundimg, "background-attachment": "fixed", "background-size": "cover"});
+            }
+        })
+    </script>
+
+
+
+
+
+    <script type="text/x-mathjax-config">
+MathJax.Hub.Config({
+    tex2jax: {
+        inlineMath: [ ['$','$'], ["\\(","\\)"]  ],
+        processEscapes: true,
+        skipTags: ['script', 'noscript', 'style', 'textarea', 'pre', 'code']
+    }
+});
+
+MathJax.Hub.Queue(function() {
+    var all = MathJax.Hub.getAllJax(), i;
+    for(i=0; i < all.length; i += 1) {
+        all[i].SourceElement().parentNode.className += ' has-jax';                 
+    }       
+});
+</script>
+
+<script src="//cdn.bootcss.com/mathjax/2.6.1/MathJax.js?config=TeX-AMS-MML_HTMLorMML">
+</script>
+
+
+<div class="scroll" id="scroll">
+    <a href="#" title="Back to Top"><i class="fa fa-arrow-up"></i></a>
+    <a href="#comments" onclick="load$hide();" title="Comments"><i class="fa fa-comments-o"></i></a>
+    <a href="#footer" title="Go to Bottom"><i class="fa fa-arrow-down"></i></a>
+</div>
+<script>
+    // Open in New Window
+    
+        var oOpenInNew = {
+            
+            
+            
+            
+            
+            
+             archives: ".archive-article-title", 
+             miniArchives: "a.post-list-link", 
+            
+             friends: "#js-friends a", 
+             socail: ".social a" 
+        }
+        for (var x in oOpenInNew) {
+            $(oOpenInNew[x]).attr("target", "_blank");
+        }
+    
+</script>
+
+<script async src="https://dn-lbstatics.qbox.me/busuanzi/2.3/busuanzi.pure.mini.js">
+</script>
+  </div>
+</body>
+</html>

@@ -1,0 +1,608 @@
+<!DOCTYPE html>
+<html lang="en">
+<head><meta name="generator" content="Hexo 3.9.0">
+
+    <!--[if lt IE 9]>
+        <style>body {display: none; background: none !important} </style>
+        <meta http-equiv="Refresh" Content="0; url=//outdatedbrowser.com/" />
+    <![endif]-->
+
+<meta charset="utf-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge, chrome=1">
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
+<meta name="format-detection" content="telephone=no">
+<meta name="author" content="Weayer">
+
+
+
+<meta name="description" content="&amp;#x672C;&amp;#x6587;&amp;#x5C06;&amp;#x4EE5;&amp;#x5355;&amp;#x70B9;&amp;#x66F4;&amp;#x65B0;&amp;#x3001;&amp;#x533A;&amp;#x95F4;&amp;#x6C42;&amp;#x548C;&amp;#x5F00;&amp;#x542F;&amp;#x7EBF;&amp;#x6BB5;&amp;#x6811;&amp;#x7684;&amp;#x65B0;&amp;#x4E16;&amp;#x754C;&amp;#x3002;&amp;#x2014;&amp;#x2014;">
+<meta name="keywords" content="树">
+<meta property="og:type" content="article">
+<meta property="og:title" content="线段树专题">
+<meta property="og:url" content="https://www.weayer.top/2020/06/28/线段树/index.html">
+<meta property="og:site_name" content="weayer&#39;s blog">
+<meta property="og:description" content="&amp;#x672C;&amp;#x6587;&amp;#x5C06;&amp;#x4EE5;&amp;#x5355;&amp;#x70B9;&amp;#x66F4;&amp;#x65B0;&amp;#x3001;&amp;#x533A;&amp;#x95F4;&amp;#x6C42;&amp;#x548C;&amp;#x5F00;&amp;#x542F;&amp;#x7EBF;&amp;#x6BB5;&amp;#x6811;&amp;#x7684;&amp;#x65B0;&amp;#x4E16;&amp;#x754C;&amp;#x3002;&amp;#x2014;&amp;#x2014;">
+<meta property="og:locale" content="en">
+<meta property="og:updated_time" content="2020-06-28T09:08:36.043Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="线段树专题">
+<meta name="twitter:description" content="&amp;#x672C;&amp;#x6587;&amp;#x5C06;&amp;#x4EE5;&amp;#x5355;&amp;#x70B9;&amp;#x66F4;&amp;#x65B0;&amp;#x3001;&amp;#x533A;&amp;#x95F4;&amp;#x6C42;&amp;#x548C;&amp;#x5F00;&amp;#x542F;&amp;#x7EBF;&amp;#x6BB5;&amp;#x6811;&amp;#x7684;&amp;#x65B0;&amp;#x4E16;&amp;#x754C;&amp;#x3002;&amp;#x2014;&amp;#x2014;">
+
+<link rel="apple-touch-icon" href="/apple-touch-icon.png">
+
+
+    <link rel="alternate" href="/atom.xml" title="weayer&#39;s blog" type="application/atom+xml">
+
+
+
+    <link rel="shortcut icon" href="/favicon.png">
+
+
+
+    <link href="//cdn.bootcss.com/animate.css/3.5.1/animate.min.css" rel="stylesheet">
+
+
+
+    <link href="//cdn.bootcss.com/fancybox/2.1.5/jquery.fancybox.min.css" rel="stylesheet">
+
+
+
+    <script src="//cdn.bootcss.com/pace/1.0.2/pace.min.js"></script>
+    <link href="//cdn.bootcss.com/pace/1.0.2/themes/blue/pace-theme-minimal.css" rel="stylesheet">
+
+
+<link rel="stylesheet" href="/css/style.css">
+
+
+
+<link href="//cdn.bootcss.com/font-awesome/4.6.3/css/font-awesome.min.css" rel="stylesheet">
+
+
+<title>线段树专题 | weayer&#39;s blog</title>
+
+<script src="//cdn.bootcss.com/jquery/2.2.4/jquery.min.js"></script>
+<script src="//cdn.bootcss.com/clipboard.js/1.5.10/clipboard.min.js"></script>
+
+<script>
+    var yiliaConfig = {
+        fancybox: true,
+        animate: true,
+        isHome: false,
+        isPost: true,
+        isArchive: false,
+        isTag: false,
+        isCategory: false,
+        fancybox_js: "//cdn.bootcss.com/fancybox/2.1.5/jquery.fancybox.min.js",
+        scrollreveal: "//cdn.bootcss.com/scrollReveal.js/3.1.4/scrollreveal.min.js",
+        search: false
+    }
+</script>
+
+
+    <script> yiliaConfig.jquery_ui = [false]; </script>
+
+
+
+    <script> yiliaConfig.rootUrl = "\/";</script>
+
+
+
+
+
+    <script>
+        var _hmt = _hmt || [];
+        (function() {
+            var hm = document.createElement("script");
+            hm.src = "//hm.baidu.com/hm.js?8c70833ee0194776a494dd5209d32b72";
+            var s = document.getElementsByTagName("script")[0]; 
+            s.parentNode.insertBefore(hm, s);
+        })();
+    </script>
+
+
+</head></html>
+<body>
+  <div id="container">
+    <div class="left-col">
+    <div class="overlay"></div>
+<div class="intrude-less">
+    <header id="header" class="inner">
+        <a href="/" class="profilepic">
+            <img src="/img/head.jpg" class="animated zoomIn">
+        </a>
+        <hgroup>
+          <h1 class="header-author"><a href="/">Weayer</a></h1>
+        </hgroup>
+
+        
+        <p class="header-subtitle">把生命浪费在美好的事物上</p>
+        
+
+        
+
+
+        
+            <div id="switch-btn" class="switch-btn">
+                <div class="icon">
+                    <div class="icon-ctn">
+                        <div class="icon-wrap icon-house" data-idx="0">
+                            <div class="birdhouse"></div>
+                            <div class="birdhouse_holes"></div>
+                        </div>
+                        <div class="icon-wrap icon-ribbon hide" data-idx="1">
+                            <div class="ribbon"></div>
+                        </div>
+                        
+                        <div class="icon-wrap icon-link hide" data-idx="2">
+                            <div class="loopback_l"></div>
+                            <div class="loopback_r"></div>
+                        </div>
+                        
+                        
+                        <div class="icon-wrap icon-me hide" data-idx="3">
+                            <div class="user"></div>
+                            <div class="shoulder"></div>
+                        </div>
+                        
+                    </div>
+                    
+                </div>
+                <div class="tips-box hide">
+                    <div class="tips-arrow"></div>
+                    <ul class="tips-inner">
+                        <li>Menu</li>
+                        <li>Tags</li>
+                        
+                        <li>Friends</li>
+                        
+                        
+                        <li>About Me</li>
+                        
+                    </ul>
+                </div>
+            </div>
+        
+
+        <div id="switch-area" class="switch-area">
+            <div class="switch-wrap">
+                <section class="switch-part switch-part1">
+                    <nav class="header-menu">
+                        <ul>
+                        
+                            <li><a href="/">主页</a></li>
+                        
+                            <li><a href="/archives/">所有文章</a></li>
+                        
+                            <li><a href="/tags/">标签云</a></li>
+                        
+                            <li><a href="/about/">关于我</a></li>
+                        
+                        </ul>
+                    </nav>
+                    <nav class="header-nav">
+                        <ul class="social">
+                            
+                                <a class="fa Email" href="mailto:123@123.com" title="Email"></a>
+                            
+                                <a class="fa GitHub" href="#" title="GitHub"></a>
+                            
+                                <a class="fa RSS" href="/atom.xml" title="RSS"></a>
+                            
+                        </ul>
+                    </nav>
+                </section>
+                
+                
+                <section class="switch-part switch-part2">
+                    <div class="widget tagcloud" id="js-tagcloud">
+                        <ul class="tag-list"><li class="tag-list-item"><a class="tag-list-link" href="/tags/hexo/">hexo</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/mysql/">mysql</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/二分/">二分</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/动态规划/">动态规划</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/哈希/">哈希</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/图/">图</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/堆/">堆</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/字符串/">字符串</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/差分/">差分</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/排序/">排序</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/搜索/">搜索</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/数论/">数论</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/枚举/">枚举</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/查找/">查找</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/栈/">栈</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/树/">树</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/模拟/">模拟</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/模运算/">模运算</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/蓝桥/">蓝桥</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/贪心/">贪心</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/逆元/">逆元</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/递归/">递归</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/递归回溯/">递归回溯</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/链表/">链表</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/队列/">队列</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/雪的教训/">雪的教训</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/高精度/">高精度</a></li></ul>
+                    </div>
+                </section>
+                
+                
+                
+                <section class="switch-part switch-part3">
+                    <div id="js-friends">
+                    
+                      <a class="main-nav-link switch-friends-link" href="https://hexo.io">Hexo</a>
+                    
+                      <a class="main-nav-link switch-friends-link" href="https://pages.github.com/">GitHub</a>
+                    
+                      <a class="main-nav-link switch-friends-link" href="http://moxfive.xyz/">MOxFIVE</a>
+                    
+                    </div>
+                </section>
+                
+
+                
+                
+                <section class="switch-part switch-part4">
+                
+                    <div id="js-aboutme">专注于前端</div>
+                </section>
+                
+            </div>
+        </div>
+    </header>                
+</div>
+    </div>
+    <div class="mid-col">
+      <nav id="mobile-nav">
+      <div class="overlay">
+          <div class="slider-trigger"></div>
+          <h1 class="header-author js-mobile-header hide"><a href="/" title="回到主页">Weayer</a></h1>
+      </div>
+    <div class="intrude-less">
+        <header id="header" class="inner">
+            <a href="/" class="profilepic">
+                <img src="/img/head.jpg" class="animated zoomIn">
+            </a>
+            <hgroup>
+              <h1 class="header-author"><a href="/" title="回到主页">Weayer</a></h1>
+            </hgroup>
+            
+            <p class="header-subtitle">把生命浪费在美好的事物上</p>
+            
+            <nav class="header-menu">
+                <ul>
+                
+                    <li><a href="/">主页</a></li>
+                
+                    <li><a href="/archives/">所有文章</a></li>
+                
+                    <li><a href="/tags/">标签云</a></li>
+                
+                    <li><a href="/about/">关于我</a></li>
+                
+                <div class="clearfix"></div>
+                </ul>
+            </nav>
+            <nav class="header-nav">
+                        <ul class="social">
+                            
+                                <a class="fa Email" target="_blank" href="mailto:123@123.com" title="Email"></a>
+                            
+                                <a class="fa GitHub" target="_blank" href="#" title="GitHub"></a>
+                            
+                                <a class="fa RSS" target="_blank" href="/atom.xml" title="RSS"></a>
+                            
+                        </ul>
+            </nav>
+        </header>                
+    </div>
+    <link class="menu-list" tags="Tags" friends="Friends" about="About Me"/>
+</nav>
+      <div class="body-wrap"><article id="post-线段树" class="article article-type-post" itemscope itemprop="blogPost">
+  
+    <div class="article-meta">
+      <a href="/2020/06/28/线段树/" class="article-date">
+      <time datetime="2020-06-27T16:00:00.000Z" itemprop="datePublished">2020-06-28</time>
+</a>
+
+
+    </div>
+  
+  <div class="article-inner">
+    
+      <input type="hidden" class="isFancy" />
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 class="article-title" itemprop="name">
+      线段树专题
+    </h1>
+  
+
+      </header>
+      
+      <div class="article-info article-info-post">
+        
+    <div class="article-category tagcloud">
+    <a class="article-category-link" href="/categories/数据结构与算法/">数据结构与算法</a>
+    </div>
+
+
+        
+    <div class="article-tag tagcloud">
+        <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/树/">树</a></li></ul>
+    </div>
+
+        <div class="clearfix"></div>
+      </div>
+      
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+          
+        <p>&#x672C;&#x6587;&#x5C06;&#x4EE5;<strong>&#x5355;&#x70B9;&#x66F4;&#x65B0;&#x3001;&#x533A;&#x95F4;&#x6C42;&#x548C;</strong>&#x5F00;&#x542F;&#x7EBF;&#x6BB5;&#x6811;&#x7684;&#x65B0;&#x4E16;&#x754C;&#x3002;<br>&#x2014;&#x2014;&#x2014;&#x2014;&#x2014;&#x2014;&#x2014;&#x2014;&#x2014;&#x2014;&#x2014;&#x2014;&#x2014;&#x2014;&#x2014;&#x2014;&#x2014;&#x6301;&#x7EED;&#x66F4;&#x65B0;~&#x2014;&#x2014;&#x2014;&#x2014;&#x2014;&#x2014;&#x2014;&#x2014;&#x2014;&#x2014;&#x2014;&#x2014;&#x2014;&#x2014;&#x2014;&#x2014;&#x2014;&#x2014;&#x2014;</p>
+<a id="more"></a>
+<p>&#x53E6;&#x5916;&#x6587;&#x672B;&#x4F1A;&#x6709;&#x94FE;&#x63A5;&#x4F20;&#x9001;&#xFF0C;&#x4E13;&#x95E8;&#x6BD4;&#x8F83;&#x7EBF;&#x6BB5;&#x6811;&#x548C;&#x6811;&#x72B6;&#x6570;&#x7EC4;&#x3002;</p>
+<blockquote>
+<p>&#x611F;&#x8C22;&#x4F18;&#x79C0;&#x535A;&#x5BA2;&#xFF08;&#x8BB2;&#x8FF0;&#x5DF2;&#x5341;&#x5206;&#x8BE6;&#x5C3D;&#xFF0C;&#x8FD9;&#x91CC;&#x53EA;&#x7A0D;&#x4F5C;&#x603B;&#x7ED3;&#xFF09;&#xFF1A;<br><a href="https://blog.csdn.net/zearot/article/details/52280189" target="_blank" rel="noopener">&#x7EBF;&#x6BB5;&#x6811;&#x4ECE;&#x96F6;&#x5F00;&#x59CB;</a><br><a href="https://www.cnblogs.com/AC-King/p/7789013.html" target="_blank" rel="noopener">&#x7EBF;&#x6BB5;&#x6811;&#x8BE6;&#x89E3;</a></p>
+</blockquote>
+<ul>
+<li>&#x7EBF;&#x6BB5;&#x6811;&#x662F;&#x4E00;&#x79CD;&#x4E8C;&#x53C9;&#x641C;&#x7D22;&#x6811;&#xFF0C;&#x7EF4;&#x62A4;&#x4E0B;&#x6807;&#x4E3A;1,2,..,n&#x7684;n&#x4E2A;&#x6309;&#x987A;&#x5E8F;&#x6392;&#x5217;&#x7684;&#x6570;&#x7684;&#x4FE1;&#x606F;&#xFF0C;&#x8FD9;&#x4E9B;&#x6570;&#x7EC4;&#x5408;&#x8D77;&#x6765;&#x5C31;&#x662F;[1:n]&#x7684;&#x4E00;&#x4E2A;&#x533A;&#x95F4;&#x3002;</li>
+<li>&#x6839;&#x7ED3;&#x70B9;&#x8868;&#x793A;&#x7684;&#x5C31;&#x662F;&#x533A;&#x95F4;[1,n]&#xFF0C;&#x7136;&#x540E;&#x6298;&#x534A;&#x8FDB;&#x884C;&#x5206;&#x89E3;&#xFF0C;&#x76F4;&#x5230;&#x4E0D;&#x80FD;&#x5206;&#x89E3;&#xFF0C;&#x6BCF;&#x4E2A;&#x533A;&#x95F4;&#x4EE3;&#x8868;&#x4E00;&#x4E2A;&#x7ED3;&#x70B9;&#xFF0C;&#x6BCF;&#x4E2A;&#x7ED3;&#x70B9;&#x5B58;&#x653E;&#x5404;&#x81EA;&#x7684;&#x4FE1;&#x606F;&#xFF08;&#x5982;&#x5BF9;&#x4E8E;&#x533A;&#x95F4;&#x6C42;&#x548C;&#xFF0C;&#x6BCF;&#x4E2A;&#x7ED3;&#x70B9;&#x5B58;&#x653E;&#x7740;&#x5404;&#x533A;&#x95F4;&#x7684;&#x548C;&#xFF09;&#x3002;</li>
+<li>&#x7EBF;&#x6BB5;&#x6811;&#x540C;&#x65F6;&#x662F;&#x4E00;&#x68F5;&#x5E73;&#x8861;&#x4E8C;&#x53C9;&#x6811;&#xFF0C;&#x6240;&#x4EE5;&#x53EF;&#x4EE5;&#x7528;&#x6570;&#x7EC4;&#x6A21;&#x62DF;&#x6811;&#x5F62;&#x7ED3;&#x6784;&#xFF0C;&#x5BF9;&#x4E8E;&#x6BCF;&#x4E00;&#x4E2A;&#x975E;&#x53F6;&#x5B50;&#x7ED3;&#x70B9;[a,b],&#x5176;&#x5DE6;&#x513F;&#x5B50;&#x8868;&#x793A;&#x7684;&#x533A;&#x95F4;[a, (a+b)/2]&#xFF0C;&#x53F3;&#x513F;&#x5B50;&#x8868;&#x793A;&#x7684;&#x533A;&#x95F4;&#x662F;[(a+b)/2+1, b]&#x3002;</li>
+<li>&#x8FD9;&#x6837;&#x4E00;&#x4E2A;&#x6811;&#x5F62;&#x7ED3;&#x6784;&#x67E5;&#x8BE2;&#x3001;&#x4FEE;&#x6539;&#x7684;&#x65F6;&#x95F4;&#x590D;&#x6742;&#x5EA6;&#x90FD;&#x662F;O(n log n)</li>
+</ul>
+<h3 id="&#x7EBF;&#x6BB5;&#x6811;&#x5B9E;&#x73B0;&#x5355;&#x70B9;&#x66F4;&#x65B0;&#x3001;&#x533A;&#x95F4;&#x6C42;&#x548C;"><a href="#&#x7EBF;&#x6BB5;&#x6811;&#x5B9E;&#x73B0;&#x5355;&#x70B9;&#x66F4;&#x65B0;&#x3001;&#x533A;&#x95F4;&#x6C42;&#x548C;" class="headerlink" title="&#x7EBF;&#x6BB5;&#x6811;&#x5B9E;&#x73B0;&#x5355;&#x70B9;&#x66F4;&#x65B0;&#x3001;&#x533A;&#x95F4;&#x6C42;&#x548C;"></a>&#x7EBF;&#x6BB5;&#x6811;&#x5B9E;&#x73B0;&#x5355;&#x70B9;&#x66F4;&#x65B0;&#x3001;&#x533A;&#x95F4;&#x6C42;&#x548C;</h3><ol>
+<li>&#x7EBF;&#x6BB5;&#x6811;&#x6784;&#x5EFA;</li>
+</ol>
+<ul>
+<li>a[]&#x5B58;&#x653E;&#x539F;&#x6570;&#x636E;&#xFF0C;&#x4E3A;&#x4FBF;&#x4E8E;&#x4F7F;&#x7528;&#xFF0C;&#x9996;&#x4F4D;&#x7684;&#x503C;&#x7F6E;&#x4E8E;0&#xFF1B; sum[]&#x6784;&#x5EFA;&#x7EBF;&#x6BB5;&#x6811;&#xFF0C;&#x6570;&#x7EC4;&#x957F;&#x5EA6;&#x53EF;&#x7ED9;&#x5230; 4n</li>
+<li>&#x4ECE;&#x6839;&#x7ED3;&#x70B9;&#x5F00;&#x59CB;&#x9012;&#x5F52;&#xFF0C;&#x5C06;[1, n]&#x7684;&#x533A;&#x95F4;&#x4E24;&#x4E24;&#x5206;&#x89E3;&#xFF0C;&#x6BCF;&#x4E00;&#x4E2A;&#x975E;&#x53F6;&#x5B50;&#x7ED3;&#x70B9;&#x8868;&#x793A;&#x7684;&#x533A;&#x95F4;&#x548C;&#xFF0C;&#x81EA;&#x7136;&#x662F;&#x5DE6;&#x3001;&#x53F3;&#x513F;&#x5B50;&#x7684;&#x533A;&#x95F4;&#x548C;&#x76F8;&#x52A0;&#xFF1B;</li>
+<li>&#x6811;&#x7684;&#x6700;&#x6DF1;&#x5C42;&#xFF0C;&#x4E5F;&#x5C31;&#x662F;&#x53F6;&#x5B50;&#x7ED3;&#x70B9;&#x5B58;&#x653E;&#x539F;&#x6570;&#x636E;a[]<ul>
+<li>BuildUp()&#x6784;&#x5EFA;&#x7EBF;&#x6BB5;&#x6811;</li>
+<li>PushUp()&#x66F4;&#x65B0;&#x6BCF;&#x4E2A;&#x7ED3;&#x70B9;</li>
+</ul>
+</li>
+</ul>
+<figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">const</span> <span class="keyword">int</span> maxn = <span class="number">100007</span>;</span><br><span class="line"><span class="keyword">int</span> n = <span class="number">10</span>, a[<span class="number">11</span>] = {<span class="number">0</span>, <span class="number">1</span>, <span class="number">2</span>, <span class="number">3</span>, <span class="number">4</span>, <span class="number">1</span>, <span class="number">2</span>, <span class="number">3</span>, <span class="number">4</span>, <span class="number">1</span>, <span class="number">2</span>};</span><br><span class="line"><span class="keyword">int</span> sum[maxn&lt;&lt;<span class="number">2</span>];</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">void</span> <span class="title">PushUp</span><span class="params">(<span class="keyword">int</span> rt)</span></span>{</span><br><span class="line">	sum[rt] = sum[rt&lt;&lt;<span class="number">1</span>] + sum[rt&lt;&lt;<span class="number">1</span>|<span class="number">1</span>]; </span><br><span class="line">}</span><br><span class="line"><span class="function"><span class="keyword">void</span> <span class="title">BuildUp</span><span class="params">(<span class="keyword">int</span> l, <span class="keyword">int</span> r, <span class="keyword">int</span> rt)</span></span>{<span class="comment">//&#x521D;&#x59CB;l=1, r=n, rt=1;</span></span><br><span class="line">	<span class="keyword">if</span>(l == r){<span class="comment">//&#x9012;&#x5F52;&#x51FA;&#x53E3;</span></span><br><span class="line">		sum[rt] = a[l];</span><br><span class="line">		<span class="keyword">return</span>;</span><br><span class="line">	}</span><br><span class="line">	<span class="keyword">int</span> m = (l+r) &gt;&gt; <span class="number">1</span>;<span class="comment">//&#x6298;&#x534A;</span></span><br><span class="line">	BuildUp(l, m, rt&lt;&lt;<span class="number">1</span>);<span class="comment">//&#x4ECE;&#x5DE6;&#x513F;&#x5B50;&#x5F00;&#x59CB;&#x9012;&#x5F52;</span></span><br><span class="line">	BuildUp(m+<span class="number">1</span>, r, rt&lt;&lt;<span class="number">1</span>|<span class="number">1</span>);<span class="comment">//&#x4ECE;&#x53F3;&#x513F;&#x5B50;&#x5F00;&#x59CB;&#x9012;&#x5F52;</span></span><br><span class="line">	PushUp(rt);<span class="comment">//&#x5206;&#x800C;&#x6CBB;&#x4E4B;</span></span><br><span class="line">}</span><br></pre></td></tr></table></figure>
+
+<ol start="2">
+<li>&#x7EBF;&#x6BB5;&#x6811;&#x66F4;&#x65B0;</li>
+</ol>
+<ul>
+<li>&#x521D;&#x59CB;&#x5316;&#x5B8C;&#x6BD5;&#xFF0C;&#x5982;&#x679C;&#x8981;&#x5BF9;&#x67D0;&#x4E2A;&#x503C;&#x8FDB;&#x884C;&#x66F4;&#x65B0;&#xFF08;&#x5982;&#x5B9E;&#x73B0; a[index]+=temp&#xFF09;&#xFF1B;</li>
+<li>&#x81EA;&#x7136;&#x4E5F;&#x8981;&#x4ECE;&#x6839;&#x7ED3;&#x70B9;&#x5F00;&#x59CB;&#xFF0C;&#x53EA;&#x626B;&#x63CF;index&#x5305;&#x542B;&#x7684;&#x533A;&#x95F4;&#x7ED3;&#x70B9;&#x5373;&#x53EF;&#xFF1B;</li>
+<li>&#x5BF9;&#x4E8E;&#x67D0;&#x4E00;&#x975E;&#x53F6;&#x5B50;&#x7ED3;&#x70B9;&#xFF0C;&#x8981;&#x4E48;&#x4ECE;&#x5DE6;&#x513F;&#x5B50;&#x51FA;&#x53D1;&#x7EE7;&#x7EED;&#x626B;&#x63CF;&#xFF0C;&#x8981;&#x4E48;&#x4ECE;&#x53F3;&#x513F;&#x5B50;&#x51FA;&#x53D1;&#x7EE7;&#x7EED;&#x626B;&#x63CF;</li>
+</ul>
+<figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">void</span> <span class="title">Update</span><span class="params">(<span class="keyword">int</span> index, <span class="keyword">int</span> temp, <span class="keyword">int</span> l, <span class="keyword">int</span> r, <span class="keyword">int</span> rt)</span></span>{<span class="comment">//&#x5B9E;&#x73B0;a[index] += temp</span></span><br><span class="line">	<span class="keyword">if</span>(l == r){<span class="comment">//&#x6700;&#x6DF1;&#x5C42;&#xFF0C;&#x5B58;&#x653E;a[]&#x7684;&#x4F4D;&#x7F6E;</span></span><br><span class="line">		sum[rt] += temp;</span><br><span class="line">		<span class="keyword">return</span>;</span><br><span class="line">	}</span><br><span class="line">	<span class="keyword">int</span> m = (l+r) &gt;&gt; <span class="number">1</span>;</span><br><span class="line">	<span class="keyword">if</span>(index &lt;= m)<span class="comment">//index&#x5728;&#x5DE6;&#x513F;&#x5B50;&#x7684;&#x533A;&#x95F4;&#x4E2D;</span></span><br><span class="line">		Update(index, temp, l, m, rt&lt;&lt;<span class="number">1</span>);</span><br><span class="line">	<span class="keyword">else</span><span class="comment">//&#x53CD;&#x4E4B;&#xFF0C;&#x5728;&#x53F3;&#x513F;&#x5B50;&#x533A;&#x95F4;&#x4E2D;</span></span><br><span class="line">		Update(index, temp, m+<span class="number">1</span>, r, rt&lt;&lt;<span class="number">1</span>|<span class="number">1</span>);</span><br><span class="line">	PushUp(rt);<span class="comment">//&#x626B;&#x63CF;&#x5230;&#x7684;&#x533A;&#x95F4;&#x90FD;&#x8981;&#x66F4;&#x65B0;</span></span><br><span class="line">}</span><br></pre></td></tr></table></figure>
+
+<ol>
+<li>&#x7EBF;&#x6BB5;&#x6811;&#x6C42;&#x533A;&#x95F4;&#x548C;<br>&#x6C42;&#x533A;&#x95F4;[l, r]&#x7684;&#x548C;&#xFF0C;&#x540C;&#x6837;&#x4ECE;&#x6839;&#x7ED3;&#x70B9;&#x51FA;&#x53D1;&#xFF0C;&#x626B;&#x63CF;&#x7684;&#x8FC7;&#x7A0B;&#x5C31;&#x4E0D;&#x662F;if&#x2026;else&#x4E86;&#xFF0C;&#x56E0;&#x4E3A;&#x6240;&#x8981;&#x67E5;&#x8BE2;&#x7684;&#x533A;&#x95F4;[l, r]&#x53EF;&#x80FD;&#x65E2;&#x5305;&#x542B;&#x4E8E;&#x5DE6;&#x513F;&#x5B50;&#x7684;&#x533A;&#x95F4;&#xFF0C;&#x53C8;&#x5305;&#x542B;&#x4E8E;&#x53F3;&#x513F;&#x5B50;&#x6240;&#x5728;&#x7684;&#x533A;&#x95F4;&#x3002;</li>
+</ol>
+<figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">Query</span><span class="params">(<span class="keyword">int</span> L, <span class="keyword">int</span> R, <span class="keyword">int</span> l, <span class="keyword">int</span> r, <span class="keyword">int</span> rt)</span></span>{<span class="comment">//&#x6C42;sum[l,r]</span></span><br><span class="line">	<span class="keyword">if</span>(l&gt;=L &amp;&amp; r&lt;=R){</span><br><span class="line">		<span class="keyword">return</span> sum[rt];</span><br><span class="line">	}</span><br><span class="line">	<span class="keyword">int</span> m = (l+r) &gt;&gt; <span class="number">1</span>;</span><br><span class="line">	<span class="keyword">int</span> ans = <span class="number">0</span>;</span><br><span class="line">	<span class="keyword">if</span>(m &gt;= L)</span><br><span class="line">		ans += Query(L, R, l, m, rt&lt;&lt;<span class="number">1</span>);</span><br><span class="line">	<span class="keyword">if</span>(m &lt; R)</span><br><span class="line">		ans += Query(L, R, m+<span class="number">1</span>, r, rt&lt;&lt;<span class="number">1</span>|<span class="number">1</span>);</span><br><span class="line">	<span class="keyword">return</span> ans;</span><br><span class="line">}</span><br></pre></td></tr></table></figure>
+
+<h3 id="&#x7EBF;&#x6BB5;&#x6811;&#x5B9E;&#x73B0;&#x533A;&#x95F4;&#x66F4;&#x65B0;&#x3001;&#x533A;&#x95F4;&#x6C42;&#x548C;"><a href="#&#x7EBF;&#x6BB5;&#x6811;&#x5B9E;&#x73B0;&#x533A;&#x95F4;&#x66F4;&#x65B0;&#x3001;&#x533A;&#x95F4;&#x6C42;&#x548C;" class="headerlink" title="&#x7EBF;&#x6BB5;&#x6811;&#x5B9E;&#x73B0;&#x533A;&#x95F4;&#x66F4;&#x65B0;&#x3001;&#x533A;&#x95F4;&#x6C42;&#x548C;"></a>&#x7EBF;&#x6BB5;&#x6811;&#x5B9E;&#x73B0;&#x533A;&#x95F4;&#x66F4;&#x65B0;&#x3001;&#x533A;&#x95F4;&#x6C42;&#x548C;</h3><p>&#x524D;&#x9762;&#x7684;&#x90FD;&#x8FD8;&#x597D;&#x7406;&#x89E3;&#xFF0C;&#x4E0B;&#x9762;&#x9700;&#x8981;&#x7528;&#x5230;&#x7684;&#x61D2;&#x6807;&#x8BB0;&#xFF0C;&#x662F;&#x8BA9;&#x6211;&#x5934;&#x75BC;&#x4E86;&#x8BB8;&#x591A;&#x5929;&#x90FD;&#x6CA1;&#x89E3;&#x51B3;&#x7684;&#x95EE;&#x9898;&#x3002;<br><strong>&#x533A;&#x95F4;&#x66F4;&#x65B0;&#x65F6;&#x4F7F;&#x7528;&#x61D2;&#x6807;&#x8BB0;</strong></p>
+<ol>
+<li>&#x5982;&#x679C;&#x6309;&#x7167;&#x5355;&#x70B9;&#x66F4;&#x65B0;&#x7684;&#x505A;&#x6CD5;&#xFF0C;&#x8981;&#x626B;&#x63CF;&#x5230;&#x6700;&#x6DF1;&#x5C42;&#xFF0C;&#x5BF9;&#x533A;&#x95F4;[L,R]&#x7684;&#x6BCF;&#x4E2A;&#x70B9;&#x66F4;&#x65B0;&#xFF1B;<br>&#x5176;&#x5B9E;&#x5F53;&#x67D0;&#x7ED3;&#x70B9;&#x6240;&#x626B;&#x63CF;&#x7684;&#x533A;&#x95F4;[l,r]&#x5305;&#x542B;&#x5728;[L,R]&#x5185;&#xFF0C;&#x5C31;&#x4E0D;&#x7528;&#x5411;&#x4E0B;&#x626B;&#x63CF;&#x4E86;&#xFF0C;&#x76F4;&#x63A5;&#x5BF9;&#x8FD9;&#x4E2A;&#x533A;&#x95F4;&#x8FDB;&#x884C;&#x66F4;&#x65B0;&#x3002;<figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">if</span>(L&lt;=l &amp;&amp; r&lt;=R){<span class="comment">//&#x626B;&#x63CF;&#x7684;&#x533A;&#x95F4;&#x5305;&#x542B;&#x5728;[L,R]&#x4E2D;&#xFF0C;&#x61D2;&#x6807;&#x8BB0;&#xFF0C;&#x4E0D;&#x518D;&#x5411;&#x4E0B;&#x626B;&#x63CF;</span></span><br><span class="line">	lazy[rt] += temp;</span><br><span class="line">	sum[rt] += temp*(r-l+<span class="number">1</span>);</span><br><span class="line">	<span class="keyword">return</span>;</span><br><span class="line">}</span><br></pre></td></tr></table></figure>
+
+</li>
+</ol>
+<p>&#x7136;&#x800C;&#xFF0C;&#x8FD9;&#x6837;&#x5728;&#x66F4;&#x65B0;&#x65F6;&#x867D;&#x7136;&#x53EF;&#x4EE5;&#x51CF;&#x5C11;&#x9012;&#x5F52;&#x7684;&#x6DF1;&#x5EA6;&#xFF0C;&#x5F88;&#x5BB9;&#x6613;&#x60F3;&#x5230;&#x67E5;&#x8BE2;&#x65F6;&#x4F1A;&#x51FA;&#x73B0;&#x95EE;&#x9898;&#xFF08;&#x4E0B;&#x9762;&#x7684;&#x7ED3;&#x70B9;sum[]&#x6CA1;&#x6709;&#x66F4;&#x65B0;&#xFF09;&#x3002;<br>2. &#x61D2;&#x6807;&#x8BB0;&#x7684;&#x5F15;&#x5165;&#xFF0C;lazy[]&#x6807;&#x8BB0;&#x5404;&#x7ED3;&#x70B9;&#xFF0C;&#x521D;&#x59CB;&#x4E3A;0&#xFF0C;&#x8868;&#x793A;&#x672A;&#x88AB;&#x6807;&#x8BB0;&#x8FC7;&#x3002;</p>
+<ul>
+<li>&#x61D2;&#x6807;&#x8BB0;&#x5B58;&#x5728;&#x7684;&#x610F;&#x4E49;&#xFF1A;&#x672C;&#x7ED3;&#x70B9;&#x7684;&#x7EDF;&#x8BA1;&#x4FE1;&#x606F;&#x5DF2;&#x7ECF;&#x6839;&#x636E;&#x6807;&#x8BB0;&#x66F4;&#x65B0;&#x8FC7;&#x4E86;&#xFF0C;&#x4F46;&#x662F;&#x672C;&#x7ED3;&#x70B9;&#x7684;&#x5B50;&#x7ED3;&#x70B9;&#x4ECD;&#x9700;&#x8981;&#x8FDB;&#x884C;&#x66F4;&#x65B0;&#x3002;</li>
+<li>&#x6240;&#x4EE5;&#x65E0;&#x8BBA;&#x662F;&#x66F4;&#x65B0;&#x8FD8;&#x662F;&#x533A;&#x95F4;&#x6C42;&#x548C;&#xFF0C;&#x90FD;&#x8981;PushDown()&#x5224;&#x65AD;&#x4E00;&#x4E0B;lazy[rt]&#xFF0C;&#x5982;&#x679C;&#x88AB;&#x6807;&#x8BB0;&#x8FC7;&#xFF0C;&#x9700;&#x8981;&#x66F4;&#x65B0;&#x5DE6;&#x53F3;&#x5B50;&#x6811;</li>
+</ul>
+<p>&#x61D2;&#x6807;&#x8BB0;&#x5F15;&#x5165;&#x540E;&#x9700;&#x8981;&#x589E;&#x52A0;&#x7684;&#x4EE3;&#x7801;<br>&#x2014;&#x2014;&#x2014;&#x2014;&#x2014;&#x2014;&#x2014;&#x2014;&#x2014;&#x2014;&#x2014;&#x2014;&#x2014;&#x2014;&#x2014;&#x2014;&#x2014;&#x2014;&#x2014;&#x2014;&#x2014;&#x2014;&#x2014;&#x2014;&#x2014;&#x2014;&#x2014;&#x2014;&#x2014;&#x2014;&#x2014;&#x2014;&#x2014;&#x2014;</p>
+<figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">int</span> lazy[maxn&lt;&lt;<span class="number">2</span>]; </span><br><span class="line"><span class="function"><span class="keyword">void</span> <span class="title">PushDown</span><span class="params">(<span class="keyword">int</span> rt, <span class="keyword">int</span> ln, <span class="keyword">int</span> rn)</span></span>{<span class="comment">//&#x66F4;&#x65B0;&#x5B50;&#x7ED3;&#x70B9;&#xFF0C;ln rn&#x5206;&#x522B;&#x4E3A;&#x5DE6;&#x5B50;&#x6811; &#x53F3;&#x5B50;&#x6811;&#x533A;&#x95F4;&#x957F;&#x5EA6;</span></span><br><span class="line">	<span class="keyword">if</span>(lazy[rt]){</span><br><span class="line">		lazy[rt&lt;&lt;<span class="number">1</span>] += lazy[rt];</span><br><span class="line">		lazy[rt&lt;&lt;<span class="number">1</span>|<span class="number">1</span>] += lazy[rt];</span><br><span class="line">		sum[rt&lt;&lt;<span class="number">1</span>] += lazy[rt]*ln;</span><br><span class="line">		sum[rt&lt;&lt;<span class="number">1</span>|<span class="number">1</span>] += lazy[rt]*rn;</span><br><span class="line">		lazy[rt] = <span class="number">0</span>;</span><br><span class="line">	}</span><br><span class="line">}</span><br><span class="line"><span class="function"><span class="keyword">void</span> <span class="title">Update</span><span class="params">(<span class="keyword">int</span> L, <span class="keyword">int</span> R, <span class="keyword">int</span> temp, <span class="keyword">int</span> l, <span class="keyword">int</span> r, <span class="keyword">int</span> rt)</span></span>{<span class="comment">//&#x5B9E;&#x73B0; a[L,R] += temp;</span></span><br><span class="line">	<span class="keyword">if</span>(L&lt;=l &amp;&amp; r&lt;=R){<span class="comment">//&#x626B;&#x63CF;&#x7684;&#x533A;&#x95F4;&#x5305;&#x542B;&#x5728;[L,R]&#x4E2D;&#xFF0C;&#x61D2;&#x6807;&#x8BB0;&#xFF0C;&#x4E0D;&#x518D;&#x5411;&#x4E0B;&#x626B;&#x63CF;</span></span><br><span class="line">		lazy[rt] += temp;</span><br><span class="line">		sum[rt] += temp*(r-l+<span class="number">1</span>);</span><br><span class="line">		<span class="keyword">return</span>;</span><br><span class="line">	}</span><br><span class="line">	<span class="keyword">int</span> m = (l+r) &gt;&gt; <span class="number">1</span>;</span><br><span class="line">	PushDown(rt, m-l+<span class="number">1</span>, r-m);<span class="comment">//&#x5224;&#x65AD;&#x4E00;&#x4E0B;&#x662F;&#x5426;&#x6807;&#x8BB0;&#x8FC7;</span></span><br><span class="line">	<span class="keyword">if</span>(L &lt;= m)</span><br><span class="line">		Update(L, R, temp, l, m, rt&lt;&lt;<span class="number">1</span>);</span><br><span class="line">	<span class="keyword">if</span>(R &gt; m)</span><br><span class="line">		Update(L, R, temp, m+<span class="number">1</span>, r, rt&lt;&lt;<span class="number">1</span>|<span class="number">1</span>);</span><br><span class="line">	PushUp(rt);</span><br><span class="line">}</span><br><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">Query</span><span class="params">(<span class="keyword">int</span> L, <span class="keyword">int</span> R, <span class="keyword">int</span> l, <span class="keyword">int</span> r, <span class="keyword">int</span> rt)</span></span>{</span><br><span class="line">	<span class="keyword">if</span>(l&gt;=L &amp;&amp; r&lt;=R){</span><br><span class="line">		<span class="keyword">return</span> sum[rt];</span><br><span class="line">	}</span><br><span class="line">	<span class="keyword">int</span> m = (l+r) &gt;&gt; <span class="number">1</span>;</span><br><span class="line">	PushDown(rt, m-l+<span class="number">1</span>, r-m);<span class="comment">//&#x5224;&#x65AD;&#x4E00;&#x4E0B;&#x662F;&#x5426;&#x6807;&#x8BB0;&#x8FC7;</span></span><br><span class="line">	<span class="keyword">int</span> ans = <span class="number">0</span>;</span><br><span class="line">	<span class="keyword">if</span>(m &gt;= L)</span><br><span class="line">		ans += Query(L, R, l, m, rt&lt;&lt;<span class="number">1</span>);</span><br><span class="line">	<span class="keyword">if</span>(m &lt; R)</span><br><span class="line">		ans += Query(L, R, m+<span class="number">1</span>, r, rt&lt;&lt;<span class="number">1</span>|<span class="number">1</span>);</span><br><span class="line">	<span class="keyword">return</span> ans;</span><br><span class="line">}</span><br></pre></td></tr></table></figure>
+
+
+      
+    </div>
+    
+  </div>
+  
+    
+    <div class="copyright">
+        <p><span>Title:</span><a href="/2020/06/28/线段树/">线段树专题</a></p>
+        <p><span>Author:</span><a href="/" title="Back to Homepage">Weayer</a></p>
+        <p><span>Created:</span>2020-06-28, 00:00:00</p>
+        <p><span>Updated:</span>2020-06-28, 17:08:36</p>
+        <p>
+            <span>Full URL:</span><a class="post-url" href="/2020/06/28/线段树/" title="线段树专题">https://www.weayer.top/2020/06/28/线段树/</a>
+            <span class="copy-path" data-clipboard-text="From https://www.weayer.top/2020/06/28/线段树/　　By Weayer" title="Copy Article&#39;s Link &amp; Author"><i class="fa fa-clipboard"></i></span>
+            <script> var clipboard = new Clipboard('.copy-path'); </script>
+        </p>
+        <p>
+            <span>License:</span><i class="fa fa-creative-commons"></i> <a rel="license" href="http://creativecommons.org/licenses/by-nc-sa/4.0/" title="CC BY-NC-SA 4.0 International" target = "_blank">"CC BY-NC-SA 4.0"</a> Keep Link &amp; Author if Distribute.
+        </p>
+    </div>
+
+
+
+    <nav id="article-nav">
+        
+            <div id="article-nav-newer" class="article-nav-title">
+                <a href="/2020/06/30/蓝桥-带分数/">
+                    ·【蓝桥】·带分数
+                </a>
+            </div>
+        
+        
+            <div id="article-nav-older" class="article-nav-title">
+                <a href="/2020/06/28/逆序数/">
+                    逆序数
+                </a>
+            </div>
+        
+    </nav>
+
+  
+</article>
+
+    <div id="toc" class="toc-article">
+        <strong class="toc-title">Contents</strong>
+        
+            <ol class="toc"><li class="toc-item toc-level-3"><a class="toc-link" href="#线段树实现单点更新、区间求和"><span class="toc-number">1.</span> <span class="toc-text">线段树实现单点更新、区间求和</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#线段树实现区间更新、区间求和"><span class="toc-number">2.</span> <span class="toc-text">线段树实现区间更新、区间求和</span></a></li></ol>
+        
+    </div>
+    <style>
+        .left-col .switch-btn,
+        .left-col .switch-area {
+            display: none;
+        }
+        .toc-level-3 i,
+        .toc-level-3 ol {
+            display: none !important;
+        }
+    </style>
+
+    <input type="button" id="tocButton" value="Hide"  title="Show or Hide Table of Contents">
+
+    <script>
+        yiliaConfig.toc = ["Hide", "Show", !!"false"];
+    </script>
+
+
+
+    
+<div class="share">
+    
+        <div class="bdsharebuttonbox">
+            <a href="#" class="fa fa-twitter bds_twi" data-cmd="twi" title="分享到推特"></a>
+            <a href="#" class="fa fa-weibo bds_tsina" data-cmd="tsina" title="分享到新浪微博"></a>
+            <a href="#" class="fa fa-qq bds_sqq" data-cmd="sqq" title="分享给 QQ 好友"></a>
+            <a href="#" class="fa fa-files-o bds_copy" data-cmd="copy" title="复制网址"></a>
+            <a href="#" class="fa fa fa-envelope-o bds_mail" data-cmd="mail" title="通过邮件分享"></a>
+            <a href="#" class="fa fa-weixin bds_weixin" data-cmd="weixin" title="生成文章二维码"></a>
+            <a href="#" class="fa fa-share-alt bds_more" data-cmd="more"></i></a>
+        </div>
+        <script>
+            window._bd_share_config={
+                "common":{"bdSnsKey":{},"bdText":"线段树专题　| weayer's blog　","bdMini":"2","bdMiniList":false,"bdPic":"","bdStyle":"0","bdSize":"24"},"share":{}};with(document)0[(getElementsByTagName('head')[0]||body).appendChild(createElement('script')).src='http://bdimg.share.baidu.com/static/api/js/share.js?v=89860593.js?cdnversion='+~(-new Date()/36e5)];
+        </script>
+    
+
+    
+</div>
+
+
+
+
+
+
+
+    
+
+
+
+
+    <div class="scroll" id="post-nav-button">
+        
+            <a href="/2020/06/30/蓝桥-带分数/" title="Pre: ·【蓝桥】·带分数">
+                <i class="fa fa-angle-left"></i>
+            </a>
+        
+
+        <a title="Mini Archives"><i class="fa fa-bars"></i><i class="fa fa-times"></i></a>
+
+        
+            <a href="/2020/06/28/逆序数/" title="Next: 逆序数">
+                <i class="fa fa-angle-right"></i>
+            </a>
+        
+    </div>
+
+    <ul class="post-list"><li class="post-list-item"><a class="post-list-link" href="/2020/09/16/蓝桥-剪邮票/">·【蓝桥】·剪邮票</a></li><li class="post-list-item"><a class="post-list-link" href="/2020/09/16/蓝桥-交换瓶子/">·【蓝桥】·交换瓶子</a></li><li class="post-list-item"><a class="post-list-link" href="/2020/09/12/全排列/">全排列（去重和不去重）</a></li><li class="post-list-item"><a class="post-list-link" href="/2020/09/01/商汤AI园区的n个路口（简单）/">商汤AI园区的n个路口（简单）</a></li><li class="post-list-item"><a class="post-list-link" href="/2020/09/01/商汤的AI伴游小精灵/">·【计蒜客】·商汤的AI伴游小精灵</a></li><li class="post-list-item"><a class="post-list-link" href="/2020/08/19/蓝桥-四平方和/">·【蓝桥】·四平方和</a></li><li class="post-list-item"><a class="post-list-link" href="/2020/08/17/蓝桥-青蛙跳杯子/">·【蓝桥】·青蛙跳杯子</a></li><li class="post-list-item"><a class="post-list-link" href="/2020/08/16/蓝桥-九宫幻方/">·【蓝桥】·九宫幻方</a></li><li class="post-list-item"><a class="post-list-link" href="/2020/08/16/蓝桥-拉马车/">·【蓝桥】·拉马车</a></li><li class="post-list-item"><a class="post-list-link" href="/2020/08/11/蓝桥-Excel地址/">蓝桥-Excel地址</a></li><li class="post-list-item"><a class="post-list-link" href="/2020/08/11/蓝桥-正则问题/">蓝桥-正则问题</a></li><li class="post-list-item"><a class="post-list-link" href="/2020/07/12/牛客-Rabbit的工作/">牛客-Rabbit的工作</a></li><li class="post-list-item"><a class="post-list-link" href="/2020/07/05/蓝桥-分考场/">蓝桥-分考场</a></li><li class="post-list-item"><a class="post-list-link" href="/2020/06/30/蓝桥-带分数/">·【蓝桥】·带分数</a></li><li class="post-list-item"><a class="post-list-link" href="/2020/06/28/线段树/">线段树专题</a></li><li class="post-list-item"><a class="post-list-link" href="/2020/06/28/逆序数/">逆序数</a></li><li class="post-list-item"><a class="post-list-link" href="/2020/06/27/树状数组/">树状数组专题</a></li><li class="post-list-item"><a class="post-list-link" href="/2020/06/27/数学公式及符号/">Markdown数学公式及符号汇总</a></li><li class="post-list-item"><a class="post-list-link" href="/2020/06/19/蓝桥-买不到的数目/">·【蓝桥】·买不到的数目</a></li><li class="post-list-item"><a class="post-list-link" href="/2020/06/17/图的遍历/">图的遍历（邻接矩阵、邻接表）</a></li><li class="post-list-item"><a class="post-list-link" href="/2020/06/17/蓝桥-小朋友排队/">·【蓝桥】·小朋友排队（归并、树状数组）</a></li><li class="post-list-item"><a class="post-list-link" href="/2020/06/11/最短路径/">最短路径专题（Dijkstra、Floyd、Bellman-Ford即优化）</a></li><li class="post-list-item"><a class="post-list-link" href="/2020/06/04/n皇后问题/">n皇后问题</a></li><li class="post-list-item"><a class="post-list-link" href="/2020/05/31/牛客-减成一/">牛客-减成一</a></li><li class="post-list-item"><a class="post-list-link" href="/2020/05/16/数组实现简单链表/">数组实现链表</a></li><li class="post-list-item"><a class="post-list-link" href="/2020/05/16/牛客-邻值查找/">牛客-邻值查找</a></li><li class="post-list-item"><a class="post-list-link" href="/2020/05/14/并查集/">并查集及优化（路径压缩+按秩合并）</a></li><li class="post-list-item"><a class="post-list-link" href="/2020/05/08/LIS（队列优化+二分）/">LIS优化</a></li><li class="post-list-item"><a class="post-list-link" href="/2020/05/08/真分数的最大埃及分数/">真分数的最大埃及分数</a></li><li class="post-list-item"><a class="post-list-link" href="/2020/04/28/蓝桥-包子凑数/">·【蓝桥】·包子凑数</a></li><li class="post-list-item"><a class="post-list-link" href="/2020/04/25/Github-Coding（理想很丰满）/">Github+coding（理想很丰满）</a></li><li class="post-list-item"><a class="post-list-link" href="/2020/04/24/模运算的运用/">模运算的运用</a></li><li class="post-list-item"><a class="post-list-link" href="/2020/04/01/4月1日我成功地被mysql给愚弄了/">4月1日我成功地被mysql给愚弄了</a></li><li class="post-list-item"><a class="post-list-link" href="/2020/03/28/Dp-ST/">Dp-ST表（求解RMP）</a></li><li class="post-list-item"><a class="post-list-link" href="/2020/03/28/蓝桥-晚会节目单/">·【蓝桥】晚会节目单（ST表）</a></li><li class="post-list-item"><a class="post-list-link" href="/2020/03/11/Extend-Eculid/">Extend_Eculid</a></li><li class="post-list-item"><a class="post-list-link" href="/2020/03/11/ax-by-c问题/">Ax+By=C问题</a></li><li class="post-list-item"><a class="post-list-link" href="/2020/03/10/51nod-1009数字1的数量/">·【51nod-1009】数字1的数量</a></li><li class="post-list-item"><a class="post-list-link" href="/2020/03/10/dp-digit/">Dp-digit</a></li><li class="post-list-item"><a class="post-list-link" href="/2020/03/07/NOIP-2015-POJ-2456/">·【NOIP-2015】·【POJ-2456】</a></li><li class="post-list-item"><a class="post-list-link" href="/2020/03/05/heap/">heap</a></li><li class="post-list-item"><a class="post-list-link" href="/2020/02/28/High-precision1/">n的阶乘(High-precision)</a></li><li class="post-list-item"><a class="post-list-link" href="/2020/02/28/Inverse/">Inverse</a></li><li class="post-list-item"><a class="post-list-link" href="/2020/02/07/Sliding-window/">Sliding Window</a></li><li class="post-list-item"><a class="post-list-link" href="/2019/12/02/Merge-Sort/">Merge Sort</a></li><li class="post-list-item"><a class="post-list-link" href="/2019/12/01/Stack/">Stack</a></li><li class="post-list-item"><a class="post-list-link" href="/2019/11/30/Queue-0/">Queue</a></li><li class="post-list-item"><a class="post-list-link" href="/2019/10/26/Lnode/">Lnode</a></li><li class="post-list-item"><a class="post-list-link" href="/2019/10/26/hey-piggy/">hey-piggy</a></li></ul>
+
+
+
+
+    <script>
+        
+    </script>
+</div>
+      <footer id="footer">
+    <div class="outer">
+        <div id="footer-info">
+            <div class="footer-left">
+                <i class="fa fa-copyright"></i> 
+                2016-2020 Weayer
+            </div>
+            <div class="footer-right">
+                <a href="http://hexo.io/" target="_blank" title="A fast, simple &amp; powerful blog framework">Hexo</a>  Theme <a href="https://github.com/MOxFIVE/hexo-theme-yelee" target="_blank" title="Another simple and elegant theme for Hexo  v3.5">Yelee</a> by MOxFIVE <i class="fa fa-heart animated infinite pulse"></i>
+            </div>
+        </div>
+        
+            <div class="visit">
+                
+                    <span id="busuanzi_container_site_pv" style='display:none'>
+                        <span id="site-visit" title="Site Visitors"><i class="fa fa-user" aria-hidden="true"></i><span id="busuanzi_value_site_uv"></span>
+                        </span>
+                    </span>
+                
+                
+                    <span>| </span>
+                
+                
+                    <span id="busuanzi_container_page_pv" style='display:none'>
+                        <span id="page-visit"  title="Page Hits"><i class="fa fa-eye animated infinite pulse" aria-hidden="true"></i><span id="busuanzi_value_page_pv"></span>
+                        </span>
+                    </span>
+                
+            </div>
+        
+    </div>
+</footer>
+    </div>
+    
+<script data-main="/js/main.js" src="//cdn.bootcss.com/require.js/2.2.0/require.min.js"></script>
+
+    <script>
+        $(document).ready(function() {
+            var iPad = window.navigator.userAgent.indexOf('iPad');
+            if (iPad > -1 || $(".left-col").css("display") === "none") {
+                var bgColorList = ["#9db3f4", "#414141", "#e5a859", "#f5dfc6", "#c084a0", "#847e72", "#cd8390", "#996731"];
+                var bgColor = Math.ceil(Math.random() * (bgColorList.length - 1));
+                $("body").css({"background-color": bgColorList[bgColor], "background-size": "cover"});
+            }
+            else {
+                var backgroundnum = 5;
+                var backgroundimg = "url(/background/bg-x.jpg)".replace(/x/gi, Math.ceil(Math.random() * backgroundnum));
+                $("body").css({"background": backgroundimg, "background-attachment": "fixed", "background-size": "cover"});
+            }
+        })
+    </script>
+
+
+
+
+
+    <script type="text/x-mathjax-config">
+MathJax.Hub.Config({
+    tex2jax: {
+        inlineMath: [ ['$','$'], ["\\(","\\)"]  ],
+        processEscapes: true,
+        skipTags: ['script', 'noscript', 'style', 'textarea', 'pre', 'code']
+    }
+});
+
+MathJax.Hub.Queue(function() {
+    var all = MathJax.Hub.getAllJax(), i;
+    for(i=0; i < all.length; i += 1) {
+        all[i].SourceElement().parentNode.className += ' has-jax';                 
+    }       
+});
+</script>
+
+<script src="//cdn.bootcss.com/mathjax/2.6.1/MathJax.js?config=TeX-AMS-MML_HTMLorMML">
+</script>
+
+
+<div class="scroll" id="scroll">
+    <a href="#" title="Back to Top"><i class="fa fa-arrow-up"></i></a>
+    <a href="#comments" onclick="load$hide();" title="Comments"><i class="fa fa-comments-o"></i></a>
+    <a href="#footer" title="Go to Bottom"><i class="fa fa-arrow-down"></i></a>
+</div>
+<script>
+    // Open in New Window
+    
+        var oOpenInNew = {
+            
+            
+            
+            
+            
+            
+             archives: ".archive-article-title", 
+             miniArchives: "a.post-list-link", 
+            
+             friends: "#js-friends a", 
+             socail: ".social a" 
+        }
+        for (var x in oOpenInNew) {
+            $(oOpenInNew[x]).attr("target", "_blank");
+        }
+    
+</script>
+
+<script async src="https://dn-lbstatics.qbox.me/busuanzi/2.3/busuanzi.pure.mini.js">
+</script>
+  </div>
+</body>
+</html>

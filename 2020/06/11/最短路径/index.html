@@ -1,0 +1,633 @@
+<!DOCTYPE html>
+<html lang="en">
+<head><meta name="generator" content="Hexo 3.9.0">
+
+    <!--[if lt IE 9]>
+        <style>body {display: none; background: none !important} </style>
+        <meta http-equiv="Refresh" Content="0; url=//outdatedbrowser.com/" />
+    <![endif]-->
+
+<meta charset="utf-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge, chrome=1">
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
+<meta name="format-detection" content="telephone=no">
+<meta name="author" content="Weayer">
+
+
+
+<meta name="description" content="[TOC]     Flody Dijkstra &amp;#x5806;&amp;#x4F18;&amp;#x5316;&amp;#x7684;Dijkstra Bellman-Ford &amp;#x961F;&amp;#x5217;&amp;#x4F18;&amp;#x5316;&amp;#x7684;Bellman-Ford    &amp;#x65F6;&amp;#x95F4;&amp;#x590D;&amp;#x6742;&amp;#x5EA6; O($N^3$) O($N^2$) O((M+N">
+<meta name="keywords" content="动态规划,队列,堆,贪心">
+<meta property="og:type" content="article">
+<meta property="og:title" content="最短路径专题（Dijkstra、Floyd、Bellman-Ford即优化）">
+<meta property="og:url" content="https://www.weayer.top/2020/06/11/最短路径/index.html">
+<meta property="og:site_name" content="weayer&#39;s blog">
+<meta property="og:description" content="[TOC]     Flody Dijkstra &amp;#x5806;&amp;#x4F18;&amp;#x5316;&amp;#x7684;Dijkstra Bellman-Ford &amp;#x961F;&amp;#x5217;&amp;#x4F18;&amp;#x5316;&amp;#x7684;Bellman-Ford    &amp;#x65F6;&amp;#x95F4;&amp;#x590D;&amp;#x6742;&amp;#x5EA6; O($N^3$) O($N^2$) O((M+N">
+<meta property="og:locale" content="en">
+<meta property="og:updated_time" content="2020-06-17T13:11:01.785Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="最短路径专题（Dijkstra、Floyd、Bellman-Ford即优化）">
+<meta name="twitter:description" content="[TOC]     Flody Dijkstra &amp;#x5806;&amp;#x4F18;&amp;#x5316;&amp;#x7684;Dijkstra Bellman-Ford &amp;#x961F;&amp;#x5217;&amp;#x4F18;&amp;#x5316;&amp;#x7684;Bellman-Ford    &amp;#x65F6;&amp;#x95F4;&amp;#x590D;&amp;#x6742;&amp;#x5EA6; O($N^3$) O($N^2$) O((M+N">
+
+<link rel="apple-touch-icon" href="/apple-touch-icon.png">
+
+
+    <link rel="alternate" href="/atom.xml" title="weayer&#39;s blog" type="application/atom+xml">
+
+
+
+    <link rel="shortcut icon" href="/favicon.png">
+
+
+
+    <link href="//cdn.bootcss.com/animate.css/3.5.1/animate.min.css" rel="stylesheet">
+
+
+
+    <link href="//cdn.bootcss.com/fancybox/2.1.5/jquery.fancybox.min.css" rel="stylesheet">
+
+
+
+    <script src="//cdn.bootcss.com/pace/1.0.2/pace.min.js"></script>
+    <link href="//cdn.bootcss.com/pace/1.0.2/themes/blue/pace-theme-minimal.css" rel="stylesheet">
+
+
+<link rel="stylesheet" href="/css/style.css">
+
+
+
+<link href="//cdn.bootcss.com/font-awesome/4.6.3/css/font-awesome.min.css" rel="stylesheet">
+
+
+<title>最短路径专题（Dijkstra、Floyd、Bellman-Ford即优化） | weayer&#39;s blog</title>
+
+<script src="//cdn.bootcss.com/jquery/2.2.4/jquery.min.js"></script>
+<script src="//cdn.bootcss.com/clipboard.js/1.5.10/clipboard.min.js"></script>
+
+<script>
+    var yiliaConfig = {
+        fancybox: true,
+        animate: true,
+        isHome: false,
+        isPost: true,
+        isArchive: false,
+        isTag: false,
+        isCategory: false,
+        fancybox_js: "//cdn.bootcss.com/fancybox/2.1.5/jquery.fancybox.min.js",
+        scrollreveal: "//cdn.bootcss.com/scrollReveal.js/3.1.4/scrollreveal.min.js",
+        search: false
+    }
+</script>
+
+
+    <script> yiliaConfig.jquery_ui = [false]; </script>
+
+
+
+    <script> yiliaConfig.rootUrl = "\/";</script>
+
+
+
+
+
+    <script>
+        var _hmt = _hmt || [];
+        (function() {
+            var hm = document.createElement("script");
+            hm.src = "//hm.baidu.com/hm.js?8c70833ee0194776a494dd5209d32b72";
+            var s = document.getElementsByTagName("script")[0]; 
+            s.parentNode.insertBefore(hm, s);
+        })();
+    </script>
+
+
+</head></html>
+<body>
+  <div id="container">
+    <div class="left-col">
+    <div class="overlay"></div>
+<div class="intrude-less">
+    <header id="header" class="inner">
+        <a href="/" class="profilepic">
+            <img src="/img/head.jpg" class="animated zoomIn">
+        </a>
+        <hgroup>
+          <h1 class="header-author"><a href="/">Weayer</a></h1>
+        </hgroup>
+
+        
+        <p class="header-subtitle">把生命浪费在美好的事物上</p>
+        
+
+        
+
+
+        
+            <div id="switch-btn" class="switch-btn">
+                <div class="icon">
+                    <div class="icon-ctn">
+                        <div class="icon-wrap icon-house" data-idx="0">
+                            <div class="birdhouse"></div>
+                            <div class="birdhouse_holes"></div>
+                        </div>
+                        <div class="icon-wrap icon-ribbon hide" data-idx="1">
+                            <div class="ribbon"></div>
+                        </div>
+                        
+                        <div class="icon-wrap icon-link hide" data-idx="2">
+                            <div class="loopback_l"></div>
+                            <div class="loopback_r"></div>
+                        </div>
+                        
+                        
+                        <div class="icon-wrap icon-me hide" data-idx="3">
+                            <div class="user"></div>
+                            <div class="shoulder"></div>
+                        </div>
+                        
+                    </div>
+                    
+                </div>
+                <div class="tips-box hide">
+                    <div class="tips-arrow"></div>
+                    <ul class="tips-inner">
+                        <li>Menu</li>
+                        <li>Tags</li>
+                        
+                        <li>Friends</li>
+                        
+                        
+                        <li>About Me</li>
+                        
+                    </ul>
+                </div>
+            </div>
+        
+
+        <div id="switch-area" class="switch-area">
+            <div class="switch-wrap">
+                <section class="switch-part switch-part1">
+                    <nav class="header-menu">
+                        <ul>
+                        
+                            <li><a href="/">主页</a></li>
+                        
+                            <li><a href="/archives/">所有文章</a></li>
+                        
+                            <li><a href="/tags/">标签云</a></li>
+                        
+                            <li><a href="/about/">关于我</a></li>
+                        
+                        </ul>
+                    </nav>
+                    <nav class="header-nav">
+                        <ul class="social">
+                            
+                                <a class="fa Email" href="mailto:123@123.com" title="Email"></a>
+                            
+                                <a class="fa GitHub" href="#" title="GitHub"></a>
+                            
+                                <a class="fa RSS" href="/atom.xml" title="RSS"></a>
+                            
+                        </ul>
+                    </nav>
+                </section>
+                
+                
+                <section class="switch-part switch-part2">
+                    <div class="widget tagcloud" id="js-tagcloud">
+                        <ul class="tag-list"><li class="tag-list-item"><a class="tag-list-link" href="/tags/hexo/">hexo</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/mysql/">mysql</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/二分/">二分</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/动态规划/">动态规划</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/哈希/">哈希</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/图/">图</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/堆/">堆</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/字符串/">字符串</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/差分/">差分</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/排序/">排序</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/搜索/">搜索</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/数论/">数论</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/枚举/">枚举</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/查找/">查找</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/栈/">栈</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/树/">树</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/模拟/">模拟</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/模运算/">模运算</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/蓝桥/">蓝桥</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/贪心/">贪心</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/逆元/">逆元</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/递归/">递归</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/递归回溯/">递归回溯</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/链表/">链表</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/队列/">队列</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/雪的教训/">雪的教训</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/高精度/">高精度</a></li></ul>
+                    </div>
+                </section>
+                
+                
+                
+                <section class="switch-part switch-part3">
+                    <div id="js-friends">
+                    
+                      <a class="main-nav-link switch-friends-link" href="https://hexo.io">Hexo</a>
+                    
+                      <a class="main-nav-link switch-friends-link" href="https://pages.github.com/">GitHub</a>
+                    
+                      <a class="main-nav-link switch-friends-link" href="http://moxfive.xyz/">MOxFIVE</a>
+                    
+                    </div>
+                </section>
+                
+
+                
+                
+                <section class="switch-part switch-part4">
+                
+                    <div id="js-aboutme">专注于前端</div>
+                </section>
+                
+            </div>
+        </div>
+    </header>                
+</div>
+    </div>
+    <div class="mid-col">
+      <nav id="mobile-nav">
+      <div class="overlay">
+          <div class="slider-trigger"></div>
+          <h1 class="header-author js-mobile-header hide"><a href="/" title="回到主页">Weayer</a></h1>
+      </div>
+    <div class="intrude-less">
+        <header id="header" class="inner">
+            <a href="/" class="profilepic">
+                <img src="/img/head.jpg" class="animated zoomIn">
+            </a>
+            <hgroup>
+              <h1 class="header-author"><a href="/" title="回到主页">Weayer</a></h1>
+            </hgroup>
+            
+            <p class="header-subtitle">把生命浪费在美好的事物上</p>
+            
+            <nav class="header-menu">
+                <ul>
+                
+                    <li><a href="/">主页</a></li>
+                
+                    <li><a href="/archives/">所有文章</a></li>
+                
+                    <li><a href="/tags/">标签云</a></li>
+                
+                    <li><a href="/about/">关于我</a></li>
+                
+                <div class="clearfix"></div>
+                </ul>
+            </nav>
+            <nav class="header-nav">
+                        <ul class="social">
+                            
+                                <a class="fa Email" target="_blank" href="mailto:123@123.com" title="Email"></a>
+                            
+                                <a class="fa GitHub" target="_blank" href="#" title="GitHub"></a>
+                            
+                                <a class="fa RSS" target="_blank" href="/atom.xml" title="RSS"></a>
+                            
+                        </ul>
+            </nav>
+        </header>                
+    </div>
+    <link class="menu-list" tags="Tags" friends="Friends" about="About Me"/>
+</nav>
+      <div class="body-wrap"><article id="post-最短路径" class="article article-type-post" itemscope itemprop="blogPost">
+  
+    <div class="article-meta">
+      <a href="/2020/06/11/最短路径/" class="article-date">
+      <time datetime="2020-06-10T16:00:00.000Z" itemprop="datePublished">2020-06-11</time>
+</a>
+
+
+    </div>
+  
+  <div class="article-inner">
+    
+      <input type="hidden" class="isFancy" />
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 class="article-title" itemprop="name">
+      最短路径专题（Dijkstra、Floyd、Bellman-Ford即优化）
+    </h1>
+  
+
+      </header>
+      
+      <div class="article-info article-info-post">
+        
+    <div class="article-category tagcloud">
+    <a class="article-category-link" href="/categories/数据结构与算法/">数据结构与算法</a>
+    </div>
+
+
+        
+    <div class="article-tag tagcloud">
+        <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/动态规划/">动态规划</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/堆/">堆</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/贪心/">贪心</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/队列/">队列</a></li></ul>
+    </div>
+
+        <div class="clearfix"></div>
+      </div>
+      
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+          
+        <p>[TOC]</p>
+<table>
+<thead>
+<tr>
+<th align="center"></th>
+<th align="center">Flody</th>
+<th>Dijkstra</th>
+<th align="center">&#x5806;&#x4F18;&#x5316;&#x7684;Dijkstra</th>
+<th align="center">Bellman-Ford</th>
+<th align="center">&#x961F;&#x5217;&#x4F18;&#x5316;&#x7684;Bellman-Ford</th>
+</tr>
+</thead>
+<tbody><tr>
+<td align="center">&#x65F6;&#x95F4;&#x590D;&#x6742;&#x5EA6;</td>
+<td align="center">O($N^3$)</td>
+<td>O($N^2$)</td>
+<td align="center">O((M+N)logN)</td>
+<td align="center">O(MN)</td>
+<td align="center">&#x6700;&#x574F;O(MN)</td>
+</tr>
+<tr>
+<td align="center">&#x9002;&#x7528;&#x60C5;&#x51B5;</td>
+<td align="center">&#x7A20;&#x5BC6;&#x56FE;<br>&#x548C;&#x9876;&#x70B9;&#x5173;&#x7CFB;&#x5BC6;&#x5207;</td>
+<td>&#x7A20;&#x5BC6;&#x56FE;<br>&#x548C;&#x5B9A;&#x70B9;&#x5173;&#x7CFB;&#x5BC6;&#x5207;</td>
+<td align="center">&#x7A20;&#x5BC6;&#x56FE;<br>&#x548C;&#x5B9A;&#x70B9;&#x5173;&#x7CFB;&#x5BC6;&#x5207;</td>
+<td align="center">&#x7A00;&#x758F;&#x56FE;<br>&#x548C;&#x8FB9;&#x5173;&#x7CFB;&#x5BC6;&#x5207;</td>
+<td align="center">&#x7A00;&#x758F;&#x56FE;<br>&#x548C;&#x8FB9;&#x5173;&#x7CFB;&#x5BC6;&#x5207;</td>
+</tr>
+<tr>
+<td align="center">&#x8D1F;&#x6743;</td>
+<td align="center">&#x53EF;&#x4EE5;&#x89E3;&#x51B3;&#x8D1F;&#x6743;</td>
+<td>&#x4E0D;&#x80FD;&#x89E3;&#x51B3;&#x8D1F;&#x6743;</td>
+<td align="center">&#x4E0D;&#x80FD;&#x89E3;&#x51B3;&#x8D1F;&#x6743;</td>
+<td align="center">&#x53EF;&#x4EE5;&#x89E3;&#x51B3;&#x8D1F;&#x6743;</td>
+<td align="center">&#x53EF;&#x4EE5;&#x89E3;&#x51B3;&#x8D1F;&#x6743;</td>
+</tr>
+</tbody></table>
+<h3 id="&#x4E94;&#x884C;&#x4EE3;&#x7801;&#x7684;Flody"><a href="#&#x4E94;&#x884C;&#x4EE3;&#x7801;&#x7684;Flody" class="headerlink" title="&#x4E94;&#x884C;&#x4EE3;&#x7801;&#x7684;Flody"></a>&#x4E94;&#x884C;&#x4EE3;&#x7801;&#x7684;Flody</h3><p>&#x770B;&#x5230;$N^3$&#x7684;&#x65F6;&#x95F4;&#x590D;&#x6742;&#x5EA6;&#x4E0D;&#x8981;&#x4E00;&#x8138;&#x77A7;&#x4E0D;&#x8D77;&#xFF0C;&#x4EBA;&#x5BB6;&#x7B97;&#x7684;&#x53EF;&#x662F;&#x4EFB;&#x610F;&#x4E24;&#x70B9;&#x95F4;&#x7684;&#x6700;&#x77ED;&#x8DDD;&#x79BB;&#x3002;<br><strong>&#x7B97;&#x6CD5;&#x5206;&#x6790;</strong><br>edge[i][j]&#x9996;&#x5148;&#x8868;&#x793A;i&#x53F7;&#x9876;&#x70B9;&#x5230;j&#x53F7;&#x9876;&#x70B9;&#x7684;&#x8DEF;&#x7A0B;&#xFF0C;&#x6211;&#x4EEC;&#x5E0C;&#x671B;&#x6700;&#x7EC8;&#x5B83;&#x5B58;&#x50A8;&#x7684;&#x662F;i&#x5230;j&#x7684;&#x6700;&#x77ED;&#x8DDD;&#x79BB;<br>&#x5982;&#x679C;&#x53EA;&#x5141;&#x8BB8;&#x7ECF;&#x8FC7;1&#x53F7;&#x70B9;&#xFF0C;&#x6C42;i&#x5230;j&#x7684;&#x6700;&#x77ED;&#x8DDD;&#x79BB;&#xFF0C;&#x90A3;&#x4E48;&#x53EA;&#x9700;i&#xFF0C;j&#x90FD;&#x904D;&#x5386;1~m&#x6B21;</p>
+<figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">for</span>(<span class="keyword">int</span> i = <span class="number">1</span>; i &lt;=m; ++i)</span><br><span class="line">    <span class="keyword">for</span>(<span class="keyword">int</span> j = <span class="number">1</span>; j &lt;=m; ++j)</span><br><span class="line">        <span class="keyword">if</span>(edge[i][j] &gt; edge[i][<span class="number">1</span>]+edge[<span class="number">1</span>][j])</span><br><span class="line">            edge[i][j] = edge[i][<span class="number">1</span>]+edge[<span class="number">1</span>][j];</span><br></pre></td></tr></table></figure>
+
+<p>&#x5982;&#x679C;&#x53EA;&#x628A;1&#x53F7;&#x6362;&#x6210;2&#x53F7;&#x70B9;&#xFF0C;&#x518D;&#x6267;&#x884C;&#x4E00;&#x904D;&#x4E0A;&#x9762;&#x7684;&#x7A0B;&#x5E8F;&#xFF0C;&#x5F97;&#x5230;&#x7684;&#x5C31;&#x662F;&#x53EA;&#x5141;&#x8BB8;&#x7ECF;&#x8FC7;1&#x53F7;&#x3001;2&#x53F7;&#x4E24;&#x4E2A;&#x9876;&#x70B9;i&#x5230;j&#x7684;&#x6700;&#x77ED;&#x8DDD;&#x79BB;&#xFF1B;<br>&#x90A3;&#x4E48;&#x6267;&#x884C;m&#x6B21;&#xFF0C;&#x5C31;&#x5F97;&#x5230;i&#x5230;j&#x7684;&#x6700;&#x77ED;&#x8DDD;&#x79BB;&#x4E86;&#xFF1F;<br>&#x5047;&#x8BBE;i&#x5230;j&#x7684;&#x6700;&#x77ED;&#x8DEF;&#x7ECF;&#x4E3A;i&#x3001;d&#x3001;k&#x3001;m&#x3001;j&#xFF1B;<br>Flody&#x7528;&#x5230;&#x4E86;&#x52A8;&#x6001;&#x89C4;&#x5212;&#x7684;&#x601D;&#x60F3;&#xFF1A;</p>
+<ul>
+<li>&#x91CD;&#x590D;&#x5B50;&#x95EE;&#x9898;&#xFF1A;&#x6C42;i&#x5230;j&#x7684;&#x6700;&#x77ED;&#x8DEF;&#x9700;&#x8981;&#x77E5;&#x9053;i&#x5230;m&#x7684;&#x6700;&#x77ED;&#x8DEF;&#x3001;&#x6C42;i&#x5230;m&#x7684;&#x6700;&#x77ED;&#x8DEF;&#x9700;&#x8981;i&#x5230;k&#x7684;&#x6700;&#x77ED;&#x8DEF;&#x2026;&#x2026;</li>
+<li>&#x6700;&#x4F18;&#x5B50;&#x7ED3;&#x6784;&#xFF1A;&#x6700;&#x77ED;&#x8DEF;&#xFF08;i,j&#xFF09;=&#x6700;&#x77ED;&#x8DEF;&#xFF08;i&#xFF0C;m&#xFF09;+edge[m,j]<br>&#x4E8E;&#x662F;&#x6211;&#x4EEC;&#x53EF;&#x4EE5;&#x7528;&#x4E00;&#x6BB5;&#x8BDD;&#x6982;&#x62EC;Flody&#x7684;&#x7B97;&#x6CD5;&#x601D;&#x60F3;&#x4E86;&#x3002;</li>
+</ul>
+<p><strong>&#x7B97;&#x6CD5;&#x601D;&#x60F3;</strong><br>&#x6700;&#x5F00;&#x59CB;&#x53EA;&#x5141;&#x8BB8;&#x7ECF;&#x8FC7;1&#x53F7;&#x9876;&#x70B9;&#x8FDB;&#x884C;&#x4E2D;&#x8F6C;&#xFF0C;&#x63A5;&#x4E0B;&#x6765;&#x5141;&#x8BB8;&#x7ECF;&#x8FC7;1&#x53F7;&#x548C;2&#x53F7;&#x9876;&#x70B9;&#x8FDB;&#x884C;&#x4E2D;&#x8F6C;&#x2026;&#x2026;<br>&#x5141;&#x8BB8;&#x7ECF;&#x8FC7;1~n&#x53F7;&#x6240;&#x6709;&#x9876;&#x70B9;&#x8FDB;&#x884C;&#x4E2D;&#x8F6C;&#xFF0C;&#x6C42;&#x5F97;&#x4EFB;&#x610F;&#x4E24;&#x70B9;&#x95F4;&#x7684;&#x6700;&#x77ED;&#x8DDD;&#x79BB;&#x3002;<br>Flody&#x6838;&#x5FC3;&#x4EE3;&#x7801;&#xFF1A;</p>
+<figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">for</span>(k=<span class="number">1</span>; k&lt;=m; k++)</span><br><span class="line">		<span class="keyword">for</span>(i=<span class="number">1</span>; i&lt;=m; i++)</span><br><span class="line">			<span class="keyword">for</span>(j=<span class="number">1</span>; j&lt;=m; j++)</span><br><span class="line">				<span class="keyword">if</span>(edge[i][j]&gt;edge[i][k]+edge[k][j])</span><br><span class="line">					edge[i][j]=edge[i][k]+edge[k][j];</span><br></pre></td></tr></table></figure>
+
+<p>&#x2014;&#x2014;&#x2014;&#x2014;&#x2014;&#x2014;&#x2014;&#x2014;&#x2014;&#x2014;&#x2014;&#x2014;&#x2014;&#x2014;&#x2014;&#x2014;&#x2014;&#x2014;&#x2014;&#x2014;&#x2014;&#x2014;&#x4EE3;&#x7801;&#x5982;&#x4E0B;&#x2014;&#x2014;&#x2014;&#x2014;&#x2014;&#x2014;&#x2014;&#x2014;&#x2014;&#x2014;&#x2014;&#x2014;&#x2014;&#x2014;&#x2014;&#x2014;&#x2014;&#x2014;&#x2014;&#x2014;&#x2014;&#x2014;&#x2014;&#x2014;&#x2014;&#x2014;&#x2014;</p>
+<figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">//Floyd</span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;cstdio&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;iostream&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">define</span> M 100</span></span><br><span class="line"></span><br><span class="line"><span class="keyword">using</span> <span class="keyword">namespace</span> <span class="built_in">std</span>;</span><br><span class="line"></span><br><span class="line"><span class="keyword">const</span> <span class="keyword">int</span> INF=<span class="number">0x3f3f3f3f</span>;</span><br><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">main</span><span class="params">()</span></span></span><br><span class="line"><span class="function"></span>{</span><br><span class="line">	<span class="keyword">int</span> i,k,j,m,n,s,e,value;</span><br><span class="line">	<span class="keyword">int</span> edge[M][M];</span><br><span class="line">	<span class="built_in">cin</span>&gt;&gt;m&gt;&gt;n;  <span class="comment">//&#x70B9;&#x6570;m&#xFF0C;&#x8FB9;&#x6570;n</span></span><br><span class="line">	<span class="keyword">for</span>(i=<span class="number">1</span>; i&lt;=m; i++)</span><br><span class="line">	{</span><br><span class="line">		<span class="keyword">for</span>(j=<span class="number">1</span>; j&lt;=m; j++)</span><br><span class="line">		{</span><br><span class="line">			<span class="keyword">if</span>(i==j)</span><br><span class="line">				edge[i][j]=<span class="number">0</span>;</span><br><span class="line">			<span class="keyword">else</span></span><br><span class="line">				edge[i][j]=INF;</span><br><span class="line">		}</span><br><span class="line">	}</span><br><span class="line">	<span class="keyword">for</span>(i=<span class="number">0</span>; i&lt;n; i++)</span><br><span class="line">	{</span><br><span class="line">		<span class="built_in">cin</span>&gt;&gt;s&gt;&gt;e&gt;&gt;value;</span><br><span class="line">		edge[s][e]=value;</span><br><span class="line">	}</span><br><span class="line">	<span class="keyword">for</span>(k=<span class="number">1</span>; k&lt;=m; k++)</span><br><span class="line">		<span class="keyword">for</span>(i=<span class="number">1</span>; i&lt;=m; i++)</span><br><span class="line">			<span class="keyword">for</span>(j=<span class="number">1</span>; j&lt;=m; j++)</span><br><span class="line">			{</span><br><span class="line">				<span class="keyword">if</span>(edge[i][j]&gt;edge[i][k]+edge[k][j])</span><br><span class="line">					edge[i][j]=edge[i][k]+edge[k][j];</span><br><span class="line">			}</span><br><span class="line">	<span class="keyword">for</span>(i=<span class="number">1</span>; i&lt;=m; i++)</span><br><span class="line">	{</span><br><span class="line">		<span class="keyword">for</span>(j=<span class="number">1</span>; j&lt;=m; j++)</span><br><span class="line">		{</span><br><span class="line">			<span class="keyword">if</span>(edge[i][j]&lt;<span class="number">0</span>)</span><br><span class="line">				<span class="built_in">printf</span>(<span class="string">&quot;&#x8D1F;&#x5708;\n&quot;</span>);</span><br><span class="line">			<span class="keyword">else</span></span><br><span class="line">				<span class="built_in">printf</span>(<span class="string">&quot;%d &quot;</span>,edge[i][j]);</span><br><span class="line">		}</span><br><span class="line">		<span class="built_in">printf</span>(<span class="string">&quot;\n&quot;</span>);</span><br><span class="line">	}</span><br><span class="line">	<span class="keyword">return</span> <span class="number">0</span>;</span><br><span class="line">}</span><br></pre></td></tr></table></figure>
+
+<h3 id="Dijkstra"><a href="#Dijkstra" class="headerlink" title="Dijkstra"></a>Dijkstra</h3><p>Dijkstra&#x6C42;&#x89E3;&#x7684;&#x662F;&#x5355;&#x6E90;&#x6700;&#x77ED;&#x8DEF;&#x5F84;&#x95EE;&#x9898;<br><strong>&#x7B97;&#x6CD5;&#x5206;&#x6790;</strong><br>&#x4F7F;&#x7528;dis[]&#x6570;&#x7EC4;&#x8868;&#x793A;&#x6E90;&#x70B9;&#x5230;&#x5176;&#x4F59;&#x5404;&#x70B9;&#x7684;&#x8DEF;&#x7A0B;&#xFF0C;&#x6211;&#x4EEC;&#x5E0C;&#x671B;&#x6700;&#x7EC8;&#x5B58;&#x50A8;&#x6E90;&#x70B9;&#x5230;&#x5404;&#x4E2A;&#x70B9;&#x7684;&#x6700;&#x77ED;&#x8DEF;&#x5F84;&#xFF1B;<br>Dijkstra&#x540C;&#x6837;&#x5229;&#x7528;&#x4E86;&#x6700;&#x4F18;&#x5B50;&#x7ED3;&#x6784;&#x8FD9;&#x4E00;&#x8981;&#x70B9;&#xFF1A;<br>&#x5373;&#x5047;&#x8BBE;i&#x5230;j&#x7684;&#x6700;&#x77ED;&#x8DEF;&#x7ECF;&#x4E3A;i&#x3001;d&#x3001;k&#x3001;m&#x3001;j&#xFF1B;<br>&#x90A3;&#x4E48;<code>dis[j] = dis[m] + edge[m][j]</code>;<br>&#x4E8E;&#x662F;&#x9996;&#x5148;&#x627E;&#x8DDD;&#x79BB;i&#x6700;&#x8FD1;&#x7684;&#x70B9;&#xFF0C;&#x5047;&#x8BBE;&#x8BB0;&#x4E3A;t&#xFF0C;&#x575A;&#x4FE1;i&#x5230;t&#x7684;&#x6700;&#x77ED;&#x8DEF;&#x5F84;&#x5DF2;&#x7ECF;&#x5F97;&#x5230;&#x4E86;&#xFF08;dis[t]&#x4E0D;&#x7528;&#x66F4;&#x65B0;&#x4E86;&#xFF09;&#xFF1B;<br>&#x6807;&#x8BB0;&#x4E00;&#x4E0B;<code>count = t</code>&#xFF0C;&#x4EE5;t&#x4E3A;&#x9876;&#x70B9;&#x5F00;&#x59CB;&#x5BF9;&#x5176;&#x4ED6;&#x70B9;&#x8FDB;&#x884C;&#x677E;&#x5F1B;:</p>
+<figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">for</span>(k = <span class="number">1</span>; k &lt;= m; k++)	<span class="comment">//&#x5F00;&#x59CB;&#x677E;&#x5F1B; </span></span><br><span class="line">{</span><br><span class="line">	<span class="keyword">if</span>(edge[count][k] &lt; INF &amp;&amp; dis[k] &gt; dis[count]+edge[count][k])</span><br><span class="line">		dis[k] = dis[count] + edge[count][k];</span><br><span class="line">}</span><br></pre></td></tr></table></figure>
+
+<p>dis[] &#x56E0;&#x4E3A;dis[t]&#x66F4;&#x65B0;&#x4E86;&#x4E00;&#x904D;&#xFF0C;&#x63A5;&#x7740;&#x518D;&#x627E;&#x8DDD;&#x79BB;i&#x6700;&#x8FD1;&#x7684;&#x70B9;&#xFF0C;&#x518D;&#x677E;&#x5F1B;&#x2026;&#x2026;<br>&#x95EE;&#xFF1A;&#x4E3A;&#x4F55;&#x5982;&#x6B64;&#x575A;&#x4FE1;&#x4E00;&#x65E6;&#x627E;&#x5230;&#x8DDD;&#x79BB;i&#x6700;&#x8FD1;&#x7684;&#x70B9;t&#xFF0C;dis[t]&#x5C31;&#x662F;i&#x5230;t&#x7684;&#x6700;&#x77ED;&#x8DEF;&#x5F84;&#x4E86;&#xFF1F;<br>&#x7B54;&#xFF1A;&#x5047;&#x8BBE;&#x6B64;&#x523B;&#x7684;dis[t]&#x4E0D;&#x662F;&#x6700;&#x77ED;&#x7684;&#xFF0C;&#x8FD8;&#x6709;&#x53E6;&#x4E00;&#x6761;&#x8DEF;&#x53EF;&#x4EE5;&#x5230;t&#x4E14;&#x6700;&#x77ED;&#xFF0C;&#x90A3;&#x4E48;&#x627E;&#x5BFB;&#x8DDD;&#x79BB;i&#x6700;&#x8FD1;&#x7684;&#x70B9;&#x65F6;&#x6839;&#x672C;&#x4E0D;&#x4F1A;&#x662F;t&#xFF01;<br>&#x7531;&#x6B64;&#x53EF;&#x4EE5;&#x770B;&#x5230;Dijksta&#x662F;&#x57FA;&#x4E8E;BFS&#xFF0C;&#x677E;&#x5F1B;&#x7684;&#x64CD;&#x4F5C;&#x6709;&#x52A8;&#x6001;&#x89C4;&#x5212;&#x548C;&#x8D2A;&#x5FC3;&#x7684;&#x601D;&#x60F3;&#xFF0C;&#x7528;&#x4E00;&#x6BB5;&#x8BDD;&#x6982;&#x62EC;Dijkstra&#x7684;&#x7B97;&#x6CD5;&#x601D;&#x60F3;&#x3002;</p>
+<p><strong>&#x7B97;&#x6CD5;&#x601D;&#x60F3;</strong></p>
+<ol>
+<li>&#x6BCF;&#x6B21;&#x5BFB;&#x627E;&#x672A;&#x8BBF;&#x95EE;&#x7684;&#x3001;&#x79BB;&#x6E90;&#x70B9;&#x6700;&#x8FD1;&#x7684;&#x4E00;&#x4E2A;&#x9876;&#x70B9;&#xFF0C;&#x6807;&#x8BB0;&#x4E3A;&#x5DF2;&#x8BBF;&#x95EE;&#xFF0C;&#x7136;&#x540E;&#x4EE5;&#x8BE5;&#x9876;&#x70B9;&#x4E3A;&#x4E2D;&#x5FC3;&#x5BF9;&#x5176;&#x4ED6;&#x70B9;&#x8FDB;&#x884C;&#x677E;&#x5F1B;</li>
+<li>&#x91CD;&#x590D;&#x6B65;&#x9AA4;1&#xFF0C;&#x76F4;&#x5230;&#x6240;&#x6709;&#x70B9;&#x5747;&#x8BBF;&#x95EE;&#x5B8C;&#xFF0C;&#x6700;&#x7EC8;&#x5F97;&#x5230;&#x6E90;&#x70B9;&#x5230;&#x5176;&#x4F59;&#x6240;&#x6709;&#x70B9;&#x7684;&#x6700;&#x77ED;&#x8DDD;&#x79BB;</li>
+</ol>
+<p>&#x2014;&#x2014;&#x2014;&#x2014;&#x2014;&#x2014;&#x2014;&#x2014;&#x2014;&#x2014;&#x2014;&#x2014;&#x2014;&#x2014;&#x2014;&#x2014;&#x2014;&#x2014;&#x2014;&#x2014;&#x2014;&#x2014;&#x2014;&#x2014;&#x2014;&#x2014;&#x6838;&#x5FC3;&#x4EE3;&#x7801;&#x2014;&#x2014;&#x2014;&#x2014;&#x2014;&#x2014;&#x2014;&#x2014;&#x2014;&#x2014;&#x2014;&#x2014;&#x2014;&#x2014;&#x2014;&#x2014;&#x2014;&#x2014;&#x2014;&#x2014;&#x2014;&#x2014;&#x2014;&#x2014;&#x2014;&#x2014;&#x2014;&#x2014;&#x2014;&#x2014;</p>
+<figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">//Difkstra</span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;cstdio&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;iostream&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">define</span> M 100</span></span><br><span class="line"><span class="keyword">using</span> <span class="keyword">namespace</span> <span class="built_in">std</span>;</span><br><span class="line"><span class="keyword">int</span> m, n;</span><br><span class="line"><span class="keyword">int</span> edge[M][M], dis[M], visit[M];</span><br><span class="line"><span class="keyword">const</span> <span class="keyword">int</span> INF=<span class="number">0x3f3f3f3f</span>;</span><br><span class="line"><span class="function"><span class="keyword">void</span> <span class="title">Dijkstra</span><span class="params">(<span class="keyword">int</span> st)</span><span class="comment">//&#x6E90;&#x70B9;st</span></span></span><br><span class="line"><span class="function"></span>{</span><br><span class="line">	<span class="keyword">for</span>(<span class="keyword">int</span> i = <span class="number">1</span>; i &lt;= m; i++)</span><br><span class="line">		dis[i] = edge[st][i];</span><br><span class="line">	<span class="keyword">for</span>(<span class="keyword">int</span> i = <span class="number">1</span>; i &lt;= m; i++)</span><br><span class="line">		visit[i] = <span class="number">0</span>;</span><br><span class="line">	visit[st] = <span class="number">1</span>;	<span class="comment">//&#x6E90;&#x70B9;&#x5230;&#x81EA;&#x8EAB;&#x7684;&#x6700;&#x77ED;&#x8DDD;&#x79BB;&#x4E3A;0 </span></span><br><span class="line">	<span class="keyword">for</span>(<span class="keyword">int</span> i = <span class="number">1</span>; i &lt; m; i++)</span><br><span class="line">	{</span><br><span class="line">		<span class="keyword">int</span> count, min = INF;</span><br><span class="line">		<span class="keyword">for</span>(<span class="keyword">int</span> j = <span class="number">1</span>; j &lt;= m; j++)	<span class="comment">//&#x627E;dis[]&#x4E2D;&#x672A;&#x8BBF;&#x95EE;&#x8FC7;&#x7684;&#x3001;&#x79BB;&#x6E90;&#x70B9;&#x6700;&#x8FD1;&#x7684;&#x70B9;</span></span><br><span class="line">		{</span><br><span class="line">			<span class="keyword">if</span>(visit[j] == <span class="number">0</span> &amp;&amp; dis[j] &lt; min)</span><br><span class="line">			{</span><br><span class="line">				min = dis[j];</span><br><span class="line">				count = j;	</span><br><span class="line">			}</span><br><span class="line">		}</span><br><span class="line">		visit[count] = <span class="number">1</span>;	<span class="comment">//&#x4ECE;&#x8BE5;&#x9876;&#x70B9;&#x51FA;&#x53D1;&#x66F4;&#x65B0;&#x76F8;&#x90BB;&#x9876;&#x70B9;&#x7684;&#x6700;&#x77ED;&#x8DDD;&#x79BB; </span></span><br><span class="line">		<span class="keyword">for</span>(<span class="keyword">int</span> k = <span class="number">1</span>; k &lt;= m; k++)	<span class="comment">//&#x5F00;&#x59CB;&#x677E;&#x5F1B; </span></span><br><span class="line">		{</span><br><span class="line">			<span class="keyword">if</span>(edge[count][k] &lt; INF &amp;&amp; dis[k] &gt; dis[count]+edge[count][k])</span><br><span class="line">				dis[k] = dis[count] + edge[count][k];</span><br><span class="line">		}</span><br><span class="line">		<span class="keyword">for</span>(<span class="keyword">int</span> k = <span class="number">1</span>; k &lt;= m; k++)</span><br><span class="line">			<span class="built_in">printf</span>(<span class="string">&quot;%d &quot;</span>,dis[k]);</span><br><span class="line">		<span class="built_in">printf</span>(<span class="string">&quot;\n&quot;</span>);</span><br><span class="line">	}</span><br><span class="line">}</span><br></pre></td></tr></table></figure>
+
+<h3 id="&#x5806;&#x4F18;&#x5316;&#x7684;Dijkstra"><a href="#&#x5806;&#x4F18;&#x5316;&#x7684;Dijkstra" class="headerlink" title="&#x5806;&#x4F18;&#x5316;&#x7684;Dijkstra"></a>&#x5806;&#x4F18;&#x5316;&#x7684;Dijkstra</h3><p><strong>&#x7B97;&#x6CD5;&#x601D;&#x60F3;</strong><br>&#x5806;&#x4F18;&#x5316;&#x7684;Dijkstra&#x5C31;&#x662F;&#x6BCF;&#x6B21;&#x627E;dis[]&#x4E2D;&#x6700;&#x5C0F;&#x503C;&#xFF08;&#x672A;&#x8BBF;&#x95EE;&#x8FC7;&#x7684;&#xFF09;&#x8FDB;&#x884C;&#x7684;&#x4F18;&#x5316;</p>
+<p>&#x540C;&#x65F6;&#x8FD9;&#x91CC;&#x4F7F;&#x7528;&#x4E86;C++&#x7684;vector&#x5B9E;&#x73B0;&#x4E86;&#x90BB;&#x63A5;&#x8868;&#xFF0C;priority_queue&#x5B9E;&#x73B0;&#x4E86;&#x5806;<br>&#x2014;&#x2014;&#x2014;&#x2014;&#x2014;&#x2014;&#x2014;&#x2014;&#x2014;&#x2014;&#x2014;&#x2014;&#x2014;&#x2014;&#x2014;&#x2014;&#x2014;&#x2014;&#x2014;&#x2014;&#x2014;&#x2014;&#x2014;&#x2014;&#x2014;&#x4EE3;&#x7801;&#x5982;&#x4E0B;&#x2014;&#x2014;&#x2014;&#x2014;&#x2014;&#x2014;&#x2014;&#x2014;&#x2014;&#x2014;&#x2014;&#x2014;&#x2014;&#x2014;&#x2014;&#x2014;&#x2014;&#x2014;&#x2014;&#x2014;&#x2014;&#x2014;&#x2014;&#x2014;&#x2014;&#x2014;&#x2014;&#x2014;&#x2014;</p>
+<figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">//Difkstra&#x4F18;&#x5316;</span></span><br><span class="line"><span class="comment">//vector+&#x4F18;&#x5148;&#x961F;&#x5217; </span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;iostream&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;queue&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;vector&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;cstring&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">define</span> M 100</span></span><br><span class="line"><span class="keyword">using</span> <span class="keyword">namespace</span> <span class="built_in">std</span>;</span><br><span class="line"></span><br><span class="line"><span class="keyword">typedef</span> <span class="class"><span class="keyword">struct</span>{</span></span><br><span class="line">	<span class="keyword">int</span> point, weight;</span><br><span class="line">}Edge;</span><br><span class="line"><span class="keyword">typedef</span> pair&lt;<span class="keyword">int</span>, <span class="keyword">int</span>&gt; Pair;	<span class="comment">//first&#x662F;&#x6700;&#x77ED;&#x8DDD;&#x79BB;,second&#x662F;&#x9876;&#x70B9;&#x7F16;&#x53F7; </span></span><br><span class="line"></span><br><span class="line"><span class="keyword">const</span> <span class="keyword">int</span> Max_m=<span class="number">1001</span>;</span><br><span class="line"><span class="keyword">const</span> <span class="keyword">int</span> INF=<span class="number">0x3f3f3f3f</span>;</span><br><span class="line"><span class="built_in">vector</span>&lt;Edge&gt; G[Max_m];</span><br><span class="line"><span class="keyword">int</span> dis[Max_m];</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">void</span> <span class="title">Dijkstra</span><span class="params">(<span class="keyword">int</span> st)</span></span></span><br><span class="line"><span class="function"></span>{								<span class="comment">//&#x6307;&#x5B9A;greater&#x53C2;&#x6570;,&#x5806;&#x6309;&#x4ECE;&#x5C0F;&#x5230;&#x5927;&#x987A;&#x5E8F;&#x53D6;&#x51FA; </span></span><br><span class="line">	priority_queue&lt;Pair, <span class="built_in">vector</span>&lt;Pair&gt;, greater&lt;Pair&gt; &gt; que;</span><br><span class="line">	<span class="built_in">memset</span>(dis, <span class="number">0x3f</span>, <span class="keyword">sizeof</span>(dis));</span><br><span class="line">	dis[st]=<span class="number">0</span>;</span><br><span class="line">	que.push(Pair(<span class="number">0</span>,st));</span><br><span class="line">	</span><br><span class="line">	<span class="keyword">while</span>(!que.empty())</span><br><span class="line">	{</span><br><span class="line">		Pair p = que.top();</span><br><span class="line">		que.pop();</span><br><span class="line">		<span class="keyword">int</span> v = p.second;		<span class="comment">//&#x9876;&#x70B9;&#x7F16;&#x53F7; </span></span><br><span class="line">		<span class="keyword">if</span>(dis[v] &lt; p.first)</span><br><span class="line">			<span class="keyword">continue</span>;</span><br><span class="line">		<span class="keyword">for</span>(<span class="keyword">int</span> i = <span class="number">0</span>; i &lt; G[v].size(); i++)</span><br><span class="line">		{</span><br><span class="line">			Edge e = G[v][i];</span><br><span class="line">			<span class="keyword">if</span>(dis[e.point] &gt; dis[v] + e.weight)</span><br><span class="line">			{</span><br><span class="line">				dis[e.point] = dis[v] + e.weight;</span><br><span class="line">				que.push(Pair(dis[e.point], e.point));</span><br><span class="line">			}	</span><br><span class="line">				</span><br><span class="line">		}</span><br><span class="line">	}</span><br><span class="line">	</span><br><span class="line">}</span><br><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">main</span><span class="params">()</span></span></span><br><span class="line"><span class="function"></span>{</span><br><span class="line">	<span class="keyword">int</span> i,k,j,m,n,count,min,s,e,value;</span><br><span class="line">	<span class="built_in">cin</span>&gt;&gt;m&gt;&gt;n;</span><br><span class="line">	<span class="keyword">for</span>(i=<span class="number">1</span>; i&lt;=n; i++)</span><br><span class="line">	{</span><br><span class="line">		Edge g;</span><br><span class="line">		<span class="built_in">cin</span>&gt;&gt;s&gt;&gt;e&gt;&gt;value;</span><br><span class="line">		g.point=e;</span><br><span class="line">		g.weight=value;</span><br><span class="line">		G[s].push_back(g);</span><br><span class="line">	}</span><br><span class="line">	Dijkstra(<span class="number">1</span>);<span class="comment">//&#x6B64;&#x523B;&#x6C42;&#x89E3;&#x7684;&#x6700;&#x77ED;&#x8DEF;&#x662F;&#x5C06;1&#x53F7;&#x4F5C;&#x4E3A;&#x6E90;&#x70B9;</span></span><br><span class="line">	<span class="keyword">for</span>(<span class="keyword">int</span> i=<span class="number">1</span>; i&lt;=m; i++)</span><br><span class="line">		<span class="built_in">cout</span>&lt;&lt;dis[i]&lt;&lt;<span class="string">&quot; &quot;</span>;</span><br><span class="line">	<span class="built_in">cout</span>&lt;&lt;<span class="built_in">endl</span>;</span><br><span class="line">	<span class="keyword">return</span> <span class="number">0</span>;</span><br><span class="line">}</span><br></pre></td></tr></table></figure>
+
+<h3 id="4&#x884C;&#x4EE3;&#x7801;&#x7684;Bellman-Ford"><a href="#4&#x884C;&#x4EE3;&#x7801;&#x7684;Bellman-Ford" class="headerlink" title="4&#x884C;&#x4EE3;&#x7801;&#x7684;Bellman-Ford"></a>4&#x884C;&#x4EE3;&#x7801;&#x7684;Bellman-Ford</h3><p>&#x4EE5;&#x4E0A;&#x7684;&#x7B97;&#x6CD5;&#x4F7F;&#x7528;&#x4E8E;&#x7A20;&#x5BC6;&#x56FE;&#xFF0C;Bellman-Ford&#x9002;&#x7528;&#x4E8E;&#x8FB9;&#x5BC6;&#x5207;&#x7684;&#x56FE;&#x6C42;&#x89E3;&#x6700;&#x77ED;&#x8DEF;&#x5F84;&#xFF1B;<br>&#x4E8E;&#x662F;&#x4E0D;&#x518D;&#x4F9D;&#x636E;&#x70B9;&#x6765;&#x5B58;&#x50A8;&#x8FB9;&#xFF0C;&#x800C;&#x662F;&#x4F9D;&#x636E;&#x8FB9;&#x7684;&#x4E2A;&#x6570;N&#x6765;&#x5B58;&#x50A8;&#x3002;</p>
+<figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="class"><span class="keyword">struct</span> <span class="title">edge</span></span></span><br><span class="line"><span class="class">{</span></span><br><span class="line">	<span class="keyword">int</span> s,e,value;<span class="comment">//&#x5373;edge[s][e] = value;</span></span><br><span class="line">};</span><br><span class="line">edge E[N];</span><br></pre></td></tr></table></figure>
+
+<p><strong>&#x7B97;&#x6CD5;&#x5206;&#x6790;</strong><br>&#x548C;Dijkstra&#x4E00;&#x6837;&#x4F7F;&#x7528;dis[]&#x5B58;&#x653E;&#x6700;&#x77ED;&#x8DDD;&#x79BB;&#xFF0C;&#x4E0D;&#x540C;&#x7684;&#x662F;&#xFF0C;Dijkstra&#x662F;&#x9010;&#x4E2A;&#x70B9;&#x7684;&#x786E;&#x5B9A;&#x4E86;&#x6700;&#x77ED;&#x8DEF;<br>Bellman-Ford&#x6CE8;&#x91CD;&#x4E8E;n&#x6761;&#x8FB9;&#x7684;&#x53D8;&#x5316;</p>
+<figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">for</span>(i=<span class="number">1</span>; i&lt;=n; i++)</span><br><span class="line">	<span class="keyword">if</span>(dis[E[i].e]&gt;dis[E[i].s]+E[i].value)</span><br><span class="line">		dis[E[i].e]=dis[E[i].s]+E[i].value;</span><br></pre></td></tr></table></figure>
+
+<p>&#x663E;&#x7136;&#x8FD9;&#x5E76;&#x6CA1;&#x6709;&#x4E13;&#x6CE8;&#x4E8E;&#x67D0;&#x4E2A;&#x9876;&#x70B9;&#xFF0C;&#x800C;&#x662F;&#x5BF9;&#x6240;&#x6709;&#x8FB9;&#x8FDB;&#x884C;&#x4E86;&#x4E00;&#x6B21;&#x677E;&#x5F1B;&#xFF0C;&#x7ECF;&#x8FC7;&#x8FD9;&#x4E00;&#x8F6E;&#x7684;&#x677E;&#x5F1B;&#xFF0C;&#x66F4;&#x65B0;&#x7684;dis[]&#x8868;&#x793A;&#xFF1A;<br>&#x53EA;&#x7ECF;&#x8FC7;&#x4E00;&#x6761;&#x8FB9;&#xFF0C;&#x4ECE;&#x6E90;&#x70B9;&#x5230;&#x4EFB;&#x610F;&#x9876;&#x70B9;&#x7684;&#x6700;&#x77ED;&#x8DEF;&#x5F84;&#x957F;&#xFF1B;<br>&#x6309;&#x7167;&#x8FD9;&#x4E2A;&#x601D;&#x8DEF;&#xFF0C;&#x6C42;&#x6E90;&#x70B9;&#x5230;&#x4EFB;&#x610F;&#x9876;&#x70B9;&#x7684;&#x6700;&#x77ED;&#x8DEF;&#x53EA;&#x9700;&#x677E;&#x5F1B;m-1&#x6B21;&#x5373;&#x53EF;&#xFF01;&#xFF08;&#x4E24;&#x70B9;&#x95F4;&#x6700;&#x591A;&#x7ECF;&#x8FC7;m-1&#x6761;&#x8FB9;&#xFF09;<br>&#x4E8E;&#x662F;&#x7528;&#x4E00;&#x53E5;&#x8BDD;&#x6982;&#x62EC;Bellman-Ford&#x7684;&#x7B97;&#x6CD5;&#x601D;&#x60F3;&#x3002;<br><strong>&#x7B97;&#x6CD5;&#x601D;&#x60F3;</strong><br>&#x5BF9;&#x6240;&#x6709;&#x8FB9;&#x8FDB;&#x884C;m-1&#x6B21;&#x677E;&#x5F1B;&#x64CD;&#x4F5C;<br>&#x6838;&#x5FC3;&#x4EE3;&#x7801;&#xFF1A;</p>
+<figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">for</span>(k=<span class="number">1</span>; k&lt;=m<span class="number">-1</span>; k++)</span><br><span class="line">	<span class="keyword">for</span>(i=<span class="number">1</span>; i&lt;=n; i++)</span><br><span class="line">		<span class="keyword">if</span>(dis[E[i].e]&gt;dis[E[i].s]+E[i].value)</span><br><span class="line">			dis[E[i].e]=dis[E[i].s]+E[i].value;</span><br></pre></td></tr></table></figure>
+
+<p>&#x52A0;&#x4E86;&#x5224;&#x65AD;&#x8D1F;&#x73AF;&#x7684;&#x64CD;&#x4F5C;&#xFF0C;&#x5982;&#x679C;&#x7B2C;m&#x6B21;&#x8FD8;&#x5728;&#x66F4;&#x65B0;&#xFF0C;&#x8BF4;&#x660E;&#x6709;&#x8D1F;&#x73AF;<br>&#x2014;&#x2014;&#x2014;&#x2014;&#x2014;&#x2014;&#x2014;&#x2014;&#x2014;&#x2014;&#x2014;&#x2014;&#x2014;&#x2014;&#x2014;&#x2014;&#x2014;&#x2014;&#x2014;&#x2014;&#x2014;&#x2014;&#x2014;&#x2014;&#x2014;&#x4EE3;&#x7801;&#x5982;&#x4E0B;&#x2014;&#x2014;&#x2014;&#x2014;&#x2014;&#x2014;&#x2014;&#x2014;&#x2014;&#x2014;&#x2014;&#x2014;&#x2014;&#x2014;&#x2014;&#x2014;&#x2014;&#x2014;&#x2014;&#x2014;&#x2014;&#x2014;&#x2014;&#x2014;&#x2014;&#x2014;&#x2014;</p>
+<figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">//Bellman-Ford</span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;cstdio&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;iostream&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">define</span> M 100</span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">define</span> N 100</span></span><br><span class="line"><span class="keyword">using</span> <span class="keyword">namespace</span> <span class="built_in">std</span>;</span><br><span class="line"></span><br><span class="line"><span class="keyword">const</span> <span class="keyword">int</span> INF=<span class="number">0x3f3f3f</span>;</span><br><span class="line"><span class="class"><span class="keyword">struct</span> <span class="title">edge</span></span></span><br><span class="line"><span class="class">{</span></span><br><span class="line">	<span class="keyword">int</span> s,e,value;</span><br><span class="line">};</span><br><span class="line">edge E[N];</span><br><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">main</span><span class="params">()</span></span></span><br><span class="line"><span class="function"></span>{</span><br><span class="line">	<span class="keyword">int</span> i,j,k,m,n;</span><br><span class="line">	<span class="keyword">int</span> dis[M];</span><br><span class="line">	<span class="built_in">cin</span>&gt;&gt;m&gt;&gt;n;</span><br><span class="line">	<span class="keyword">for</span>(i=<span class="number">1</span>; i&lt;=n; i++)</span><br><span class="line">		<span class="built_in">cin</span>&gt;&gt;E[i].s&gt;&gt;E[i].e&gt;&gt;E[i].value;</span><br><span class="line">	<span class="keyword">for</span>(i=<span class="number">1</span>; i&lt;=m; i++)</span><br><span class="line">		dis[i]=INF;</span><br><span class="line">	dis[<span class="number">1</span>]=<span class="number">0</span>;<span class="comment">//&#x8FD9;&#x91CC;&#x5C31;&#x628A;1&#x53F7;&#x4F5C;&#x4E3A;&#x6E90;&#x70B9;</span></span><br><span class="line">	<span class="keyword">for</span>(k=<span class="number">1</span>; k&lt;=m; k++)</span><br><span class="line">		<span class="keyword">for</span>(i=<span class="number">1</span>; i&lt;=n; i++)</span><br><span class="line">			<span class="keyword">if</span>(dis[E[i].e]&gt;dis[E[i].s]+E[i].value)</span><br><span class="line">			{</span><br><span class="line">				dis[E[i].e]=dis[E[i].s]+E[i].value;</span><br><span class="line">				<span class="keyword">if</span>(k==m)</span><br><span class="line">				{</span><br><span class="line">					<span class="built_in">printf</span>(<span class="string">&quot;&#x8D1F;&#x5708;\n&quot;</span>);</span><br><span class="line">				}</span><br><span class="line">			}</span><br><span class="line">    <span class="keyword">for</span>(j=<span class="number">1</span>; j&lt;=m; j++)</span><br><span class="line">			<span class="built_in">printf</span>(<span class="string">&quot;%d &quot;</span>,dis[j]);</span><br><span class="line">	<span class="built_in">printf</span>(<span class="string">&quot;\n&quot;</span>);</span><br><span class="line">	<span class="keyword">return</span> <span class="number">0</span>;</span><br><span class="line">}</span><br></pre></td></tr></table></figure>
+
+<h3 id="&#x961F;&#x5217;&#x4F18;&#x5316;&#x7684;Bellman-Ford"><a href="#&#x961F;&#x5217;&#x4F18;&#x5316;&#x7684;Bellman-Ford" class="headerlink" title="&#x961F;&#x5217;&#x4F18;&#x5316;&#x7684;Bellman-Ford"></a>&#x961F;&#x5217;&#x4F18;&#x5316;&#x7684;Bellman-Ford</h3><p>&#x961F;&#x5217;&#x4F18;&#x5316;&#x7684;Bellman-Ford&#x76F8;&#x6BD4;&#x5806;&#x4F18;&#x5316;&#x7684;Dijkstra&#x5C31;&#x4E0D;&#x90A3;&#x4E48;&#x597D;&#x7406;&#x89E3;&#x4E86;</p>
+
+      
+    </div>
+    
+  </div>
+  
+    
+    <div class="copyright">
+        <p><span>Title:</span><a href="/2020/06/11/最短路径/">最短路径专题（Dijkstra、Floyd、Bellman-Ford即优化）</a></p>
+        <p><span>Author:</span><a href="/" title="Back to Homepage">Weayer</a></p>
+        <p><span>Created:</span>2020-06-11, 00:00:00</p>
+        <p><span>Updated:</span>2020-06-17, 21:11:01</p>
+        <p>
+            <span>Full URL:</span><a class="post-url" href="/2020/06/11/最短路径/" title="最短路径专题（Dijkstra、Floyd、Bellman-Ford即优化）">https://www.weayer.top/2020/06/11/最短路径/</a>
+            <span class="copy-path" data-clipboard-text="From https://www.weayer.top/2020/06/11/最短路径/　　By Weayer" title="Copy Article&#39;s Link &amp; Author"><i class="fa fa-clipboard"></i></span>
+            <script> var clipboard = new Clipboard('.copy-path'); </script>
+        </p>
+        <p>
+            <span>License:</span><i class="fa fa-creative-commons"></i> <a rel="license" href="http://creativecommons.org/licenses/by-nc-sa/4.0/" title="CC BY-NC-SA 4.0 International" target = "_blank">"CC BY-NC-SA 4.0"</a> Keep Link &amp; Author if Distribute.
+        </p>
+    </div>
+
+
+
+    <nav id="article-nav">
+        
+            <div id="article-nav-newer" class="article-nav-title">
+                <a href="/2020/06/17/蓝桥-小朋友排队/">
+                    ·【蓝桥】·小朋友排队（归并、树状数组）
+                </a>
+            </div>
+        
+        
+            <div id="article-nav-older" class="article-nav-title">
+                <a href="/2020/06/04/n皇后问题/">
+                    n皇后问题
+                </a>
+            </div>
+        
+    </nav>
+
+  
+</article>
+
+    <div id="toc" class="toc-article">
+        <strong class="toc-title">Contents</strong>
+        
+            <ol class="toc"><li class="toc-item toc-level-3"><a class="toc-link" href="#五行代码的Flody"><span class="toc-number">1.</span> <span class="toc-text">五行代码的Flody</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#Dijkstra"><span class="toc-number">2.</span> <span class="toc-text">Dijkstra</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#堆优化的Dijkstra"><span class="toc-number">3.</span> <span class="toc-text">堆优化的Dijkstra</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#4行代码的Bellman-Ford"><span class="toc-number">4.</span> <span class="toc-text">4行代码的Bellman-Ford</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#队列优化的Bellman-Ford"><span class="toc-number">5.</span> <span class="toc-text">队列优化的Bellman-Ford</span></a></li></ol>
+        
+    </div>
+    <style>
+        .left-col .switch-btn,
+        .left-col .switch-area {
+            display: none;
+        }
+        .toc-level-3 i,
+        .toc-level-3 ol {
+            display: none !important;
+        }
+    </style>
+
+    <input type="button" id="tocButton" value="Hide"  title="Show or Hide Table of Contents">
+
+    <script>
+        yiliaConfig.toc = ["Hide", "Show", !!"false"];
+    </script>
+
+
+
+    
+<div class="share">
+    
+        <div class="bdsharebuttonbox">
+            <a href="#" class="fa fa-twitter bds_twi" data-cmd="twi" title="分享到推特"></a>
+            <a href="#" class="fa fa-weibo bds_tsina" data-cmd="tsina" title="分享到新浪微博"></a>
+            <a href="#" class="fa fa-qq bds_sqq" data-cmd="sqq" title="分享给 QQ 好友"></a>
+            <a href="#" class="fa fa-files-o bds_copy" data-cmd="copy" title="复制网址"></a>
+            <a href="#" class="fa fa fa-envelope-o bds_mail" data-cmd="mail" title="通过邮件分享"></a>
+            <a href="#" class="fa fa-weixin bds_weixin" data-cmd="weixin" title="生成文章二维码"></a>
+            <a href="#" class="fa fa-share-alt bds_more" data-cmd="more"></i></a>
+        </div>
+        <script>
+            window._bd_share_config={
+                "common":{"bdSnsKey":{},"bdText":"最短路径专题（Dijkstra、Floyd、Bellman-Ford即优化）　| weayer's blog　","bdMini":"2","bdMiniList":false,"bdPic":"","bdStyle":"0","bdSize":"24"},"share":{}};with(document)0[(getElementsByTagName('head')[0]||body).appendChild(createElement('script')).src='http://bdimg.share.baidu.com/static/api/js/share.js?v=89860593.js?cdnversion='+~(-new Date()/36e5)];
+        </script>
+    
+
+    
+</div>
+
+
+
+
+
+
+
+    
+
+
+
+
+    <div class="scroll" id="post-nav-button">
+        
+            <a href="/2020/06/17/蓝桥-小朋友排队/" title="Pre: ·【蓝桥】·小朋友排队（归并、树状数组）">
+                <i class="fa fa-angle-left"></i>
+            </a>
+        
+
+        <a title="Mini Archives"><i class="fa fa-bars"></i><i class="fa fa-times"></i></a>
+
+        
+            <a href="/2020/06/04/n皇后问题/" title="Next: n皇后问题">
+                <i class="fa fa-angle-right"></i>
+            </a>
+        
+    </div>
+
+    <ul class="post-list"><li class="post-list-item"><a class="post-list-link" href="/2020/09/16/蓝桥-剪邮票/">·【蓝桥】·剪邮票</a></li><li class="post-list-item"><a class="post-list-link" href="/2020/09/16/蓝桥-交换瓶子/">·【蓝桥】·交换瓶子</a></li><li class="post-list-item"><a class="post-list-link" href="/2020/09/12/全排列/">全排列（去重和不去重）</a></li><li class="post-list-item"><a class="post-list-link" href="/2020/09/01/商汤AI园区的n个路口（简单）/">商汤AI园区的n个路口（简单）</a></li><li class="post-list-item"><a class="post-list-link" href="/2020/09/01/商汤的AI伴游小精灵/">·【计蒜客】·商汤的AI伴游小精灵</a></li><li class="post-list-item"><a class="post-list-link" href="/2020/08/19/蓝桥-四平方和/">·【蓝桥】·四平方和</a></li><li class="post-list-item"><a class="post-list-link" href="/2020/08/17/蓝桥-青蛙跳杯子/">·【蓝桥】·青蛙跳杯子</a></li><li class="post-list-item"><a class="post-list-link" href="/2020/08/16/蓝桥-九宫幻方/">·【蓝桥】·九宫幻方</a></li><li class="post-list-item"><a class="post-list-link" href="/2020/08/16/蓝桥-拉马车/">·【蓝桥】·拉马车</a></li><li class="post-list-item"><a class="post-list-link" href="/2020/08/11/蓝桥-Excel地址/">蓝桥-Excel地址</a></li><li class="post-list-item"><a class="post-list-link" href="/2020/08/11/蓝桥-正则问题/">蓝桥-正则问题</a></li><li class="post-list-item"><a class="post-list-link" href="/2020/07/12/牛客-Rabbit的工作/">牛客-Rabbit的工作</a></li><li class="post-list-item"><a class="post-list-link" href="/2020/07/05/蓝桥-分考场/">蓝桥-分考场</a></li><li class="post-list-item"><a class="post-list-link" href="/2020/06/30/蓝桥-带分数/">·【蓝桥】·带分数</a></li><li class="post-list-item"><a class="post-list-link" href="/2020/06/28/线段树/">线段树专题</a></li><li class="post-list-item"><a class="post-list-link" href="/2020/06/28/逆序数/">逆序数</a></li><li class="post-list-item"><a class="post-list-link" href="/2020/06/27/树状数组/">树状数组专题</a></li><li class="post-list-item"><a class="post-list-link" href="/2020/06/27/数学公式及符号/">Markdown数学公式及符号汇总</a></li><li class="post-list-item"><a class="post-list-link" href="/2020/06/19/蓝桥-买不到的数目/">·【蓝桥】·买不到的数目</a></li><li class="post-list-item"><a class="post-list-link" href="/2020/06/17/图的遍历/">图的遍历（邻接矩阵、邻接表）</a></li><li class="post-list-item"><a class="post-list-link" href="/2020/06/17/蓝桥-小朋友排队/">·【蓝桥】·小朋友排队（归并、树状数组）</a></li><li class="post-list-item"><a class="post-list-link" href="/2020/06/11/最短路径/">最短路径专题（Dijkstra、Floyd、Bellman-Ford即优化）</a></li><li class="post-list-item"><a class="post-list-link" href="/2020/06/04/n皇后问题/">n皇后问题</a></li><li class="post-list-item"><a class="post-list-link" href="/2020/05/31/牛客-减成一/">牛客-减成一</a></li><li class="post-list-item"><a class="post-list-link" href="/2020/05/16/数组实现简单链表/">数组实现链表</a></li><li class="post-list-item"><a class="post-list-link" href="/2020/05/16/牛客-邻值查找/">牛客-邻值查找</a></li><li class="post-list-item"><a class="post-list-link" href="/2020/05/14/并查集/">并查集及优化（路径压缩+按秩合并）</a></li><li class="post-list-item"><a class="post-list-link" href="/2020/05/08/LIS（队列优化+二分）/">LIS优化</a></li><li class="post-list-item"><a class="post-list-link" href="/2020/05/08/真分数的最大埃及分数/">真分数的最大埃及分数</a></li><li class="post-list-item"><a class="post-list-link" href="/2020/04/28/蓝桥-包子凑数/">·【蓝桥】·包子凑数</a></li><li class="post-list-item"><a class="post-list-link" href="/2020/04/25/Github-Coding（理想很丰满）/">Github+coding（理想很丰满）</a></li><li class="post-list-item"><a class="post-list-link" href="/2020/04/24/模运算的运用/">模运算的运用</a></li><li class="post-list-item"><a class="post-list-link" href="/2020/04/01/4月1日我成功地被mysql给愚弄了/">4月1日我成功地被mysql给愚弄了</a></li><li class="post-list-item"><a class="post-list-link" href="/2020/03/28/Dp-ST/">Dp-ST表（求解RMP）</a></li><li class="post-list-item"><a class="post-list-link" href="/2020/03/28/蓝桥-晚会节目单/">·【蓝桥】晚会节目单（ST表）</a></li><li class="post-list-item"><a class="post-list-link" href="/2020/03/11/Extend-Eculid/">Extend_Eculid</a></li><li class="post-list-item"><a class="post-list-link" href="/2020/03/11/ax-by-c问题/">Ax+By=C问题</a></li><li class="post-list-item"><a class="post-list-link" href="/2020/03/10/51nod-1009数字1的数量/">·【51nod-1009】数字1的数量</a></li><li class="post-list-item"><a class="post-list-link" href="/2020/03/10/dp-digit/">Dp-digit</a></li><li class="post-list-item"><a class="post-list-link" href="/2020/03/07/NOIP-2015-POJ-2456/">·【NOIP-2015】·【POJ-2456】</a></li><li class="post-list-item"><a class="post-list-link" href="/2020/03/05/heap/">heap</a></li><li class="post-list-item"><a class="post-list-link" href="/2020/02/28/High-precision1/">n的阶乘(High-precision)</a></li><li class="post-list-item"><a class="post-list-link" href="/2020/02/28/Inverse/">Inverse</a></li><li class="post-list-item"><a class="post-list-link" href="/2020/02/07/Sliding-window/">Sliding Window</a></li><li class="post-list-item"><a class="post-list-link" href="/2019/12/02/Merge-Sort/">Merge Sort</a></li><li class="post-list-item"><a class="post-list-link" href="/2019/12/01/Stack/">Stack</a></li><li class="post-list-item"><a class="post-list-link" href="/2019/11/30/Queue-0/">Queue</a></li><li class="post-list-item"><a class="post-list-link" href="/2019/10/26/Lnode/">Lnode</a></li><li class="post-list-item"><a class="post-list-link" href="/2019/10/26/hey-piggy/">hey-piggy</a></li></ul>
+
+
+
+
+    <script>
+        
+    </script>
+</div>
+      <footer id="footer">
+    <div class="outer">
+        <div id="footer-info">
+            <div class="footer-left">
+                <i class="fa fa-copyright"></i> 
+                2016-2020 Weayer
+            </div>
+            <div class="footer-right">
+                <a href="http://hexo.io/" target="_blank" title="A fast, simple &amp; powerful blog framework">Hexo</a>  Theme <a href="https://github.com/MOxFIVE/hexo-theme-yelee" target="_blank" title="Another simple and elegant theme for Hexo  v3.5">Yelee</a> by MOxFIVE <i class="fa fa-heart animated infinite pulse"></i>
+            </div>
+        </div>
+        
+            <div class="visit">
+                
+                    <span id="busuanzi_container_site_pv" style='display:none'>
+                        <span id="site-visit" title="Site Visitors"><i class="fa fa-user" aria-hidden="true"></i><span id="busuanzi_value_site_uv"></span>
+                        </span>
+                    </span>
+                
+                
+                    <span>| </span>
+                
+                
+                    <span id="busuanzi_container_page_pv" style='display:none'>
+                        <span id="page-visit"  title="Page Hits"><i class="fa fa-eye animated infinite pulse" aria-hidden="true"></i><span id="busuanzi_value_page_pv"></span>
+                        </span>
+                    </span>
+                
+            </div>
+        
+    </div>
+</footer>
+    </div>
+    
+<script data-main="/js/main.js" src="//cdn.bootcss.com/require.js/2.2.0/require.min.js"></script>
+
+    <script>
+        $(document).ready(function() {
+            var iPad = window.navigator.userAgent.indexOf('iPad');
+            if (iPad > -1 || $(".left-col").css("display") === "none") {
+                var bgColorList = ["#9db3f4", "#414141", "#e5a859", "#f5dfc6", "#c084a0", "#847e72", "#cd8390", "#996731"];
+                var bgColor = Math.ceil(Math.random() * (bgColorList.length - 1));
+                $("body").css({"background-color": bgColorList[bgColor], "background-size": "cover"});
+            }
+            else {
+                var backgroundnum = 5;
+                var backgroundimg = "url(/background/bg-x.jpg)".replace(/x/gi, Math.ceil(Math.random() * backgroundnum));
+                $("body").css({"background": backgroundimg, "background-attachment": "fixed", "background-size": "cover"});
+            }
+        })
+    </script>
+
+
+
+
+
+    <script type="text/x-mathjax-config">
+MathJax.Hub.Config({
+    tex2jax: {
+        inlineMath: [ ['$','$'], ["\\(","\\)"]  ],
+        processEscapes: true,
+        skipTags: ['script', 'noscript', 'style', 'textarea', 'pre', 'code']
+    }
+});
+
+MathJax.Hub.Queue(function() {
+    var all = MathJax.Hub.getAllJax(), i;
+    for(i=0; i < all.length; i += 1) {
+        all[i].SourceElement().parentNode.className += ' has-jax';                 
+    }       
+});
+</script>
+
+<script src="//cdn.bootcss.com/mathjax/2.6.1/MathJax.js?config=TeX-AMS-MML_HTMLorMML">
+</script>
+
+
+<div class="scroll" id="scroll">
+    <a href="#" title="Back to Top"><i class="fa fa-arrow-up"></i></a>
+    <a href="#comments" onclick="load$hide();" title="Comments"><i class="fa fa-comments-o"></i></a>
+    <a href="#footer" title="Go to Bottom"><i class="fa fa-arrow-down"></i></a>
+</div>
+<script>
+    // Open in New Window
+    
+        var oOpenInNew = {
+            
+            
+            
+            
+            
+            
+             archives: ".archive-article-title", 
+             miniArchives: "a.post-list-link", 
+            
+             friends: "#js-friends a", 
+             socail: ".social a" 
+        }
+        for (var x in oOpenInNew) {
+            $(oOpenInNew[x]).attr("target", "_blank");
+        }
+    
+</script>
+
+<script async src="https://dn-lbstatics.qbox.me/busuanzi/2.3/busuanzi.pure.mini.js">
+</script>
+  </div>
+</body>
+</html>

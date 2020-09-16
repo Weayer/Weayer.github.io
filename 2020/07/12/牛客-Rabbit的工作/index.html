@@ -1,0 +1,567 @@
+<!DOCTYPE html>
+<html lang="en">
+<head><meta name="generator" content="Hexo 3.9.0">
+
+    <!--[if lt IE 9]>
+        <style>body {display: none; background: none !important} </style>
+        <meta http-equiv="Refresh" Content="0; url=//outdatedbrowser.com/" />
+    <![endif]-->
+
+<meta charset="utf-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge, chrome=1">
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
+<meta name="format-detection" content="telephone=no">
+<meta name="author" content="Weayer">
+
+
+
+<meta name="description" content="&amp;#x8BE5;&amp;#x9898;&amp;#x8003;&amp;#x5BDF;&amp;#x4E86;&amp;#x5B8C;&amp;#x5168;&amp;#x80CC;&amp;#x5305;&amp;#x9898;&amp;#x76EE;&amp;#x94FE;&amp;#x63A5;&amp;#xFF1A;https://ac.nowcoder.com/acm/problem/21186">
+<meta name="keywords" content="动态规划,差分">
+<meta property="og:type" content="article">
+<meta property="og:title" content="牛客-Rabbit的工作">
+<meta property="og:url" content="https://www.weayer.top/2020/07/12/牛客-Rabbit的工作/index.html">
+<meta property="og:site_name" content="weayer&#39;s blog">
+<meta property="og:description" content="&amp;#x8BE5;&amp;#x9898;&amp;#x8003;&amp;#x5BDF;&amp;#x4E86;&amp;#x5B8C;&amp;#x5168;&amp;#x80CC;&amp;#x5305;&amp;#x9898;&amp;#x76EE;&amp;#x94FE;&amp;#x63A5;&amp;#xFF1A;https://ac.nowcoder.com/acm/problem/21186">
+<meta property="og:locale" content="en">
+<meta property="og:updated_time" content="2020-07-12T10:06:44.110Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="牛客-Rabbit的工作">
+<meta name="twitter:description" content="&amp;#x8BE5;&amp;#x9898;&amp;#x8003;&amp;#x5BDF;&amp;#x4E86;&amp;#x5B8C;&amp;#x5168;&amp;#x80CC;&amp;#x5305;&amp;#x9898;&amp;#x76EE;&amp;#x94FE;&amp;#x63A5;&amp;#xFF1A;https://ac.nowcoder.com/acm/problem/21186">
+
+<link rel="apple-touch-icon" href="/apple-touch-icon.png">
+
+
+    <link rel="alternate" href="/atom.xml" title="weayer&#39;s blog" type="application/atom+xml">
+
+
+
+    <link rel="shortcut icon" href="/favicon.png">
+
+
+
+    <link href="//cdn.bootcss.com/animate.css/3.5.1/animate.min.css" rel="stylesheet">
+
+
+
+    <link href="//cdn.bootcss.com/fancybox/2.1.5/jquery.fancybox.min.css" rel="stylesheet">
+
+
+
+    <script src="//cdn.bootcss.com/pace/1.0.2/pace.min.js"></script>
+    <link href="//cdn.bootcss.com/pace/1.0.2/themes/blue/pace-theme-minimal.css" rel="stylesheet">
+
+
+<link rel="stylesheet" href="/css/style.css">
+
+
+
+<link href="//cdn.bootcss.com/font-awesome/4.6.3/css/font-awesome.min.css" rel="stylesheet">
+
+
+<title>牛客-Rabbit的工作 | weayer&#39;s blog</title>
+
+<script src="//cdn.bootcss.com/jquery/2.2.4/jquery.min.js"></script>
+<script src="//cdn.bootcss.com/clipboard.js/1.5.10/clipboard.min.js"></script>
+
+<script>
+    var yiliaConfig = {
+        fancybox: true,
+        animate: true,
+        isHome: false,
+        isPost: true,
+        isArchive: false,
+        isTag: false,
+        isCategory: false,
+        fancybox_js: "//cdn.bootcss.com/fancybox/2.1.5/jquery.fancybox.min.js",
+        scrollreveal: "//cdn.bootcss.com/scrollReveal.js/3.1.4/scrollreveal.min.js",
+        search: false
+    }
+</script>
+
+
+    <script> yiliaConfig.jquery_ui = [false]; </script>
+
+
+
+    <script> yiliaConfig.rootUrl = "\/";</script>
+
+
+
+
+
+    <script>
+        var _hmt = _hmt || [];
+        (function() {
+            var hm = document.createElement("script");
+            hm.src = "//hm.baidu.com/hm.js?8c70833ee0194776a494dd5209d32b72";
+            var s = document.getElementsByTagName("script")[0]; 
+            s.parentNode.insertBefore(hm, s);
+        })();
+    </script>
+
+
+</head></html>
+<body>
+  <div id="container">
+    <div class="left-col">
+    <div class="overlay"></div>
+<div class="intrude-less">
+    <header id="header" class="inner">
+        <a href="/" class="profilepic">
+            <img src="/img/head.jpg" class="animated zoomIn">
+        </a>
+        <hgroup>
+          <h1 class="header-author"><a href="/">Weayer</a></h1>
+        </hgroup>
+
+        
+        <p class="header-subtitle">把生命浪费在美好的事物上</p>
+        
+
+        
+
+
+        
+            <div id="switch-btn" class="switch-btn">
+                <div class="icon">
+                    <div class="icon-ctn">
+                        <div class="icon-wrap icon-house" data-idx="0">
+                            <div class="birdhouse"></div>
+                            <div class="birdhouse_holes"></div>
+                        </div>
+                        <div class="icon-wrap icon-ribbon hide" data-idx="1">
+                            <div class="ribbon"></div>
+                        </div>
+                        
+                        <div class="icon-wrap icon-link hide" data-idx="2">
+                            <div class="loopback_l"></div>
+                            <div class="loopback_r"></div>
+                        </div>
+                        
+                        
+                        <div class="icon-wrap icon-me hide" data-idx="3">
+                            <div class="user"></div>
+                            <div class="shoulder"></div>
+                        </div>
+                        
+                    </div>
+                    
+                </div>
+                <div class="tips-box hide">
+                    <div class="tips-arrow"></div>
+                    <ul class="tips-inner">
+                        <li>Menu</li>
+                        <li>Tags</li>
+                        
+                        <li>Friends</li>
+                        
+                        
+                        <li>About Me</li>
+                        
+                    </ul>
+                </div>
+            </div>
+        
+
+        <div id="switch-area" class="switch-area">
+            <div class="switch-wrap">
+                <section class="switch-part switch-part1">
+                    <nav class="header-menu">
+                        <ul>
+                        
+                            <li><a href="/">主页</a></li>
+                        
+                            <li><a href="/archives/">所有文章</a></li>
+                        
+                            <li><a href="/tags/">标签云</a></li>
+                        
+                            <li><a href="/about/">关于我</a></li>
+                        
+                        </ul>
+                    </nav>
+                    <nav class="header-nav">
+                        <ul class="social">
+                            
+                                <a class="fa Email" href="mailto:123@123.com" title="Email"></a>
+                            
+                                <a class="fa GitHub" href="#" title="GitHub"></a>
+                            
+                                <a class="fa RSS" href="/atom.xml" title="RSS"></a>
+                            
+                        </ul>
+                    </nav>
+                </section>
+                
+                
+                <section class="switch-part switch-part2">
+                    <div class="widget tagcloud" id="js-tagcloud">
+                        <ul class="tag-list"><li class="tag-list-item"><a class="tag-list-link" href="/tags/hexo/">hexo</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/mysql/">mysql</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/二分/">二分</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/动态规划/">动态规划</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/哈希/">哈希</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/图/">图</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/堆/">堆</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/字符串/">字符串</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/差分/">差分</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/排序/">排序</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/搜索/">搜索</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/数论/">数论</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/枚举/">枚举</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/查找/">查找</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/栈/">栈</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/树/">树</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/模拟/">模拟</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/模运算/">模运算</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/蓝桥/">蓝桥</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/贪心/">贪心</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/逆元/">逆元</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/递归/">递归</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/递归回溯/">递归回溯</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/链表/">链表</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/队列/">队列</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/雪的教训/">雪的教训</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/高精度/">高精度</a></li></ul>
+                    </div>
+                </section>
+                
+                
+                
+                <section class="switch-part switch-part3">
+                    <div id="js-friends">
+                    
+                      <a class="main-nav-link switch-friends-link" href="https://hexo.io">Hexo</a>
+                    
+                      <a class="main-nav-link switch-friends-link" href="https://pages.github.com/">GitHub</a>
+                    
+                      <a class="main-nav-link switch-friends-link" href="http://moxfive.xyz/">MOxFIVE</a>
+                    
+                    </div>
+                </section>
+                
+
+                
+                
+                <section class="switch-part switch-part4">
+                
+                    <div id="js-aboutme">专注于前端</div>
+                </section>
+                
+            </div>
+        </div>
+    </header>                
+</div>
+    </div>
+    <div class="mid-col">
+      <nav id="mobile-nav">
+      <div class="overlay">
+          <div class="slider-trigger"></div>
+          <h1 class="header-author js-mobile-header hide"><a href="/" title="回到主页">Weayer</a></h1>
+      </div>
+    <div class="intrude-less">
+        <header id="header" class="inner">
+            <a href="/" class="profilepic">
+                <img src="/img/head.jpg" class="animated zoomIn">
+            </a>
+            <hgroup>
+              <h1 class="header-author"><a href="/" title="回到主页">Weayer</a></h1>
+            </hgroup>
+            
+            <p class="header-subtitle">把生命浪费在美好的事物上</p>
+            
+            <nav class="header-menu">
+                <ul>
+                
+                    <li><a href="/">主页</a></li>
+                
+                    <li><a href="/archives/">所有文章</a></li>
+                
+                    <li><a href="/tags/">标签云</a></li>
+                
+                    <li><a href="/about/">关于我</a></li>
+                
+                <div class="clearfix"></div>
+                </ul>
+            </nav>
+            <nav class="header-nav">
+                        <ul class="social">
+                            
+                                <a class="fa Email" target="_blank" href="mailto:123@123.com" title="Email"></a>
+                            
+                                <a class="fa GitHub" target="_blank" href="#" title="GitHub"></a>
+                            
+                                <a class="fa RSS" target="_blank" href="/atom.xml" title="RSS"></a>
+                            
+                        </ul>
+            </nav>
+        </header>                
+    </div>
+    <link class="menu-list" tags="Tags" friends="Friends" about="About Me"/>
+</nav>
+      <div class="body-wrap"><article id="post-牛客-Rabbit的工作" class="article article-type-post" itemscope itemprop="blogPost">
+  
+    <div class="article-meta">
+      <a href="/2020/07/12/牛客-Rabbit的工作/" class="article-date">
+      <time datetime="2020-07-11T16:00:00.000Z" itemprop="datePublished">2020-07-12</time>
+</a>
+
+
+    </div>
+  
+  <div class="article-inner">
+    
+      <input type="hidden" class="isFancy" />
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 class="article-title" itemprop="name">
+      牛客-Rabbit的工作
+    </h1>
+  
+
+      </header>
+      
+      <div class="article-info article-info-post">
+        
+    <div class="article-category tagcloud">
+    <a class="article-category-link" href="/categories/数据结构与算法/">数据结构与算法</a>
+    </div>
+
+
+        
+    <div class="article-tag tagcloud">
+        <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/动态规划/">动态规划</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/差分/">差分</a></li></ul>
+    </div>
+
+        <div class="clearfix"></div>
+      </div>
+      
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+          
+        <p>&#x8BE5;&#x9898;&#x8003;&#x5BDF;&#x4E86;&#x5B8C;&#x5168;&#x80CC;&#x5305;<br>&#x9898;&#x76EE;&#x94FE;&#x63A5;&#xFF1A;<a href="https://ac.nowcoder.com/acm/problem/21186" target="_blank" rel="noopener">https://ac.nowcoder.com/acm/problem/21186</a></p>
+<a id="more"></a>
+<p>&#x611F;&#x8C22;&#x535A;&#x5BA2;1&#xFF1A;<a href="https://ac.nowcoder.com/acm/problem/blogs/21186" target="_blank" rel="noopener">https://ac.nowcoder.com/acm/problem/blogs/21186</a><br>&#x611F;&#x8C22;&#x535A;&#x5BA2;2&#xFF1A;<a href="https://blog.csdn.net/zygnewczh/article/details/107188919" target="_blank" rel="noopener">https://blog.csdn.net/zygnewczh/article/details/107188919</a><br>&#x5F53;&#x7136;&#x66F4;&#x8981;&#x611F;&#x8C22;&#x7ECF;&#x5178;&#x7684;&#xFF1A;<a href="https://www.kancloud.cn/kancloud/pack/70125" target="_blank">&#x80CC;&#x5305;&#x95EE;&#x9898;&#x4E5D;&#x8BB2;</a></p>
+<blockquote>
+<p>&#x9898;&#x76EE;&#x63CF;&#x8FF0;<br>Rabbit&#x901A;&#x8FC7;&#x4E86;&#x4E0A;&#x6B21;boss&#x7684;&#x8003;&#x6838;&#xFF0C;&#x73B0;&#x5728;&#x5979;&#x53C8;&#x9047;&#x5230;&#x4E86;&#x4E00;&#x4E2A;&#x95EE;&#x9898;&#x3002;<br>Rabbit&#x63A5;&#x5230;&#x4E86;K&#x4E2A;&#x4EFB;&#x52A1;&#xFF0C;&#x6BCF;&#x4E2A;&#x4EFB;&#x52A1;&#x5979;&#x53EF;&#x4EE5;&#x81EA;&#x7531;&#x9009;&#x62E9;&#x7528;i&#x5929;&#x53BB;&#x5B8C;&#x6210;(1&#x2264; i&#x2264; N)&#x3002;&#x5201;&#x94BB;&#x7684;boss&#x60F3;&#x8BA9;Rabbit&#x6070;&#x597D;&#x7528;W&#x5929;&#x5B8C;&#x6210;&#x6240;&#x6709;&#x4EFB;&#x52A1;&#x3002;<br>&#x5DF2;&#x77E5;Rabbit&#x7528;i&#x5929;&#x5B8C;&#x6210;&#x4E00;&#x4E2A;&#x4EFB;&#x52A1;&#x80FD;&#x8BA9;boss&#x83B7;&#x5F97;&#x7684;&#x6EE1;&#x610F;&#x5EA6;&#x4E3A;vi(&#x56E0;&#x4E3A;&#x5B8C;&#x6210;&#x4EFB;&#x52A1;&#x7684;&#x8D28;&#x91CF;&#x4E0D;&#x540C;)&#xFF0C;&#x5979;&#x60F3;&#x77E5;&#x9053;&#x5728;&#x6EE1;&#x8DB3;boss&#x8981;&#x6C42;&#x7684;&#x60C5;&#x51B5;&#x4E0B;&#x80FD;&#x8BA9;boss&#x83B7;&#x5F97;&#x7684;&#x603B;&#x6EE1;&#x610F;&#x5EA6;&#x6700;&#x5927;&#x662F;&#x591A;&#x5C11;&#x3002;<br>&#x8F93;&#x5165;&#x63CF;&#x8FF0;:<br>&#x7B2C;&#x4E00;&#x884C;&#x4E09;&#x4E2A;&#x6574;&#x6570;N&#xFF0C;K&#xFF0C;W&#x3002;<br>&#x7B2C;&#x4E8C;&#x884C;N&#x4E2A;&#x6574;&#x6570;vi&#xFF0C;vi&#x8868;&#x793A;&#x7528;i&#x5929;&#x5B8C;&#x6210;&#x4E00;&#x4E2A;&#x4EFB;&#x52A1;&#x80FD;&#x8BA9;boss&#x83B7;&#x5F97;&#x7684;&#x6EE1;&#x610F;&#x5EA6;&#x3002;<br>&#x8F93;&#x51FA;&#x63CF;&#x8FF0;:<br>&#x8F93;&#x51FA;Rabbit&#x5728;&#x6EE1;&#x8DB3;boss&#x8981;&#x6C42;&#x7684;&#x60C5;&#x51B5;&#x4E0B;&#x80FD;&#x8BA9;boss&#x83B7;&#x5F97;&#x7684;&#x603B;&#x6EE1;&#x610F;&#x5EA6;&#x6700;&#x5927;&#x662F;&#x591A;&#x5C11;&#x3002;<br>&#x793A;&#x4F8B;1<br>&#x8F93;&#x5165;:<br>3 3 5<br>6 2 4<br>&#x8F93;&#x51FA;:<br>16<br>&#x8BF4;&#x660E;:<br>Rabbit&#x53EF;&#x4EE5;&#x9009;&#x62E9;&#x5206;&#x522B;&#x7528;1&#x5929;&#xFF0C;1&#x5929;&#xFF0C;3&#x5929;&#x5B8C;&#x6210;&#x8FD9;&#x4E09;&#x4E2A;&#x4EFB;&#x52A1;&#xFF0C;&#x6700;&#x5927;&#x6EE1;&#x610F;&#x5EA6;&#x4E3A;6+6+4=16<br>&#x5907;&#x6CE8;:<br>2&#x2264; N,K&#x2264; 2000,K&#x2264; W&#x2264; min(4000,2*K)<br>0&lt; vi &#x2264;10000</p>
+</blockquote>
+<p><strong>&#x9898;&#x76EE;&#x5206;&#x6790;</strong><br>&#x8BE5;&#x9898;&#x5F88;&#x50CF;&#x662F;&#x53EF;&#x4EE5;&#x76F4;&#x63A5;&#x5957;&#x7528;&#x5B8C;&#x5168;&#x80CC;&#x5305;:<br>&#x80CC;&#x5305;&#x5BB9;&#x91CF;&#x2014;&#x2014;W&#x5929;   &#x7269;&#x54C1;&#x4EF6;&#x6570;&#x2014;&#x2014;N<br>&#x7269;&#x54C1;&#x8D39;&#x7528;&#x2014;&#x2014;&#x5B8C;&#x6210;&#x4E00;&#x4E2A;&#x4EFB;&#x52A1;&#x6240;&#x9700;&#x5929;&#x6570;i     &#x7269;&#x54C1;&#x4EF7;&#x503C;&#x2014;&#x2014;&#x6EE1;&#x610F;&#x5EA6;vi<br>&#x6700;&#x4F18;&#x89E3;&#x7684;&#x540C;&#x65F6;&#x8981;&#x6C42;&#x80CC;&#x5305;&#x5BB9;&#x91CF;&#x88C5;&#x6EE1;&#x2014;&#x2014;&#x6070;&#x7528;W&#x5929;&#x5B8C;&#x6210;<br>**<em>&#x7136;&#x800C;&#x9898;&#x76EE;&#x591A;&#x4E86;&#x4E00;&#x4E2A;&#x8981;&#x6C42;&#xFF1A;&#x5B8C;&#x6210;k&#x4E2A;&#x4EFB;&#x52A1;&#xFF0C;&#x4E5F;&#x5C31;&#x662F;&#x8981;&#x6C42;&#x9009;&#x62E9;&#x7684;&#x7269;&#x54C1;&#x603B;&#x4EF6;&#x6570;&#x4E3A;k<br>&#x6240;&#x4EE5;&#x6211;&#x4EEC;&#x5F53;&#x7136;&#x60F3;&#x6D88;&#x9664;&#x8FD9;&#x4E2A;k&#x7684;&#x7EA6;&#x675F;&#xFF0C;&#x4ECE;&#x800C;&#x6109;&#x5FEB;&#x5730;&#x76F4;&#x63A5;&#x5957;&#x7528;&#x5B8C;&#x5168;&#x80CC;&#x5305;&#xFF08;&#x6CE8;&#x610F;&#x5907;&#x6CE8;&#x7684;&#x8303;&#x56F4;`K&#x2264; W&#x2264; min(4000,2</em>K)`&#x6697;&#x793A;&#x7740;&#x4E9B;&#x4EC0;&#x4E48;&#xFF09;<br>&#x2014;&#x2014;&#x2014;&#x2014;&#x2014;&#x2014;&#x2014;&#x2014;&#x2014;&#x2014;&#x2014;&#x2014;&#x2014;&#x2014;&#x2014;&#x2014;&#x2014;&#x2014;&#x2014;&#x2014;&#x2014;&#x2014;&#x2014;&#x2014;&#x2014;&#x2014;&#x2014;&#x2014;&#x2014;&#x2014;</p>
+<ol>
+<li>&#x5148;&#x7ED9;&#x6BCF;&#x4E2A;&#x4EFB;&#x52A1;&#x5206;&#x914D;&#x4E00;&#x5929;&#xFF0C;&#x4E5F;&#x5C31;&#x662F;&#x7387;&#x5148;&#x83B7;&#x5F97;k&#x4E2A;&#x4E00;&#x5929;&#x7684;&#x6EE1;&#x610F;&#x5EA6;&#xFF08;&#x4FDD;&#x8BC1;&#x5B8C;&#x6210;&#x4E86;k&#x4E2A;&#x4EFB;&#x52A1;&#xFF09;</li>
+<li>&#x5DEE;&#x5206;&#x7B97;&#x51FA;&#x5176;&#x4F59;&#x5929;&#x6570;&#x4E0E;&#x7B2C;&#x4E00;&#x5929;&#x7684;&#x6EE1;&#x610F;&#x5EA6;&#xFF0C;&#x63A5;&#x7740;&#x5C31;&#x662F;&#x5B8C;&#x5168;&#x80CC;&#x5305;&#x4E86;~&#xFF08;&#x5269;&#x4F59;&#x7684;&#x5929;&#x6570;&#x4E5F;&#x8981;&#x5B8C;&#x6210;&#x4EFB;&#x52A1;&#xFF0C;&#x4F46;&#x8FD9;&#x65F6;&#x6CA1;&#x6709;k&#x7684;&#x7EA6;&#x675F;&#x4E86;&#xFF0C;&#x53EF;&#x81EA;&#x7531;&#x5206;&#x914D;&#x54AF;&#xFF09;<br>&#x6B64;&#x65F6;&#x7684;&#x5B8C;&#x5168;&#x80CC;&#x5305;&#x4E3A;&#xFF1A;<br>&#x80CC;&#x5305;&#x5BB9;&#x91CF;&#x2014;&#x2014;W-k&#x5929;   &#x7269;&#x54C1;&#x4EF6;&#x6570;&#x2014;&#x2014;N-1<br>&#x7269;&#x54C1;&#x8D39;&#x7528;&#x2014;&#x2014;&#x5B8C;&#x6210;&#x4E00;&#x4E2A;&#x4EFB;&#x52A1;&#x6240;&#x9700;&#x5929;&#x6570;i     &#x7269;&#x54C1;&#x4EF7;&#x503C;&#x2014;&#x2014;&#x6EE1;&#x610F;&#x5EA6;vi-v0<br>&#x6700;&#x4F18;&#x89E3;&#x7684;&#x540C;&#x65F6;&#x8981;&#x6C42;&#x80CC;&#x5305;&#x5BB9;&#x91CF;&#x88C5;&#x6EE1;&#x2014;&#x2014;&#x6070;&#x7528;W-k&#x5929;&#x5B8C;&#x6210;</li>
+</ol>
+<p>***&#x65E0;&#x5176;&#x4ED6;&#x7EA6;&#x675F;&#x6761;&#x4EF6;<br>&#x2014;&#x2014;&#x2014;&#x2014;&#x2014;&#x2014;&#x2014;&#x2014;&#x2014;&#x2014;&#x2014;&#x2014;&#x2014;&#x2014;&#x5B8C;&#x6574;&#x4EE3;&#x7801;&#x2014;&#x2014;&#x2014;&#x2014;&#x2014;&#x2014;&#x2014;&#x2014;&#x2014;&#x2014;&#x2014;&#x2014;&#x2014;&#x2014;&#x2014;&#x2014;</p>
+<figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;iostream&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;algorithm&gt;</span></span></span><br><span class="line"></span><br><span class="line"><span class="keyword">using</span> <span class="keyword">namespace</span> <span class="built_in">std</span>;</span><br><span class="line"></span><br><span class="line"><span class="keyword">int</span> a[<span class="number">2005</span>];</span><br><span class="line"><span class="keyword">int</span> dp[<span class="number">5005</span>];</span><br><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">main</span><span class="params">()</span></span>{</span><br><span class="line">	<span class="keyword">int</span> n, k, W;</span><br><span class="line">	<span class="built_in">scanf</span>(<span class="string">&quot;%d%d%d&quot;</span>, &amp;n, &amp;k, &amp;W);</span><br><span class="line">	<span class="built_in">scanf</span>(<span class="string">&quot;%d&quot;</span>, &amp;a[<span class="number">0</span>]);</span><br><span class="line">	<span class="keyword">for</span>(<span class="keyword">int</span> i = <span class="number">1</span>; i &lt; n; ++i){</span><br><span class="line">		<span class="built_in">scanf</span>(<span class="string">&quot;%d&quot;</span>, &amp;a[i]);</span><br><span class="line">		a[i] = a[i] - a[<span class="number">0</span>];<span class="comment">//&#x4EF7;&#x503C;v[i]-v[0]</span></span><br><span class="line">	}</span><br><span class="line">	fill(dp+<span class="number">1</span>, dp+k+<span class="number">1</span>, <span class="number">-0x3f3f3f</span>);<span class="comment">//&#x80CC;&#x5305;&#x8981;&#x6C42;&#x88C5;&#x6EE1;</span></span><br><span class="line">	dp[<span class="number">0</span>] = <span class="number">0</span>;</span><br><span class="line">	W -= k;</span><br><span class="line">	<span class="keyword">for</span>(<span class="keyword">int</span> i = <span class="number">1</span>; i &lt; n; ++i){<span class="comment">//&#x5B8C;&#x5168;&#x80CC;&#x5305;</span></span><br><span class="line">		<span class="keyword">for</span>(<span class="keyword">int</span> j = i; j &lt;= W; ++j){</span><br><span class="line">			dp[j] = max(dp[j], dp[j-i]+a[i]);</span><br><span class="line">		}</span><br><span class="line">	}</span><br><span class="line">	<span class="built_in">printf</span>(<span class="string">&quot;%d&quot;</span>, dp[W]+a[<span class="number">0</span>]*k);</span><br><span class="line">	<span class="keyword">return</span> <span class="number">0</span>;</span><br><span class="line">}</span><br></pre></td></tr></table></figure>
+
+
+      
+    </div>
+    
+  </div>
+  
+    
+    <div class="copyright">
+        <p><span>Title:</span><a href="/2020/07/12/牛客-Rabbit的工作/">牛客-Rabbit的工作</a></p>
+        <p><span>Author:</span><a href="/" title="Back to Homepage">Weayer</a></p>
+        <p><span>Created:</span>2020-07-12, 00:00:00</p>
+        <p><span>Updated:</span>2020-07-12, 18:06:44</p>
+        <p>
+            <span>Full URL:</span><a class="post-url" href="/2020/07/12/牛客-Rabbit的工作/" title="牛客-Rabbit的工作">https://www.weayer.top/2020/07/12/牛客-Rabbit的工作/</a>
+            <span class="copy-path" data-clipboard-text="From https://www.weayer.top/2020/07/12/牛客-Rabbit的工作/　　By Weayer" title="Copy Article&#39;s Link &amp; Author"><i class="fa fa-clipboard"></i></span>
+            <script> var clipboard = new Clipboard('.copy-path'); </script>
+        </p>
+        <p>
+            <span>License:</span><i class="fa fa-creative-commons"></i> <a rel="license" href="http://creativecommons.org/licenses/by-nc-sa/4.0/" title="CC BY-NC-SA 4.0 International" target = "_blank">"CC BY-NC-SA 4.0"</a> Keep Link &amp; Author if Distribute.
+        </p>
+    </div>
+
+
+
+    <nav id="article-nav">
+        
+            <div id="article-nav-newer" class="article-nav-title">
+                <a href="/2020/08/11/蓝桥-正则问题/">
+                    蓝桥-正则问题
+                </a>
+            </div>
+        
+        
+            <div id="article-nav-older" class="article-nav-title">
+                <a href="/2020/07/05/蓝桥-分考场/">
+                    蓝桥-分考场
+                </a>
+            </div>
+        
+    </nav>
+
+  
+</article>
+
+    <div id="toc" class="toc-article">
+        <strong class="toc-title">Contents</strong>
+        
+            
+        
+    </div>
+    <style>
+        .left-col .switch-btn,
+        .left-col .switch-area {
+            display: none;
+        }
+        .toc-level-3 i,
+        .toc-level-3 ol {
+            display: none !important;
+        }
+    </style>
+
+    <input type="button" id="tocButton" value="Hide"  title="Show or Hide Table of Contents">
+
+    <script>
+        yiliaConfig.toc = ["Hide", "Show", !!"false"];
+    </script>
+
+
+
+    
+<div class="share">
+    
+        <div class="bdsharebuttonbox">
+            <a href="#" class="fa fa-twitter bds_twi" data-cmd="twi" title="分享到推特"></a>
+            <a href="#" class="fa fa-weibo bds_tsina" data-cmd="tsina" title="分享到新浪微博"></a>
+            <a href="#" class="fa fa-qq bds_sqq" data-cmd="sqq" title="分享给 QQ 好友"></a>
+            <a href="#" class="fa fa-files-o bds_copy" data-cmd="copy" title="复制网址"></a>
+            <a href="#" class="fa fa fa-envelope-o bds_mail" data-cmd="mail" title="通过邮件分享"></a>
+            <a href="#" class="fa fa-weixin bds_weixin" data-cmd="weixin" title="生成文章二维码"></a>
+            <a href="#" class="fa fa-share-alt bds_more" data-cmd="more"></i></a>
+        </div>
+        <script>
+            window._bd_share_config={
+                "common":{"bdSnsKey":{},"bdText":"牛客-Rabbit的工作　| weayer's blog　","bdMini":"2","bdMiniList":false,"bdPic":"","bdStyle":"0","bdSize":"24"},"share":{}};with(document)0[(getElementsByTagName('head')[0]||body).appendChild(createElement('script')).src='http://bdimg.share.baidu.com/static/api/js/share.js?v=89860593.js?cdnversion='+~(-new Date()/36e5)];
+        </script>
+    
+
+    
+</div>
+
+
+
+
+
+
+
+    
+
+
+
+
+    <div class="scroll" id="post-nav-button">
+        
+            <a href="/2020/08/11/蓝桥-正则问题/" title="Pre: 蓝桥-正则问题">
+                <i class="fa fa-angle-left"></i>
+            </a>
+        
+
+        <a title="Mini Archives"><i class="fa fa-bars"></i><i class="fa fa-times"></i></a>
+
+        
+            <a href="/2020/07/05/蓝桥-分考场/" title="Next: 蓝桥-分考场">
+                <i class="fa fa-angle-right"></i>
+            </a>
+        
+    </div>
+
+    <ul class="post-list"><li class="post-list-item"><a class="post-list-link" href="/2020/09/16/蓝桥-剪邮票/">·【蓝桥】·剪邮票</a></li><li class="post-list-item"><a class="post-list-link" href="/2020/09/16/蓝桥-交换瓶子/">·【蓝桥】·交换瓶子</a></li><li class="post-list-item"><a class="post-list-link" href="/2020/09/12/全排列/">全排列（去重和不去重）</a></li><li class="post-list-item"><a class="post-list-link" href="/2020/09/01/商汤AI园区的n个路口（简单）/">商汤AI园区的n个路口（简单）</a></li><li class="post-list-item"><a class="post-list-link" href="/2020/09/01/商汤的AI伴游小精灵/">·【计蒜客】·商汤的AI伴游小精灵</a></li><li class="post-list-item"><a class="post-list-link" href="/2020/08/19/蓝桥-四平方和/">·【蓝桥】·四平方和</a></li><li class="post-list-item"><a class="post-list-link" href="/2020/08/17/蓝桥-青蛙跳杯子/">·【蓝桥】·青蛙跳杯子</a></li><li class="post-list-item"><a class="post-list-link" href="/2020/08/16/蓝桥-九宫幻方/">·【蓝桥】·九宫幻方</a></li><li class="post-list-item"><a class="post-list-link" href="/2020/08/16/蓝桥-拉马车/">·【蓝桥】·拉马车</a></li><li class="post-list-item"><a class="post-list-link" href="/2020/08/11/蓝桥-Excel地址/">蓝桥-Excel地址</a></li><li class="post-list-item"><a class="post-list-link" href="/2020/08/11/蓝桥-正则问题/">蓝桥-正则问题</a></li><li class="post-list-item"><a class="post-list-link" href="/2020/07/12/牛客-Rabbit的工作/">牛客-Rabbit的工作</a></li><li class="post-list-item"><a class="post-list-link" href="/2020/07/05/蓝桥-分考场/">蓝桥-分考场</a></li><li class="post-list-item"><a class="post-list-link" href="/2020/06/30/蓝桥-带分数/">·【蓝桥】·带分数</a></li><li class="post-list-item"><a class="post-list-link" href="/2020/06/28/线段树/">线段树专题</a></li><li class="post-list-item"><a class="post-list-link" href="/2020/06/28/逆序数/">逆序数</a></li><li class="post-list-item"><a class="post-list-link" href="/2020/06/27/树状数组/">树状数组专题</a></li><li class="post-list-item"><a class="post-list-link" href="/2020/06/27/数学公式及符号/">Markdown数学公式及符号汇总</a></li><li class="post-list-item"><a class="post-list-link" href="/2020/06/19/蓝桥-买不到的数目/">·【蓝桥】·买不到的数目</a></li><li class="post-list-item"><a class="post-list-link" href="/2020/06/17/图的遍历/">图的遍历（邻接矩阵、邻接表）</a></li><li class="post-list-item"><a class="post-list-link" href="/2020/06/17/蓝桥-小朋友排队/">·【蓝桥】·小朋友排队（归并、树状数组）</a></li><li class="post-list-item"><a class="post-list-link" href="/2020/06/11/最短路径/">最短路径专题（Dijkstra、Floyd、Bellman-Ford即优化）</a></li><li class="post-list-item"><a class="post-list-link" href="/2020/06/04/n皇后问题/">n皇后问题</a></li><li class="post-list-item"><a class="post-list-link" href="/2020/05/31/牛客-减成一/">牛客-减成一</a></li><li class="post-list-item"><a class="post-list-link" href="/2020/05/16/数组实现简单链表/">数组实现链表</a></li><li class="post-list-item"><a class="post-list-link" href="/2020/05/16/牛客-邻值查找/">牛客-邻值查找</a></li><li class="post-list-item"><a class="post-list-link" href="/2020/05/14/并查集/">并查集及优化（路径压缩+按秩合并）</a></li><li class="post-list-item"><a class="post-list-link" href="/2020/05/08/LIS（队列优化+二分）/">LIS优化</a></li><li class="post-list-item"><a class="post-list-link" href="/2020/05/08/真分数的最大埃及分数/">真分数的最大埃及分数</a></li><li class="post-list-item"><a class="post-list-link" href="/2020/04/28/蓝桥-包子凑数/">·【蓝桥】·包子凑数</a></li><li class="post-list-item"><a class="post-list-link" href="/2020/04/25/Github-Coding（理想很丰满）/">Github+coding（理想很丰满）</a></li><li class="post-list-item"><a class="post-list-link" href="/2020/04/24/模运算的运用/">模运算的运用</a></li><li class="post-list-item"><a class="post-list-link" href="/2020/04/01/4月1日我成功地被mysql给愚弄了/">4月1日我成功地被mysql给愚弄了</a></li><li class="post-list-item"><a class="post-list-link" href="/2020/03/28/Dp-ST/">Dp-ST表（求解RMP）</a></li><li class="post-list-item"><a class="post-list-link" href="/2020/03/28/蓝桥-晚会节目单/">·【蓝桥】晚会节目单（ST表）</a></li><li class="post-list-item"><a class="post-list-link" href="/2020/03/11/Extend-Eculid/">Extend_Eculid</a></li><li class="post-list-item"><a class="post-list-link" href="/2020/03/11/ax-by-c问题/">Ax+By=C问题</a></li><li class="post-list-item"><a class="post-list-link" href="/2020/03/10/51nod-1009数字1的数量/">·【51nod-1009】数字1的数量</a></li><li class="post-list-item"><a class="post-list-link" href="/2020/03/10/dp-digit/">Dp-digit</a></li><li class="post-list-item"><a class="post-list-link" href="/2020/03/07/NOIP-2015-POJ-2456/">·【NOIP-2015】·【POJ-2456】</a></li><li class="post-list-item"><a class="post-list-link" href="/2020/03/05/heap/">heap</a></li><li class="post-list-item"><a class="post-list-link" href="/2020/02/28/High-precision1/">n的阶乘(High-precision)</a></li><li class="post-list-item"><a class="post-list-link" href="/2020/02/28/Inverse/">Inverse</a></li><li class="post-list-item"><a class="post-list-link" href="/2020/02/07/Sliding-window/">Sliding Window</a></li><li class="post-list-item"><a class="post-list-link" href="/2019/12/02/Merge-Sort/">Merge Sort</a></li><li class="post-list-item"><a class="post-list-link" href="/2019/12/01/Stack/">Stack</a></li><li class="post-list-item"><a class="post-list-link" href="/2019/11/30/Queue-0/">Queue</a></li><li class="post-list-item"><a class="post-list-link" href="/2019/10/26/Lnode/">Lnode</a></li><li class="post-list-item"><a class="post-list-link" href="/2019/10/26/hey-piggy/">hey-piggy</a></li></ul>
+
+
+
+
+    <script>
+        
+    </script>
+</div>
+      <footer id="footer">
+    <div class="outer">
+        <div id="footer-info">
+            <div class="footer-left">
+                <i class="fa fa-copyright"></i> 
+                2016-2020 Weayer
+            </div>
+            <div class="footer-right">
+                <a href="http://hexo.io/" target="_blank" title="A fast, simple &amp; powerful blog framework">Hexo</a>  Theme <a href="https://github.com/MOxFIVE/hexo-theme-yelee" target="_blank" title="Another simple and elegant theme for Hexo  v3.5">Yelee</a> by MOxFIVE <i class="fa fa-heart animated infinite pulse"></i>
+            </div>
+        </div>
+        
+            <div class="visit">
+                
+                    <span id="busuanzi_container_site_pv" style='display:none'>
+                        <span id="site-visit" title="Site Visitors"><i class="fa fa-user" aria-hidden="true"></i><span id="busuanzi_value_site_uv"></span>
+                        </span>
+                    </span>
+                
+                
+                    <span>| </span>
+                
+                
+                    <span id="busuanzi_container_page_pv" style='display:none'>
+                        <span id="page-visit"  title="Page Hits"><i class="fa fa-eye animated infinite pulse" aria-hidden="true"></i><span id="busuanzi_value_page_pv"></span>
+                        </span>
+                    </span>
+                
+            </div>
+        
+    </div>
+</footer>
+    </div>
+    
+<script data-main="/js/main.js" src="//cdn.bootcss.com/require.js/2.2.0/require.min.js"></script>
+
+    <script>
+        $(document).ready(function() {
+            var iPad = window.navigator.userAgent.indexOf('iPad');
+            if (iPad > -1 || $(".left-col").css("display") === "none") {
+                var bgColorList = ["#9db3f4", "#414141", "#e5a859", "#f5dfc6", "#c084a0", "#847e72", "#cd8390", "#996731"];
+                var bgColor = Math.ceil(Math.random() * (bgColorList.length - 1));
+                $("body").css({"background-color": bgColorList[bgColor], "background-size": "cover"});
+            }
+            else {
+                var backgroundnum = 5;
+                var backgroundimg = "url(/background/bg-x.jpg)".replace(/x/gi, Math.ceil(Math.random() * backgroundnum));
+                $("body").css({"background": backgroundimg, "background-attachment": "fixed", "background-size": "cover"});
+            }
+        })
+    </script>
+
+
+
+
+
+    <script type="text/x-mathjax-config">
+MathJax.Hub.Config({
+    tex2jax: {
+        inlineMath: [ ['$','$'], ["\\(","\\)"]  ],
+        processEscapes: true,
+        skipTags: ['script', 'noscript', 'style', 'textarea', 'pre', 'code']
+    }
+});
+
+MathJax.Hub.Queue(function() {
+    var all = MathJax.Hub.getAllJax(), i;
+    for(i=0; i < all.length; i += 1) {
+        all[i].SourceElement().parentNode.className += ' has-jax';                 
+    }       
+});
+</script>
+
+<script src="//cdn.bootcss.com/mathjax/2.6.1/MathJax.js?config=TeX-AMS-MML_HTMLorMML">
+</script>
+
+
+<div class="scroll" id="scroll">
+    <a href="#" title="Back to Top"><i class="fa fa-arrow-up"></i></a>
+    <a href="#comments" onclick="load$hide();" title="Comments"><i class="fa fa-comments-o"></i></a>
+    <a href="#footer" title="Go to Bottom"><i class="fa fa-arrow-down"></i></a>
+</div>
+<script>
+    // Open in New Window
+    
+        var oOpenInNew = {
+            
+            
+            
+            
+            
+            
+             archives: ".archive-article-title", 
+             miniArchives: "a.post-list-link", 
+            
+             friends: "#js-friends a", 
+             socail: ".social a" 
+        }
+        for (var x in oOpenInNew) {
+            $(oOpenInNew[x]).attr("target", "_blank");
+        }
+    
+</script>
+
+<script async src="https://dn-lbstatics.qbox.me/busuanzi/2.3/busuanzi.pure.mini.js">
+</script>
+  </div>
+</body>
+</html>

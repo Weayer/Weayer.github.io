@@ -1,335 +1,241 @@
+
+
 <!DOCTYPE html>
-<html lang="en">
+<html lang="zh-CN" data-default-color-scheme=&#34;auto&#34;>
+
+
+
 <head><meta name="generator" content="Hexo 3.9.0">
+  <meta charset="UTF-8">
+  <link rel="apple-touch-icon" sizes="76x76" href="/img/favicon.png">
+  <link rel="icon" type="image/png" href="/img/favicon.png">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no, shrink-to-fit=no">
+  <meta http-equiv="x-ua-compatible" content="ie=edge">
+  
+  <meta name="theme-color" content="#2f4154">
+  <meta name="description" content="The Meaning of Life">
+  <meta name="author" content="Weayer">
+  <meta name="keywords" content="Never,never,never,never!">
+  <title>Sliding Window - weayer&#39;s blog</title>
 
-    <!--[if lt IE 9]>
-        <style>body {display: none; background: none !important} </style>
-        <meta http-equiv="Refresh" Content="0; url=//outdatedbrowser.com/" />
-    <![endif]-->
-
-<meta charset="utf-8">
-<meta http-equiv="X-UA-Compatible" content="IE=edge, chrome=1">
-<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
-<meta name="format-detection" content="telephone=no">
-<meta name="author" content="Weayer">
-
-
-
-<meta name="description" content="&amp;#x6ED1;&amp;#x52A8;&amp;#x7A97;&amp;#x53E3;&amp;#x7B97;&amp;#x6CD5;&amp;#xFF1A;&amp;#x6ED1;&amp;#x52A8;&amp;#x7A97;&amp;#x53E3;&amp;#x4E00;&amp;#x822C;&amp;#x7528;&amp;#x4E8E;&amp;#x4E00;&amp;#x4E2A;&amp;#x6570;&amp;#x7EC4;&amp;#x4E2D;&amp;#xFF0C;&amp;#x4F7F;&amp;#x7528;&amp;#x8BE5;&amp;#x7A97;">
-<meta name="keywords" content="字符串">
-<meta property="og:type" content="article">
-<meta property="og:title" content="Sliding Window">
-<meta property="og:url" content="https://www.weayer.top/2020/02/07/Sliding-window/index.html">
-<meta property="og:site_name" content="weayer&#39;s blog">
-<meta property="og:description" content="&amp;#x6ED1;&amp;#x52A8;&amp;#x7A97;&amp;#x53E3;&amp;#x7B97;&amp;#x6CD5;&amp;#xFF1A;&amp;#x6ED1;&amp;#x52A8;&amp;#x7A97;&amp;#x53E3;&amp;#x4E00;&amp;#x822C;&amp;#x7528;&amp;#x4E8E;&amp;#x4E00;&amp;#x4E2A;&amp;#x6570;&amp;#x7EC4;&amp;#x4E2D;&amp;#xFF0C;&amp;#x4F7F;&amp;#x7528;&amp;#x8BE5;&amp;#x7A97;">
-<meta property="og:locale" content="en">
-<meta property="og:updated_time" content="2020-05-14T11:56:11.875Z">
-<meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="Sliding Window">
-<meta name="twitter:description" content="&amp;#x6ED1;&amp;#x52A8;&amp;#x7A97;&amp;#x53E3;&amp;#x7B97;&amp;#x6CD5;&amp;#xFF1A;&amp;#x6ED1;&amp;#x52A8;&amp;#x7A97;&amp;#x53E3;&amp;#x4E00;&amp;#x822C;&amp;#x7528;&amp;#x4E8E;&amp;#x4E00;&amp;#x4E2A;&amp;#x6570;&amp;#x7EC4;&amp;#x4E2D;&amp;#xFF0C;&amp;#x4F7F;&amp;#x7528;&amp;#x8BE5;&amp;#x7A97;">
-
-<link rel="apple-touch-icon" href="/apple-touch-icon.png">
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.5.3/dist/css/bootstrap.min.css">
 
 
-    <link rel="alternate" href="/atom.xml" title="weayer&#39;s blog" type="application/atom+xml">
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/github-markdown-css@4.0.0/github-markdown.min.css">
+  <link rel="stylesheet" href="/lib/hint/hint.min.css">
+
+  
+    
+    
+      
+      <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/highlight.js@10.4.0/styles/github-gist.min.css">
+    
+  
+
+  
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fancyapps/fancybox@3.5.7/dist/jquery.fancybox.min.css">
+  
 
 
 
-    <link rel="shortcut icon" href="/favicon.png">
+<!-- 主题依赖的图标库，不要自行修改 -->
+<link rel="stylesheet" href="//at.alicdn.com/t/font_1749284_ba1fz6golrf.css">
+
+<link rel="stylesheet" href="//at.alicdn.com/t/font_1736178_kmeydafke9r.css">
+
+<link rel="stylesheet" href="/css/main.css">
+
+<!-- 自定义样式保持在最底部 -->
 
 
-
-    <link href="//cdn.bootcss.com/animate.css/3.5.1/animate.min.css" rel="stylesheet">
-
-
-
-    <link href="//cdn.bootcss.com/fancybox/2.1.5/jquery.fancybox.min.css" rel="stylesheet">
-
-
-
-    <script src="//cdn.bootcss.com/pace/1.0.2/pace.min.js"></script>
-    <link href="//cdn.bootcss.com/pace/1.0.2/themes/blue/pace-theme-minimal.css" rel="stylesheet">
+  <script id="fluid-configs">
+    var Fluid = window.Fluid || {};
+    var CONFIG = {"hostname":"www.weayer.top","root":"/","version":"1.8.7","typing":{"enable":true,"typeSpeed":70,"cursorChar":"_","loop":false},"anchorjs":{"enable":true,"element":"h1,h2,h3,h4,h5,h6","placement":"right","visible":"hover","icon":""},"progressbar":{"enable":true,"height_px":3,"color":"#29d","options":{"showSpinner":false,"trickleSpeed":100}},"copy_btn":true,"image_zoom":{"enable":true},"toc":{"enable":true,"headingSelector":"h1,h2,h3,h4,h5,h6","collapseDepth":0},"lazyload":{"enable":true,"onlypost":false},"web_analytics":{"enable":false,"baidu":null,"google":null,"gtag":null,"tencent":{"sid":null,"cid":null},"woyaola":null,"cnzz":null,"leancloud":{"app_id":null,"app_key":null,"server_url":null}}};
+  </script>
+  <script src="/js/utils.js"></script>
+  <script src="/js/color-schema.js"></script>
+</head>
 
 
-<link rel="stylesheet" href="/css/style.css">
-
-
-
-<link href="//cdn.bootcss.com/font-awesome/4.6.3/css/font-awesome.min.css" rel="stylesheet">
-
-
-<title>Sliding Window | weayer&#39;s blog</title>
-
-<script src="//cdn.bootcss.com/jquery/2.2.4/jquery.min.js"></script>
-<script src="//cdn.bootcss.com/clipboard.js/1.5.10/clipboard.min.js"></script>
-
-<script>
-    var yiliaConfig = {
-        fancybox: true,
-        animate: true,
-        isHome: false,
-        isPost: true,
-        isArchive: false,
-        isTag: false,
-        isCategory: false,
-        fancybox_js: "//cdn.bootcss.com/fancybox/2.1.5/jquery.fancybox.min.js",
-        scrollreveal: "//cdn.bootcss.com/scrollReveal.js/3.1.4/scrollreveal.min.js",
-        search: false
-    }
-</script>
-
-
-    <script> yiliaConfig.jquery_ui = [false]; </script>
-
-
-
-    <script> yiliaConfig.rootUrl = "\/";</script>
-
-
-
-
-
-    <script>
-        var _hmt = _hmt || [];
-        (function() {
-            var hm = document.createElement("script");
-            hm.src = "//hm.baidu.com/hm.js?8c70833ee0194776a494dd5209d32b72";
-            var s = document.getElementsByTagName("script")[0]; 
-            s.parentNode.insertBefore(hm, s);
-        })();
-    </script>
-
-
-</head></html>
 <body>
-  <div id="container">
-    <div class="left-col">
-    <div class="overlay"></div>
-<div class="intrude-less">
-    <header id="header" class="inner">
-        <a href="/" class="profilepic">
-            <img src="/img/head.jpg" class="animated zoomIn">
-        </a>
-        <hgroup>
-          <h1 class="header-author"><a href="/">Weayer</a></h1>
-        </hgroup>
+  <header style="height: 70vh;">
+    <nav id="navbar" class="navbar fixed-top  navbar-expand-lg navbar-dark scrolling-navbar">
+  <div class="container">
+    <a class="navbar-brand"
+       href="/">&nbsp;<strong>Fluid</strong>&nbsp;</a>
 
+    <button id="navbar-toggler-btn" class="navbar-toggler" type="button" data-toggle="collapse"
+            data-target="#navbarSupportedContent"
+            aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+      <div class="animated-icon"><span></span><span></span><span></span></div>
+    </button>
+
+    <!-- Collapsible content -->
+    <div class="collapse navbar-collapse" id="navbarSupportedContent">
+      <ul class="navbar-nav ml-auto text-center">
         
-        <p class="header-subtitle">把生命浪费在美好的事物上</p>
-        
-
-        
-
-
-        
-            <div id="switch-btn" class="switch-btn">
-                <div class="icon">
-                    <div class="icon-ctn">
-                        <div class="icon-wrap icon-house" data-idx="0">
-                            <div class="birdhouse"></div>
-                            <div class="birdhouse_holes"></div>
-                        </div>
-                        <div class="icon-wrap icon-ribbon hide" data-idx="1">
-                            <div class="ribbon"></div>
-                        </div>
-                        
-                        <div class="icon-wrap icon-link hide" data-idx="2">
-                            <div class="loopback_l"></div>
-                            <div class="loopback_r"></div>
-                        </div>
-                        
-                        
-                        <div class="icon-wrap icon-me hide" data-idx="3">
-                            <div class="user"></div>
-                            <div class="shoulder"></div>
-                        </div>
-                        
-                    </div>
-                    
-                </div>
-                <div class="tips-box hide">
-                    <div class="tips-arrow"></div>
-                    <ul class="tips-inner">
-                        <li>Menu</li>
-                        <li>Tags</li>
-                        
-                        <li>Friends</li>
-                        
-                        
-                        <li>About Me</li>
-                        
-                    </ul>
-                </div>
-            </div>
-        
-
-        <div id="switch-area" class="switch-area">
-            <div class="switch-wrap">
-                <section class="switch-part switch-part1">
-                    <nav class="header-menu">
-                        <ul>
-                        
-                            <li><a href="/">主页</a></li>
-                        
-                            <li><a href="/archives/">所有文章</a></li>
-                        
-                            <li><a href="/tags/">标签云</a></li>
-                        
-                            <li><a href="/about/">关于我</a></li>
-                        
-                        </ul>
-                    </nav>
-                    <nav class="header-nav">
-                        <ul class="social">
-                            
-                                <a class="fa Email" href="mailto:123@123.com" title="Email"></a>
-                            
-                                <a class="fa GitHub" href="#" title="GitHub"></a>
-                            
-                                <a class="fa RSS" href="/atom.xml" title="RSS"></a>
-                            
-                        </ul>
-                    </nav>
-                </section>
-                
-                
-                <section class="switch-part switch-part2">
-                    <div class="widget tagcloud" id="js-tagcloud">
-                        <ul class="tag-list"><li class="tag-list-item"><a class="tag-list-link" href="/tags/hexo/">hexo</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/mysql/">mysql</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/二分/">二分</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/动态规划/">动态规划</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/哈希/">哈希</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/图/">图</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/堆/">堆</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/字符串/">字符串</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/差分/">差分</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/排序/">排序</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/搜索/">搜索</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/数论/">数论</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/枚举/">枚举</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/查找/">查找</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/栈/">栈</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/树/">树</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/模拟/">模拟</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/模运算/">模运算</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/蓝桥/">蓝桥</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/贪心/">贪心</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/逆元/">逆元</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/递归/">递归</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/递归回溯/">递归回溯</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/链表/">链表</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/队列/">队列</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/雪的教训/">雪的教训</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/高精度/">高精度</a></li></ul>
-                    </div>
-                </section>
-                
-                
-                
-                <section class="switch-part switch-part3">
-                    <div id="js-friends">
-                    
-                      <a class="main-nav-link switch-friends-link" href="https://hexo.io">Hexo</a>
-                    
-                      <a class="main-nav-link switch-friends-link" href="https://pages.github.com/">GitHub</a>
-                    
-                      <a class="main-nav-link switch-friends-link" href="http://moxfive.xyz/">MOxFIVE</a>
-                    
-                    </div>
-                </section>
-                
-
-                
-                
-                <section class="switch-part switch-part4">
-                
-                    <div id="js-aboutme">专注于前端</div>
-                </section>
-                
-            </div>
-        </div>
-    </header>                
-</div>
-    </div>
-    <div class="mid-col">
-      <nav id="mobile-nav">
-      <div class="overlay">
-          <div class="slider-trigger"></div>
-          <h1 class="header-author js-mobile-header hide"><a href="/" title="回到主页">Weayer</a></h1>
-      </div>
-    <div class="intrude-less">
-        <header id="header" class="inner">
-            <a href="/" class="profilepic">
-                <img src="/img/head.jpg" class="animated zoomIn">
-            </a>
-            <hgroup>
-              <h1 class="header-author"><a href="/" title="回到主页">Weayer</a></h1>
-            </hgroup>
-            
-            <p class="header-subtitle">把生命浪费在美好的事物上</p>
-            
-            <nav class="header-menu">
-                <ul>
-                
-                    <li><a href="/">主页</a></li>
-                
-                    <li><a href="/archives/">所有文章</a></li>
-                
-                    <li><a href="/tags/">标签云</a></li>
-                
-                    <li><a href="/about/">关于我</a></li>
-                
-                <div class="clearfix"></div>
-                </ul>
-            </nav>
-            <nav class="header-nav">
-                        <ul class="social">
-                            
-                                <a class="fa Email" target="_blank" href="mailto:123@123.com" title="Email"></a>
-                            
-                                <a class="fa GitHub" target="_blank" href="#" title="GitHub"></a>
-                            
-                                <a class="fa RSS" target="_blank" href="/atom.xml" title="RSS"></a>
-                            
-                        </ul>
-            </nav>
-        </header>                
-    </div>
-    <link class="menu-list" tags="Tags" friends="Friends" about="About Me"/>
-</nav>
-      <div class="body-wrap"><article id="post-Sliding-window" class="article article-type-post" itemscope itemprop="blogPost">
-  
-    <div class="article-meta">
-      <a href="/2020/02/07/Sliding-window/" class="article-date">
-      <time datetime="2020-02-07T13:51:05.000Z" itemprop="datePublished">2020-02-07</time>
-</a>
-
-
-    </div>
-  
-  <div class="article-inner">
-    
-      <input type="hidden" class="isFancy" />
-    
-    
-      <header class="article-header">
-        
-  
-    <h1 class="article-title" itemprop="name">
-      Sliding Window
-    </h1>
-  
-
-      </header>
-      
-      <div class="article-info article-info-post">
-        
-    <div class="article-category tagcloud">
-    <a class="article-category-link" href="/categories/数据结构与算法/">数据结构与算法</a>
-    </div>
-
-
-        
-    <div class="article-tag tagcloud">
-        <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/字符串/">字符串</a></li></ul>
-    </div>
-
-        <div class="clearfix"></div>
-      </div>
-      
-    
-    <div class="article-entry" itemprop="articleBody">
-      
           
-        <h2 id="&#x6ED1;&#x52A8;&#x7A97;&#x53E3;&#x7B97;&#x6CD5;&#xFF1A;"><a href="#&#x6ED1;&#x52A8;&#x7A97;&#x53E3;&#x7B97;&#x6CD5;&#xFF1A;" class="headerlink" title="&#x6ED1;&#x52A8;&#x7A97;&#x53E3;&#x7B97;&#x6CD5;&#xFF1A;"></a>&#x6ED1;&#x52A8;&#x7A97;&#x53E3;&#x7B97;&#x6CD5;&#xFF1A;</h2><p>&#x6ED1;&#x52A8;&#x7A97;&#x53E3;&#x4E00;&#x822C;&#x7528;&#x4E8E;&#x4E00;&#x4E2A;&#x6570;&#x7EC4;&#x4E2D;&#xFF0C;&#x4F7F;&#x7528;&#x8BE5;&#x7A97;&#x53E3;&#x5728;&#x6570;&#x7EC4;&#x5408;&#x6CD5;&#x533A;&#x95F4;&#x5185;&#x6ED1;&#x52A8;&#xFF0C;&#x52A8;&#x6001;&#x8BB0;&#x5F55;&#x76F8;&#x5173;&#x4FE1;&#x606F;&#xFF0C;&#x4ECE;&#x800C;&#x63D0;&#x9AD8;&#x7B97;&#x6CD5;&#x590D;&#x6742;&#x5EA6;</p>
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/">
+                <i class="iconfont icon-home-fill"></i>
+                首页
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/archives/">
+                <i class="iconfont icon-archive-fill"></i>
+                归档
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/categories/">
+                <i class="iconfont icon-category-fill"></i>
+                分类
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/tags/">
+                <i class="iconfont icon-tags-fill"></i>
+                标签
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/about/">
+                <i class="iconfont icon-user-fill"></i>
+                关于
+              </a>
+            </li>
+          
+        
+        
+          <li class="nav-item" id="search-btn">
+            <a class="nav-link" data-toggle="modal" data-target="#modalSearch">&nbsp;<i
+                class="iconfont icon-search"></i>&nbsp;</a>
+          </li>
+        
+        
+          <li class="nav-item" id="color-toggle-btn">
+            <a class="nav-link" href="javascript:">&nbsp;<i
+                class="iconfont icon-dark" id="color-toggle-icon"></i>&nbsp;</a>
+          </li>
+        
+      </ul>
+    </div>
+  </div>
+</nav>
+
+    <div class="banner" id="banner" parallax=true
+         style="background: url('/img/default.png') no-repeat center center;
+           background-size: cover;">
+      <div class="full-bg-img">
+        <div class="mask flex-center" style="background-color: rgba(0, 0, 0, 0.3)">
+          <div class="page-header text-center fade-in-up">
+            <span class="h2" id="subtitle" title="Sliding Window">
+              
+            </span>
+
+            
+              <div class="mt-3">
+  
+  
+    <span class="post-meta">
+      <i class="iconfont icon-date-fill" aria-hidden="true"></i>
+      <time datetime="2020-02-07 21:51" pubdate>
+        2020年2月7日 晚上
+      </time>
+    </span>
+  
+</div>
+
+<div class="mt-1">
+  
+    
+    <span class="post-meta mr-2">
+      <i class="iconfont icon-chart"></i>
+      1.7k 字
+    </span>
+  
+
+  
+    
+    <span class="post-meta mr-2">
+      <i class="iconfont icon-clock-fill"></i>
+      
+      
+      33
+       分钟
+    </span>
+  
+
+  
+  
+</div>
+
+            
+          </div>
+
+          
+        </div>
+      </div>
+    </div>
+  </header>
+
+  <main>
+    
+      
+
+<div class="container-fluid nopadding-x">
+  <div class="row nomargin-x">
+    <div class="d-none d-lg-block col-lg-2"></div>
+    <div class="col-lg-8 nopadding-x-md">
+      <div class="container nopadding-x-md" id="board-ctn">
+        <div class="py-5" id="board">
+          <article class="post-content mx-auto">
+            <!-- SEO header -->
+            <h1 style="display: none">Sliding Window</h1>
+            
+            <div class="markdown-body">
+              <h2 id="&#x6ED1;&#x52A8;&#x7A97;&#x53E3;&#x7B97;&#x6CD5;&#xFF1A;"><a href="#&#x6ED1;&#x52A8;&#x7A97;&#x53E3;&#x7B97;&#x6CD5;&#xFF1A;" class="headerlink" title="&#x6ED1;&#x52A8;&#x7A97;&#x53E3;&#x7B97;&#x6CD5;&#xFF1A;"></a>&#x6ED1;&#x52A8;&#x7A97;&#x53E3;&#x7B97;&#x6CD5;&#xFF1A;</h2><p>&#x6ED1;&#x52A8;&#x7A97;&#x53E3;&#x4E00;&#x822C;&#x7528;&#x4E8E;&#x4E00;&#x4E2A;&#x6570;&#x7EC4;&#x4E2D;&#xFF0C;&#x4F7F;&#x7528;&#x8BE5;&#x7A97;&#x53E3;&#x5728;&#x6570;&#x7EC4;&#x5408;&#x6CD5;&#x533A;&#x95F4;&#x5185;&#x6ED1;&#x52A8;&#xFF0C;&#x52A8;&#x6001;&#x8BB0;&#x5F55;&#x76F8;&#x5173;&#x4FE1;&#x606F;&#xFF0C;&#x4ECE;&#x800C;&#x63D0;&#x9AD8;&#x7B97;&#x6CD5;&#x590D;&#x6742;&#x5EA6;</p>
 <a id="more"></a>
 <h3 id="&#x9898;&#x76EE;1&#xFF1A;&#x4E0D;&#x5305;&#x542B;&#x76F8;&#x540C;&#x5143;&#x7D20;&#x7684;&#x6700;&#x957F;&#x5B50;&#x4E32;"><a href="#&#x9898;&#x76EE;1&#xFF1A;&#x4E0D;&#x5305;&#x542B;&#x76F8;&#x540C;&#x5143;&#x7D20;&#x7684;&#x6700;&#x957F;&#x5B50;&#x4E32;" class="headerlink" title="&#x9898;&#x76EE;1&#xFF1A;&#x4E0D;&#x5305;&#x542B;&#x76F8;&#x540C;&#x5143;&#x7D20;&#x7684;&#x6700;&#x957F;&#x5B50;&#x4E32;"></a>&#x9898;&#x76EE;1&#xFF1A;&#x4E0D;&#x5305;&#x542B;&#x76F8;&#x540C;&#x5143;&#x7D20;&#x7684;&#x6700;&#x957F;&#x5B50;&#x4E32;</h3><blockquote>
 <p>&#x9898;&#x76EE;&#x63CF;&#x8FF0;&#xFF1A;&#x7ED9;&#x5B9A;&#x4E00;&#x4E2A;&#x5B57;&#x7B26;&#x4E32;&#xFF0C;&#x627E;&#x51FA;&#x5176;&#x4E2D;&#x4E0D;&#x542B;&#x6709;&#x91CD;&#x590D;&#x5B57;&#x7B26;&#x7684; &#x6700;&#x957F;&#x5B50;&#x4E32; &#x7684;&#x957F;&#x5EA6;&#x3002;<br>&#x8F93;&#x5165;&#xFF1A;&#x201C;abcgbef&#x201D;<br>&#x8F93;&#x51FA;&#xFF1A;5</p>
 </blockquote>
 <ul>
 <li><p><strong>&#x7B97;&#x6CD5;&#x601D;&#x60F3;</strong><br>&#x6570;&#x7EC4;&#x6A21;&#x62DF;&#x961F;&#x5217;&#xFF0C;front&#x6807;&#x8BB0;&#x7A97;&#x53E3;&#x5DE6;&#x7AEF;&#xFF0C;i&#x8BB0;&#x5F55;&#x7A97;&#x53E3;&#x53F3;&#x7AEF;&#xFF0C;i&#x4ECE;0&#x904D;&#x5386;&#x5230;&#x6570;&#x7EC4;&#x672B;&#x7AEF;.<br>map&lt;char,int&gt;&#x5B58;&#x653E;&#x4E0D;&#x540C;&#x5143;&#x7D20;&#x51FA;&#x73B0;&#x5728;&#x7A97;&#x53E3;&#x4E2D;&#x7684;&#x6B21;&#x6570;.</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">map&lt;char, int&gt; mp;</span><br></pre></td></tr></table></figure>
+<figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs undefined"><span class="hljs-built_in">map</span>&lt;<span class="hljs-keyword">char</span>, <span class="hljs-keyword">int</span>&gt; mp;<br></code></pre></td></tr></table></figure>
 </li>
 <li><p>&#x5F00;&#x59CB;front=0&#xFF0C;i&#x4E00;&#x76F4;&#x53F3;&#x79FB;,map&#x8BB0;&#x5F55;&#x5143;&#x7D20;&#x76F4;&#x81F3;&#x51FA;&#x73B0;&#x91CD;&#x590D;&#x5B57;&#x7B26;name&#xFF0C;&#x6709;mp[name]==2&#xFF0C;&#x8BB0;&#x4E0B;&#x5B57;&#x4E32;&#x957F;&#x5EA6;res.<br>i&#x518D;&#x8981;&#x540E;&#x79FB;&#xFF0C;&#x5219;&#x9700;&#x820D;&#x53BB;&#x4E4B;&#x524D;&#x51FA;&#x73B0;&#x7684;&#x91CD;&#x590D;&#x5B57;&#x7B26;&#xFF0C;&#x4E8E;&#x662F;front&#x53F3;&#x79FB;&#x81F3; a[front]==name.<br>&#x6BCF;&#x6B21;&#x51FA;&#x73B0;&#x91CD;&#x590D;&#x5B57;&#x7B26;&#x65F6;&#x5C31;&#x8003;&#x8651;&#x66F4;&#x65B0;&#x5B57;&#x4E32;&#x957F;&#x5EA6;res.</p>
 </li>
 </ul>
 <p>&#x2014;&#x2014;&#x2014;&#x2014;&#x2014;&#x2014;&#x2014;&#x2014;&#x2014;&#x2014;&#x2014;&#x2014;&#x2014;&#x2014;&#x2014;&#x2014;&#x2014;&#x2014;&#x2014;&#x2014;&#x2014;&#x2014;&#x2014;&#x2014;&#x2014;&#x2014;&#x2014;&#x2014;&#x2014;&#x2014;&#x2014;&#x2014;&#x2014;&#x2014;&#x2014;&#x2014;&#x2014;&#x2014;<br>&#xB7;&#x4EE3;&#x7801;&#x5982;&#x4E0B;&#xB7;</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br></pre></td><td class="code"><pre><span class="line">int Sliding (string a)</span><br><span class="line">{</span><br><span class="line">	if(a == &quot;&quot;)         //&#x4E32;&#x4E3A;&#x7A7A;&#x65F6;&#x8FD4;&#x56DE;0</span><br><span class="line">		return 0;</span><br><span class="line">	int len = a.size();</span><br><span class="line">	int front = 0, res = -1;</span><br><span class="line">	char name;</span><br><span class="line">	map&lt;char, int&gt; mp;</span><br><span class="line">	for(int i=0; i&lt;len; i++)</span><br><span class="line">	{</span><br><span class="line">		name = a[i];</span><br><span class="line">		++mp[name];             //i&#x53F3;&#x79FB;&#xFF0C;mp&#x8BB0;&#x5F55;&#x5143;&#x7D20;&#x51FA;&#x73B0;&#x6B21;&#x6570;</span><br><span class="line">		if(mp[name]==2)         //&#x51FA;&#x73B0;&#x91CD;&#x590D;&#x5B57;&#x7B26;</span><br><span class="line">		{</span><br><span class="line">			res = max(res, i-front);    //&#x66F4;&#x65B0;res&#xFF0C;&#x91CD;&#x590D;&#x7684;a[i]&#x4E0D;&#x80FD;&#x7B97;&#xFF0C;&#x6240;&#x4EE5;&#x662F;i-front</span><br><span class="line">			while(name != a[front])</span><br><span class="line">			{</span><br><span class="line">				--mp[a[front]];</span><br><span class="line">				++front;</span><br><span class="line">			}                //&#x4E3A;&#x4FDD;&#x8BC1;&#x6CA1;&#x6709;&#x91CD;&#x590D;&#x5B57;&#x7B26;&#xFF0C;front&#x540E;&#x79FB;&#x81F3; name==a[front] </span><br><span class="line">			++front;         //front&#x518D;&#x53F3;&#x79FB;&#x4E00;&#x4F4D;&#xFF0C;&#x7A97;&#x53E3;&#x5185;&#x5C31;&#x4E0D;&#x518D;&#x6709;&#x91CD;&#x590D;&#x5B57;&#x7B26;name&#x4E86;</span><br><span class="line">			--mp[name];      //&#x6062;&#x590D;&#x81F3;mp[name]=1&#xFF0C;&#x7A97;&#x53E3;i&#x7EE7;&#x7EED;&#x540E;&#x79FB;</span><br><span class="line">		}</span><br><span class="line">		else</span><br><span class="line">		{</span><br><span class="line">			if(i == len-1)      //&#x7279;&#x6B8A;&#x60C5;&#x51B5;&#xFF1A;i&#x79FB;&#x81F3;&#x672B;&#x5C3E;&#x4F46;&#x65E0;&#x91CD;&#x590D;&#x5B57;&#x7B26;</span><br><span class="line">				res = max(res, i-front+1);  //&#x6B64;&#x65F6;&#x82E5;&#x8981;&#x66F4;&#x65B0;&#x957F;&#x5EA6;&#x4E3A; i-front+1</span><br><span class="line">		}</span><br><span class="line">	}</span><br><span class="line">	return res;</span><br><span class="line">}</span><br></pre></td></tr></table></figure>
+<figure class="highlight angelscript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br></pre></td><td class="code"><pre><code class="hljs undefined"><span class="hljs-built_in">int</span> Sliding (<span class="hljs-built_in">string</span> a)<br>{<br>	<span class="hljs-keyword">if</span>(a == <span class="hljs-string">&quot;&quot;</span>)         <span class="hljs-comment">//&#x4E32;&#x4E3A;&#x7A7A;&#x65F6;&#x8FD4;&#x56DE;0</span><br>		<span class="hljs-keyword">return</span> <span class="hljs-number">0</span>;<br>	<span class="hljs-built_in">int</span> len = a.size();<br>	<span class="hljs-built_in">int</span> front = <span class="hljs-number">0</span>, res = <span class="hljs-number">-1</span>;<br>	char name;<br>	map&lt;char, <span class="hljs-built_in">int</span>&gt; mp;<br>	<span class="hljs-keyword">for</span>(<span class="hljs-built_in">int</span> i=<span class="hljs-number">0</span>; i&lt;len; i++)<br>	{<br>		name = a[i];<br>		++mp[name];             <span class="hljs-comment">//i&#x53F3;&#x79FB;&#xFF0C;mp&#x8BB0;&#x5F55;&#x5143;&#x7D20;&#x51FA;&#x73B0;&#x6B21;&#x6570;</span><br>		<span class="hljs-keyword">if</span>(mp[name]==<span class="hljs-number">2</span>)         <span class="hljs-comment">//&#x51FA;&#x73B0;&#x91CD;&#x590D;&#x5B57;&#x7B26;</span><br>		{<br>			res = max(res, i-front);    <span class="hljs-comment">//&#x66F4;&#x65B0;res&#xFF0C;&#x91CD;&#x590D;&#x7684;a[i]&#x4E0D;&#x80FD;&#x7B97;&#xFF0C;&#x6240;&#x4EE5;&#x662F;i-front</span><br>			<span class="hljs-keyword">while</span>(name != a[front])<br>			{<br>				--mp[a[front]];<br>				++front;<br>			}                <span class="hljs-comment">//&#x4E3A;&#x4FDD;&#x8BC1;&#x6CA1;&#x6709;&#x91CD;&#x590D;&#x5B57;&#x7B26;&#xFF0C;front&#x540E;&#x79FB;&#x81F3; name==a[front] </span><br>			++front;         <span class="hljs-comment">//front&#x518D;&#x53F3;&#x79FB;&#x4E00;&#x4F4D;&#xFF0C;&#x7A97;&#x53E3;&#x5185;&#x5C31;&#x4E0D;&#x518D;&#x6709;&#x91CD;&#x590D;&#x5B57;&#x7B26;name&#x4E86;</span><br>			--mp[name];      <span class="hljs-comment">//&#x6062;&#x590D;&#x81F3;mp[name]=1&#xFF0C;&#x7A97;&#x53E3;i&#x7EE7;&#x7EED;&#x540E;&#x79FB;</span><br>		}<br>		<span class="hljs-keyword">else</span><br>		{<br>			<span class="hljs-keyword">if</span>(i == len<span class="hljs-number">-1</span>)      <span class="hljs-comment">//&#x7279;&#x6B8A;&#x60C5;&#x51B5;&#xFF1A;i&#x79FB;&#x81F3;&#x672B;&#x5C3E;&#x4F46;&#x65E0;&#x91CD;&#x590D;&#x5B57;&#x7B26;</span><br>				res = max(res, i-front+<span class="hljs-number">1</span>);  <span class="hljs-comment">//&#x6B64;&#x65F6;&#x82E5;&#x8981;&#x66F4;&#x65B0;&#x957F;&#x5EA6;&#x4E3A; i-front+1</span><br>		}<br>	}<br>	<span class="hljs-keyword">return</span> res;<br>}<br></code></pre></td></tr></table></figure>
 
 <h3 id="&#x9898;&#x76EE;2&#xFF1A;&#x81F3;&#x5C11;&#x5305;&#x542B;k&#x4E2A;&#x76F8;&#x540C;&#x5143;&#x7D20;&#x7684;&#x6700;&#x77ED;&#x5B50;&#x4E32;"><a href="#&#x9898;&#x76EE;2&#xFF1A;&#x81F3;&#x5C11;&#x5305;&#x542B;k&#x4E2A;&#x76F8;&#x540C;&#x5143;&#x7D20;&#x7684;&#x6700;&#x77ED;&#x5B50;&#x4E32;" class="headerlink" title="&#x9898;&#x76EE;2&#xFF1A;&#x81F3;&#x5C11;&#x5305;&#x542B;k&#x4E2A;&#x76F8;&#x540C;&#x5143;&#x7D20;&#x7684;&#x6700;&#x77ED;&#x5B50;&#x4E32;"></a>&#x9898;&#x76EE;2&#xFF1A;&#x81F3;&#x5C11;&#x5305;&#x542B;k&#x4E2A;&#x76F8;&#x540C;&#x5143;&#x7D20;&#x7684;&#x6700;&#x77ED;&#x5B50;&#x4E32;</h3><blockquote>
 <p>&#x9898;&#x76EE;&#x63CF;&#x8FF0;<br>&#x7ED9;&#x957F;&#x5EA6;&#x4E3A;n&#x7684;&#x4E00;&#x6BB5;&#x5B57;&#x7B26;&#xFF0C;&#x8981;&#x6C42;&#x622A;&#x53D6;&#x4E00;&#x6BB5;&#x8FDE;&#x7EED;&#x5B57;&#x4E32;&#xFF0C;&#x6EE1;&#x8DB3;&#x81F3;&#x5C11;&#x5305;&#x542B;k&#x4E2A;&#x76F8;&#x540C;&#x5B57;&#x7B26;&#xFF0C;&#x6C42;&#x8BE5;&#x5B57;&#x4E32;&#x957F;&#x5EA6;&#x7684;&#x6700;&#x5C0F;&#x503C;<br>&#x8F93;&#x5165;&#xFF1A;9 2<br>     abebeabee<br>&#x8F93;&#x51FA;&#xFF1A;2</p>
@@ -339,255 +245,235 @@
 <li>&#x76F4;&#x63A5;&#x8BF4;&#x7A97;&#x53E3;&#x5728;&#x79FB;&#x52A8;&#x65F6;&#x548C;&#x4E0A;&#x9898;&#x7684;&#x4E0D;&#x540C;&#x4E4B;&#x5904;&#x5427;.<br>&#x540C;&#x6837;i&#x53F3;&#x79FB;&#x81F3; mp[name]==k ,front&#x53F3;&#x79FB;&#x76F4;&#x81F3; mp[name]==k(&#x5373;a[front]==name).<br>&#x8FD9;&#x662F;&#x4E3A;&#x4E86;&#x5C06;&#x957F;&#x5EA6;&#x5C3D;&#x53EF;&#x80FD;&#x7F29;&#x77ED;&#x81F3; a[front]=a[i]=name.<br>&#x2014;&#x2014;&#x2014;&#x2014;&#x2014;&#x2014;&#x2014;&#x2014;&#x2014;&#x2014;&#x2014;&#x2014;&#x2014;&#x2014;&#x2014;&#x2014;&#x2014;&#x2014;&#x2014;&#x2014;&#x2014;&#x2014;&#x2014;&#x2014;&#x2014;&#x2014;&#x2014;&#x2014;&#x2014;&#x2014;&#x2014;&#x2014;&#x2014;&#x2014;&#x2014;&#x2014;&#x2014;&#x2014;&#x2014;&#x2014;&#x2014;&#x2014;</li>
 </ul>
 <p>&#xB7;&#x4EE3;&#x7801;&#x5982;&#x4E0B;&#xB7;</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br></pre></td><td class="code"><pre><span class="line">int main()</span><br><span class="line">{</span><br><span class="line">	map&lt;char, int&gt; mp;</span><br><span class="line">	char a[200005];</span><br><span class="line">	int n, k, front = 0, res = -1;</span><br><span class="line">	cin&gt;&gt;n&gt;&gt;k&gt;&gt;a;</span><br><span class="line">	for(int i=0; i&lt;n; i++)</span><br><span class="line">	{</span><br><span class="line">		char name = a[i];</span><br><span class="line">		++mp[name];</span><br><span class="line">		while(mp[name] == k)         //front&#x53F3;&#x79FB;&#x81F3;mp[name]=k-1 &#x7ED3;&#x675F;&#x5FAA;&#x73AF;</span><br><span class="line">		{</span><br><span class="line">			if(res == -1)</span><br><span class="line">				res = i-front+1;    //&#x5305;&#x542B;k=1,&#x6C42;res&#x7684;&#x60C5;&#x51B5;</span><br><span class="line">			else</span><br><span class="line">				res = min(res, i-front+1);  //res&#x6700;&#x77ED;&#x8981;&#x5305;&#x542B;a[i],&#x6240;&#x4EE5;&#x662F; i-front+1</span><br><span class="line">			--mp[a[front]];</span><br><span class="line">			++front;</span><br><span class="line">		}           </span><br><span class="line">	}</span><br><span class="line">	cout&lt;&lt; res &lt;&lt;endl; </span><br><span class="line">	return 0;</span><br></pre></td></tr></table></figure>
+<figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br></pre></td><td class="code"><pre><code class="hljs undefined"><span class="hljs-function"><span class="hljs-keyword">int</span> <span class="hljs-title">main</span><span class="hljs-params">()</span><br></span>{<br>	<span class="hljs-built_in">map</span>&lt;<span class="hljs-keyword">char</span>, <span class="hljs-keyword">int</span>&gt; mp;<br>	<span class="hljs-keyword">char</span> a[<span class="hljs-number">200005</span>];<br>	<span class="hljs-keyword">int</span> n, k, front = <span class="hljs-number">0</span>, res = <span class="hljs-number">-1</span>;<br>	<span class="hljs-built_in">cin</span>&gt;&gt;n&gt;&gt;k&gt;&gt;a;<br>	<span class="hljs-keyword">for</span>(<span class="hljs-keyword">int</span> i=<span class="hljs-number">0</span>; i&lt;n; i++)<br>	{<br>		<span class="hljs-keyword">char</span> name = a[i];<br>		++mp[name];<br>		<span class="hljs-keyword">while</span>(mp[name] == k)         <span class="hljs-comment">//front&#x53F3;&#x79FB;&#x81F3;mp[name]=k-1 &#x7ED3;&#x675F;&#x5FAA;&#x73AF;</span><br>		{<br>			<span class="hljs-keyword">if</span>(res == <span class="hljs-number">-1</span>)<br>				res = i-front+<span class="hljs-number">1</span>;    <span class="hljs-comment">//&#x5305;&#x542B;k=1,&#x6C42;res&#x7684;&#x60C5;&#x51B5;</span><br>			<span class="hljs-keyword">else</span><br>				res = min(res, i-front+<span class="hljs-number">1</span>);  <span class="hljs-comment">//res&#x6700;&#x77ED;&#x8981;&#x5305;&#x542B;a[i],&#x6240;&#x4EE5;&#x662F; i-front+1</span><br>			--mp[a[front]];<br>			++front;<br>		}           <br>	}<br>	<span class="hljs-built_in">cout</span>&lt;&lt; res &lt;&lt;<span class="hljs-built_in">endl</span>; <br>	<span class="hljs-keyword">return</span> <span class="hljs-number">0</span>;<br></code></pre></td></tr></table></figure>
 
 <h3 id="&#x9898;&#x76EE;3&#xFF1A;&#x6700;&#x591A;&#x5305;&#x542B;k&#x4E2A;&#x76F8;&#x540C;&#x5143;&#x7D20;&#x7684;&#x6700;&#x957F;&#x5B50;&#x4E32;"><a href="#&#x9898;&#x76EE;3&#xFF1A;&#x6700;&#x591A;&#x5305;&#x542B;k&#x4E2A;&#x76F8;&#x540C;&#x5143;&#x7D20;&#x7684;&#x6700;&#x957F;&#x5B50;&#x4E32;" class="headerlink" title="&#x9898;&#x76EE;3&#xFF1A;&#x6700;&#x591A;&#x5305;&#x542B;k&#x4E2A;&#x76F8;&#x540C;&#x5143;&#x7D20;&#x7684;&#x6700;&#x957F;&#x5B50;&#x4E32;"></a>&#x9898;&#x76EE;3&#xFF1A;&#x6700;&#x591A;&#x5305;&#x542B;k&#x4E2A;&#x76F8;&#x540C;&#x5143;&#x7D20;&#x7684;&#x6700;&#x957F;&#x5B50;&#x4E32;</h3><blockquote>
 <p>&#x95EE;&#x9898;&#x63CF;&#x8FF0;<br>&#x94FE;&#x63A5;&#xFF1A;<a href="https://ac.nowcoder.com/acm/contest/3002/H" target="_blank" rel="noopener">https://ac.nowcoder.com/acm/contest/3002/H</a><br>&#x6765;&#x6E90;&#xFF1A;&#x725B;&#x5BA2;&#x7F51;<br>&#x5BF9;&#x4E8E;&#x4E00;&#x4E2A;&#x201C;01&#x201D;&#x4E32;&#x800C;&#x8A00;&#xFF0C;&#x6BCF;&#x6B21;&#x64CD;&#x4F5C;&#x53EF;&#x4EE5;&#x628A;&#x2019;0&#x2019;&#x5B57;&#x7B26;&#x6539;&#x4E3A;&#x2019;1&#x2019;&#x5B57;&#x7B26;&#xFF0C;&#x6216;&#x8005;&#x628A;&#x2019;1&#x2019;&#x5B57;&#x7B26;&#x6539;&#x4E3A;&#x2019;0&#x2019;&#x5B57;&#x7B26;&#x3002;&#x6240;&#x8C13;&#x201C;01&#x201D;&#x4E32;&#xFF0C;&#x5373;&#x53EA;&#x542B;&#x5B57;&#x7B26;&#x2019;0&#x2019;&#x548C;&#x5B57;&#x7B26;&#x2019;1&#x2019;&#x7684;&#x5B57;&#x7B26;&#x4E32;&#x3002;<br>nozomi&#x6709;&#x6700;&#x591A; k &#x6B21;&#x64CD;&#x4F5C;&#x7684;&#x673A;&#x4F1A;&#x3002;&#x5979;&#x60F3;&#x5728;&#x64CD;&#x4F5C;&#x4E4B;&#x540E;&#x627E;&#x51FA;&#x4E00;&#x4E2A;&#x5C3D;&#x53EF;&#x80FD;&#x957F;&#x7684;&#x8FDE;&#x7EED;&#x5B50;&#x4E32;&#xFF0C;&#x8FD9;&#x4E2A;&#x5B50;&#x4E32;&#x4E0A;&#x7684;&#x6240;&#x6709;&#x5B57;&#x7B26;&#x90FD;&#x76F8;&#x540C;&#x3002;<br>&#x8FD9;&#x4E2A;&#x5B50;&#x4E32;&#x7684;&#x957F;&#x5EA6;&#x6700;&#x5927;&#x503C;&#x662F;&#x591A;&#x5C11;&#xFF1F; (&#x6CE8;&#xFF1A;k&#x6B21;&#x64CD;&#x4F5C;&#x673A;&#x4F1A;&#x53EF;&#x4EE5;&#x4E0D;&#x5168;&#x90E8;&#x7528;&#x5B8C;)<br>&#x8F93;&#x5165;&#xFF1A; 6 1<br>      101110<br>&#x8F93;&#x51FA;&#xFF1A; 5<br>(&#x6CE8;&#x5C06;&#x2019;0&#x2019;&#x6539;&#x4E3A;&#x2019;1&#x2019;&#x53EF;&#x5F97;&#x5230;&#x5B50;&#x4E32;&#x6700;&#x957F;&#x4E3A;5&#xFF0C;&#x5373;&#x201C;111110&#x201D;; &#x5C06;&#x2019;1&#x2019;&#x6539;&#x4E3A;&#x2019;0&#x2019;&#x5B50;&#x4E32;&#x6700;&#x957F;&#x4E3A;2&#xFF0C;&#x5373;&#x201C;001110&#x201D;.<br>&#x4E24;&#x8005;&#x53D6;&#x6700;&#x957F; max(5,2)=5)</p>
 </blockquote>
 <ul>
 <li><p>&#x95EE;&#x9898;&#x5206;&#x6790;<br>&#x5206;&#x4E24;&#x79CD;&#x60C5;&#x51B5;&#xFF1A;<br>1)&#x5C06;&#x2019;0&#x2019;&#x6539;&#x4E3A;&#x2019;1&#x2019;,&#x5F97;&#x5230;&#x5B50;&#x4E32;&#x5B57;&#x7B26;&#x5168;&#x4E3A;&#x2019;1&#x2019;<br>2)&#x5C06;&#x2019;1&#x2019;&#x6539;&#x4E3A;&#x2019;0&#x2019;,&#x5F97;&#x5230;&#x5B50;&#x4E32;&#x5B57;&#x7B26;&#x5168;&#x4E3A;&#x2019;0&#x2019;<br>&#x6700;&#x540E;&#x6C42; max(Slide(&#x2018;1&#x2019;), Slide(&#x2018;0&#x2019;))</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">int Slide(char a)	//&#x51FD;&#x6570;&#x8FD4;&#x56DE;&#x7684;&#x662F;&#x66F4;&#x6539;&#x5B57;&#x7B26;a&#x540E;&#x7684;&#x6700;&#x957F;&#x5B50;&#x4E32;&#x957F;&#x5EA6;</span><br></pre></td></tr></table></figure>
+<figure class="highlight reasonml"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs undefined"><span class="hljs-built_in">int</span> <span class="hljs-constructor">Slide(<span class="hljs-params">char</span> <span class="hljs-params">a</span>)</span>	<span class="hljs-comment">//&#x51FD;&#x6570;&#x8FD4;&#x56DE;&#x7684;&#x662F;&#x66F4;&#x6539;&#x5B57;&#x7B26;a&#x540E;&#x7684;&#x6700;&#x957F;&#x5B50;&#x4E32;&#x957F;&#x5EA6;</span><br></code></pre></td></tr></table></figure>
 </li>
 <li><p><strong>&#x7B97;&#x6CD5;&#x601D;&#x60F3;</strong><br>&#x5982; Slide(&#x2018;1&#x2019;) &#x6700;&#x7EC8;&#x5F97;&#x5230;&#x5B50;&#x4E32;&#x5B57;&#x7B26;&#x5168;&#x4E3A;&#x2019;0&#x2019;,&#x66F4;&#x6539;&#x2019;1&#x2019;&#x7684;&#x6B21;&#x6570;&#x4E0D;&#x8D85;&#x8FC7;k.<br>&#x8FD9;&#x91CC;&#x9700;&#x8981;&#x8F6C;&#x5316;&#x4E00;&#x4E0B;&#x601D;&#x60F3;,&#x5373;&#x66F4;&#x6539;&#x591A;&#x5C11;&#x6B21;&#x5B57;&#x7B26;&#x2019;1&#x2019; &#x5C31;&#x662F;&#x5BFB;&#x627E;&#x2019;1&#x2019;&#x51FA;&#x73B0;&#x7684;&#x6B21;&#x6570;.<br>&#x90A3;&#x4E48;&#x8BE5;&#x95EE;&#x9898;&#x5373;&#x8F6C;&#x5316;&#x4E3A; &#x201C;01&#x201D;&#x4E32;&#x4E2D;&#x6700;&#x591A;&#x5305;&#x542B;k&#x4E2A;&#x2019;1&#x2019;&#x5B57;&#x7B26;&#x7684;&#x6700;&#x957F;&#x5B50;&#x4E32;.<br>&#x8BE5;&#x95EE;&#x9898;&#x7C7B;&#x4F3C;&#x9898;&#x76EE;1,&#x7A0D;&#x5FAE;&#x4E00;&#x70B9;&#x4E0D;&#x540C;&#x5728;&#x4E8E;:<br>&#x66F4;&#x6539;&#x5B57;&#x7B26;&#x6B21;&#x6570;mp(&#x4E5F;&#x5C31;&#x662F;&#x5305;&#x542B;&#x9898;&#x76EE;1&#x4E2D;&#x91CD;&#x590D;&#x5B57;&#x7B26;&#x4E2A;&#x6570;mp)&#x5C0F;&#x4E8E;&#x7B49;&#x4E8E;k,&#x800C;&#x4E0D;&#x662F;&#x5C0F;&#x4E8E;2.</p>
 </li>
 </ul>
 <p>&#x2014;&#x2014;&#x2014;&#x2014;&#x2014;&#x2014;&#x2014;&#x2014;&#x2014;&#x2014;&#x2014;&#x2014;&#x2014;&#x2014;&#x2014;&#x2014;&#x2014;&#x2014;&#x2014;&#x2014;&#x2014;&#x2014;&#x2014;&#x2014;&#x2014;&#x2014;&#x2014;&#x2014;&#x2014;&#x2014;&#x2014;&#x2014;&#x2014;&#x2014;&#x2014;&#x2014;&#x2014;&#x2014;&#x2014;&#x2014;&#x2014;&#x2014;</p>
 <p>&#xB7;&#x4EE3;&#x7801;&#x5982;&#x4E0B;&#xB7;</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br></pre></td><td class="code"><pre><span class="line">#include &lt;iostream&gt;</span><br><span class="line">#include &lt;map&gt; </span><br><span class="line">using namespace std;</span><br><span class="line">int n, k;</span><br><span class="line">char c[200005];</span><br><span class="line">int Slide(char a)					//change a</span><br><span class="line">{									//&#x5176;&#x5B9E;&#x5E76;&#x6CA1;&#x6709;&#x66F4;&#x6539;a,&#x800C;&#x662F;&#x5728;&#x6ED1;&#x52A8;&#x7A97;&#x53E3;&#x540C;&#x65F6;&#x67E5;&#x627E;a&#x51FA;&#x73B0;&#x6B21;&#x6570;</span><br><span class="line">	map&lt;char, int&gt; mp;</span><br><span class="line">	mp[a]=0;</span><br><span class="line">	int front=0, ans = 0, res = 0;</span><br><span class="line">	for(int i=0; i&lt;n; i++)</span><br><span class="line">	{</span><br><span class="line">		++mp[c[i]];</span><br><span class="line">		if(mp[a]&gt;k)						//&#x51FA;&#x73B0;&#x91CD;&#x590D;&#x5B57;&#x7B26;a&#x4E2A;&#x6570;&#x5927;&#x4E8E;k(&#x5373;&#x66F4;&#x6539;&#x6B21;&#x6570;&#x8D85;&#x8FC7;k&#x65F6;)</span><br><span class="line">		{</span><br><span class="line">			while(c[front]!=a)</span><br><span class="line">			{</span><br><span class="line">				res = max(res, i-front); //&#x5176;&#x5B9E;&#x79FB;&#x52A8;&#x8FC7;&#x7A0B;&#x4E0D;&#x4F1A;&#x66F4;&#x65B0;&#xFF0C;&#x56E0;&#x4E3A;&#x6C42;&#x7684;&#x662F;&#x6700;&#x957F;&#x957F;&#x5EA6;</span><br><span class="line">				++front;				//&#x7A97;&#x53E3;&#x5DE6;&#x7AEF;&#x5F00;&#x59CB;&#x79FB;&#x52A8;,front&#x79FB;&#x52A8;&#x548C;&#x9898;&#x76EE;1&#x4E00;&#x6837;</span><br><span class="line">			}</span><br><span class="line">			--mp[a];</span><br><span class="line">			++front;</span><br><span class="line">		}</span><br><span class="line">		res = max(res, i-front+1);		//&#x66F4;&#x65B0;max,&#x4FDD;&#x8BC1;&#x6BCF;&#x6B21;&#x5F97;&#x5230;&#x7A97;&#x53E3;&#x5185;a&#x51FA;&#x73B0;&#x6B21;&#x6570;&#x4E0D;&#x8D85;&#x8FC7;k</span><br><span class="line">	}</span><br><span class="line">	return res;</span><br><span class="line">}</span><br><span class="line">int main()</span><br><span class="line">{</span><br><span class="line">	cin&gt;&gt;n&gt;&gt;k&gt;&gt;c;</span><br><span class="line">	cout&lt;&lt; max(Slide(&apos;1&apos;), Slide(&apos;0&apos;));</span><br><span class="line">	return 0;</span><br><span class="line">}</span><br></pre></td></tr></table></figure>
+<figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br></pre></td><td class="code"><pre><code class="hljs undefined"><span class="hljs-meta">#<span class="hljs-meta-keyword">include</span> <span class="hljs-meta-string">&lt;iostream&gt;</span></span><br><span class="hljs-meta">#<span class="hljs-meta-keyword">include</span> <span class="hljs-meta-string">&lt;map&gt; </span></span><br><span class="hljs-keyword">using</span> <span class="hljs-keyword">namespace</span> <span class="hljs-built_in">std</span>;<br><span class="hljs-keyword">int</span> n, k;<br><span class="hljs-keyword">char</span> c[<span class="hljs-number">200005</span>];<br><span class="hljs-function"><span class="hljs-keyword">int</span> <span class="hljs-title">Slide</span><span class="hljs-params">(<span class="hljs-keyword">char</span> a)</span>					<span class="hljs-comment">//change a</span><br></span>{									<span class="hljs-comment">//&#x5176;&#x5B9E;&#x5E76;&#x6CA1;&#x6709;&#x66F4;&#x6539;a,&#x800C;&#x662F;&#x5728;&#x6ED1;&#x52A8;&#x7A97;&#x53E3;&#x540C;&#x65F6;&#x67E5;&#x627E;a&#x51FA;&#x73B0;&#x6B21;&#x6570;</span><br>	<span class="hljs-built_in">map</span>&lt;<span class="hljs-keyword">char</span>, <span class="hljs-keyword">int</span>&gt; mp;<br>	mp[a]=<span class="hljs-number">0</span>;<br>	<span class="hljs-keyword">int</span> front=<span class="hljs-number">0</span>, ans = <span class="hljs-number">0</span>, res = <span class="hljs-number">0</span>;<br>	<span class="hljs-keyword">for</span>(<span class="hljs-keyword">int</span> i=<span class="hljs-number">0</span>; i&lt;n; i++)<br>	{<br>		++mp[c[i]];<br>		<span class="hljs-keyword">if</span>(mp[a]&gt;k)						<span class="hljs-comment">//&#x51FA;&#x73B0;&#x91CD;&#x590D;&#x5B57;&#x7B26;a&#x4E2A;&#x6570;&#x5927;&#x4E8E;k(&#x5373;&#x66F4;&#x6539;&#x6B21;&#x6570;&#x8D85;&#x8FC7;k&#x65F6;)</span><br>		{<br>			<span class="hljs-keyword">while</span>(c[front]!=a)<br>			{<br>				res = max(res, i-front); <span class="hljs-comment">//&#x5176;&#x5B9E;&#x79FB;&#x52A8;&#x8FC7;&#x7A0B;&#x4E0D;&#x4F1A;&#x66F4;&#x65B0;&#xFF0C;&#x56E0;&#x4E3A;&#x6C42;&#x7684;&#x662F;&#x6700;&#x957F;&#x957F;&#x5EA6;</span><br>				++front;				<span class="hljs-comment">//&#x7A97;&#x53E3;&#x5DE6;&#x7AEF;&#x5F00;&#x59CB;&#x79FB;&#x52A8;,front&#x79FB;&#x52A8;&#x548C;&#x9898;&#x76EE;1&#x4E00;&#x6837;</span><br>			}<br>			--mp[a];<br>			++front;<br>		}<br>		res = max(res, i-front+<span class="hljs-number">1</span>);		<span class="hljs-comment">//&#x66F4;&#x65B0;max,&#x4FDD;&#x8BC1;&#x6BCF;&#x6B21;&#x5F97;&#x5230;&#x7A97;&#x53E3;&#x5185;a&#x51FA;&#x73B0;&#x6B21;&#x6570;&#x4E0D;&#x8D85;&#x8FC7;k</span><br>	}<br>	<span class="hljs-keyword">return</span> res;<br>}<br><span class="hljs-function"><span class="hljs-keyword">int</span> <span class="hljs-title">main</span><span class="hljs-params">()</span><br></span>{<br>	<span class="hljs-built_in">cin</span>&gt;&gt;n&gt;&gt;k&gt;&gt;c;<br>	<span class="hljs-built_in">cout</span>&lt;&lt; max(Slide(<span class="hljs-string">&apos;1&apos;</span>), Slide(<span class="hljs-string">&apos;0&apos;</span>));<br>	<span class="hljs-keyword">return</span> <span class="hljs-number">0</span>;<br>}<br></code></pre></td></tr></table></figure>
 
 <h2 id="&#x6700;&#x540E;&#x5C0F;&#x7ED3;&#xFF1A;"><a href="#&#x6700;&#x540E;&#x5C0F;&#x7ED3;&#xFF1A;" class="headerlink" title="&#x6700;&#x540E;&#x5C0F;&#x7ED3;&#xFF1A;"></a>&#x6700;&#x540E;&#x5C0F;&#x7ED3;&#xFF1A;</h2><p>&#x6ED1;&#x52A8;&#x7A97;&#x53E3;&#x7684;&#x7B97;&#x6CD5;&#x601D;&#x60F3;&#xFF1A;<br>&#x7A97;&#x53E3;&#x6ED1;&#x52A8;&#x65F6;,&#x59CB;&#x7EC8;&#x4FDD;&#x8BC1;&#x7A97;&#x53E3;&#x5185;&#x662F;&#x5143;&#x7D20;&#x662F;&#x6EE1;&#x8DB3;&#x8981;&#x6C42;&#x7684;,&#x8FD9;&#x6837;&#x6ED1;&#x52A8;&#x7ED3;&#x675F;,&#x6700;&#x7EC8;&#x5C31;&#x80FD;&#x627E;&#x5230;&#x95EE;&#x9898;&#x6700;&#x4F18;&#x89E3;<br>&#x7B97;&#x6CD5;&#x65F6;&#x95F4;&#x590D;&#x6742;&#x5EA6;&#x4E3A; &#x7A97;&#x53E3;&#x6700;&#x5927;&#x957F;&#x5EA6;O(n).</p>
 
-      
+            </div>
+            <hr>
+            <div>
+              <div class="post-metas mb-3">
+                
+                  <div class="post-meta mr-3">
+                    <i class="iconfont icon-category"></i>
+                    
+                      <a class="hover-with-bg" href="/categories/数据结构与算法/">数据结构与算法</a>
+                    
+                  </div>
+                
+                
+                  <div class="post-meta">
+                    <i class="iconfont icon-tags"></i>
+                    
+                      <a class="hover-with-bg" href="/tags/字符串/">字符串</a>
+                    
+                  </div>
+                
+              </div>
+              
+                <p class="note note-warning">本博客所有文章除特别声明外，均采用 <a href="https://creativecommons.org/licenses/by-sa/4.0/deed.zh" rel="nofollow noopener">CC BY-SA 4.0 协议</a> ，转载请注明出处！</p>
+              
+              
+                <div class="post-prevnext">
+                  <article class="post-prev col-6">
+                    
+                    
+                      <a href="/2020/02/28/Inverse/">
+                        <i class="iconfont icon-arrowleft"></i>
+                        <span class="hidden-mobile">Inverse</span>
+                        <span class="visible-mobile">上一篇</span>
+                      </a>
+                    
+                  </article>
+                  <article class="post-next col-6">
+                    
+                    
+                      <a href="/2019/12/02/Merge-Sort/">
+                        <span class="hidden-mobile">Merge Sort</span>
+                        <span class="visible-mobile">下一篇</span>
+                        <i class="iconfont icon-arrowright"></i>
+                      </a>
+                    
+                  </article>
+                </div>
+              
+            </div>
+
+            
+          </article>
+        </div>
+      </div>
     </div>
+    
+      <div class="d-none d-lg-block col-lg-2 toc-container" id="toc-ctn">
+        <div id="toc">
+  <p class="toc-header"><i class="iconfont icon-list"></i>&nbsp;目录</p>
+  <div class="toc-body" id="toc-body"></div>
+</div>
+
+      </div>
     
   </div>
-  
-    
-    <div class="copyright">
-        <p><span>Title:</span><a href="/2020/02/07/Sliding-window/">Sliding Window</a></p>
-        <p><span>Author:</span><a href="/" title="Back to Homepage">Weayer</a></p>
-        <p><span>Created:</span>2020-02-07, 21:51:05</p>
-        <p><span>Updated:</span>2020-05-14, 19:56:11</p>
-        <p>
-            <span>Full URL:</span><a class="post-url" href="/2020/02/07/Sliding-window/" title="Sliding Window">https://www.weayer.top/2020/02/07/Sliding-window/</a>
-            <span class="copy-path" data-clipboard-text="From https://www.weayer.top/2020/02/07/Sliding-window/　　By Weayer" title="Copy Article&#39;s Link &amp; Author"><i class="fa fa-clipboard"></i></span>
-            <script> var clipboard = new Clipboard('.copy-path'); </script>
-        </p>
-        <p>
-            <span>License:</span><i class="fa fa-creative-commons"></i> <a rel="license" href="http://creativecommons.org/licenses/by-nc-sa/4.0/" title="CC BY-NC-SA 4.0 International" target = "_blank">"CC BY-NC-SA 4.0"</a> Keep Link &amp; Author if Distribute.
-        </p>
-    </div>
-
-
-
-    <nav id="article-nav">
-        
-            <div id="article-nav-newer" class="article-nav-title">
-                <a href="/2020/02/28/High-precision1/">
-                    n的阶乘(High-precision)
-                </a>
-            </div>
-        
-        
-            <div id="article-nav-older" class="article-nav-title">
-                <a href="/2019/12/02/Merge-Sort/">
-                    Merge Sort
-                </a>
-            </div>
-        
-    </nav>
-
-  
-</article>
-
-    <div id="toc" class="toc-article">
-        <strong class="toc-title">Contents</strong>
-        
-            <ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#滑动窗口算法："><span class="toc-number">1.</span> <span class="toc-text">滑动窗口算法：</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#题目1：不包含相同元素的最长子串"><span class="toc-number">1.1.</span> <span class="toc-text">题目1：不包含相同元素的最长子串</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#题目2：至少包含k个相同元素的最短子串"><span class="toc-number">1.2.</span> <span class="toc-text">题目2：至少包含k个相同元素的最短子串</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#题目3：最多包含k个相同元素的最长子串"><span class="toc-number">1.3.</span> <span class="toc-text">题目3：最多包含k个相同元素的最长子串</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#最后小结："><span class="toc-number">2.</span> <span class="toc-text">最后小结：</span></a></li></ol>
-        
-    </div>
-    <style>
-        .left-col .switch-btn,
-        .left-col .switch-area {
-            display: none;
-        }
-        .toc-level-3 i,
-        .toc-level-3 ol {
-            display: none !important;
-        }
-    </style>
-
-    <input type="button" id="tocButton" value="Hide"  title="Show or Hide Table of Contents">
-
-    <script>
-        yiliaConfig.toc = ["Hide", "Show", !!"false"];
-    </script>
-
-
-
-    
-<div class="share">
-    
-        <div class="bdsharebuttonbox">
-            <a href="#" class="fa fa-twitter bds_twi" data-cmd="twi" title="分享到推特"></a>
-            <a href="#" class="fa fa-weibo bds_tsina" data-cmd="tsina" title="分享到新浪微博"></a>
-            <a href="#" class="fa fa-qq bds_sqq" data-cmd="sqq" title="分享给 QQ 好友"></a>
-            <a href="#" class="fa fa-files-o bds_copy" data-cmd="copy" title="复制网址"></a>
-            <a href="#" class="fa fa fa-envelope-o bds_mail" data-cmd="mail" title="通过邮件分享"></a>
-            <a href="#" class="fa fa-weixin bds_weixin" data-cmd="weixin" title="生成文章二维码"></a>
-            <a href="#" class="fa fa-share-alt bds_more" data-cmd="more"></i></a>
-        </div>
-        <script>
-            window._bd_share_config={
-                "common":{"bdSnsKey":{},"bdText":"Sliding Window　| weayer's blog　","bdMini":"2","bdMiniList":false,"bdPic":"","bdStyle":"0","bdSize":"24"},"share":{}};with(document)0[(getElementsByTagName('head')[0]||body).appendChild(createElement('script')).src='http://bdimg.share.baidu.com/static/api/js/share.js?v=89860593.js?cdnversion='+~(-new Date()/36e5)];
-        </script>
-    
-
-    
 </div>
 
-
-
-
-
+<!-- Custom -->
 
 
     
 
+    
+      <a id="scroll-top-button" href="#" role="button">
+        <i class="iconfont icon-arrowup" aria-hidden="true"></i>
+      </a>
+    
 
-
-
-    <div class="scroll" id="post-nav-button">
-        
-            <a href="/2020/02/28/High-precision1/" title="Pre: n的阶乘(High-precision)">
-                <i class="fa fa-angle-left"></i>
-            </a>
-        
-
-        <a title="Mini Archives"><i class="fa fa-bars"></i><i class="fa fa-times"></i></a>
-
-        
-            <a href="/2019/12/02/Merge-Sort/" title="Next: Merge Sort">
-                <i class="fa fa-angle-right"></i>
-            </a>
-        
-    </div>
-
-    <ul class="post-list"><li class="post-list-item"><a class="post-list-link" href="/2020/10/09/蓝桥-后缀表达式/">·【蓝桥】·后缀表达式</a></li><li class="post-list-item"><a class="post-list-link" href="/2020/09/26/蓝桥-垒骰子/">蓝桥-垒骰子</a></li><li class="post-list-item"><a class="post-list-link" href="/2020/09/26/蓝桥-移动距离/">·【蓝桥】·移动距离</a></li><li class="post-list-item"><a class="post-list-link" href="/2020/09/20/蓝桥-牌型种数/">蓝桥-牌型种数</a></li><li class="post-list-item"><a class="post-list-link" href="/2020/09/16/蓝桥-剪邮票/">·【蓝桥】·剪邮票</a></li><li class="post-list-item"><a class="post-list-link" href="/2020/09/16/蓝桥-交换瓶子/">·【蓝桥】·交换瓶子</a></li><li class="post-list-item"><a class="post-list-link" href="/2020/09/12/全排列/">全排列（去重和不去重）</a></li><li class="post-list-item"><a class="post-list-link" href="/2020/09/01/商汤AI园区的n个路口（简单）/">商汤AI园区的n个路口（简单）</a></li><li class="post-list-item"><a class="post-list-link" href="/2020/09/01/商汤的AI伴游小精灵/">·【计蒜客】·商汤的AI伴游小精灵</a></li><li class="post-list-item"><a class="post-list-link" href="/2020/08/19/蓝桥-四平方和/">·【蓝桥】·四平方和</a></li><li class="post-list-item"><a class="post-list-link" href="/2020/08/17/蓝桥-青蛙跳杯子/">·【蓝桥】·青蛙跳杯子</a></li><li class="post-list-item"><a class="post-list-link" href="/2020/08/16/蓝桥-九宫幻方/">·【蓝桥】·九宫幻方</a></li><li class="post-list-item"><a class="post-list-link" href="/2020/08/16/蓝桥-拉马车/">·【蓝桥】·拉马车</a></li><li class="post-list-item"><a class="post-list-link" href="/2020/08/11/蓝桥-Excel地址/">·【蓝桥】·Excel地址</a></li><li class="post-list-item"><a class="post-list-link" href="/2020/08/11/蓝桥-正则问题/">蓝桥-正则问题</a></li><li class="post-list-item"><a class="post-list-link" href="/2020/07/12/牛客-Rabbit的工作/">牛客-Rabbit的工作</a></li><li class="post-list-item"><a class="post-list-link" href="/2020/07/05/蓝桥-分考场/">蓝桥-分考场</a></li><li class="post-list-item"><a class="post-list-link" href="/2020/06/30/蓝桥-带分数/">·【蓝桥】·带分数</a></li><li class="post-list-item"><a class="post-list-link" href="/2020/06/28/线段树/">线段树专题</a></li><li class="post-list-item"><a class="post-list-link" href="/2020/06/28/逆序数/">逆序数</a></li><li class="post-list-item"><a class="post-list-link" href="/2020/06/27/树状数组/">树状数组专题</a></li><li class="post-list-item"><a class="post-list-link" href="/2020/06/27/数学公式及符号/">Markdown数学公式及符号汇总</a></li><li class="post-list-item"><a class="post-list-link" href="/2020/06/19/蓝桥-买不到的数目/">·【蓝桥】·买不到的数目</a></li><li class="post-list-item"><a class="post-list-link" href="/2020/06/17/图的遍历/">图的遍历（邻接矩阵、邻接表）</a></li><li class="post-list-item"><a class="post-list-link" href="/2020/06/17/蓝桥-小朋友排队/">·【蓝桥】·小朋友排队（归并、树状数组）</a></li><li class="post-list-item"><a class="post-list-link" href="/2020/06/11/最短路径/">最短路径专题（Dijkstra、Floyd、Bellman-Ford即优化）</a></li><li class="post-list-item"><a class="post-list-link" href="/2020/06/04/n皇后问题/">n皇后问题</a></li><li class="post-list-item"><a class="post-list-link" href="/2020/05/31/牛客-减成一/">牛客-减成一</a></li><li class="post-list-item"><a class="post-list-link" href="/2020/05/16/数组实现简单链表/">数组实现链表</a></li><li class="post-list-item"><a class="post-list-link" href="/2020/05/16/牛客-邻值查找/">牛客-邻值查找</a></li><li class="post-list-item"><a class="post-list-link" href="/2020/05/14/并查集/">并查集及优化（路径压缩+按秩合并）</a></li><li class="post-list-item"><a class="post-list-link" href="/2020/05/08/LIS（队列优化+二分）/">LIS优化</a></li><li class="post-list-item"><a class="post-list-link" href="/2020/05/08/真分数的最大埃及分数/">真分数的最大埃及分数</a></li><li class="post-list-item"><a class="post-list-link" href="/2020/04/28/蓝桥-包子凑数/">·【蓝桥】·包子凑数</a></li><li class="post-list-item"><a class="post-list-link" href="/2020/04/25/Github-Coding（理想很丰满）/">Github+coding（理想很丰满）</a></li><li class="post-list-item"><a class="post-list-link" href="/2020/04/24/模运算的运用/">模运算的运用</a></li><li class="post-list-item"><a class="post-list-link" href="/2020/04/01/4月1日我成功地被mysql给愚弄了/">4月1日我成功地被mysql给愚弄了</a></li><li class="post-list-item"><a class="post-list-link" href="/2020/03/28/Dp-ST/">Dp-ST表（求解RMP）</a></li><li class="post-list-item"><a class="post-list-link" href="/2020/03/28/蓝桥-晚会节目单/">·【蓝桥】晚会节目单（ST表）</a></li><li class="post-list-item"><a class="post-list-link" href="/2020/03/11/Extend-Eculid/">Extend_Eculid</a></li><li class="post-list-item"><a class="post-list-link" href="/2020/03/11/ax-by-c问题/">Ax+By=C问题</a></li><li class="post-list-item"><a class="post-list-link" href="/2020/03/10/51nod-1009数字1的数量/">·【51nod-1009】数字1的数量</a></li><li class="post-list-item"><a class="post-list-link" href="/2020/03/10/dp-digit/">Dp-digit</a></li><li class="post-list-item"><a class="post-list-link" href="/2020/03/07/NOIP-2015-POJ-2456/">·【NOIP-2015】·【POJ-2456】</a></li><li class="post-list-item"><a class="post-list-link" href="/2020/03/05/heap/">heap</a></li><li class="post-list-item"><a class="post-list-link" href="/2020/02/28/Inverse/">Inverse</a></li><li class="post-list-item"><a class="post-list-link" href="/2020/02/28/High-precision1/">n的阶乘(High-precision)</a></li><li class="post-list-item"><a class="post-list-link" href="/2020/02/07/Sliding-window/">Sliding Window</a></li><li class="post-list-item"><a class="post-list-link" href="/2019/12/02/Merge-Sort/">Merge Sort</a></li><li class="post-list-item"><a class="post-list-link" href="/2019/12/01/Stack/">Stack</a></li><li class="post-list-item"><a class="post-list-link" href="/2019/11/30/Queue-0/">Queue</a></li><li class="post-list-item"><a class="post-list-link" href="/2019/10/26/Lnode/">Lnode</a></li><li class="post-list-item"><a class="post-list-link" href="/2019/10/26/hey-piggy/">hey-piggy</a></li></ul>
-
-
-
-
-    <script>
-        
-    </script>
-</div>
-      <footer id="footer">
-    <div class="outer">
-        <div id="footer-info">
-            <div class="footer-left">
-                <i class="fa fa-copyright"></i> 
-                2016-2020 Weayer
-            </div>
-            <div class="footer-right">
-                <a href="http://hexo.io/" target="_blank" title="A fast, simple &amp; powerful blog framework">Hexo</a>  Theme <a href="https://github.com/MOxFIVE/hexo-theme-yelee" target="_blank" title="Another simple and elegant theme for Hexo  v3.5">Yelee</a> by MOxFIVE <i class="fa fa-heart animated infinite pulse"></i>
-            </div>
+    
+      <div class="modal fade" id="modalSearch" tabindex="-1" role="dialog" aria-labelledby="ModalLabel"
+     aria-hidden="true">
+  <div class="modal-dialog modal-dialog-scrollable modal-lg" role="document">
+    <div class="modal-content">
+      <div class="modal-header text-center">
+        <h4 class="modal-title w-100 font-weight-bold">搜索</h4>
+        <button type="button" id="local-search-close" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body mx-3">
+        <div class="md-form mb-5">
+          <input type="text" id="local-search-input" class="form-control validate">
+          <label data-error="x" data-success="v"
+                 for="local-search-input">关键词</label>
         </div>
-        
-            <div class="visit">
-                
-                    <span id="busuanzi_container_site_pv" style='display:none'>
-                        <span id="site-visit" title="Site Visitors"><i class="fa fa-user" aria-hidden="true"></i><span id="busuanzi_value_site_uv"></span>
-                        </span>
-                    </span>
-                
-                
-                    <span>| </span>
-                
-                
-                    <span id="busuanzi_container_page_pv" style='display:none'>
-                        <span id="page-visit"  title="Page Hits"><i class="fa fa-eye animated infinite pulse" aria-hidden="true"></i><span id="busuanzi_value_page_pv"></span>
-                        </span>
-                    </span>
-                
-            </div>
-        
+        <div class="list-group" id="local-search-result"></div>
+      </div>
     </div>
+  </div>
+</div>
+    
+
+    
+  </main>
+
+  <footer class="text-center mt-5 py-3">
+  <div class="footer-content">
+     <a href="https://hexo.io" target="_blank" rel="nofollow noopener"><span>Hexo</span></a> <i class="iconfont icon-love"></i> <a href="https://github.com/fluid-dev/hexo-theme-fluid" target="_blank" rel="nofollow noopener"><span>Fluid</span></a> 
+  </div>
+  
+
+  
+
+  
 </footer>
-    </div>
-    
-<script data-main="/js/main.js" src="//cdn.bootcss.com/require.js/2.2.0/require.min.js"></script>
 
-    <script>
-        $(document).ready(function() {
-            var iPad = window.navigator.userAgent.indexOf('iPad');
-            if (iPad > -1 || $(".left-col").css("display") === "none") {
-                var bgColorList = ["#9db3f4", "#414141", "#e5a859", "#f5dfc6", "#c084a0", "#847e72", "#cd8390", "#996731"];
-                var bgColor = Math.ceil(Math.random() * (bgColorList.length - 1));
-                $("body").css({"background-color": bgColorList[bgColor], "background-size": "cover"});
-            }
-            else {
-                var backgroundnum = 5;
-                var backgroundimg = "url(/background/bg-x.jpg)".replace(/x/gi, Math.ceil(Math.random() * backgroundnum));
-                $("body").css({"background": backgroundimg, "background-attachment": "fixed", "background-size": "cover"});
-            }
-        })
-    </script>
+<!-- SCRIPTS -->
+
+  <script  src="https://cdn.jsdelivr.net/npm/nprogress@0.2.0/nprogress.min.js" ></script>
+  <link  rel="stylesheet" href="https://cdn.jsdelivr.net/npm/nprogress@0.2.0/nprogress.min.css" />
+
+  <script>
+    NProgress.configure({"showSpinner":false,"trickleSpeed":100})
+    NProgress.start()
+    window.addEventListener('load', function() {
+      NProgress.done();
+    })
+  </script>
 
 
+<script  src="https://cdn.jsdelivr.net/npm/jquery@3.5.1/dist/jquery.min.js" ></script>
+<script  src="https://cdn.jsdelivr.net/npm/bootstrap@4.5.3/dist/js/bootstrap.min.js" ></script>
+<script  src="/js/debouncer.js" ></script>
+<script  src="/js/events.js" ></script>
+<script  src="/js/plugins.js" ></script>
+
+<!-- Plugins -->
+
+
+  
+    <script  src="/js/lazyload.js" ></script>
+  
 
 
 
-    <script type="text/x-mathjax-config">
-MathJax.Hub.Config({
-    tex2jax: {
-        inlineMath: [ ['$','$'], ["\\(","\\)"]  ],
-        processEscapes: true,
-        skipTags: ['script', 'noscript', 'style', 'textarea', 'pre', 'code']
-    }
-});
-
-MathJax.Hub.Queue(function() {
-    var all = MathJax.Hub.getAllJax(), i;
-    for(i=0; i < all.length; i += 1) {
-        all[i].SourceElement().parentNode.className += ' has-jax';                 
-    }       
-});
-</script>
-
-<script src="//cdn.bootcss.com/mathjax/2.6.1/MathJax.js?config=TeX-AMS-MML_HTMLorMML">
-</script>
+  
 
 
-<div class="scroll" id="scroll">
-    <a href="#" title="Back to Top"><i class="fa fa-arrow-up"></i></a>
-    <a href="#comments" onclick="load$hide();" title="Comments"><i class="fa fa-comments-o"></i></a>
-    <a href="#footer" title="Go to Bottom"><i class="fa fa-arrow-down"></i></a>
-</div>
-<script>
-    // Open in New Window
-    
-        var oOpenInNew = {
-            
-            
-            
-            
-            
-            
-             archives: ".archive-article-title", 
-             miniArchives: "a.post-list-link", 
-            
-             friends: "#js-friends a", 
-             socail: ".social a" 
-        }
-        for (var x in oOpenInNew) {
-            $(oOpenInNew[x]).attr("target", "_blank");
-        }
-    
-</script>
 
-<script async src="https://dn-lbstatics.qbox.me/busuanzi/2.3/busuanzi.pure.mini.js">
-</script>
-  </div>
+  <script  src="https://cdn.jsdelivr.net/npm/tocbot@4.12.0/dist/tocbot.min.js" ></script>
+
+
+
+  <script  src="https://cdn.jsdelivr.net/npm/@fancyapps/fancybox@3.5.7/dist/jquery.fancybox.min.js" ></script>
+
+
+
+  <script  src="https://cdn.jsdelivr.net/npm/anchor-js@4.3.0/anchor.min.js" ></script>
+
+
+
+  <script defer src="https://cdn.jsdelivr.net/npm/clipboard@2.0.6/dist/clipboard.min.js" ></script>
+
+
+
+
+
+
+  <script  src="https://cdn.jsdelivr.net/npm/typed.js@2.0.11/lib/typed.min.js" ></script>
+  <script>
+    (function (window, document) {
+      var typing = Fluid.plugins.typing;
+      var title = document.getElementById('subtitle').title;
+      
+      typing(title)
+      
+    })(window, document);
+  </script>
+
+
+
+  <script  src="/js/local-search.js" ></script>
+  <script>
+    (function () {
+      var path = "/local-search.xml";
+      var inputArea = document.querySelector("#local-search-input");
+      inputArea.onclick = function () {
+        searchFunc(path, 'local-search-input', 'local-search-result');
+        this.onclick = null
+      }
+    })()
+  </script>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<!-- 主题的启动项 保持在最底部 -->
+<script  src="/js/boot.js" ></script>
+
+
+
 </body>
 </html>

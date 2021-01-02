@@ -1,322 +1,228 @@
+
+
 <!DOCTYPE html>
-<html lang="en">
+<html lang="zh-CN" data-default-color-scheme=&#34;auto&#34;>
+
+
+
 <head><meta name="generator" content="Hexo 3.9.0">
+  <meta charset="UTF-8">
+  <link rel="apple-touch-icon" sizes="76x76" href="/img/favicon.png">
+  <link rel="icon" type="image/png" href="/img/favicon.png">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no, shrink-to-fit=no">
+  <meta http-equiv="x-ua-compatible" content="ie=edge">
+  
+  <meta name="theme-color" content="#2f4154">
+  <meta name="description" content="The Meaning of Life">
+  <meta name="author" content="Weayer">
+  <meta name="keywords" content="Never,never,never,never!">
+  <title>·【蓝桥】·拉马车 - weayer&#39;s blog</title>
 
-    <!--[if lt IE 9]>
-        <style>body {display: none; background: none !important} </style>
-        <meta http-equiv="Refresh" Content="0; url=//outdatedbrowser.com/" />
-    <![endif]-->
-
-<meta charset="utf-8">
-<meta http-equiv="X-UA-Compatible" content="IE=edge, chrome=1">
-<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
-<meta name="format-detection" content="telephone=no">
-<meta name="author" content="Weayer">
-
-
-
-<meta name="description" content="&amp;#x62C9;&amp;#x9A6C;&amp;#x8F66;&amp;#xFF08;&amp;#x6211;&amp;#x5C0F;&amp;#x65F6;&amp;#x5019;&amp;#x7BA1;&amp;#x8FD9;&amp;#x4E2A;&amp;#x53EB;&amp;#x62D6;&amp;#x62C9;&amp;#x673A;&amp;#xFF09;&amp;#x7684;&amp;#x6E38;&amp;#x620F;&amp;#x4F7F;&amp;#x7528;&amp;#x7B97;&amp;#x6CD5;&amp;#x9884;&amp;#x6D4B;">
-<meta name="keywords" content="蓝桥,递归">
-<meta property="og:type" content="article">
-<meta property="og:title" content="·【蓝桥】·拉马车">
-<meta property="og:url" content="https://www.weayer.top/2020/08/16/蓝桥-拉马车/index.html">
-<meta property="og:site_name" content="weayer&#39;s blog">
-<meta property="og:description" content="&amp;#x62C9;&amp;#x9A6C;&amp;#x8F66;&amp;#xFF08;&amp;#x6211;&amp;#x5C0F;&amp;#x65F6;&amp;#x5019;&amp;#x7BA1;&amp;#x8FD9;&amp;#x4E2A;&amp;#x53EB;&amp;#x62D6;&amp;#x62C9;&amp;#x673A;&amp;#xFF09;&amp;#x7684;&amp;#x6E38;&amp;#x620F;&amp;#x4F7F;&amp;#x7528;&amp;#x7B97;&amp;#x6CD5;&amp;#x9884;&amp;#x6D4B;">
-<meta property="og:locale" content="en">
-<meta property="og:updated_time" content="2020-09-14T12:02:34.714Z">
-<meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="·【蓝桥】·拉马车">
-<meta name="twitter:description" content="&amp;#x62C9;&amp;#x9A6C;&amp;#x8F66;&amp;#xFF08;&amp;#x6211;&amp;#x5C0F;&amp;#x65F6;&amp;#x5019;&amp;#x7BA1;&amp;#x8FD9;&amp;#x4E2A;&amp;#x53EB;&amp;#x62D6;&amp;#x62C9;&amp;#x673A;&amp;#xFF09;&amp;#x7684;&amp;#x6E38;&amp;#x620F;&amp;#x4F7F;&amp;#x7528;&amp;#x7B97;&amp;#x6CD5;&amp;#x9884;&amp;#x6D4B;">
-
-<link rel="apple-touch-icon" href="/apple-touch-icon.png">
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.5.3/dist/css/bootstrap.min.css">
 
 
-    <link rel="alternate" href="/atom.xml" title="weayer&#39;s blog" type="application/atom+xml">
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/github-markdown-css@4.0.0/github-markdown.min.css">
+  <link rel="stylesheet" href="/lib/hint/hint.min.css">
+
+  
+    
+    
+      
+      <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/highlight.js@10.4.0/styles/github-gist.min.css">
+    
+  
+
+  
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fancyapps/fancybox@3.5.7/dist/jquery.fancybox.min.css">
+  
 
 
 
-    <link rel="shortcut icon" href="/favicon.png">
+<!-- 主题依赖的图标库，不要自行修改 -->
+<link rel="stylesheet" href="//at.alicdn.com/t/font_1749284_ba1fz6golrf.css">
+
+<link rel="stylesheet" href="//at.alicdn.com/t/font_1736178_kmeydafke9r.css">
+
+<link rel="stylesheet" href="/css/main.css">
+
+<!-- 自定义样式保持在最底部 -->
 
 
-
-    <link href="//cdn.bootcss.com/animate.css/3.5.1/animate.min.css" rel="stylesheet">
-
-
-
-    <link href="//cdn.bootcss.com/fancybox/2.1.5/jquery.fancybox.min.css" rel="stylesheet">
-
-
-
-    <script src="//cdn.bootcss.com/pace/1.0.2/pace.min.js"></script>
-    <link href="//cdn.bootcss.com/pace/1.0.2/themes/blue/pace-theme-minimal.css" rel="stylesheet">
+  <script id="fluid-configs">
+    var Fluid = window.Fluid || {};
+    var CONFIG = {"hostname":"www.weayer.top","root":"/","version":"1.8.7","typing":{"enable":true,"typeSpeed":70,"cursorChar":"_","loop":false},"anchorjs":{"enable":true,"element":"h1,h2,h3,h4,h5,h6","placement":"right","visible":"hover","icon":""},"progressbar":{"enable":true,"height_px":3,"color":"#29d","options":{"showSpinner":false,"trickleSpeed":100}},"copy_btn":true,"image_zoom":{"enable":true},"toc":{"enable":true,"headingSelector":"h1,h2,h3,h4,h5,h6","collapseDepth":0},"lazyload":{"enable":true,"onlypost":false},"web_analytics":{"enable":false,"baidu":null,"google":null,"gtag":null,"tencent":{"sid":null,"cid":null},"woyaola":null,"cnzz":null,"leancloud":{"app_id":null,"app_key":null,"server_url":null}}};
+  </script>
+  <script src="/js/utils.js"></script>
+  <script src="/js/color-schema.js"></script>
+</head>
 
 
-<link rel="stylesheet" href="/css/style.css">
-
-
-
-<link href="//cdn.bootcss.com/font-awesome/4.6.3/css/font-awesome.min.css" rel="stylesheet">
-
-
-<title>·【蓝桥】·拉马车 | weayer&#39;s blog</title>
-
-<script src="//cdn.bootcss.com/jquery/2.2.4/jquery.min.js"></script>
-<script src="//cdn.bootcss.com/clipboard.js/1.5.10/clipboard.min.js"></script>
-
-<script>
-    var yiliaConfig = {
-        fancybox: true,
-        animate: true,
-        isHome: false,
-        isPost: true,
-        isArchive: false,
-        isTag: false,
-        isCategory: false,
-        fancybox_js: "//cdn.bootcss.com/fancybox/2.1.5/jquery.fancybox.min.js",
-        scrollreveal: "//cdn.bootcss.com/scrollReveal.js/3.1.4/scrollreveal.min.js",
-        search: false
-    }
-</script>
-
-
-    <script> yiliaConfig.jquery_ui = [false]; </script>
-
-
-
-    <script> yiliaConfig.rootUrl = "\/";</script>
-
-
-
-
-
-    <script>
-        var _hmt = _hmt || [];
-        (function() {
-            var hm = document.createElement("script");
-            hm.src = "//hm.baidu.com/hm.js?8c70833ee0194776a494dd5209d32b72";
-            var s = document.getElementsByTagName("script")[0]; 
-            s.parentNode.insertBefore(hm, s);
-        })();
-    </script>
-
-
-</head></html>
 <body>
-  <div id="container">
-    <div class="left-col">
-    <div class="overlay"></div>
-<div class="intrude-less">
-    <header id="header" class="inner">
-        <a href="/" class="profilepic">
-            <img src="/img/head.jpg" class="animated zoomIn">
-        </a>
-        <hgroup>
-          <h1 class="header-author"><a href="/">Weayer</a></h1>
-        </hgroup>
+  <header style="height: 70vh;">
+    <nav id="navbar" class="navbar fixed-top  navbar-expand-lg navbar-dark scrolling-navbar">
+  <div class="container">
+    <a class="navbar-brand"
+       href="/">&nbsp;<strong>Fluid</strong>&nbsp;</a>
 
+    <button id="navbar-toggler-btn" class="navbar-toggler" type="button" data-toggle="collapse"
+            data-target="#navbarSupportedContent"
+            aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+      <div class="animated-icon"><span></span><span></span><span></span></div>
+    </button>
+
+    <!-- Collapsible content -->
+    <div class="collapse navbar-collapse" id="navbarSupportedContent">
+      <ul class="navbar-nav ml-auto text-center">
         
-        <p class="header-subtitle">把生命浪费在美好的事物上</p>
-        
-
-        
-
-
-        
-            <div id="switch-btn" class="switch-btn">
-                <div class="icon">
-                    <div class="icon-ctn">
-                        <div class="icon-wrap icon-house" data-idx="0">
-                            <div class="birdhouse"></div>
-                            <div class="birdhouse_holes"></div>
-                        </div>
-                        <div class="icon-wrap icon-ribbon hide" data-idx="1">
-                            <div class="ribbon"></div>
-                        </div>
-                        
-                        <div class="icon-wrap icon-link hide" data-idx="2">
-                            <div class="loopback_l"></div>
-                            <div class="loopback_r"></div>
-                        </div>
-                        
-                        
-                        <div class="icon-wrap icon-me hide" data-idx="3">
-                            <div class="user"></div>
-                            <div class="shoulder"></div>
-                        </div>
-                        
-                    </div>
-                    
-                </div>
-                <div class="tips-box hide">
-                    <div class="tips-arrow"></div>
-                    <ul class="tips-inner">
-                        <li>Menu</li>
-                        <li>Tags</li>
-                        
-                        <li>Friends</li>
-                        
-                        
-                        <li>About Me</li>
-                        
-                    </ul>
-                </div>
-            </div>
-        
-
-        <div id="switch-area" class="switch-area">
-            <div class="switch-wrap">
-                <section class="switch-part switch-part1">
-                    <nav class="header-menu">
-                        <ul>
-                        
-                            <li><a href="/">主页</a></li>
-                        
-                            <li><a href="/archives/">所有文章</a></li>
-                        
-                            <li><a href="/tags/">标签云</a></li>
-                        
-                            <li><a href="/about/">关于我</a></li>
-                        
-                        </ul>
-                    </nav>
-                    <nav class="header-nav">
-                        <ul class="social">
-                            
-                                <a class="fa Email" href="mailto:123@123.com" title="Email"></a>
-                            
-                                <a class="fa GitHub" href="#" title="GitHub"></a>
-                            
-                                <a class="fa RSS" href="/atom.xml" title="RSS"></a>
-                            
-                        </ul>
-                    </nav>
-                </section>
-                
-                
-                <section class="switch-part switch-part2">
-                    <div class="widget tagcloud" id="js-tagcloud">
-                        <ul class="tag-list"><li class="tag-list-item"><a class="tag-list-link" href="/tags/hexo/">hexo</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/mysql/">mysql</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/二分/">二分</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/动态规划/">动态规划</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/哈希/">哈希</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/图/">图</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/堆/">堆</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/字符串/">字符串</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/差分/">差分</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/排序/">排序</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/搜索/">搜索</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/数论/">数论</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/枚举/">枚举</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/查找/">查找</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/栈/">栈</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/树/">树</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/模拟/">模拟</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/模运算/">模运算</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/蓝桥/">蓝桥</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/贪心/">贪心</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/逆元/">逆元</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/递归/">递归</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/递归回溯/">递归回溯</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/链表/">链表</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/队列/">队列</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/雪的教训/">雪的教训</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/高精度/">高精度</a></li></ul>
-                    </div>
-                </section>
-                
-                
-                
-                <section class="switch-part switch-part3">
-                    <div id="js-friends">
-                    
-                      <a class="main-nav-link switch-friends-link" href="https://hexo.io">Hexo</a>
-                    
-                      <a class="main-nav-link switch-friends-link" href="https://pages.github.com/">GitHub</a>
-                    
-                      <a class="main-nav-link switch-friends-link" href="http://moxfive.xyz/">MOxFIVE</a>
-                    
-                    </div>
-                </section>
-                
-
-                
-                
-                <section class="switch-part switch-part4">
-                
-                    <div id="js-aboutme">专注于前端</div>
-                </section>
-                
-            </div>
-        </div>
-    </header>                
-</div>
-    </div>
-    <div class="mid-col">
-      <nav id="mobile-nav">
-      <div class="overlay">
-          <div class="slider-trigger"></div>
-          <h1 class="header-author js-mobile-header hide"><a href="/" title="回到主页">Weayer</a></h1>
-      </div>
-    <div class="intrude-less">
-        <header id="header" class="inner">
-            <a href="/" class="profilepic">
-                <img src="/img/head.jpg" class="animated zoomIn">
-            </a>
-            <hgroup>
-              <h1 class="header-author"><a href="/" title="回到主页">Weayer</a></h1>
-            </hgroup>
-            
-            <p class="header-subtitle">把生命浪费在美好的事物上</p>
-            
-            <nav class="header-menu">
-                <ul>
-                
-                    <li><a href="/">主页</a></li>
-                
-                    <li><a href="/archives/">所有文章</a></li>
-                
-                    <li><a href="/tags/">标签云</a></li>
-                
-                    <li><a href="/about/">关于我</a></li>
-                
-                <div class="clearfix"></div>
-                </ul>
-            </nav>
-            <nav class="header-nav">
-                        <ul class="social">
-                            
-                                <a class="fa Email" target="_blank" href="mailto:123@123.com" title="Email"></a>
-                            
-                                <a class="fa GitHub" target="_blank" href="#" title="GitHub"></a>
-                            
-                                <a class="fa RSS" target="_blank" href="/atom.xml" title="RSS"></a>
-                            
-                        </ul>
-            </nav>
-        </header>                
-    </div>
-    <link class="menu-list" tags="Tags" friends="Friends" about="About Me"/>
-</nav>
-      <div class="body-wrap"><article id="post-蓝桥-拉马车" class="article article-type-post" itemscope itemprop="blogPost">
-  
-    <div class="article-meta">
-      <a href="/2020/08/16/蓝桥-拉马车/" class="article-date">
-      <time datetime="2020-08-15T16:00:00.000Z" itemprop="datePublished">2020-08-16</time>
-</a>
-
-
-    </div>
-  
-  <div class="article-inner">
-    
-      <input type="hidden" class="isFancy" />
-    
-    
-      <header class="article-header">
-        
-  
-    <h1 class="article-title" itemprop="name">
-      ·【蓝桥】·拉马车
-    </h1>
-  
-
-      </header>
-      
-      <div class="article-info article-info-post">
-        
-    <div class="article-category tagcloud">
-    <a class="article-category-link" href="/categories/题目/">题目</a>
-    </div>
-
-
-        
-    <div class="article-tag tagcloud">
-        <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/蓝桥/">蓝桥</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/递归/">递归</a></li></ul>
-    </div>
-
-        <div class="clearfix"></div>
-      </div>
-      
-    
-    <div class="article-entry" itemprop="articleBody">
-      
           
-        <p>&#x62C9;&#x9A6C;&#x8F66;&#xFF08;&#x6211;&#x5C0F;&#x65F6;&#x5019;&#x7BA1;&#x8FD9;&#x4E2A;&#x53EB;&#x62D6;&#x62C9;&#x673A;&#xFF09;&#x7684;&#x6E38;&#x620F;&#x4F7F;&#x7528;&#x7B97;&#x6CD5;&#x9884;&#x6D4B;&#x6700;&#x7EC8;&#x7ED3;&#x679C;&#xFF0C;&#x60F3;&#x60F3;&#x8FD8;&#x662F;&#x633A;&#x6709;&#x610F;&#x601D;&#x7684;~<br>&#x8BE5;&#x9898;&#x53EF;&#x4F5C;&#x4E3A;&#x4E00;&#x9053;&#x7EC3;&#x4E60;&#x9012;&#x5F52;&#x7684;&#x4F8B;&#x9898;~</p>
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/">
+                <i class="iconfont icon-home-fill"></i>
+                首页
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/archives/">
+                <i class="iconfont icon-archive-fill"></i>
+                归档
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/categories/">
+                <i class="iconfont icon-category-fill"></i>
+                分类
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/tags/">
+                <i class="iconfont icon-tags-fill"></i>
+                标签
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/about/">
+                <i class="iconfont icon-user-fill"></i>
+                关于
+              </a>
+            </li>
+          
+        
+        
+          <li class="nav-item" id="search-btn">
+            <a class="nav-link" data-toggle="modal" data-target="#modalSearch">&nbsp;<i
+                class="iconfont icon-search"></i>&nbsp;</a>
+          </li>
+        
+        
+          <li class="nav-item" id="color-toggle-btn">
+            <a class="nav-link" href="javascript:">&nbsp;<i
+                class="iconfont icon-dark" id="color-toggle-icon"></i>&nbsp;</a>
+          </li>
+        
+      </ul>
+    </div>
+  </div>
+</nav>
+
+    <div class="banner" id="banner" parallax=true
+         style="background: url('/img/default.png') no-repeat center center;
+           background-size: cover;">
+      <div class="full-bg-img">
+        <div class="mask flex-center" style="background-color: rgba(0, 0, 0, 0.3)">
+          <div class="page-header text-center fade-in-up">
+            <span class="h2" id="subtitle" title="·【蓝桥】·拉马车">
+              
+            </span>
+
+            
+              <div class="mt-3">
+  
+  
+    <span class="post-meta">
+      <i class="iconfont icon-date-fill" aria-hidden="true"></i>
+      <time datetime="2020-08-16 00:00" pubdate>
+        2020年8月16日 凌晨
+      </time>
+    </span>
+  
+</div>
+
+<div class="mt-1">
+  
+    
+    <span class="post-meta mr-2">
+      <i class="iconfont icon-chart"></i>
+      1.3k 字
+    </span>
+  
+
+  
+    
+    <span class="post-meta mr-2">
+      <i class="iconfont icon-clock-fill"></i>
+      
+      
+      25
+       分钟
+    </span>
+  
+
+  
+  
+</div>
+
+            
+          </div>
+
+          
+        </div>
+      </div>
+    </div>
+  </header>
+
+  <main>
+    
+      
+
+<div class="container-fluid nopadding-x">
+  <div class="row nomargin-x">
+    <div class="d-none d-lg-block col-lg-2"></div>
+    <div class="col-lg-8 nopadding-x-md">
+      <div class="container nopadding-x-md" id="board-ctn">
+        <div class="py-5" id="board">
+          <article class="post-content mx-auto">
+            <!-- SEO header -->
+            <h1 style="display: none">·【蓝桥】·拉马车</h1>
+            
+            <div class="markdown-body">
+              <p>&#x62C9;&#x9A6C;&#x8F66;&#xFF08;&#x6211;&#x5C0F;&#x65F6;&#x5019;&#x7BA1;&#x8FD9;&#x4E2A;&#x53EB;&#x62D6;&#x62C9;&#x673A;&#xFF09;&#x7684;&#x6E38;&#x620F;&#x4F7F;&#x7528;&#x7B97;&#x6CD5;&#x9884;&#x6D4B;&#x6700;&#x7EC8;&#x7ED3;&#x679C;&#xFF0C;&#x60F3;&#x60F3;&#x8FD8;&#x662F;&#x633A;&#x6709;&#x610F;&#x601D;&#x7684;~<br>&#x8BE5;&#x9898;&#x53EF;&#x4F5C;&#x4E3A;&#x4E00;&#x9053;&#x7EC3;&#x4E60;&#x9012;&#x5F52;&#x7684;&#x4F8B;&#x9898;~</p>
 <blockquote>
 <p>&#x9898;&#x76EE;&#x6765;&#x6E90;&#xFF1A;<br><a href="http://lx.lanqiao.cn/problem.page?gpid=T447" target="_blank">&#x9752;&#x86D9;&#x8DF3;&#x676F;&#x5B50;</a></p>
 </blockquote>
@@ -331,241 +237,223 @@
 </ol>
 <p>***&#x6CE8;&#xFF1A;&#x7279;&#x522B;&#x6CE8;&#x610F;&#x62FF;&#x724C;&#x3001;&#x4E22;&#x724C;&#x662F;&#x5B57;&#x7B26;&#x4E32;&#x7684;&#x589E;&#x52A0;&#x3001;&#x5220;&#x9664;&#x7EC6;&#x8282;</p>
 <p>judge&#x51FD;&#x6570;&#xFF0C;&#x684C;&#x9762;&#x4E0A;&#x7684;&#x724C;&#x548C;&#x81EA;&#x5DF1;&#x7B2C;&#x4E00;&#x5F20;&#x724C;&#x6709;&#x91CD;&#x590D;&#xFF0C;&#x6EE1;&#x8DB3;&#x62FF;&#x724C;&#x7684;&#x6761;&#x4EF6;</p>
-<figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">bool</span> <span class="title">judge</span><span class="params">(<span class="keyword">char</span> ch)</span></span>{</span><br><span class="line">	<span class="keyword">return</span> c.find(ch) == <span class="built_in">string</span>::npos;</span><br><span class="line">}</span><br></pre></td></tr></table></figure>
+<figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><code class="hljs c++"><span class="hljs-function"><span class="hljs-keyword">bool</span> <span class="hljs-title">judge</span><span class="hljs-params">(<span class="hljs-keyword">char</span> ch)</span></span>{<br>	<span class="hljs-keyword">return</span> c.find(ch) == <span class="hljs-built_in">string</span>::npos;<br>}<br></code></pre></td></tr></table></figure>
 
 <p>~&#x4E0D;&#x5F97;&#x4E0D;&#x8BF4;dfs&#x4EE3;&#x7801;&#x5199;&#x7684;&#x5197;&#x4F59;&#x6709;&#x70B9;&#x9AD8;<br>&#x2014;&#x2014;&#x2014;&#x2014;&#x2014;&#x2014;&#x2014;&#x2014;&#x2014;&#x2014;&#x2014;&#x2014;&#x2014;&#x2014;&#x2014;&#x2014;&#x2014;&#x5B8C;&#x6574;&#x4EE3;&#x7801;&#x2014;&#x2014;&#x2014;&#x2014;&#x2014;&#x2014;&#x2014;&#x2014;&#x2014;&#x2014;&#x2014;&#x2014;&#x2014;&#x2014;&#x2014;&#x2014;&#x2014;</p>
-<figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;iostream&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;cstdio&gt;</span></span></span><br><span class="line"></span><br><span class="line"><span class="keyword">using</span> <span class="keyword">namespace</span> <span class="built_in">std</span>;</span><br><span class="line"><span class="built_in">string</span> a, b, c;</span><br><span class="line"><span class="function"><span class="keyword">bool</span> <span class="title">judge</span><span class="params">(<span class="keyword">char</span> ch)</span></span>{</span><br><span class="line">	<span class="keyword">return</span> c.find(ch) == <span class="built_in">string</span>::npos;</span><br><span class="line">}</span><br><span class="line"><span class="function"><span class="keyword">void</span> <span class="title">solve</span><span class="params">(<span class="built_in">string</span> &amp;s, <span class="keyword">char</span> ch)</span></span>{<span class="comment">//&#x6EE1;&#x8DB3;&#x6761;&#x4EF6;&#xFF0C;&#x53EF;&#x62FF;&#x724C;</span></span><br><span class="line">	s += ch;</span><br><span class="line">	<span class="keyword">for</span>(<span class="keyword">int</span> i = c.size()<span class="number">-1</span>; i &gt;= <span class="number">0</span>; --i){</span><br><span class="line">		<span class="keyword">if</span>(c[i] == ch)</span><br><span class="line">			<span class="keyword">break</span>;</span><br><span class="line">		s += c[i];</span><br><span class="line">	}</span><br><span class="line">	s += ch;</span><br><span class="line">	c.erase(c.begin()+c.find(ch), c.end());</span><br><span class="line">}</span><br><span class="line"><span class="function"><span class="keyword">void</span> <span class="title">dfs</span><span class="params">(<span class="keyword">int</span> x)</span></span>{<span class="comment">//x=0&#xFF0C;&#x64CD;&#x4F5C;a&#xFF1B;x=1&#xFF0C;&#x64CD;&#x4F5C;b</span></span><br><span class="line">	<span class="keyword">if</span>(x == <span class="number">0</span>){</span><br><span class="line">		<span class="keyword">if</span>(judge(a[<span class="number">0</span>])){ <span class="comment">//add c &#x4E22;&#x724C;</span></span><br><span class="line">			c += a[<span class="number">0</span>]; </span><br><span class="line">			a.erase(a.begin());</span><br><span class="line">			<span class="keyword">if</span>(a.empty())</span><br><span class="line">				<span class="keyword">return</span>;</span><br><span class="line">			dfs(<span class="number">1</span>);</span><br><span class="line">		}<span class="keyword">else</span>{ <span class="comment">//add a &#x62FF;&#x724C;</span></span><br><span class="line">			solve(a, a[<span class="number">0</span>]);</span><br><span class="line">			a.erase(a.begin());</span><br><span class="line">			dfs(<span class="number">0</span>);</span><br><span class="line">		}</span><br><span class="line">	}<span class="keyword">else</span>{</span><br><span class="line">		<span class="keyword">if</span>(judge(b[<span class="number">0</span>])){	<span class="comment">//add c &#x4E22;&#x724C;</span></span><br><span class="line">			c += b[<span class="number">0</span>];</span><br><span class="line">			b.erase(b.begin());</span><br><span class="line">			<span class="keyword">if</span>(b.empty())</span><br><span class="line">				<span class="keyword">return</span>;</span><br><span class="line">			dfs(<span class="number">0</span>);</span><br><span class="line">		}</span><br><span class="line">		<span class="keyword">else</span>{	<span class="comment">//add b &#x62FF;&#x724C;</span></span><br><span class="line">			solve(b, b[<span class="number">0</span>]);</span><br><span class="line">			b.erase(b.begin());</span><br><span class="line">			dfs(<span class="number">1</span>);</span><br><span class="line">		}</span><br><span class="line">	}</span><br><span class="line">}</span><br><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">main</span><span class="params">()</span></span>{</span><br><span class="line">	<span class="built_in">cin</span> &gt;&gt; a &gt;&gt; b;</span><br><span class="line">	dfs(<span class="number">0</span>);</span><br><span class="line">	<span class="keyword">if</span>(a.empty())</span><br><span class="line">		<span class="built_in">cout</span> &lt;&lt; b &lt;&lt; <span class="built_in">endl</span>;</span><br><span class="line">	<span class="keyword">if</span>(b.empty())</span><br><span class="line">		<span class="built_in">cout</span> &lt;&lt; a &lt;&lt; <span class="built_in">endl</span>;</span><br><span class="line">	<span class="keyword">return</span> <span class="number">0</span>;</span><br><span class="line">}</span><br></pre></td></tr></table></figure>
-      
+<figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br></pre></td><td class="code"><pre><code class="hljs c++"><span class="hljs-meta">#<span class="hljs-meta-keyword">include</span> <span class="hljs-meta-string">&lt;iostream&gt;</span></span><br><span class="hljs-meta">#<span class="hljs-meta-keyword">include</span> <span class="hljs-meta-string">&lt;cstdio&gt;</span></span><br><br><span class="hljs-keyword">using</span> <span class="hljs-keyword">namespace</span> <span class="hljs-built_in">std</span>;<br><span class="hljs-built_in">string</span> a, b, c;<br><span class="hljs-function"><span class="hljs-keyword">bool</span> <span class="hljs-title">judge</span><span class="hljs-params">(<span class="hljs-keyword">char</span> ch)</span></span>{<br>	<span class="hljs-keyword">return</span> c.find(ch) == <span class="hljs-built_in">string</span>::npos;<br>}<br><span class="hljs-function"><span class="hljs-keyword">void</span> <span class="hljs-title">solve</span><span class="hljs-params">(<span class="hljs-built_in">string</span> &amp;s, <span class="hljs-keyword">char</span> ch)</span></span>{<span class="hljs-comment">//&#x6EE1;&#x8DB3;&#x6761;&#x4EF6;&#xFF0C;&#x53EF;&#x62FF;&#x724C;</span><br>	s += ch;<br>	<span class="hljs-keyword">for</span>(<span class="hljs-keyword">int</span> i = c.size()<span class="hljs-number">-1</span>; i &gt;= <span class="hljs-number">0</span>; --i){<br>		<span class="hljs-keyword">if</span>(c[i] == ch)<br>			<span class="hljs-keyword">break</span>;<br>		s += c[i];<br>	}<br>	s += ch;<br>	c.erase(c.begin()+c.find(ch), c.end());<br>}<br><span class="hljs-function"><span class="hljs-keyword">void</span> <span class="hljs-title">dfs</span><span class="hljs-params">(<span class="hljs-keyword">int</span> x)</span></span>{<span class="hljs-comment">//x=0&#xFF0C;&#x64CD;&#x4F5C;a&#xFF1B;x=1&#xFF0C;&#x64CD;&#x4F5C;b</span><br>	<span class="hljs-keyword">if</span>(x == <span class="hljs-number">0</span>){<br>		<span class="hljs-keyword">if</span>(judge(a[<span class="hljs-number">0</span>])){ <span class="hljs-comment">//add c &#x4E22;&#x724C;</span><br>			c += a[<span class="hljs-number">0</span>]; <br>			a.erase(a.begin());<br>			<span class="hljs-keyword">if</span>(a.empty())<br>				<span class="hljs-keyword">return</span>;<br>			dfs(<span class="hljs-number">1</span>);<br>		}<span class="hljs-keyword">else</span>{ <span class="hljs-comment">//add a &#x62FF;&#x724C;</span><br>			solve(a, a[<span class="hljs-number">0</span>]);<br>			a.erase(a.begin());<br>			dfs(<span class="hljs-number">0</span>);<br>		}<br>	}<span class="hljs-keyword">else</span>{<br>		<span class="hljs-keyword">if</span>(judge(b[<span class="hljs-number">0</span>])){	<span class="hljs-comment">//add c &#x4E22;&#x724C;</span><br>			c += b[<span class="hljs-number">0</span>];<br>			b.erase(b.begin());<br>			<span class="hljs-keyword">if</span>(b.empty())<br>				<span class="hljs-keyword">return</span>;<br>			dfs(<span class="hljs-number">0</span>);<br>		}<br>		<span class="hljs-keyword">else</span>{	<span class="hljs-comment">//add b &#x62FF;&#x724C;</span><br>			solve(b, b[<span class="hljs-number">0</span>]);<br>			b.erase(b.begin());<br>			dfs(<span class="hljs-number">1</span>);<br>		}<br>	}<br>}<br><span class="hljs-function"><span class="hljs-keyword">int</span> <span class="hljs-title">main</span><span class="hljs-params">()</span></span>{<br>	<span class="hljs-built_in">cin</span> &gt;&gt; a &gt;&gt; b;<br>	dfs(<span class="hljs-number">0</span>);<br>	<span class="hljs-keyword">if</span>(a.empty())<br>		<span class="hljs-built_in">cout</span> &lt;&lt; b &lt;&lt; <span class="hljs-built_in">endl</span>;<br>	<span class="hljs-keyword">if</span>(b.empty())<br>		<span class="hljs-built_in">cout</span> &lt;&lt; a &lt;&lt; <span class="hljs-built_in">endl</span>;<br>	<span class="hljs-keyword">return</span> <span class="hljs-number">0</span>;<br>}<br></code></pre></td></tr></table></figure>
+            </div>
+            <hr>
+            <div>
+              <div class="post-metas mb-3">
+                
+                  <div class="post-meta mr-3">
+                    <i class="iconfont icon-category"></i>
+                    
+                      <a class="hover-with-bg" href="/categories/题目/">题目</a>
+                    
+                  </div>
+                
+                
+                  <div class="post-meta">
+                    <i class="iconfont icon-tags"></i>
+                    
+                      <a class="hover-with-bg" href="/tags/蓝桥/">蓝桥</a>
+                    
+                      <a class="hover-with-bg" href="/tags/递归/">递归</a>
+                    
+                  </div>
+                
+              </div>
+              
+                <p class="note note-warning">本博客所有文章除特别声明外，均采用 <a href="https://creativecommons.org/licenses/by-sa/4.0/deed.zh" rel="nofollow noopener">CC BY-SA 4.0 协议</a> ，转载请注明出处！</p>
+              
+              
+                <div class="post-prevnext">
+                  <article class="post-prev col-6">
+                    
+                    
+                      <a href="/2020/08/16/蓝桥-九宫幻方/">
+                        <i class="iconfont icon-arrowleft"></i>
+                        <span class="hidden-mobile">·【蓝桥】·九宫幻方</span>
+                        <span class="visible-mobile">上一篇</span>
+                      </a>
+                    
+                  </article>
+                  <article class="post-next col-6">
+                    
+                    
+                      <a href="/2020/08/11/蓝桥-Excel地址/">
+                        <span class="hidden-mobile">·【蓝桥】·Excel地址</span>
+                        <span class="visible-mobile">下一篇</span>
+                        <i class="iconfont icon-arrowright"></i>
+                      </a>
+                    
+                  </article>
+                </div>
+              
+            </div>
+
+            
+          </article>
+        </div>
+      </div>
     </div>
+    
+      <div class="d-none d-lg-block col-lg-2 toc-container" id="toc-ctn">
+        <div id="toc">
+  <p class="toc-header"><i class="iconfont icon-list"></i>&nbsp;目录</p>
+  <div class="toc-body" id="toc-body"></div>
+</div>
+
+      </div>
     
   </div>
-  
-    
-    <div class="copyright">
-        <p><span>Title:</span><a href="/2020/08/16/蓝桥-拉马车/">·【蓝桥】·拉马车</a></p>
-        <p><span>Author:</span><a href="/" title="Back to Homepage">Weayer</a></p>
-        <p><span>Created:</span>2020-08-16, 00:00:00</p>
-        <p><span>Updated:</span>2020-09-14, 20:02:34</p>
-        <p>
-            <span>Full URL:</span><a class="post-url" href="/2020/08/16/蓝桥-拉马车/" title="·【蓝桥】·拉马车">https://www.weayer.top/2020/08/16/蓝桥-拉马车/</a>
-            <span class="copy-path" data-clipboard-text="From https://www.weayer.top/2020/08/16/蓝桥-拉马车/　　By Weayer" title="Copy Article&#39;s Link &amp; Author"><i class="fa fa-clipboard"></i></span>
-            <script> var clipboard = new Clipboard('.copy-path'); </script>
-        </p>
-        <p>
-            <span>License:</span><i class="fa fa-creative-commons"></i> <a rel="license" href="http://creativecommons.org/licenses/by-nc-sa/4.0/" title="CC BY-NC-SA 4.0 International" target = "_blank">"CC BY-NC-SA 4.0"</a> Keep Link &amp; Author if Distribute.
-        </p>
-    </div>
-
-
-
-    <nav id="article-nav">
-        
-            <div id="article-nav-newer" class="article-nav-title">
-                <a href="/2020/08/16/蓝桥-九宫幻方/">
-                    ·【蓝桥】·九宫幻方
-                </a>
-            </div>
-        
-        
-            <div id="article-nav-older" class="article-nav-title">
-                <a href="/2020/08/11/蓝桥-Excel地址/">
-                    ·【蓝桥】·Excel地址
-                </a>
-            </div>
-        
-    </nav>
-
-  
-</article>
-
-    <div id="toc" class="toc-article">
-        <strong class="toc-title">Contents</strong>
-        
-            
-        
-    </div>
-    <style>
-        .left-col .switch-btn,
-        .left-col .switch-area {
-            display: none;
-        }
-        .toc-level-3 i,
-        .toc-level-3 ol {
-            display: none !important;
-        }
-    </style>
-
-    <input type="button" id="tocButton" value="Hide"  title="Show or Hide Table of Contents">
-
-    <script>
-        yiliaConfig.toc = ["Hide", "Show", !!"false"];
-    </script>
-
-
-
-    
-<div class="share">
-    
-        <div class="bdsharebuttonbox">
-            <a href="#" class="fa fa-twitter bds_twi" data-cmd="twi" title="分享到推特"></a>
-            <a href="#" class="fa fa-weibo bds_tsina" data-cmd="tsina" title="分享到新浪微博"></a>
-            <a href="#" class="fa fa-qq bds_sqq" data-cmd="sqq" title="分享给 QQ 好友"></a>
-            <a href="#" class="fa fa-files-o bds_copy" data-cmd="copy" title="复制网址"></a>
-            <a href="#" class="fa fa fa-envelope-o bds_mail" data-cmd="mail" title="通过邮件分享"></a>
-            <a href="#" class="fa fa-weixin bds_weixin" data-cmd="weixin" title="生成文章二维码"></a>
-            <a href="#" class="fa fa-share-alt bds_more" data-cmd="more"></i></a>
-        </div>
-        <script>
-            window._bd_share_config={
-                "common":{"bdSnsKey":{},"bdText":"·【蓝桥】·拉马车　| weayer's blog　","bdMini":"2","bdMiniList":false,"bdPic":"","bdStyle":"0","bdSize":"24"},"share":{}};with(document)0[(getElementsByTagName('head')[0]||body).appendChild(createElement('script')).src='http://bdimg.share.baidu.com/static/api/js/share.js?v=89860593.js?cdnversion='+~(-new Date()/36e5)];
-        </script>
-    
-
-    
 </div>
 
-
-
-
-
+<!-- Custom -->
 
 
     
 
+    
+      <a id="scroll-top-button" href="#" role="button">
+        <i class="iconfont icon-arrowup" aria-hidden="true"></i>
+      </a>
+    
 
-
-
-    <div class="scroll" id="post-nav-button">
-        
-            <a href="/2020/08/16/蓝桥-九宫幻方/" title="Pre: ·【蓝桥】·九宫幻方">
-                <i class="fa fa-angle-left"></i>
-            </a>
-        
-
-        <a title="Mini Archives"><i class="fa fa-bars"></i><i class="fa fa-times"></i></a>
-
-        
-            <a href="/2020/08/11/蓝桥-Excel地址/" title="Next: ·【蓝桥】·Excel地址">
-                <i class="fa fa-angle-right"></i>
-            </a>
-        
-    </div>
-
-    <ul class="post-list"><li class="post-list-item"><a class="post-list-link" href="/2020/10/09/蓝桥-后缀表达式/">·【蓝桥】·后缀表达式</a></li><li class="post-list-item"><a class="post-list-link" href="/2020/09/26/蓝桥-垒骰子/">蓝桥-垒骰子</a></li><li class="post-list-item"><a class="post-list-link" href="/2020/09/26/蓝桥-移动距离/">·【蓝桥】·移动距离</a></li><li class="post-list-item"><a class="post-list-link" href="/2020/09/20/蓝桥-牌型种数/">蓝桥-牌型种数</a></li><li class="post-list-item"><a class="post-list-link" href="/2020/09/16/蓝桥-剪邮票/">·【蓝桥】·剪邮票</a></li><li class="post-list-item"><a class="post-list-link" href="/2020/09/16/蓝桥-交换瓶子/">·【蓝桥】·交换瓶子</a></li><li class="post-list-item"><a class="post-list-link" href="/2020/09/12/全排列/">全排列（去重和不去重）</a></li><li class="post-list-item"><a class="post-list-link" href="/2020/09/01/商汤AI园区的n个路口（简单）/">商汤AI园区的n个路口（简单）</a></li><li class="post-list-item"><a class="post-list-link" href="/2020/09/01/商汤的AI伴游小精灵/">·【计蒜客】·商汤的AI伴游小精灵</a></li><li class="post-list-item"><a class="post-list-link" href="/2020/08/19/蓝桥-四平方和/">·【蓝桥】·四平方和</a></li><li class="post-list-item"><a class="post-list-link" href="/2020/08/17/蓝桥-青蛙跳杯子/">·【蓝桥】·青蛙跳杯子</a></li><li class="post-list-item"><a class="post-list-link" href="/2020/08/16/蓝桥-九宫幻方/">·【蓝桥】·九宫幻方</a></li><li class="post-list-item"><a class="post-list-link" href="/2020/08/16/蓝桥-拉马车/">·【蓝桥】·拉马车</a></li><li class="post-list-item"><a class="post-list-link" href="/2020/08/11/蓝桥-Excel地址/">·【蓝桥】·Excel地址</a></li><li class="post-list-item"><a class="post-list-link" href="/2020/08/11/蓝桥-正则问题/">蓝桥-正则问题</a></li><li class="post-list-item"><a class="post-list-link" href="/2020/07/12/牛客-Rabbit的工作/">牛客-Rabbit的工作</a></li><li class="post-list-item"><a class="post-list-link" href="/2020/07/05/蓝桥-分考场/">蓝桥-分考场</a></li><li class="post-list-item"><a class="post-list-link" href="/2020/06/30/蓝桥-带分数/">·【蓝桥】·带分数</a></li><li class="post-list-item"><a class="post-list-link" href="/2020/06/28/线段树/">线段树专题</a></li><li class="post-list-item"><a class="post-list-link" href="/2020/06/28/逆序数/">逆序数</a></li><li class="post-list-item"><a class="post-list-link" href="/2020/06/27/树状数组/">树状数组专题</a></li><li class="post-list-item"><a class="post-list-link" href="/2020/06/27/数学公式及符号/">Markdown数学公式及符号汇总</a></li><li class="post-list-item"><a class="post-list-link" href="/2020/06/19/蓝桥-买不到的数目/">·【蓝桥】·买不到的数目</a></li><li class="post-list-item"><a class="post-list-link" href="/2020/06/17/图的遍历/">图的遍历（邻接矩阵、邻接表）</a></li><li class="post-list-item"><a class="post-list-link" href="/2020/06/17/蓝桥-小朋友排队/">·【蓝桥】·小朋友排队（归并、树状数组）</a></li><li class="post-list-item"><a class="post-list-link" href="/2020/06/11/最短路径/">最短路径专题（Dijkstra、Floyd、Bellman-Ford即优化）</a></li><li class="post-list-item"><a class="post-list-link" href="/2020/06/04/n皇后问题/">n皇后问题</a></li><li class="post-list-item"><a class="post-list-link" href="/2020/05/31/牛客-减成一/">牛客-减成一</a></li><li class="post-list-item"><a class="post-list-link" href="/2020/05/16/数组实现简单链表/">数组实现链表</a></li><li class="post-list-item"><a class="post-list-link" href="/2020/05/16/牛客-邻值查找/">牛客-邻值查找</a></li><li class="post-list-item"><a class="post-list-link" href="/2020/05/14/并查集/">并查集及优化（路径压缩+按秩合并）</a></li><li class="post-list-item"><a class="post-list-link" href="/2020/05/08/LIS（队列优化+二分）/">LIS优化</a></li><li class="post-list-item"><a class="post-list-link" href="/2020/05/08/真分数的最大埃及分数/">真分数的最大埃及分数</a></li><li class="post-list-item"><a class="post-list-link" href="/2020/04/28/蓝桥-包子凑数/">·【蓝桥】·包子凑数</a></li><li class="post-list-item"><a class="post-list-link" href="/2020/04/25/Github-Coding（理想很丰满）/">Github+coding（理想很丰满）</a></li><li class="post-list-item"><a class="post-list-link" href="/2020/04/24/模运算的运用/">模运算的运用</a></li><li class="post-list-item"><a class="post-list-link" href="/2020/04/01/4月1日我成功地被mysql给愚弄了/">4月1日我成功地被mysql给愚弄了</a></li><li class="post-list-item"><a class="post-list-link" href="/2020/03/28/Dp-ST/">Dp-ST表（求解RMP）</a></li><li class="post-list-item"><a class="post-list-link" href="/2020/03/28/蓝桥-晚会节目单/">·【蓝桥】晚会节目单（ST表）</a></li><li class="post-list-item"><a class="post-list-link" href="/2020/03/11/Extend-Eculid/">Extend_Eculid</a></li><li class="post-list-item"><a class="post-list-link" href="/2020/03/11/ax-by-c问题/">Ax+By=C问题</a></li><li class="post-list-item"><a class="post-list-link" href="/2020/03/10/51nod-1009数字1的数量/">·【51nod-1009】数字1的数量</a></li><li class="post-list-item"><a class="post-list-link" href="/2020/03/10/dp-digit/">Dp-digit</a></li><li class="post-list-item"><a class="post-list-link" href="/2020/03/07/NOIP-2015-POJ-2456/">·【NOIP-2015】·【POJ-2456】</a></li><li class="post-list-item"><a class="post-list-link" href="/2020/03/05/heap/">heap</a></li><li class="post-list-item"><a class="post-list-link" href="/2020/02/28/Inverse/">Inverse</a></li><li class="post-list-item"><a class="post-list-link" href="/2020/02/28/High-precision1/">n的阶乘(High-precision)</a></li><li class="post-list-item"><a class="post-list-link" href="/2020/02/07/Sliding-window/">Sliding Window</a></li><li class="post-list-item"><a class="post-list-link" href="/2019/12/02/Merge-Sort/">Merge Sort</a></li><li class="post-list-item"><a class="post-list-link" href="/2019/12/01/Stack/">Stack</a></li><li class="post-list-item"><a class="post-list-link" href="/2019/11/30/Queue-0/">Queue</a></li><li class="post-list-item"><a class="post-list-link" href="/2019/10/26/Lnode/">Lnode</a></li><li class="post-list-item"><a class="post-list-link" href="/2019/10/26/hey-piggy/">hey-piggy</a></li></ul>
-
-
-
-
-    <script>
-        
-    </script>
-</div>
-      <footer id="footer">
-    <div class="outer">
-        <div id="footer-info">
-            <div class="footer-left">
-                <i class="fa fa-copyright"></i> 
-                2016-2020 Weayer
-            </div>
-            <div class="footer-right">
-                <a href="http://hexo.io/" target="_blank" title="A fast, simple &amp; powerful blog framework">Hexo</a>  Theme <a href="https://github.com/MOxFIVE/hexo-theme-yelee" target="_blank" title="Another simple and elegant theme for Hexo  v3.5">Yelee</a> by MOxFIVE <i class="fa fa-heart animated infinite pulse"></i>
-            </div>
+    
+      <div class="modal fade" id="modalSearch" tabindex="-1" role="dialog" aria-labelledby="ModalLabel"
+     aria-hidden="true">
+  <div class="modal-dialog modal-dialog-scrollable modal-lg" role="document">
+    <div class="modal-content">
+      <div class="modal-header text-center">
+        <h4 class="modal-title w-100 font-weight-bold">搜索</h4>
+        <button type="button" id="local-search-close" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body mx-3">
+        <div class="md-form mb-5">
+          <input type="text" id="local-search-input" class="form-control validate">
+          <label data-error="x" data-success="v"
+                 for="local-search-input">关键词</label>
         </div>
-        
-            <div class="visit">
-                
-                    <span id="busuanzi_container_site_pv" style='display:none'>
-                        <span id="site-visit" title="Site Visitors"><i class="fa fa-user" aria-hidden="true"></i><span id="busuanzi_value_site_uv"></span>
-                        </span>
-                    </span>
-                
-                
-                    <span>| </span>
-                
-                
-                    <span id="busuanzi_container_page_pv" style='display:none'>
-                        <span id="page-visit"  title="Page Hits"><i class="fa fa-eye animated infinite pulse" aria-hidden="true"></i><span id="busuanzi_value_page_pv"></span>
-                        </span>
-                    </span>
-                
-            </div>
-        
+        <div class="list-group" id="local-search-result"></div>
+      </div>
     </div>
+  </div>
+</div>
+    
+
+    
+  </main>
+
+  <footer class="text-center mt-5 py-3">
+  <div class="footer-content">
+     <a href="https://hexo.io" target="_blank" rel="nofollow noopener"><span>Hexo</span></a> <i class="iconfont icon-love"></i> <a href="https://github.com/fluid-dev/hexo-theme-fluid" target="_blank" rel="nofollow noopener"><span>Fluid</span></a> 
+  </div>
+  
+
+  
+
+  
 </footer>
-    </div>
-    
-<script data-main="/js/main.js" src="//cdn.bootcss.com/require.js/2.2.0/require.min.js"></script>
 
-    <script>
-        $(document).ready(function() {
-            var iPad = window.navigator.userAgent.indexOf('iPad');
-            if (iPad > -1 || $(".left-col").css("display") === "none") {
-                var bgColorList = ["#9db3f4", "#414141", "#e5a859", "#f5dfc6", "#c084a0", "#847e72", "#cd8390", "#996731"];
-                var bgColor = Math.ceil(Math.random() * (bgColorList.length - 1));
-                $("body").css({"background-color": bgColorList[bgColor], "background-size": "cover"});
-            }
-            else {
-                var backgroundnum = 5;
-                var backgroundimg = "url(/background/bg-x.jpg)".replace(/x/gi, Math.ceil(Math.random() * backgroundnum));
-                $("body").css({"background": backgroundimg, "background-attachment": "fixed", "background-size": "cover"});
-            }
-        })
-    </script>
+<!-- SCRIPTS -->
+
+  <script  src="https://cdn.jsdelivr.net/npm/nprogress@0.2.0/nprogress.min.js" ></script>
+  <link  rel="stylesheet" href="https://cdn.jsdelivr.net/npm/nprogress@0.2.0/nprogress.min.css" />
+
+  <script>
+    NProgress.configure({"showSpinner":false,"trickleSpeed":100})
+    NProgress.start()
+    window.addEventListener('load', function() {
+      NProgress.done();
+    })
+  </script>
 
 
+<script  src="https://cdn.jsdelivr.net/npm/jquery@3.5.1/dist/jquery.min.js" ></script>
+<script  src="https://cdn.jsdelivr.net/npm/bootstrap@4.5.3/dist/js/bootstrap.min.js" ></script>
+<script  src="/js/debouncer.js" ></script>
+<script  src="/js/events.js" ></script>
+<script  src="/js/plugins.js" ></script>
+
+<!-- Plugins -->
+
+
+  
+    <script  src="/js/lazyload.js" ></script>
+  
 
 
 
-    <script type="text/x-mathjax-config">
-MathJax.Hub.Config({
-    tex2jax: {
-        inlineMath: [ ['$','$'], ["\\(","\\)"]  ],
-        processEscapes: true,
-        skipTags: ['script', 'noscript', 'style', 'textarea', 'pre', 'code']
-    }
-});
-
-MathJax.Hub.Queue(function() {
-    var all = MathJax.Hub.getAllJax(), i;
-    for(i=0; i < all.length; i += 1) {
-        all[i].SourceElement().parentNode.className += ' has-jax';                 
-    }       
-});
-</script>
-
-<script src="//cdn.bootcss.com/mathjax/2.6.1/MathJax.js?config=TeX-AMS-MML_HTMLorMML">
-</script>
+  
 
 
-<div class="scroll" id="scroll">
-    <a href="#" title="Back to Top"><i class="fa fa-arrow-up"></i></a>
-    <a href="#comments" onclick="load$hide();" title="Comments"><i class="fa fa-comments-o"></i></a>
-    <a href="#footer" title="Go to Bottom"><i class="fa fa-arrow-down"></i></a>
-</div>
-<script>
-    // Open in New Window
-    
-        var oOpenInNew = {
-            
-            
-            
-            
-            
-            
-             archives: ".archive-article-title", 
-             miniArchives: "a.post-list-link", 
-            
-             friends: "#js-friends a", 
-             socail: ".social a" 
-        }
-        for (var x in oOpenInNew) {
-            $(oOpenInNew[x]).attr("target", "_blank");
-        }
-    
-</script>
 
-<script async src="https://dn-lbstatics.qbox.me/busuanzi/2.3/busuanzi.pure.mini.js">
-</script>
-  </div>
+  <script  src="https://cdn.jsdelivr.net/npm/tocbot@4.12.0/dist/tocbot.min.js" ></script>
+
+
+
+  <script  src="https://cdn.jsdelivr.net/npm/@fancyapps/fancybox@3.5.7/dist/jquery.fancybox.min.js" ></script>
+
+
+
+  <script  src="https://cdn.jsdelivr.net/npm/anchor-js@4.3.0/anchor.min.js" ></script>
+
+
+
+  <script defer src="https://cdn.jsdelivr.net/npm/clipboard@2.0.6/dist/clipboard.min.js" ></script>
+
+
+
+
+
+
+  <script  src="https://cdn.jsdelivr.net/npm/typed.js@2.0.11/lib/typed.min.js" ></script>
+  <script>
+    (function (window, document) {
+      var typing = Fluid.plugins.typing;
+      var title = document.getElementById('subtitle').title;
+      
+      typing(title)
+      
+    })(window, document);
+  </script>
+
+
+
+  <script  src="/js/local-search.js" ></script>
+  <script>
+    (function () {
+      var path = "/local-search.xml";
+      var inputArea = document.querySelector("#local-search-input");
+      inputArea.onclick = function () {
+        searchFunc(path, 'local-search-input', 'local-search-result');
+        this.onclick = null
+      }
+    })()
+  </script>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<!-- 主题的启动项 保持在最底部 -->
+<script  src="/js/boot.js" ></script>
+
+
+
 </body>
 </html>

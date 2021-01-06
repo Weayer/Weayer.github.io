@@ -7,8 +7,8 @@
 
 <head><meta name="generator" content="Hexo 3.9.0">
   <meta charset="UTF-8">
-  <link rel="apple-touch-icon" sizes="76x76" href="/img/okc.png">
-  <link rel="icon" type="image/png" href="/img/okc.jpg">
+  <link rel="apple-touch-icon" sizes="76x76" href="/img/head.png">
+  <link rel="icon" type="image/png" href="/img/head.jpg">
   <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no, shrink-to-fit=no">
   <meta http-equiv="x-ua-compatible" content="ie=edge">
   
@@ -222,7 +222,10 @@
             <h1 style="display: none">全排列（去重和不去重）</h1>
             
             <div class="markdown-body">
-              <p>&#x8981;&#x6C42;&#x5BF9;&#x6570;&#x7EC4;a[] = {1, 2, 3, 4, 4}&#x8FDB;&#x884C;&#x5168;&#x6392;&#x5217;&#xFF08;&#x53BB;&#x91CD;&#x548C;&#x4E0D;&#x53BB;&#x91CD;&#xFF09;&#x3002;<br>&#x8FD9;&#x91CC;&#x63D0;&#x4F9B;&#x4E09;&#x79CD;&#x4EE3;&#x7801;&#x3002;</p>
+              <blockquote>
+<p>&#x8981;&#x6C42;&#x5BF9;&#x6570;&#x7EC4;a[] = {1, 2, 3, 4, 4}&#x8FDB;&#x884C;&#x5168;&#x6392;&#x5217;&#xFF08;&#x53BB;&#x91CD;&#x548C;&#x4E0D;&#x53BB;&#x91CD;&#xFF09;&#x3002;</p>
+</blockquote>
+<p>&#x8FD9;&#x91CC;&#x63D0;&#x4F9B;&#x4E09;&#x79CD;&#x4EE3;&#x7801;&#x3002;</p>
 <a id="more"></a>
 <p>[TOC]</p>
 <h3 id="C-&#x7684;next-permutation"><a href="#C-&#x7684;next-permutation" class="headerlink" title="C++&#x7684;next_permutation"></a>C++&#x7684;next_permutation</h3><p><code>&lt;algorithm&gt;</code>&#x4E2D;&#x7684;next_permutation&#x53EF;&#x5B9E;&#x73B0;&#x53BB;&#x91CD;&#x7684;&#x5168;&#x6392;&#x5217;<br>&#x2014;&#x2014;&#x2014;&#x2014;&#x2014;&#x2014;&#x2014;&#x2014;&#x2014;&#x2014;&#x2014;&#x2014;&#x2014;&#x2014;&#x2014;&#x2014;&#x2014;&#x2014;&#x2014;&#x2014;&#x2014;&#x2014;&#x2014;&#x2014;&#x2014;&#x2014;&#x2014;&#x2014;</p>
@@ -435,6 +438,45 @@
 
 
 
+
+  
+
+  
+    <!-- MathJax -->
+    <script>
+      MathJax = {
+        tex: {
+          inlineMath: [['$', '$'], ['\\(', '\\)']]
+        },
+        options: {
+          renderActions: {
+            findScript: [10, doc => {
+              document.querySelectorAll('script[type^="math/tex"]').forEach(node => {
+                const display = !!node.type.match(/; *mode=display/);
+                const math = new doc.options.MathItem(node.textContent, doc.inputJax[0], display);
+                const text = document.createTextNode('');
+                node.parentNode.replaceChild(text, node);
+                math.start = { node: text, delim: '', n: 0 };
+                math.end = { node: text, delim: '', n: 0 };
+                doc.math.push(math);
+              });
+            }, '', false],
+            insertedScript: [200, () => {
+              document.querySelectorAll('mjx-container').forEach(node => {
+                let target = node.parentNode;
+                if (target.nodeName.toLowerCase() === 'li') {
+                  target.parentNode.classList.add('has-jax');
+                }
+              });
+            }, '', false]
+          }
+        }
+      };
+    </script>
+
+    <script async src="https://cdn.jsdelivr.net/npm/mathjax@3.1.2/es5/tex-svg.js" ></script>
+
+  
 
 
 

@@ -7,8 +7,8 @@
 
 <head><meta name="generator" content="Hexo 3.9.0">
   <meta charset="UTF-8">
-  <link rel="apple-touch-icon" sizes="76x76" href="/img/okc.png">
-  <link rel="icon" type="image/png" href="/img/okc.jpg">
+  <link rel="apple-touch-icon" sizes="76x76" href="/img/head.png">
+  <link rel="icon" type="image/png" href="/img/head.jpg">
   <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no, shrink-to-fit=no">
   <meta http-equiv="x-ua-compatible" content="ie=edge">
   
@@ -224,6 +224,7 @@
             <div class="markdown-body">
               <p>&#x4E00;&#x9053;Dfs+Dfs&#x7684;&#x597D;&#x9898;&#x76EE;~</p>
 <a id="more"></a>
+
 <p>[TOC]</p>
 <blockquote>
 <p>&#x9898;&#x76EE;&#x94FE;&#x63A5;&#xFF1A;<a href="http://oj.ecustacm.cn/problem.php?id=1286" target="_blank">&#xB7;&#x3010;&#x84DD;&#x6865;&#x3011;&#xB7;&#x526A;&#x90AE;&#x7968;</a><br>&#x6D89;&#x53CA;&#x5230;&#x6709;&#x56FE;&#x7247;&#x5C31;&#x4E0D;&#x8D34;&#x9898;&#x76EE;&#x4E86;</p>
@@ -240,8 +241,10 @@
 
 </li>
 </ol>
-<p>***&#x6CE8;&#x610F;&#xFF1A;&#x6570;&#x7EC4;a[]&#x7684;&#x5168;&#x6392;&#x5217;&#x8981;&#x6C42;&#x53BB;&#x91CD;&#xFF0C;&#x6211;&#x7684;&#x53E6;&#x4E00;&#x7BC7;&#x535A;&#x5BA2;&#x4E13;&#x95E8;&#x6709;&#x5168;&#x6392;&#x5217;&#x53BB;&#x91CD;<a href="https://www.weayer.top/2020/09/12/%E5%85%A8%E6%8E%92%E5%88%97/" blank="_target"></a><br>&#x603B;&#x7ED3;&#x4E00;&#x4E0B;&#x6709;&#x4E09;&#x79CD;&#x53BB;&#x91CD;&#x5199;&#x6CD5;&#xFF1A;<br>1&#x3001;C++&#x7684;next_permutation<br>2&#x3001;&#x57FA;&#x4E8E;&#x65B0;&#x6570;&#x7EC4;&#x7684;&#x5168;&#x6392;&#x5217;<br>3&#x3001;&#x539F;&#x6570;&#x7EC4;&#x4E0A;&#x8FDB;&#x884C;&#x7684;&#x5168;&#x6392;&#x5217; </p>
-<h3 id="1&#x3001;C-&#x7684;next-permutation"><a href="#1&#x3001;C-&#x7684;next-permutation" class="headerlink" title="1&#x3001;C++&#x7684;next_permutation"></a>1&#x3001;C++&#x7684;next_permutation</h3><p>&#x2014;&#x2014;&#x2014;&#x2014;&#x2014;&#x2014;&#x2014;&#x2014;&#x2014;&#x2014;&#x2014;&#x2014;&#x2014;&#x2014;&#x5B8C;&#x6574;&#x4EE3;&#x7801;1&#x2014;&#x2014;&#x2014;&#x2014;&#x2014;&#x2014;&#x2014;&#x2014;&#x2014;&#x2014;&#x2014;&#x2014;&#x2014;&#x2014;&#x2014;&#x2014;</p>
+<p>***&#x6CE8;&#x610F;&#xFF1A;&#x6570;&#x7EC4;a[]&#x7684;&#x5168;&#x6392;&#x5217;&#x8981;&#x6C42;&#x53BB;&#x91CD;&#xFF0C;&#x6211;&#x7684;&#x53E6;&#x4E00;&#x7BC7;&#x535A;&#x5BA2;&#x4E13;&#x95E8;&#x6709;&#x5168;&#x6392;&#x5217;&#x53BB;&#x91CD;<a href="https://www.weayer.top/2020/09/12/%E5%85%A8%E6%8E%92%E5%88%97/" blank="_target"></a><br>&#x603B;&#x7ED3;&#x4E00;&#x4E0B;&#x6709;&#x4E09;&#x79CD;&#x53BB;&#x91CD;&#x5199;&#x6CD5;&#xFF1A;</p>
+<pre><code>1. C++&#x7684;next_permutation
+2. &#x57FA;&#x4E8E;&#x65B0;&#x6570;&#x7EC4;&#x7684;&#x5168;&#x6392;&#x5217;
+3. &#x539F;&#x6570;&#x7EC4;&#x4E0A;&#x8FDB;&#x884C;&#x7684;&#x5168;&#x6392;&#x5217; </code></pre><h3 id="1&#x3001;C-&#x7684;next-permutation"><a href="#1&#x3001;C-&#x7684;next-permutation" class="headerlink" title="1&#x3001;C++&#x7684;next_permutation"></a>1&#x3001;C++&#x7684;next_permutation</h3><p>&#x2014;&#x2014;&#x2014;&#x2014;&#x2014;&#x2014;&#x2014;&#x2014;&#x2014;&#x2014;&#x2014;&#x2014;&#x2014;&#x2014;&#x5B8C;&#x6574;&#x4EE3;&#x7801;1&#x2014;&#x2014;&#x2014;&#x2014;&#x2014;&#x2014;&#x2014;&#x2014;&#x2014;&#x2014;&#x2014;&#x2014;&#x2014;&#x2014;&#x2014;&#x2014;</p>
 <figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br></pre></td><td class="code"><pre><code class="hljs c++"><span class="hljs-meta">#<span class="hljs-meta-keyword">include</span> <span class="hljs-meta-string">&lt;iostream&gt;</span></span><br><span class="hljs-meta">#<span class="hljs-meta-keyword">include</span> <span class="hljs-meta-string">&lt;algorithm&gt;</span></span><br><br><span class="hljs-keyword">using</span> <span class="hljs-keyword">namespace</span> <span class="hljs-built_in">std</span>;<br><br><span class="hljs-keyword">int</span> a[] = {<span class="hljs-number">0</span>,<span class="hljs-number">0</span>,<span class="hljs-number">0</span>,<span class="hljs-number">0</span>,<span class="hljs-number">0</span>,<span class="hljs-number">0</span>,<span class="hljs-number">0</span>,<span class="hljs-number">1</span>,<span class="hljs-number">1</span>,<span class="hljs-number">1</span>,<span class="hljs-number">1</span>,<span class="hljs-number">1</span>};<br><span class="hljs-keyword">int</span> dx[] = {<span class="hljs-number">0</span>, <span class="hljs-number">1</span>, <span class="hljs-number">0</span>, <span class="hljs-number">-1</span>};<br><span class="hljs-keyword">int</span> dy[] = {<span class="hljs-number">1</span>, <span class="hljs-number">0</span>, <span class="hljs-number">-1</span>, <span class="hljs-number">0</span>}; <br><span class="hljs-keyword">int</span> ans = <span class="hljs-number">0</span>;<br><span class="hljs-function"><span class="hljs-keyword">void</span> <span class="hljs-title">dfs</span><span class="hljs-params">(<span class="hljs-keyword">int</span> g[<span class="hljs-number">3</span>][<span class="hljs-number">4</span>], <span class="hljs-keyword">int</span> i, <span class="hljs-keyword">int</span> j)</span></span>{<br>	g[i][j] = <span class="hljs-number">0</span>;<br>	<span class="hljs-keyword">for</span>(<span class="hljs-keyword">int</span> k = <span class="hljs-number">0</span>; k &lt; <span class="hljs-number">4</span>; ++k){<br>		<span class="hljs-keyword">int</span> tx = i + dx[k];<br>		<span class="hljs-keyword">int</span> ty = j + dy[k];<br>		<span class="hljs-keyword">if</span>(tx&gt;=<span class="hljs-number">0</span> &amp;&amp; ty&gt;=<span class="hljs-number">0</span> &amp;&amp; tx&lt;<span class="hljs-number">3</span> &amp;&amp; ty&lt;<span class="hljs-number">4</span> &amp;&amp; g[tx][ty]==<span class="hljs-number">1</span>)<br>			dfs(g, tx, ty);<br>	}<br>}<br><span class="hljs-function"><span class="hljs-keyword">bool</span> <span class="hljs-title">check</span><span class="hljs-params">()</span></span>{<br>	<span class="hljs-keyword">int</span> g[<span class="hljs-number">3</span>][<span class="hljs-number">4</span>];<br>	<span class="hljs-keyword">for</span>(<span class="hljs-keyword">int</span> i = <span class="hljs-number">0</span>; i &lt; <span class="hljs-number">3</span>; ++i){<br>		<span class="hljs-keyword">for</span>(<span class="hljs-keyword">int</span> j = <span class="hljs-number">0</span>; j &lt; <span class="hljs-number">4</span>; ++j){<br>			<span class="hljs-keyword">if</span>(a[i*<span class="hljs-number">4</span>+j] == <span class="hljs-number">1</span>)<br>				g[i][j] = <span class="hljs-number">1</span>;<br>			<span class="hljs-keyword">else</span><br>				g[i][j] = <span class="hljs-number">0</span>;<br>		}<br>	}<br>	<span class="hljs-keyword">int</span> cnt = <span class="hljs-number">0</span>;<br>	<span class="hljs-keyword">for</span>(<span class="hljs-keyword">int</span> i = <span class="hljs-number">0</span>; i &lt; <span class="hljs-number">3</span>; ++i){<br>		<span class="hljs-keyword">for</span>(<span class="hljs-keyword">int</span> j = <span class="hljs-number">0</span>; j &lt; <span class="hljs-number">4</span>; ++j){<br>			<span class="hljs-keyword">if</span>(g[i][j] == <span class="hljs-number">1</span>){<br>				dfs(g, i, j);<br>				cnt++;<br>			}<br>		}<br>	}<br>	<span class="hljs-keyword">return</span> cnt == <span class="hljs-number">1</span>;<br>}<br><span class="hljs-function"><span class="hljs-keyword">void</span> <span class="hljs-title">solve</span><span class="hljs-params">(<span class="hljs-keyword">int</span> k)</span></span>{<br>	<span class="hljs-keyword">do</span>{<br>		<span class="hljs-keyword">if</span>(check())<br>			ans++;<br>	}<span class="hljs-keyword">while</span>(next_permutation(a, a+<span class="hljs-number">12</span>));<br>}<br><span class="hljs-function"><span class="hljs-keyword">int</span> <span class="hljs-title">main</span><span class="hljs-params">()</span></span>{<br>	solve(<span class="hljs-number">0</span>);<br>	<span class="hljs-built_in">cout</span> &lt;&lt; ans &lt;&lt; <span class="hljs-built_in">endl</span>;<br>	<span class="hljs-keyword">return</span> <span class="hljs-number">0</span>;<br>}<br></code></pre></td></tr></table></figure>
 
 <h3 id="2&#x3001;&#x57FA;&#x4E8E;&#x65B0;&#x6570;&#x7EC4;&#x7684;&#x5168;&#x6392;&#x5217;"><a href="#2&#x3001;&#x57FA;&#x4E8E;&#x65B0;&#x6570;&#x7EC4;&#x7684;&#x5168;&#x6392;&#x5217;" class="headerlink" title="2&#x3001;&#x57FA;&#x4E8E;&#x65B0;&#x6570;&#x7EC4;&#x7684;&#x5168;&#x6392;&#x5217;"></a>2&#x3001;&#x57FA;&#x4E8E;&#x65B0;&#x6570;&#x7EC4;&#x7684;&#x5168;&#x6392;&#x5217;</h3><p>&#x2014;&#x2014;&#x2014;&#x2014;&#x2014;&#x2014;&#x2014;&#x2014;&#x2014;&#x2014;&#x2014;&#x2014;&#x2014;&#x2014;&#x5B8C;&#x6574;&#x4EE3;&#x7801;2&#x2014;&#x2014;&#x2014;&#x2014;&#x2014;&#x2014;&#x2014;&#x2014;&#x2014;&#x2014;&#x2014;&#x2014;&#x2014;&#x2014;&#x2014;&#x2014;</p>
@@ -282,7 +285,7 @@
                     
                       <a href="/2020/09/20/蓝桥-牌型种数/">
                         <i class="iconfont icon-arrowleft"></i>
-                        <span class="hidden-mobile">蓝桥-牌型种数</span>
+                        <span class="hidden-mobile">·【蓝桥】·牌型种数</span>
                         <span class="visible-mobile">上一篇</span>
                       </a>
                     
@@ -447,6 +450,45 @@
 
 
 
+
+  
+
+  
+    <!-- MathJax -->
+    <script>
+      MathJax = {
+        tex: {
+          inlineMath: [['$', '$'], ['\\(', '\\)']]
+        },
+        options: {
+          renderActions: {
+            findScript: [10, doc => {
+              document.querySelectorAll('script[type^="math/tex"]').forEach(node => {
+                const display = !!node.type.match(/; *mode=display/);
+                const math = new doc.options.MathItem(node.textContent, doc.inputJax[0], display);
+                const text = document.createTextNode('');
+                node.parentNode.replaceChild(text, node);
+                math.start = { node: text, delim: '', n: 0 };
+                math.end = { node: text, delim: '', n: 0 };
+                doc.math.push(math);
+              });
+            }, '', false],
+            insertedScript: [200, () => {
+              document.querySelectorAll('mjx-container').forEach(node => {
+                let target = node.parentNode;
+                if (target.nodeName.toLowerCase() === 'li') {
+                  target.parentNode.classList.add('has-jax');
+                }
+              });
+            }, '', false]
+          }
+        }
+      };
+    </script>
+
+    <script async src="https://cdn.jsdelivr.net/npm/mathjax@3.1.2/es5/tex-svg.js" ></script>
+
+  
 
 
 

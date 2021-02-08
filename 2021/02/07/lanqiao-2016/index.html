@@ -1,0 +1,527 @@
+
+
+<!DOCTYPE html>
+<html lang="zh-CN" data-default-color-scheme=&#34;auto&#34;>
+
+
+
+<head><meta name="generator" content="Hexo 3.9.0">
+  <meta charset="UTF-8">
+  <link rel="apple-touch-icon" sizes="76x76" href="/img/head.png">
+  <link rel="icon" type="image/png" href="/img/head.jpg">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no, shrink-to-fit=no">
+  <meta http-equiv="x-ua-compatible" content="ie=edge">
+  
+  <meta name="theme-color" content="#2f4154">
+  <meta name="description" content="The Meaning of Life">
+  <meta name="author" content="Weayer">
+  <meta name="keywords" content="Never,never,never,never!">
+  <title>2016年蓝桥杯省赛题解（无D、E、J题） - weayer&#39;s blog</title>
+
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.5.3/dist/css/bootstrap.min.css">
+
+
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/github-markdown-css@4.0.0/github-markdown.min.css">
+  <link rel="stylesheet" href="/lib/hint/hint.min.css">
+
+  
+    
+    
+      
+      <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/highlight.js@10.4.0/styles/github-gist.min.css">
+    
+  
+
+  
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fancyapps/fancybox@3.5.7/dist/jquery.fancybox.min.css">
+  
+
+
+
+<!-- 主题依赖的图标库，不要自行修改 -->
+<link rel="stylesheet" href="//at.alicdn.com/t/font_1749284_ba1fz6golrf.css">
+
+<link rel="stylesheet" href="//at.alicdn.com/t/font_1736178_kmeydafke9r.css">
+
+<link rel="stylesheet" href="/css/main.css">
+
+<!-- 自定义样式保持在最底部 -->
+
+
+  <script id="fluid-configs">
+    var Fluid = window.Fluid || {};
+    var CONFIG = {"hostname":"www.weayer.top","root":"/","version":"1.8.7","typing":{"enable":true,"typeSpeed":80,"cursorChar":"_","loop":false},"anchorjs":{"enable":true,"element":"h1,h2,h3,h4,h5,h6","placement":"right","visible":"hover","icon":""},"progressbar":{"enable":true,"height_px":3,"color":"#29d","options":{"showSpinner":false,"trickleSpeed":100}},"copy_btn":true,"image_zoom":{"enable":true},"toc":{"enable":true,"headingSelector":"h1,h2,h3,h4,h5,h6","collapseDepth":0},"lazyload":{"enable":true,"onlypost":false},"web_analytics":{"enable":false,"baidu":null,"google":null,"gtag":null,"tencent":{"sid":null,"cid":null},"woyaola":null,"cnzz":null,"leancloud":{"app_id":null,"app_key":null,"server_url":null}}};
+  </script>
+  <script src="/js/utils.js"></script>
+  <script src="/js/color-schema.js"></script>
+</head>
+
+
+<body>
+  <header style="height: 70vh;">
+    <nav id="navbar" class="navbar fixed-top  navbar-expand-lg navbar-dark scrolling-navbar">
+  <div class="container">
+    <a class="navbar-brand"
+       href="/">&nbsp;<strong>Weayer's blog</strong>&nbsp;</a>
+
+    <button id="navbar-toggler-btn" class="navbar-toggler" type="button" data-toggle="collapse"
+            data-target="#navbarSupportedContent"
+            aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+      <div class="animated-icon"><span></span><span></span><span></span></div>
+    </button>
+
+    <!-- Collapsible content -->
+    <div class="collapse navbar-collapse" id="navbarSupportedContent">
+      <ul class="navbar-nav ml-auto text-center">
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/">
+                <i class="iconfont icon-home-fill"></i>
+                首页
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/archives/">
+                <i class="iconfont icon-archive-fill"></i>
+                归档
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/categories/">
+                <i class="iconfont icon-category-fill"></i>
+                分类
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/tags/">
+                <i class="iconfont icon-tags-fill"></i>
+                标签
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/about/">
+                <i class="iconfont icon-user-fill"></i>
+                关于
+              </a>
+            </li>
+          
+        
+        
+          <li class="nav-item" id="search-btn">
+            <a class="nav-link" data-toggle="modal" data-target="#modalSearch">&nbsp;<i
+                class="iconfont icon-search"></i>&nbsp;</a>
+          </li>
+        
+        
+          <li class="nav-item" id="color-toggle-btn">
+            <a class="nav-link" href="javascript:">&nbsp;<i
+                class="iconfont icon-dark" id="color-toggle-icon"></i>&nbsp;</a>
+          </li>
+        
+      </ul>
+    </div>
+  </div>
+</nav>
+
+    <div class="banner" id="banner" parallax=true
+         style="background: url('/img/default.png') no-repeat center center;
+           background-size: cover;">
+      <div class="full-bg-img">
+        <div class="mask flex-center" style="background-color: rgba(0, 0, 0, 0.3)">
+          <div class="page-header text-center fade-in-up">
+            <span class="h2" id="subtitle" title="2016年蓝桥杯省赛题解（无D、E、J题）">
+              
+            </span>
+
+            
+              <div class="mt-3">
+  
+  
+    <span class="post-meta">
+      <i class="iconfont icon-date-fill" aria-hidden="true"></i>
+      <time datetime="2021-02-07 00:00" pubdate>
+        2021年2月7日 凌晨
+      </time>
+    </span>
+  
+</div>
+
+<div class="mt-1">
+  
+    
+    <span class="post-meta mr-2">
+      <i class="iconfont icon-chart"></i>
+      1.6k 字
+    </span>
+  
+
+  
+    
+    <span class="post-meta mr-2">
+      <i class="iconfont icon-clock-fill"></i>
+      
+      
+      32
+       分钟
+    </span>
+  
+
+  
+  
+</div>
+
+            
+          </div>
+
+          
+        </div>
+      </div>
+    </div>
+  </header>
+
+  <main>
+    
+      
+
+<div class="container-fluid nopadding-x">
+  <div class="row nomargin-x">
+    <div class="d-none d-lg-block col-lg-2"></div>
+    <div class="col-lg-8 nopadding-x-md">
+      <div class="container nopadding-x-md" id="board-ctn">
+        <div class="py-5" id="board">
+          <article class="post-content mx-auto">
+            <!-- SEO header -->
+            <h1 style="display: none">2016年蓝桥杯省赛题解（无D、E、J题）</h1>
+            
+            <div class="markdown-body">
+              <ul>
+<li><p>&#x5386;&#x5C4A;&#x771F;&#x9898;&#x53EF;&#x76F4;&#x63A5;&#x5728;&#x5B98;&#x7F51;&#x4E0B;&#x8F7D;&#xFF0C;&#x94FE;&#x63A5;&#xFF1A;<a href="https://www.lanqiao.cn/courses/2786" target="_blank">&#x84DD;&#x6865;&#x676F;&#x5927;&#x8D5B;&#x5386;&#x5C4A;&#x771F;&#x9898;</a></p>
+<h3 id="A&#xFF1A;&#x7164;&#x7403;&#x6570;&#x76EE;"><a href="#A&#xFF1A;&#x7164;&#x7403;&#x6570;&#x76EE;" class="headerlink" title="A&#xFF1A;&#x7164;&#x7403;&#x6570;&#x76EE;"></a>A&#xFF1A;&#x7164;&#x7403;&#x6570;&#x76EE;</h3></li>
+<li><p>&#x7B49;&#x5DEE;&#x6570;&#x5217;&#x7684;&#x548C;$S_n$&#x7684;&#x524D;n&#x9879;&#x548C;</p>
+</li>
+<li><p>$S_1+S_2+S_3+&#x2026;+S_n = 1+(1+2)+(1+2+3)+&#x2026;+(1+2+3+&#x2026;+n)$</p>
+</li>
+</ul>
+<p>&#x7B54;&#x6848;&#xFF1A;171700<br>&#x2014;&#x2014;&#x2014;&#x2014;&#x2014;&#x2014;&#x2014;&#x2014;&#x2014;&#x2014;&#x2014;&#x2014;&#x2014;&#x2014;&#x2014;&#x2014;&#x2014;&#x2014;&#x2014;&#x2014;&#x2014;&#x2014;&#x2014;&#x2014;&#x2014;&#x2014;&#x2014;&#x2014;&#x2014;&#x2014;&#x2014;&#x2014;&#x2014;&#x2014;</p>
+<figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><code class="hljs c++">   <span class="hljs-keyword">int</span> ans = <span class="hljs-number">0</span>, n = <span class="hljs-number">100</span>;<br><span class="hljs-keyword">for</span>(<span class="hljs-keyword">int</span> i = <span class="hljs-number">1</span>; i &lt;= n; ++i){<br>	ans += i*(n - i + <span class="hljs-number">1</span>);<br>}<br><span class="hljs-built_in">cout</span> &lt;&lt; ans &lt;&lt; <span class="hljs-built_in">endl</span>;<br></code></pre></td></tr></table></figure>
+
+<h3 id="B&#xFF1A;&#x751F;&#x65E5;&#x8721;&#x70DB;"><a href="#B&#xFF1A;&#x751F;&#x65E5;&#x8721;&#x70DB;" class="headerlink" title="B&#xFF1A;&#x751F;&#x65E5;&#x8721;&#x70DB;"></a>B&#xFF1A;&#x751F;&#x65E5;&#x8721;&#x70DB;</h3><p>&#x7B54;&#x6848;&#xFF1A;20<br>&#x2014;&#x2014;&#x2014;&#x2014;&#x2014;&#x2014;&#x2014;&#x2014;&#x2014;&#x2014;&#x2014;&#x2014;&#x2014;&#x2014;&#x2014;&#x2014;&#x2014;&#x2014;&#x2014;&#x2014;&#x2014;&#x2014;&#x2014;&#x2014;&#x2014;&#x2014;&#x2014;&#x2014;&#x2014;&#x2014;&#x2014;&#x2014;&#x2014;&#x2014;</p>
+<figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><code class="hljs c++">   <span class="hljs-keyword">int</span> ans = <span class="hljs-number">0</span>, n = <span class="hljs-number">100</span>;<br><span class="hljs-keyword">for</span>(<span class="hljs-keyword">int</span> i = <span class="hljs-number">1</span>; i &lt;= n; ++i){<br>	ans = i;<br>	<span class="hljs-keyword">for</span>(<span class="hljs-keyword">int</span> j = i; j &lt;= n; ++j){<br>		ans += j;<br>		<span class="hljs-keyword">if</span>(ans == <span class="hljs-number">236</span>){<br>			<span class="hljs-built_in">cout</span> &lt;&lt; i &lt;&lt;<span class="hljs-string">&quot; &quot;</span> &lt;&lt;j&lt;&lt; <span class="hljs-built_in">endl</span>;<br>			<span class="hljs-keyword">return</span> <span class="hljs-number">0</span>;<br>		}<br>	}<br>}<br></code></pre></td></tr></table></figure>
+
+<h3 id="C&#xFF1A;&#x51D1;&#x7B97;&#x5F0F;"><a href="#C&#xFF1A;&#x51D1;&#x7B97;&#x5F0F;" class="headerlink" title="C&#xFF1A;&#x51D1;&#x7B97;&#x5F0F;"></a>C&#xFF1A;&#x51D1;&#x7B97;&#x5F0F;</h3><ul>
+<li>&#x7531;&#x9898;&#x76EE;&#x6837;&#x4F8B;&#x5F97;&#xFF1A;&#x7ED3;&#x679C;&#x662F;&#x901A;&#x5206;&#x540E;&#x76F8;&#x52A0;&#x5F97;10</li>
+<li>c++&#x63D0;&#x4F9B;&#x7684;next_permutation()&#x5728;&#x8FD9;&#x9700;&#x8981;&#x65E0;&#x8111;dfs&#x7684;&#x65F6;&#x5019;&#xFF0C;&#x6BD4;&#x8F83;&#x65B9;&#x4FBF;</li>
+</ul>
+<p>&#x7B54;&#x6848;&#xFF1A;29<br>&#x2014;&#x2014;&#x2014;&#x2014;&#x2014;&#x2014;&#x2014;&#x2014;&#x2014;&#x2014;&#x2014;&#x2014;&#x2014;&#x2014;&#x2014;&#x2014;&#x2014;&#x2014;&#x2014;&#x2014;&#x2014;&#x2014;&#x2014;&#x2014;&#x2014;&#x2014;&#x2014;&#x2014;&#x2014;&#x2014;&#x2014;&#x2014;&#x2014;&#x2014;</p>
+<figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br></pre></td><td class="code"><pre><code class="hljs c++"><span class="hljs-function"><span class="hljs-keyword">int</span> <span class="hljs-title">toInt</span><span class="hljs-params">(<span class="hljs-built_in">string</span> s)</span></span>{<br>	<span class="hljs-keyword">int</span> n;<br>	<span class="hljs-built_in">stringstream</span> ss;<br>	ss &lt;&lt; s;<br>	ss &gt;&gt; n;<br>	<span class="hljs-keyword">return</span> n;<br>}<br><span class="hljs-function"><span class="hljs-keyword">int</span> <span class="hljs-title">main</span><span class="hljs-params">()</span></span>{<br>	<span class="hljs-keyword">int</span> ans = <span class="hljs-number">0</span>;<br>	<span class="hljs-built_in">string</span> s = <span class="hljs-string">&quot;123456789&quot;</span>;<br>	<span class="hljs-keyword">do</span>{<br>		<span class="hljs-keyword">int</span> a = toInt(s.substr(<span class="hljs-number">0</span>, <span class="hljs-number">1</span>));<br>		<span class="hljs-keyword">int</span> b = toInt(s.substr(<span class="hljs-number">1</span>, <span class="hljs-number">1</span>));<br>		<span class="hljs-keyword">int</span> c = toInt(s.substr(<span class="hljs-number">2</span>, <span class="hljs-number">1</span>));<br>		<span class="hljs-keyword">int</span> d = toInt(s.substr(<span class="hljs-number">3</span>, <span class="hljs-number">3</span>));<br>		<span class="hljs-keyword">int</span> e = toInt(s.substr(<span class="hljs-number">6</span>, <span class="hljs-number">3</span>));<br>		b = b*e;<br>		d = d*c;<br>		<span class="hljs-keyword">if</span>((b+d) % (e*c) == <span class="hljs-number">0</span>){<br>			<span class="hljs-keyword">if</span>((b+d)/(e*c) == (<span class="hljs-number">10</span>-a)){<br>				ans++;<br>			}<br>		}<br>	}<span class="hljs-keyword">while</span>(next_permutation(s.begin(), s.end()));<br>	<span class="hljs-built_in">cout</span> &lt;&lt; ans &lt;&lt; <span class="hljs-built_in">endl</span>;<br>	<span class="hljs-keyword">return</span> <span class="hljs-number">0</span>;<br>}<br></code></pre></td></tr></table></figure>
+
+<h3 id="F&#xFF1A;&#x65B9;&#x683C;&#x586B;&#x6570;"><a href="#F&#xFF1A;&#x65B9;&#x683C;&#x586B;&#x6570;" class="headerlink" title="F&#xFF1A;&#x65B9;&#x683C;&#x586B;&#x6570;"></a>F&#xFF1A;&#x65B9;&#x683C;&#x586B;&#x6570;</h3><p><strong>&#x5206;&#x6790;</strong></p>
+<ol>
+<li>&#x53C8;&#x662F;&#x4E00;&#x9053;&#x53EF;&#x4EE5;&#x95ED;&#x7740;&#x773C;&#x775B;<code>next_permutation()</code>&#x5168;&#x6392;&#x5217;&#x7684;&#x9898;&#x76EE;</li>
+<li>&#x6392;&#x5217;&#x7684;&#x7ED3;&#x679C;&#x653E;&#x5230;&#x65B9;&#x683C;&#x4E2D;&#xFF0C;&#x7B5B;&#x9009;&#x8C03;&#x76F8;&#x90BB;&#x5373;&#x53EF;</li>
+</ol>
+<p>&#x7B54;&#x6848;&#xFF1A;1580<br>&#x2014;&#x2014;&#x2014;&#x2014;&#x2014;&#x2014;&#x2014;&#x2014;&#x2014;&#x2014;&#x2014;&#x2014;&#x2014;&#x2014;&#x2014;&#x2014;&#x2014;&#x2014;&#x2014;&#x2014;&#x2014;&#x2014;&#x2014;&#x2014;&#x2014;&#x2014;&#x2014;&#x2014;&#x2014;&#x2014;&#x2014;&#x2014;&#x2014;&#x2014;</p>
+<figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br></pre></td><td class="code"><pre><code class="hljs c++"><span class="hljs-function"><span class="hljs-keyword">bool</span> <span class="hljs-title">judge</span><span class="hljs-params">(<span class="hljs-keyword">char</span> a, <span class="hljs-keyword">char</span> b)</span></span>{	<span class="hljs-comment">//&#x4E24;&#x4E2A;&#x65B9;&#x683C;&#x662F;&#x5426;&#x76F8;&#x90BB;</span><br>	<span class="hljs-keyword">return</span> <span class="hljs-built_in">abs</span>(a-b) == <span class="hljs-number">1</span>;<br>}<br><span class="hljs-function"><span class="hljs-keyword">bool</span> <span class="hljs-title">solve</span><span class="hljs-params">(<span class="hljs-built_in">string</span> s)</span></span>{	<span class="hljs-comment">//&#x5224;&#x65AD;&#x8BE5;&#x65B9;&#x6848;&#x662F;&#x5426;&#x5408;&#x6CD5;</span><br>	<span class="hljs-keyword">for</span>(<span class="hljs-keyword">int</span> i = <span class="hljs-number">1</span>; i &lt; s.length(); ++i){<br>		<span class="hljs-keyword">if</span>(judge(s[i], s[i<span class="hljs-number">-1</span>])){<br>			<span class="hljs-keyword">return</span> <span class="hljs-literal">false</span>;<br>		}<br>	}<br>	<span class="hljs-keyword">if</span>(judge(s[<span class="hljs-number">0</span>], s[<span class="hljs-number">5</span>]) || judge(s[<span class="hljs-number">8</span>], s[<span class="hljs-number">5</span>]) || <br>		judge(s[<span class="hljs-number">1</span>], s[<span class="hljs-number">4</span>]) || judge(s[<span class="hljs-number">4</span>], s[<span class="hljs-number">9</span>]) ||<br>		 judge(s[<span class="hljs-number">0</span>], s[<span class="hljs-number">4</span>]) || judge(s[<span class="hljs-number">1</span>], s[<span class="hljs-number">3</span>]) ||<br>		 judge(s[<span class="hljs-number">9</span>], s[<span class="hljs-number">5</span>]) || judge(s[<span class="hljs-number">6</span>], s[<span class="hljs-number">8</span>]) ||<br>		 judge(s[<span class="hljs-number">0</span>], s[<span class="hljs-number">6</span>]) || judge(s[<span class="hljs-number">1</span>], s[<span class="hljs-number">5</span>]) ||<br>		 judge(s[<span class="hljs-number">7</span>], s[<span class="hljs-number">5</span>]) || judge(s[<span class="hljs-number">2</span>], s[<span class="hljs-number">4</span>]) ||<br>		 judge(s[<span class="hljs-number">4</span>], s[<span class="hljs-number">8</span>]) || judge(s[<span class="hljs-number">3</span>], s[<span class="hljs-number">9</span>]) )<br>		 	<span class="hljs-keyword">return</span> <span class="hljs-literal">false</span>;<br>	<span class="hljs-keyword">return</span> <span class="hljs-literal">true</span>;<br>}<br><span class="hljs-function"><span class="hljs-keyword">int</span> <span class="hljs-title">main</span><span class="hljs-params">()</span></span>{<br>	<span class="hljs-keyword">int</span> ans = <span class="hljs-number">0</span>;<br>	<span class="hljs-built_in">string</span> s = <span class="hljs-string">&quot;0123456789&quot;</span>;<br>	<span class="hljs-keyword">do</span>{<br>		<span class="hljs-keyword">if</span>(solve(s)){<br>			ans++;<br>		}<br>	}<span class="hljs-keyword">while</span>(next_permutation(s.begin(), s.end()));<br>	<span class="hljs-built_in">cout</span> &lt;&lt; ans &lt;&lt; <span class="hljs-built_in">endl</span>;<br>	<span class="hljs-keyword">return</span> <span class="hljs-number">0</span>;<br>}<br></code></pre></td></tr></table></figure>
+
+<h3 id="G&#xFF1A;&#x526A;&#x90AE;&#x7968;"><a href="#G&#xFF1A;&#x526A;&#x90AE;&#x7968;" class="headerlink" title="G&#xFF1A;&#x526A;&#x90AE;&#x7968;"></a>G&#xFF1A;&#x526A;&#x90AE;&#x7968;</h3><p><strong>&#x5206;&#x6790;</strong></p>
+<ol>
+<li><p>&#x9898;&#x610F;&#x5F88;&#x7B80;&#x5355;&#xFF0C;12&#x4E2A;&#x6570;&#x4E2D;&#x9009;5&#x4E2A;&#x6570;&#xFF0C;&#x7136;&#x540E;&#x5224;&#x65AD;&#x662F;&#x5426;&#x76F8;&#x8FDE;</p>
+</li>
+<li><p>&#x6392;&#x5217;&#x4E0D;&#x7EC4;&#x5408;&#xFF0C;&#x53EF;&#x4EE5;&#x63D0;&#x524D;&#x7B97;&#x4E00;&#x4E0B;&#x4E00;&#x5171;$C_{12}^{5}$&#x4E2D;&#x53EF;&#x80FD;&#x7684;&#x6392;&#x5217;</p>
+ <figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br></pre></td><td class="code"><pre><code class="hljs c++"><span class="hljs-function"><span class="hljs-keyword">void</span> <span class="hljs-title">dfs_1</span><span class="hljs-params">(<span class="hljs-keyword">int</span> k, <span class="hljs-keyword">int</span> step)</span></span>{ <span class="hljs-comment">//dfs&#x4ECE;12&#x4E2A;&#x6570;&#x4E2D;&#x6392;&#x5217;&#x51FA;5&#x4E2A;&#x6570; </span><br><span class="hljs-keyword">if</span>(step == <span class="hljs-number">5</span>){<br>	<span class="hljs-keyword">if</span>(solve()){<br>		ans++;<br>	}<br>	<span class="hljs-keyword">return</span>;<br>}<br><span class="hljs-keyword">for</span>(<span class="hljs-keyword">int</span> i = k; i &lt; <span class="hljs-number">12</span>; ++i){<br>	<span class="hljs-keyword">if</span>(b[i] == <span class="hljs-number">0</span>){<br>		b[i] = <span class="hljs-number">1</span>;<br>		v.push_back(i+<span class="hljs-number">1</span>);	<span class="hljs-comment">//&#x9009;&#x53D6;&#x7684;&#x6570;&#x52A0;&#x5165;&#x5230;vector&#x4E2D; </span><br>		dfs_1(i, step+<span class="hljs-number">1</span>);<br>		b[i] = <span class="hljs-number">0</span>;<br>		v.pop_back();<br>	}<br>}<br></code></pre></td></tr></table></figure>
+</li>
+<li><p>&#x5173;&#x952E;&#x662F;&#x9009;&#x51FA;&#x4E86;5&#x4E2A;&#x6570;&#xFF0C;&#x5982;&#x4F55;&#x5224;&#x65AD;&#x4ED6;&#x4EEC;&#x76F8;&#x8FDE;&#x3002;<br>&#x53EF;&#x4EE5;&#x5148;&#x5BF9;&#x8FD9;5&#x4E2A;&#x6570;&#x8FDB;&#x884C;&#x6807;&#x8BB0;&#xFF0C;&#x7136;&#x540E;&#x4ECE;&#x5176;&#x4E2D;&#x4EFB;&#x4E00;&#x4E2A;&#x6570;&#x51FA;&#x53D1;&#xFF0C;&#x4E0A;&#x4E0B;&#x5DE6;&#x53F3;&#x5F00;&#x59CB;dfs&#xFF0C;&#x5C06;&#x8BBF;&#x95EE;&#x5230;&#x7684;&#x6570;&#x7684;&#x6807;&#x8BB0;&#x64E6;&#x9664;&#xFF1B;<br>&#x4E00;&#x8D9F;&#x7ED3;&#x675F;&#x540E;&#xFF0C;&#x82E5;&#x4ECD;&#x6709;&#x6570;&#x672A;&#x88AB;&#x64E6;&#x9664;&#xFF08;&#x5373;&#x6807;&#x8BB0;&#x8FD8;&#x5B58;&#x5728;&#xFF09;&#xFF0C;&#x5219;&#x8FD9;5&#x4E2A;&#x6570;&#x4E0D;&#x76F8;&#x8FDE;&#xFF0C;&#x53CD;&#x4E4B;&#xFF0C;&#x5219;&#x76F8;&#x8FDE;&#x3002;</p>
+</li>
+</ol>
+<p>***&#x6CE8;&#xFF1A;12&#x4E2A;&#x6570;&#x91CC;&#x5BF9;5&#x4E2A;&#x6570;&#x8FDB;&#x884C;&#x6807;&#x8BB0;&#xFF0C;&#x6211;&#x7528;&#x7684;&#x662F;<br><code>string s = &quot;0000000000000&quot;;  s[i] = &apos;1&apos;;</code></p>
+<p>&#x7B54;&#x6848;&#xFF1A;116<br>&#x2014;&#x2014;&#x2014;&#x2014;&#x2014;&#x2014;&#x2014;&#x2014;&#x2014;&#x2014;&#x2014;&#x2014;&#x2014;&#x2014;&#x5B8C;&#x6574;&#x4EE3;&#x7801;&#x2014;&#x2014;&#x2014;&#x2014;&#x2014;&#x2014;&#x2014;&#x2014;&#x2014;&#x2014;&#x2014;&#x2014;&#x2014;&#x2014;&#x2014;&#x2014;</p>
+<figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br></pre></td><td class="code"><pre><code class="hljs c++"><span class="hljs-meta">#<span class="hljs-meta-keyword">include</span> <span class="hljs-meta-string">&lt;iostream&gt;</span></span><br><span class="hljs-meta">#<span class="hljs-meta-keyword">include</span> <span class="hljs-meta-string">&lt;cstdio&gt;</span></span><br><span class="hljs-meta">#<span class="hljs-meta-keyword">include</span> <span class="hljs-meta-string">&lt;algorithm&gt;</span></span><br><span class="hljs-meta">#<span class="hljs-meta-keyword">include</span> <span class="hljs-meta-string">&lt;vector&gt;</span></span><br><span class="hljs-meta">#<span class="hljs-meta-keyword">include</span> <span class="hljs-meta-string">&lt;cstring&gt;</span></span><br><br><span class="hljs-keyword">using</span> <span class="hljs-keyword">namespace</span> <span class="hljs-built_in">std</span>;<br><br><span class="hljs-keyword">int</span> a[] = {<span class="hljs-number">1</span>, <span class="hljs-number">2</span>, <span class="hljs-number">3</span>, <span class="hljs-number">4</span>, <span class="hljs-number">5</span>, <span class="hljs-number">6</span>, <span class="hljs-number">7</span>, <span class="hljs-number">8</span>, <span class="hljs-number">9</span>, <span class="hljs-number">10</span>, <span class="hljs-number">11</span>, <span class="hljs-number">12</span>};<br><span class="hljs-keyword">int</span> b[<span class="hljs-number">12</span>];<br><span class="hljs-keyword">int</span> ans = <span class="hljs-number">0</span>;<br><span class="hljs-built_in">vector</span>&lt;<span class="hljs-keyword">int</span>&gt; v;<br><span class="hljs-built_in">string</span> s;<br><span class="hljs-function"><span class="hljs-keyword">void</span> <span class="hljs-title">dfs_2</span><span class="hljs-params">(<span class="hljs-keyword">int</span> k)</span></span>{	<span class="hljs-comment">//dfs&#x4ECE;&#x4E00;&#x4E2A;&#x6570;&#x51FA;&#x53D1;&#xFF0C;&#x904D;&#x5386;&#x5230;&#x6240;&#x6709;&#x76F8;&#x8FDE;&#x7684;&#x6570; </span><br>	s[k] = <span class="hljs-string">&apos;0&apos;</span>;<br>	<span class="hljs-keyword">if</span>(k - <span class="hljs-number">4</span> &gt; <span class="hljs-number">0</span> &amp;&amp; s[k<span class="hljs-number">-4</span>] == <span class="hljs-string">&apos;1&apos;</span>){<br>		dfs_2(k<span class="hljs-number">-4</span>);	<span class="hljs-comment">//&#x4E0A;</span><br>	}<br>	<span class="hljs-keyword">if</span>((k + <span class="hljs-number">1</span>) % <span class="hljs-number">4</span> != <span class="hljs-number">1</span> &amp;&amp; s[k+<span class="hljs-number">1</span>] == <span class="hljs-string">&apos;1&apos;</span>){<br>		dfs_2(k+<span class="hljs-number">1</span>);	<span class="hljs-comment">//&#x53F3;</span><br>	}<br>	<span class="hljs-keyword">if</span>(k + <span class="hljs-number">4</span> &lt;= <span class="hljs-number">12</span> &amp;&amp; s[k+<span class="hljs-number">4</span>] == <span class="hljs-string">&apos;1&apos;</span>){<br>		dfs_2(k+<span class="hljs-number">4</span>);	<span class="hljs-comment">//&#x4E0B;</span><br>	}<br>	<span class="hljs-keyword">if</span>((k<span class="hljs-number">-1</span>) % <span class="hljs-number">4</span> != <span class="hljs-number">0</span> &amp;&amp; s[k<span class="hljs-number">-1</span>] == <span class="hljs-string">&apos;1&apos;</span>){<br>		dfs_2(k<span class="hljs-number">-1</span>);	<span class="hljs-comment">//&#x5DE6;</span><br>	}<br>}<br><span class="hljs-function"><span class="hljs-keyword">bool</span> <span class="hljs-title">solve</span><span class="hljs-params">()</span></span>{	<span class="hljs-comment">//&#x5224;&#x65AD;&#x8FD9;5&#x4E2A;&#x6570;&#x662F;&#x5426;&#x8FDE;&#x901A; </span><br>	s = <span class="hljs-string">&quot;0000000000000&quot;</span>;<br>	<span class="hljs-keyword">for</span>(<span class="hljs-keyword">int</span> i = <span class="hljs-number">0</span>; i &lt; v.size(); ++i){<br>		s[v[i]] = <span class="hljs-string">&apos;1&apos;</span>;		<span class="hljs-comment">//&#x904D;&#x5386;vector&#xFF0C;&#x6807;&#x8BB0;&#x4E3A;1 </span><br>	}<br>	<span class="hljs-comment">//cout &lt;&lt; s &lt;&lt; endl;</span><br>	dfs_2(v[<span class="hljs-number">0</span>]);<br>	<span class="hljs-keyword">if</span>(s.find(<span class="hljs-string">&apos;1&apos;</span>) == <span class="hljs-built_in">string</span>::npos){ <br>		<span class="hljs-keyword">return</span> <span class="hljs-literal">true</span>;	<span class="hljs-comment">//dfs&#x540E;&#x6CA1;&#x6709;&#x6807;&#x8BB0;&#x7684;1&#xFF0C;&#x8FD4;&#x56DE;true </span><br>	}<span class="hljs-keyword">else</span>{<br>		<span class="hljs-keyword">return</span> <span class="hljs-literal">false</span>;<br>	}<br>}<br><span class="hljs-function"><span class="hljs-keyword">void</span> <span class="hljs-title">dfs_1</span><span class="hljs-params">(<span class="hljs-keyword">int</span> k, <span class="hljs-keyword">int</span> step)</span></span>{ <span class="hljs-comment">//dfs&#x4ECE;12&#x4E2A;&#x6570;&#x4E2D;&#x6392;&#x5217;&#x51FA;5&#x4E2A;&#x6570; </span><br>	<span class="hljs-keyword">if</span>(step == <span class="hljs-number">5</span>){<br>		<span class="hljs-keyword">if</span>(solve()){<br>			ans++;<br>		}<br>		<span class="hljs-keyword">return</span>;<br>	}<br>	<span class="hljs-keyword">for</span>(<span class="hljs-keyword">int</span> i = k; i &lt; <span class="hljs-number">12</span>; ++i){<br>		<span class="hljs-keyword">if</span>(b[i] == <span class="hljs-number">0</span>){<br>			b[i] = <span class="hljs-number">1</span>;<br>			v.push_back(i+<span class="hljs-number">1</span>);	<span class="hljs-comment">//&#x9009;&#x53D6;&#x7684;&#x6570;&#x52A0;&#x5165;&#x5230;vector&#x4E2D; </span><br>			dfs_1(i, step+<span class="hljs-number">1</span>);<br>			b[i] = <span class="hljs-number">0</span>;<br>			v.pop_back();<br>		}<br>	}<br>} <br><span class="hljs-function"><span class="hljs-keyword">int</span> <span class="hljs-title">main</span><span class="hljs-params">()</span></span>{<br>	dfs_1(<span class="hljs-number">0</span>, <span class="hljs-number">0</span>);<br>	<span class="hljs-built_in">cout</span> &lt;&lt; ans &lt;&lt; <span class="hljs-built_in">endl</span>;<br>	<span class="hljs-keyword">return</span> <span class="hljs-number">0</span>;<br>}<br></code></pre></td></tr></table></figure>
+
+<h3 id="H&#xFF1A;&#x56DB;&#x5E73;&#x65B9;&#x548C;"><a href="#H&#xFF1A;&#x56DB;&#x5E73;&#x65B9;&#x548C;" class="headerlink" title="H&#xFF1A;&#x56DB;&#x5E73;&#x65B9;&#x548C;"></a>H&#xFF1A;&#x56DB;&#x5E73;&#x65B9;&#x548C;</h3><p>&#x7279;&#x610F;&#x6709;&#x4E00;&#x7BC7;&#x535A;&#x5BA2;&#x603B;&#x7ED3;&#x4E86;&#xFF0C;&#x8FD9;&#x91CC;&#x4E0D;&#x518D;&#x8D58;&#x8FF0;<br>&#x6211;&#x7684;&#x535A;&#x5BA2;&#xFF1A;<a href="https://www.weayer.top/2020/08/19/%E8%93%9D%E6%A1%A5-%E5%9B%9B%E5%B9%B3%E6%96%B9%E5%92%8C/" target="_blank">&#xB7;&#x3010;&#x84DD;&#x6865;&#x3011;&#xB7;&#x56DB;&#x5E73;&#x65B9;&#x548C;</a><br>&#x2014;&#x2014;&#x2014;&#x2014;&#x2014;&#x2014;&#x2014;&#x2014;&#x2014;&#x2014;&#x2014;&#x2014;&#x2014;&#x2014;&#x5B8C;&#x6574;&#x4EE3;&#x7801;&#x2014;&#x2014;&#x2014;&#x2014;&#x2014;&#x2014;&#x2014;&#x2014;&#x2014;&#x2014;&#x2014;&#x2014;&#x2014;&#x2014;&#x2014;&#x2014;</p>
+<figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br></pre></td><td class="code"><pre><code class="hljs c++"><span class="hljs-comment">//&#x54C8;&#x5E0C;</span><br><span class="hljs-meta">#<span class="hljs-meta-keyword">include</span> <span class="hljs-meta-string">&lt;iostream&gt;</span></span><br><span class="hljs-meta">#<span class="hljs-meta-keyword">include</span> <span class="hljs-meta-string">&lt;cstdio&gt;</span></span><br><span class="hljs-meta">#<span class="hljs-meta-keyword">include</span> <span class="hljs-meta-string">&lt;algorithm&gt;</span></span><br><span class="hljs-meta">#<span class="hljs-meta-keyword">include</span> <span class="hljs-meta-string">&lt;cmath&gt;</span></span><br><br><span class="hljs-keyword">using</span> <span class="hljs-keyword">namespace</span> <span class="hljs-built_in">std</span>;<br><br><span class="hljs-keyword">int</span> num[<span class="hljs-number">5000005</span>];<br><span class="hljs-keyword">int</span> n;<br><span class="hljs-function"><span class="hljs-keyword">int</span> <span class="hljs-title">main</span><span class="hljs-params">()</span></span>{<br>	<span class="hljs-built_in">scanf</span>(<span class="hljs-string">&quot;%d&quot;</span>, &amp;n);<br>	<span class="hljs-keyword">for</span>(<span class="hljs-keyword">int</span> i = <span class="hljs-number">0</span>; i*i &lt;= n; ++i){<br>		<span class="hljs-keyword">for</span>(<span class="hljs-keyword">int</span> j = i; i*i+j*j &lt;= n; ++j){<br>			<span class="hljs-keyword">if</span>(num[i*i+j*j] == <span class="hljs-number">0</span>)<br>				num[i*i+j*j] = j;<br>		}<br>	}<br>	<span class="hljs-keyword">for</span>(<span class="hljs-keyword">int</span> a = <span class="hljs-number">0</span>; a*a &lt;= n; ++a){<br>		<span class="hljs-keyword">for</span>(<span class="hljs-keyword">int</span> b = a; a*a+b*b &lt;= n; ++b){<br>			<span class="hljs-keyword">if</span>(num[n-a*a-b*b] != <span class="hljs-number">0</span>){<br>				<span class="hljs-keyword">int</span> d = num[n-a*a-b*b];<br>				<span class="hljs-keyword">int</span> c = <span class="hljs-keyword">int</span>(<span class="hljs-built_in">sqrt</span>(n-a*a-b*b-d*d)+<span class="hljs-number">1e-3</span>);<span class="hljs-comment">//sqrt&#x8FD4;&#x56DE;&#x503C;&#x4E3A;&#x6D6E;&#x70B9;&#x6570;&#xFF0C;&#x6709;&#x7CBE;&#x5EA6;&#x8BEF;&#x5DEE;</span><br>				<span class="hljs-built_in">cout</span> &lt;&lt;a&lt;&lt;<span class="hljs-string">&quot; &quot;</span>&lt;&lt;b&lt;&lt;<span class="hljs-string">&quot; &quot;</span>&lt;&lt;c&lt;&lt;<span class="hljs-string">&quot; &quot;</span>&lt;&lt;d&lt;&lt;<span class="hljs-built_in">endl</span>;		<br>				<span class="hljs-keyword">return</span> <span class="hljs-number">0</span>;<br>			}<br>		}<br>	}<br>	<span class="hljs-keyword">return</span> <span class="hljs-number">0</span>;<br>}<br></code></pre></td></tr></table></figure>
+
+<h3 id="I&#xFF1A;&#x4EA4;&#x6362;&#x74F6;&#x5B50;"><a href="#I&#xFF1A;&#x4EA4;&#x6362;&#x74F6;&#x5B50;" class="headerlink" title="I&#xFF1A;&#x4EA4;&#x6362;&#x74F6;&#x5B50;"></a>I&#xFF1A;&#x4EA4;&#x6362;&#x74F6;&#x5B50;</h3><p>&#x672C;&#x9898;&#x5F88;&#x6709;&#x610F;&#x601D;&#xFF0C;&#x56E0;&#x6B64;&#x4E5F;&#x7279;&#x610F;&#x6709;&#x4E00;&#x7BC7;&#x535A;&#x5BA2;&#x603B;&#x7ED3;&#x4E86;&#xFF0C;&#x8FD9;&#x91CC;&#x4E0D;&#x518D;&#x8D58;&#x8FF0;<br>&#x6211;&#x7684;&#x535A;&#x5BA2;&#xFF1A;<a href="https://www.weayer.top/2020/09/16/%E8%93%9D%E6%A1%A5-%E4%BA%A4%E6%8D%A2%E7%93%B6%E5%AD%90/" target="_blank">&#xB7;&#x3010;&#x84DD;&#x6865;&#x3011;&#xB7;&#x4EA4;&#x6362;&#x74F6;&#x5B50;</a><br>&#x2014;&#x2014;&#x2014;&#x2014;&#x2014;&#x2014;&#x2014;&#x2014;&#x2014;&#x2014;&#x2014;&#x2014;&#x2014;&#x2014;&#x5B8C;&#x6574;&#x4EE3;&#x7801;&#x2014;&#x2014;&#x2014;&#x2014;&#x2014;&#x2014;&#x2014;&#x2014;&#x2014;&#x2014;&#x2014;&#x2014;&#x2014;&#x2014;&#x2014;&#x2014;</p>
+<figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br></pre></td><td class="code"><pre><code class="hljs c++"><span class="hljs-comment">//&#x7CBE;&#x5999;&#x7684;&#x7B97;&#x6CD5;&#x5F80;&#x5F80;&#x7B80;&#x6D01;</span><br><span class="hljs-meta">#<span class="hljs-meta-keyword">include</span> <span class="hljs-meta-string">&lt;iostream&gt;</span></span><br><span class="hljs-meta">#<span class="hljs-meta-keyword">include</span> <span class="hljs-meta-string">&lt;algorithm&gt;</span></span><br><span class="hljs-keyword">using</span> <span class="hljs-keyword">namespace</span> <span class="hljs-built_in">std</span>;<br><br><span class="hljs-keyword">int</span> n, ans = <span class="hljs-number">0</span>; <br><span class="hljs-keyword">int</span> a[<span class="hljs-number">10005</span>];<br><span class="hljs-keyword">int</span> st[<span class="hljs-number">10005</span>];<br><span class="hljs-function"><span class="hljs-keyword">int</span> <span class="hljs-title">main</span><span class="hljs-params">()</span></span>{<br>	<span class="hljs-built_in">scanf</span>(<span class="hljs-string">&quot;%d&quot;</span>, &amp;n);<br>	<span class="hljs-keyword">for</span>(<span class="hljs-keyword">int</span> i = <span class="hljs-number">1</span>; i &lt;= n; ++i)<br>		<span class="hljs-built_in">scanf</span>(<span class="hljs-string">&quot;%d&quot;</span>, &amp;a[i]);<br>	<span class="hljs-keyword">for</span>(<span class="hljs-keyword">int</span> i = <span class="hljs-number">1</span>; i &lt;= n; ++i){<br>		<span class="hljs-keyword">if</span>(!st[i]){<br>			ans++;<br>			<span class="hljs-keyword">for</span>(<span class="hljs-keyword">int</span> j = i; !st[j]; j=a[j]){<br>				st[j] = <span class="hljs-number">1</span>;<br>			}<br>		}<br>	}<br>	<span class="hljs-built_in">printf</span>(<span class="hljs-string">&quot;%d\n&quot;</span>, n-ans);<br>	<span class="hljs-keyword">return</span> <span class="hljs-number">0</span>;<br>}<br></code></pre></td></tr></table></figure>
+
+
+            </div>
+            <hr>
+            <div>
+              <div class="post-metas mb-3">
+                
+                  <div class="post-meta mr-3">
+                    <i class="iconfont icon-category"></i>
+                    
+                      <a class="hover-with-bg" href="/categories/题目/">题目</a>
+                    
+                  </div>
+                
+                
+                  <div class="post-meta">
+                    <i class="iconfont icon-tags"></i>
+                    
+                      <a class="hover-with-bg" href="/tags/蓝桥/">蓝桥</a>
+                    
+                  </div>
+                
+              </div>
+              
+                <p class="note note-warning">本博客所有文章除特别声明外，均采用 <a href="https://creativecommons.org/licenses/by-sa/4.0/deed.zh" rel="nofollow noopener">CC BY-SA 4.0 协议</a> ，转载请注明出处！</p>
+              
+              
+                <div class="post-prevnext">
+                  <article class="post-prev col-6">
+                    
+                    
+                      <a href="/2021/02/07/lanqiao-2019/">
+                        <i class="iconfont icon-arrowleft"></i>
+                        <span class="hidden-mobile">2019年蓝桥杯省赛B组C++题解（无E、J题）</span>
+                        <span class="visible-mobile">上一篇</span>
+                      </a>
+                    
+                  </article>
+                  <article class="post-next col-6">
+                    
+                    
+                      <a href="/2021/02/07/lanqiao-2017/">
+                        <span class="hidden-mobile">2017年蓝桥杯省赛题解（无E、F、J题）</span>
+                        <span class="visible-mobile">下一篇</span>
+                        <i class="iconfont icon-arrowright"></i>
+                      </a>
+                    
+                  </article>
+                </div>
+              
+            </div>
+
+            
+          </article>
+        </div>
+      </div>
+    </div>
+    
+      <div class="d-none d-lg-block col-lg-2 toc-container" id="toc-ctn">
+        <div id="toc">
+  <p class="toc-header"><i class="iconfont icon-list"></i>&nbsp;目录</p>
+  <div class="toc-body" id="toc-body"></div>
+</div>
+
+      </div>
+    
+  </div>
+</div>
+
+<!-- Custom -->
+
+
+    
+
+    
+      <a id="scroll-top-button" href="#" role="button">
+        <i class="iconfont icon-arrowup" aria-hidden="true"></i>
+      </a>
+    
+
+    
+      <div class="modal fade" id="modalSearch" tabindex="-1" role="dialog" aria-labelledby="ModalLabel"
+     aria-hidden="true">
+  <div class="modal-dialog modal-dialog-scrollable modal-lg" role="document">
+    <div class="modal-content">
+      <div class="modal-header text-center">
+        <h4 class="modal-title w-100 font-weight-bold">搜索</h4>
+        <button type="button" id="local-search-close" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body mx-3">
+        <div class="md-form mb-5">
+          <input type="text" id="local-search-input" class="form-control validate">
+          <label data-error="x" data-success="v"
+                 for="local-search-input">关键词</label>
+        </div>
+        <div class="list-group" id="local-search-result"></div>
+      </div>
+    </div>
+  </div>
+</div>
+    
+
+    
+  </main>
+
+  <footer class="text-center mt-5 py-3">
+  <div class="footer-content">
+     <a href="https://hexo.io" target="_blank" rel="nofollow noopener"><span>Hexo</span></a> <i class="iconfont icon-love"></i> <a href="https://github.com/fluid-dev/hexo-theme-fluid" target="_blank" rel="nofollow noopener"><span>Fluid</span></a> 
+  </div>
+  
+
+  
+
+  
+</footer>
+
+<!-- SCRIPTS -->
+
+  <script  src="https://cdn.jsdelivr.net/npm/nprogress@0.2.0/nprogress.min.js" ></script>
+  <link  rel="stylesheet" href="https://cdn.jsdelivr.net/npm/nprogress@0.2.0/nprogress.min.css" />
+
+  <script>
+    NProgress.configure({"showSpinner":false,"trickleSpeed":100})
+    NProgress.start()
+    window.addEventListener('load', function() {
+      NProgress.done();
+    })
+  </script>
+
+
+<script  src="https://cdn.jsdelivr.net/npm/jquery@3.5.1/dist/jquery.min.js" ></script>
+<script  src="https://cdn.jsdelivr.net/npm/bootstrap@4.5.3/dist/js/bootstrap.min.js" ></script>
+<script  src="/js/debouncer.js" ></script>
+<script  src="/js/events.js" ></script>
+<script  src="/js/plugins.js" ></script>
+
+<!-- Plugins -->
+
+
+  
+    <script  src="/js/lazyload.js" ></script>
+  
+
+
+
+  
+
+
+
+  <script  src="https://cdn.jsdelivr.net/npm/tocbot@4.12.0/dist/tocbot.min.js" ></script>
+
+
+
+  <script  src="https://cdn.jsdelivr.net/npm/@fancyapps/fancybox@3.5.7/dist/jquery.fancybox.min.js" ></script>
+
+
+
+  <script  src="https://cdn.jsdelivr.net/npm/anchor-js@4.3.0/anchor.min.js" ></script>
+
+
+
+  <script defer src="https://cdn.jsdelivr.net/npm/clipboard@2.0.6/dist/clipboard.min.js" ></script>
+
+
+
+
+
+
+  <script  src="https://cdn.jsdelivr.net/npm/typed.js@2.0.11/lib/typed.min.js" ></script>
+  <script>
+    (function (window, document) {
+      var typing = Fluid.plugins.typing;
+      var title = document.getElementById('subtitle').title;
+      
+      typing(title)
+      
+    })(window, document);
+  </script>
+
+
+
+  <script  src="/js/local-search.js" ></script>
+  <script>
+    (function () {
+      var path = "/local-search.xml";
+      var inputArea = document.querySelector("#local-search-input");
+      inputArea.onclick = function () {
+        searchFunc(path, 'local-search-input', 'local-search-result');
+        this.onclick = null
+      }
+    })()
+  </script>
+
+
+
+
+
+  
+
+  
+    <!-- MathJax -->
+    <script>
+      MathJax = {
+        tex: {
+          inlineMath: [['$', '$'], ['\\(', '\\)']]
+        },
+        options: {
+          renderActions: {
+            findScript: [10, doc => {
+              document.querySelectorAll('script[type^="math/tex"]').forEach(node => {
+                const display = !!node.type.match(/; *mode=display/);
+                const math = new doc.options.MathItem(node.textContent, doc.inputJax[0], display);
+                const text = document.createTextNode('');
+                node.parentNode.replaceChild(text, node);
+                math.start = { node: text, delim: '', n: 0 };
+                math.end = { node: text, delim: '', n: 0 };
+                doc.math.push(math);
+              });
+            }, '', false],
+            insertedScript: [200, () => {
+              document.querySelectorAll('mjx-container').forEach(node => {
+                let target = node.parentNode;
+                if (target.nodeName.toLowerCase() === 'li') {
+                  target.parentNode.classList.add('has-jax');
+                }
+              });
+            }, '', false]
+          }
+        }
+      };
+    </script>
+
+    <script async src="https://cdn.jsdelivr.net/npm/mathjax@3.1.2/es5/tex-svg.js" ></script>
+
+  
+
+
+
+
+
+
+
+
+
+
+
+<!-- 主题的启动项 保持在最底部 -->
+<script  src="/js/boot.js" ></script>
+
+
+
+</body>
+</html>
